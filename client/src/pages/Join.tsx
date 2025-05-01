@@ -5,6 +5,7 @@ import { Users, Zap, Calendar, Star, ArrowRight, Check, AlertCircle, Loader } fr
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
+import SuccessConfetti from "@/components/SuccessConfetti";
 
 const BenefitCard = ({ 
   icon, 
@@ -32,6 +33,7 @@ const Join = () => {
   const [emailError, setEmailError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
   
   // Validate email format
   const validateEmail = (email: string): boolean => {
@@ -78,6 +80,7 @@ const Join = () => {
       // Show success state
       setIsSubmitting(false);
       setIsSubmitted(true);
+      setShowConfetti(true); // Trigger confetti
       
       // Clear form
       setEmail("");
@@ -104,6 +107,7 @@ const Join = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SuccessConfetti active={showConfetti} />
       <Navbar />
       
       {/* Hero Section */}

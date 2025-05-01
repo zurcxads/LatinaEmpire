@@ -6,6 +6,7 @@ import { Mail, Phone, Instagram, MapPin, AlertCircle, Loader } from "lucide-reac
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
+import SuccessConfetti from "@/components/SuccessConfetti";
 
 interface FormData {
   name: string;
@@ -29,6 +30,7 @@ const Contact = () => {
   const [formErrors, setFormErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -106,6 +108,7 @@ const Contact = () => {
       // Show success
       setIsSubmitting(false);
       setIsSubmitted(true);
+      setShowConfetti(true); // Trigger confetti
       
       // Clear form
       setFormData({
@@ -135,6 +138,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SuccessConfetti active={showConfetti} />
       <Navbar />
       
       {/* Hero Section */}
