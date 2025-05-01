@@ -51,7 +51,7 @@ const Navbar = () => {
             <Link href="/" className="font-sans text-sm font-medium hover:text-magenta transition-all">Home</Link>
             <Link href="/program" className="font-sans text-sm font-medium hover:text-magenta transition-all">Program</Link>
             <Link href="/events" className="font-sans text-sm font-medium hover:text-magenta transition-all">Events</Link>
-            <Link href="#" className="font-sans text-sm font-medium hover:text-magenta transition-all">Ambassadors</Link>
+            <Link href="/ambassadors" className="font-sans text-sm font-medium hover:text-magenta transition-all">Ambassadors</Link>
             <Link href="#" className="font-sans text-sm font-medium hover:text-magenta transition-all">Join</Link>
             <Link href="#" className="font-sans text-sm font-medium hover:text-magenta transition-all">Contact</Link>
             <Link href="/program">
@@ -82,7 +82,7 @@ const Navbar = () => {
             <Link href="/" className="block py-2 font-sans text-base font-medium hover:text-magenta">Home</Link>
             <Link href="/program" className="block py-2 font-sans text-base font-medium hover:text-magenta">Program</Link>
             <Link href="/events" className="block py-2 font-sans text-base font-medium hover:text-magenta">Events</Link>
-            <Link href="#" className="block py-2 font-sans text-base font-medium hover:text-magenta">Ambassadors</Link>
+            <Link href="/ambassadors" className="block py-2 font-sans text-base font-medium hover:text-magenta">Ambassadors</Link>
             <Link href="#" className="block py-2 font-sans text-base font-medium hover:text-magenta">Join</Link>
             <Link href="#" className="block py-2 font-sans text-base font-medium hover:text-magenta">Contact</Link>
             <Link href="/program" className="w-full block">
