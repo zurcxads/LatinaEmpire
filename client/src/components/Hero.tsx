@@ -24,6 +24,23 @@ const Hero = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/70 z-20"></div>
             </div>
+
+            {/* Content */}
+            <div className="relative z-30 text-white max-w-4xl mx-auto px-4 md:px-0 py-20 text-center">
+              <h1 className="font-serif font-bold text-4xl md:text-6xl lg:text-7xl mb-6">
+                Transform Your Life & Legacy
+              </h1>
+              <p className="text-xl md:text-2xl mb-8 opacity-90">
+                Join thousands of Latina leaders creating generational wealth and impact.
+              </p>
+              <Button 
+                onClick={() => setIsModalOpen(true)}
+                className="bg-white text-black hover:bg-gray-100 px-8 py-6 h-auto rounded-full font-sans font-semibold text-lg shadow-xl inline-flex items-center"
+              >
+                Begin Your Journey
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
             
             {/* Content over the image */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
