@@ -38,6 +38,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/events", (req: Request, res: Response) => {
     try {
       const data = getEventsData();
+      if (!data || !data.events) {
+        return res.status(404).json({ error: "Events data not found" });
+      }
       res.json(data);
     } catch (error) {
       console.error("Error serving events:", error);
