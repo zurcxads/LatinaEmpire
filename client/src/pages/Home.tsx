@@ -4,8 +4,10 @@ import NextEventBanner from "@/components/NextEventBanner";
 import ProgramCarousel from "@/components/ProgramCarousel";
 import BrandIntro from "@/components/BrandIntro";
 import Testimonial from "@/components/Testimonial";
-import EventsPreview from "@/components/EventsPreview";
-import CTASection from "@/components/CTASection";
+import PillarsSection from "@/components/PillarsSection";
+import CoachingSection from "@/components/CoachingSection";
+import PodcastSection from "@/components/PodcastSection";
+import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
 const Home = () => {
@@ -22,11 +24,24 @@ const Home = () => {
       {/* SECTION 3: Event/Program Carousel - Horizontal slider */}
       <ProgramCarousel />
       
-      {/* Additional sections - with TonyRobbins.com styling */}
-      <BrandIntro />
+      {/* SECTION 4: Pillars Section */}
+      <PillarsSection />
+      
+      {/* SECTION 5: Testimonials */}
       <Testimonial />
-      <EventsPreview />
-      <CTASection />
+      
+      {/* SECTION 6: Brand Introduction - Core Values */}
+      <BrandIntro />
+      
+      {/* SECTION 7: Coaching Section */}
+      <CoachingSection />
+      
+      {/* SECTION 8: Podcast Section */}
+      <PodcastSection />
+      
+      {/* SECTION 9: Final CTA Section */}
+      <FinalCTA />
+      
       <Footer />
     </div>
   );

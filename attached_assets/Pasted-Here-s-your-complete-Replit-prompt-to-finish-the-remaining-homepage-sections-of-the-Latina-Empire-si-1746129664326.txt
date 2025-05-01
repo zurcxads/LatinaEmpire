@@ -1,0 +1,81 @@
+Here’s your complete Replit prompt to finish the remaining homepage sections of the Latina Empire site, referencing the Tony Robbins homepage layout and your screenshot.
+
+⸻
+
+Prompt for Replit (Latina Empire Homepage Completion — Tony Robbins Style)
+
+Now finish building the rest of the Latina Empire homepage to match the full layout and visual style of TonyRobbins.com. The first 3 sections are already done — continue with the remaining ones below.
+
+Reference this screenshot for styling of the hero section: [RPM tickets now available]. Recreate its typography, spacing, button shape, and layout precisely, using a placeholder background image of a theater stage with a speaker and crowd.
+
+⸻
+
+Section 1: Hero Section (Redesign)
+	•	Replace current hero with this structure:
+	•	Full-screen background image: use a placeholder of a theater/speaker/audience
+	•	Text (center-aligned):
+	•	Heading (bold, white, large): “Latina Empire Elite Program”
+	•	Subheading: “Now accepting new women into our global flagship experience.”
+	•	CTA Button (white background, black text, rounded, same size as screenshot): “Join Now”
+	•	On click: opens modal with Name, Email, Country, and short paragraph field.
+	•	Ensure font weight, line height, spacing, and alignment match Tony Robbins style exactly.
+
+⸻
+
+Section 4: Pillars Section (aka “Pillars for an Extraordinary Life”)
+	•	Heading: “Pillars for an Empowered Latina Life”
+	•	Subtitle: Optional or light text
+	•	Grid layout with 3–4 tiles:
+	•	Mindset
+	•	Wealth
+	•	Leadership
+	•	Legacy
+	•	Each tile includes an icon/image, a bold title, and 1-sentence description.
+
+⸻
+
+Section 5: Testimonials (Carousel or Grid)
+	•	Heading: “What Our Members Say”
+	•	Carousel or 2-column grid with:
+	•	Name, headshot, and short quote
+	•	Use placeholder data (4–6 cards)
+	•	Match testimonial styling and spacing used on TonyRobbins.com homepage.
+
+⸻
+
+Section 6: Coaching Section (Optional)
+	•	Banner promoting Latina Empire coaching or mentorship
+	•	Background color: black or dark gray
+	•	Bold white text:
+	•	Heading: “Private Coaching for High-Achieving Latinas”
+	•	CTA: “Learn More”
+
+⸻
+
+Section 7: Podcast / Media (Optional for Now)
+	•	Placeholder section showing:
+	•	2–3 featured podcast or video interviews
+	•	Use cards with play buttons, episode title, and “Listen” CTA
+
+⸻
+
+Section 8: Final CTA Section
+	•	Large centered callout:
+	•	Heading: “Are You Ready to Join the Movement?”
+	•	CTA Button: “Join the Community”
+	•	Opens same modal form as hero section
+	•	Use similar styling to TonyRobbins.com’s final CTA section — strong contrast, bold font, centered alignment
+
+⸻
+
+General Styling Notes:
+	•	Font should match Tony Robbins style (use Neue Haas Grotesk or closest Google/Adobe Font).
+	•	CTA buttons: use large rounded shapes with clear hover effects.
+	•	Colors: white background, black text, magenta (#D81B60) for accents
+	•	Mobile-friendly layout matching proportions seen in mobile screenshots
+
+Do not skip any sections — match structure, spacing, and typography exactly.
+
+⸻
+
+Let me know once this is done and I’ll give you the Events page update prompt with calendar view.
