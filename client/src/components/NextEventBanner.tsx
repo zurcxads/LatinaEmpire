@@ -28,7 +28,7 @@ const NextEventBanner = () => {
       <section className="bg-black text-white">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-2 py-6">
-            <Circle className="h-2 w-2 fill-magenta text-magenta" />
+            <Circle className="h-2 w-2 fill-magenta text-magenta animate-pulse relative after:absolute after:inset-0 after:rounded-full after:bg-magenta/30 after:animate-ping" />
             <span className="text-sm font-semibold tracking-widest uppercase">Next Event</span>
           </div>
           
