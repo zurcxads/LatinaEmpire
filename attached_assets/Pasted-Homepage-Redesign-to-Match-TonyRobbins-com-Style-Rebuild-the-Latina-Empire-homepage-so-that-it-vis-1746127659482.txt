@@ -1,0 +1,53 @@
+Homepage Redesign to Match TonyRobbins.com Style)
+
+Rebuild the Latina Empire homepage so that it visually matches the look and structure of TonyRobbins.com, based on the mobile screenshots provided. Focus on recreating:
+
+SECTION 1: Hero Banner (Flagship Program Promo)
+	•	Full-screen hero with:
+	•	Background image or video (placeholder ok)
+	•	Headline text in large white bold font: “Step Into Your Power”
+	•	Subheadline below: “Join the Latina Empire Elite Program — our flagship experience for Latina transformation.”
+	•	CTA button: “Join Now” — use rounded white button with dark text (like Tony Robbins)
+	•	Button should open a modal form (Name, Email, Country, short answer)
+	•	Use bold spacing, center-aligned typography, with white text overlay on dark image
+
+⸻
+
+SECTION 2: Next Event Promo Banner
+	•	Just like Tony Robbins’ “NEXT EVENT” strip:
+	•	Show image thumbnail on left
+	•	Label: “NEXT EVENT”
+	•	Event Title (placeholder): “Latina Empire LIVE Miami 2025”
+	•	Subtitle: “In-person transformation, networking, and activation.”
+	•	Button: “Get Tickets” — white outline button with magenta hover
+	•	Optional play button overlay if a video is present
+	•	Use black background section with white font
+
+⸻
+
+SECTION 3: Event Carousel (Slider for Multiple Programs)
+	•	Horizontal slider showing programs like:
+	•	Latina Empire ELITE
+	•	Financial Freedom Bootcamp
+	•	Business Accelerator
+	•	Each card should have:
+	•	Background image
+	•	Program name
+	•	Short subtitle
+	•	Carousel dots below
+	•	Tap or click expands details or links to program page
+
+⸻
+
+Typography & Styling:
+	•	Font family must match or mimic TonyRobbins.com (use Neue Haas Grotesk or closest Google Font: Poppins, Inter, or custom import).
+	•	Font sizes, spacing, and weight must follow exact spacing model from the screenshots.
+	•	Layout must match: wide hero → event strip → horizontal carousel
+	•	CTA buttons: white with black text, bold, rounded
+
+⸻
+
+Technical:
+	•	Build this with mobile-first responsiveness.
+	•	Structure each section as reusable React components.
+	•	Do not use placeholder blocks — build each section visually accurate even with fake data.

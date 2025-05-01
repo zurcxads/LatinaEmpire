@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import JoinModal from "./JoinModal";
 
 const Hero = () => {
@@ -10,40 +9,43 @@ const Hero = () => {
     <>
       <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
       
-      <section className="elite-hero-bg min-h-screen flex items-center relative">
-        <div className="container mx-auto px-4 md:px-6 py-20 lg:py-32 relative z-10">
-          <div className="max-w-3xl">
-            <h1 className="font-serif font-bold text-5xl md:text-6xl lg:text-7xl leading-tight mb-6 text-white drop-shadow-md">
-              Step Into Your Power with the Latina Empire Elite Program
-            </h1>
-            
-            <p className="font-sans text-xl md:text-2xl text-white opacity-90 mb-10 drop-shadow-md">
-              A proven path to purpose, wealth, and impact for Latinas worldwide.
-            </p>
-            
-            <div className="flex flex-wrap gap-4">
-              <Button 
-                onClick={() => setIsModalOpen(true)}
-                className="bg-magenta text-white px-8 py-7 rounded-md font-sans font-semibold text-lg hover:bg-opacity-90 shadow-xl h-auto transition-all"
-                size="lg"
-              >
-                Join Now
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              
-              <Button 
-                variant="outline"
-                className="bg-transparent border-2 border-white text-white px-8 py-7 rounded-md font-sans font-semibold text-lg hover:bg-white hover:text-black transition-all h-auto"
-                size="lg"
-              >
-                Learn More
-              </Button>
-            </div>
-          </div>
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black text-white">
+        {/* Background image with overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1573164574230-db1d5e960238?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1950&q=80"
+            alt="Latina professional" 
+            className="w-full h-full object-cover opacity-50"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
         </div>
         
-        {/* Gradient overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30 z-0"></div>
+        <div className="container mx-auto px-4 md:px-10 py-20 md:py-32 relative z-10 text-center">
+          <h1 className="font-serif font-bold text-5xl sm:text-6xl md:text-7xl xl:text-8xl text-white mb-8 leading-tight tracking-tight mx-auto max-w-5xl">
+            Step Into Your Power
+          </h1>
+          
+          <p className="font-sans text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed">
+            Join the Latina Empire Elite Program — our flagship experience for Latina transformation.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 max-w-xl mx-auto">
+            <Button 
+              onClick={() => setIsModalOpen(true)}
+              className="w-full sm:w-auto bg-white hover:bg-gray-100 text-black font-semibold text-lg py-7 px-12 rounded-full transition-all"
+            >
+              Join Now
+            </Button>
+            
+            <Button 
+              variant="outline" 
+              className="w-full sm:w-auto bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-semibold text-lg py-7 px-12 rounded-full transition-all"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Learn More
+            </Button>
+          </div>
+        </div>
       </section>
     </>
   );

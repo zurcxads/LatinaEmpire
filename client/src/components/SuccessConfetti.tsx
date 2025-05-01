@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import ReactConfetti from 'react-confetti';
+import { useState, useEffect } from 'react';
+import Confetti from 'react-confetti';
 
 interface SuccessConfettiProps {
   active: boolean;
@@ -7,66 +7,63 @@ interface SuccessConfettiProps {
   colors?: string[];
 }
 
-const SuccessConfetti = ({ 
-  active, 
-  duration = 3000, 
-  colors = ['#D81B60', '#FFC0CB', '#E91E63', '#FF69B4', '#FFFFFF']
+const SuccessConfetti = ({
+  active,
+  duration = 3000,
+  colors = ['#D81B60', '#9C27B0', '#3F51B5', '#FFFFFF']
 }: SuccessConfettiProps) => {
-  const [dimensions, setDimensions] = useState({ width: window.innerWidth, height: window.innerHeight });
-  const [isActive, setIsActive] = useState(false);
+  const [windowDimension, setWindowDimension] = useState<{
+    width: number;
+    height: number;
+  }>({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
   
-  // Update dimensions on window resize
+  const [showConfetti, setShowConfetti] = useState<boolean>(false);
+
   useEffect(() => {
-    const handleResize = () => {
-      setDimensions({
+    // Function to detect and update window dimensions
+    const detectSize = () => {
+      setWindowDimension({
         width: window.innerWidth,
-        height: window.innerHeight
+        height: window.innerHeight,
       });
     };
-    
-    window.addEventListener('resize', handleResize);
-    
+
+    // Add window resize listener
+    window.addEventListener('resize', detectSize);
+
+    // Clean up resize listener
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', detectSize);
     };
   }, []);
-  
-  // Control confetti visibility
+
   useEffect(() => {
     if (active) {
-      setIsActive(true);
+      setShowConfetti(true);
       
+      // Hide confetti after duration
       const timer = setTimeout(() => {
-        setIsActive(false);
+        setShowConfetti(false);
       }, duration);
       
-      return () => {
-        clearTimeout(timer);
-      };
+      return () => clearTimeout(timer);
     }
-    
-    return undefined;
   }, [active, duration]);
-  
-  if (!isActive) return null;
-  
-  return (
-    <ReactConfetti
-      width={dimensions.width}
-      height={dimensions.height}
-      colors={colors}
-      numberOfPieces={300}
+
+  return showConfetti ? (
+    <Confetti
+      width={windowDimension.width}
+      height={windowDimension.height}
       recycle={false}
-      gravity={0.2}
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        zIndex: 9999,
-        pointerEvents: 'none',
-      }}
+      numberOfPieces={500}
+      gravity={0.1}
+      colors={colors}
+      style={{ position: 'fixed', top: 0, left: 0, zIndex: 9999 }}
     />
-  );
+  ) : null;
 };
 
 export default SuccessConfetti;

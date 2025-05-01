@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { AlertCircle, Loader, Check } from "lucide-react";
 import SuccessConfetti from "@/components/SuccessConfetti";
 
@@ -144,19 +144,19 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
     <>
       <SuccessConfetti active={showConfetti} />
       <Dialog open={open} onOpenChange={handleClose}>
-        <DialogContent className="sm:max-w-[500px]">
+        <DialogContent className="sm:max-w-[500px] bg-white p-0 overflow-hidden rounded-lg">
           {isSubmitted ? (
             // Success state
-            <div className="py-6 text-center">
+            <div className="py-8 px-6 text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Check className="h-8 w-8 text-green-600" />
               </div>
-              <DialogTitle className="text-2xl font-serif mb-4">Thank You for Joining!</DialogTitle>
-              <DialogDescription className="mb-8 text-base">
+              <DialogTitle className="text-2xl font-bold mb-4 text-black">Thank You for Joining!</DialogTitle>
+              <p className="mb-6 text-gray-700">
                 We're excited to have you join the Latina Empire Elite Program. Check your email for next steps and welcome information.
-              </DialogDescription>
+              </p>
               <Button 
-                className="bg-magenta text-white hover:bg-opacity-90"
+                className="bg-black hover:bg-gray-900 text-white font-semibold py-3 px-6 rounded-lg"
                 onClick={() => onOpenChange(false)}
               >
                 Close
@@ -165,16 +165,16 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
           ) : (
             // Form state
             <>
-              <DialogHeader>
-                <DialogTitle className="text-2xl font-serif">Join the Elite Program</DialogTitle>
-                <DialogDescription>
-                  Fill out this form to begin your journey with Latina Empire's premium coaching and mentorship program.
-                </DialogDescription>
-              </DialogHeader>
+              <div className="bg-black p-6 text-white">
+                <DialogTitle className="text-2xl font-bold">Join the Elite Program</DialogTitle>
+                <p className="text-white/80 mt-2">
+                  Fill out this form to begin your journey with our premium coaching program
+                </p>
+              </div>
               
-              <form onSubmit={handleSubmit} className="space-y-4 py-4">
+              <form onSubmit={handleSubmit} className="space-y-5 p-6">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium">
+                  <label htmlFor="name" className="text-sm font-medium text-gray-700">
                     Full Name <span className="text-red-500">*</span>
                   </label>
                   <Input
@@ -183,7 +183,7 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Enter your full name"
-                    className={formErrors.name ? "border-red-500" : ""}
+                    className={`rounded-lg border-gray-300 py-3 ${formErrors.name ? 'border-red-500 ring-red-500' : 'focus:border-black focus:ring-black'}`}
                     disabled={isSubmitting}
                   />
                   {formErrors.name && (
@@ -195,7 +195,7 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                 </div>
                 
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium">
+                  <label htmlFor="email" className="text-sm font-medium text-gray-700">
                     Email <span className="text-red-500">*</span>
                   </label>
                   <Input
@@ -205,7 +205,7 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="you@example.com"
-                    className={formErrors.email ? "border-red-500" : ""}
+                    className={`rounded-lg border-gray-300 py-3 ${formErrors.email ? 'border-red-500 ring-red-500' : 'focus:border-black focus:ring-black'}`}
                     disabled={isSubmitting}
                   />
                   {formErrors.email && (
@@ -217,7 +217,7 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                 </div>
                 
                 <div className="space-y-2">
-                  <label htmlFor="country" className="text-sm font-medium">
+                  <label htmlFor="country" className="text-sm font-medium text-gray-700">
                     Country <span className="text-red-500">*</span>
                   </label>
                   <Select 
@@ -225,7 +225,7 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                     onValueChange={handleSelectChange}
                     disabled={isSubmitting}
                   >
-                    <SelectTrigger id="country" className={formErrors.country ? "border-red-500" : ""}>
+                    <SelectTrigger id="country" className={`rounded-lg border-gray-300 py-6 ${formErrors.country ? 'border-red-500' : 'focus:border-black focus:ring-black'}`}>
                       <SelectValue placeholder="Select your country" />
                     </SelectTrigger>
                     <SelectContent>
@@ -245,7 +245,7 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                 </div>
                 
                 <div className="space-y-2">
-                  <label htmlFor="reason" className="text-sm font-medium">
+                  <label htmlFor="reason" className="text-sm font-medium text-gray-700">
                     Why do you want to join? <span className="text-gray-400">(Optional)</span>
                   </label>
                   <Textarea
@@ -255,22 +255,31 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                     onChange={handleInputChange}
                     placeholder="Tell us a bit about your goals and what you hope to achieve"
                     rows={3}
+                    className="rounded-lg border-gray-300 focus:border-black focus:ring-black"
                     disabled={isSubmitting}
                   />
                 </div>
                 
                 <DialogFooter className="pt-4">
-                  <Button type="submit" className="bg-magenta text-white hover:bg-opacity-90 w-full" disabled={isSubmitting}>
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-black hover:bg-gray-900 text-white font-semibold py-3 px-6 rounded-lg" 
+                    disabled={isSubmitting}
+                  >
                     {isSubmitting ? (
                       <>
                         <Loader className="mr-2 h-4 w-4 animate-spin" />
                         Processing...
                       </>
                     ) : (
-                      "Join the Elite Program"
+                      "Join Now"
                     )}
                   </Button>
                 </DialogFooter>
+                
+                <p className="text-xs text-gray-500 text-center mt-4">
+                  By submitting this form, you agree to our Privacy Policy and Terms of Service.
+                </p>
               </form>
             </>
           )}
