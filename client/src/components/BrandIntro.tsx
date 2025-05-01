@@ -1,19 +1,24 @@
-import { Users, Crown, Calendar } from "lucide-react";
+import { useState } from "react";
+import { Users, Crown, Calendar, Star, Target, HeartHandshake, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import JoinModal from "./JoinModal";
 
-interface PillarProps {
+interface ValueProps {
   icon: JSX.Element;
   title: string;
   description: string;
 }
 
-const Pillar = ({ icon, title, description }: PillarProps) => {
+const ValueItem = ({ icon, title, description }: ValueProps) => {
   return (
-    <div className="bg-gray-50 p-8 rounded-lg shadow-sm hover:shadow-md transition-all">
-      <div className="h-16 w-16 bg-magenta-light rounded-full flex items-center justify-center mx-auto mb-6">
-        {icon}
+    <div className="group bg-white p-7 rounded-lg border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+      <div className="mb-5">
+        <div className="h-14 w-14 bg-magenta/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-magenta/20 transition-all">
+          {icon}
+        </div>
+        <h3 className="font-serif font-semibold text-xl mb-3">{title}</h3>
       </div>
-      <h3 className="font-serif font-semibold text-xl mb-4 text-center">{title}</h3>
-      <p className="font-sans text-gray-600 leading-relaxed text-center">
+      <p className="font-sans text-gray-600 leading-relaxed flex-grow">
         {description}
       </p>
     </div>
@@ -21,46 +26,122 @@ const Pillar = ({ icon, title, description }: PillarProps) => {
 };
 
 const BrandIntro = () => {
-  const pillars = [
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const values = [
+    {
+      icon: <Target className="text-magenta text-2xl" />,
+      title: "Purpose",
+      description: "Uncover your unique gifts and create a life of meaning aligned with your true calling and Latin heritage."
+    },
     {
       icon: <Users className="text-magenta text-2xl" />,
-      title: "Free Community",
-      description: "Connect with like-minded Latinas in our supportive online community, sharing resources and inspiration."
+      title: "Community",
+      description: "Join a powerful network of like-minded Latinas who lift each other up and provide ongoing support."
     },
     {
       icon: <Crown className="text-magenta text-2xl" />,
-      title: "Elite Program",
-      description: "Transform your life with our premium coaching and personalized development pathways."
+      title: "Leadership",
+      description: "Develop the confidence and skills to lead in your career, business, and community with authentic power."
     },
     {
       icon: <Calendar className="text-magenta text-2xl" />,
-      title: "In-Person Events",
-      description: "Experience transformational gatherings with powerful speakers and meaningful connections."
+      title: "Growth",
+      description: "Access premium coaching and resources designed specifically for the unique challenges Latinas face."
+    },
+    {
+      icon: <Star className="text-magenta text-2xl" />,
+      title: "Wealth",
+      description: "Build financial independence through proven strategies for creating abundance and generational wealth."
+    },
+    {
+      icon: <HeartHandshake className="text-magenta text-2xl" />,
+      title: "Impact",
+      description: "Create positive change in your family, community and beyond while honoring your cultural roots."
     }
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6">Our Vision</h2>
-          <p className="font-sans text-lg md:text-xl text-gray-700 leading-relaxed mb-10">
-            Latina Empire is a global sisterhood empowering Latinas through a free community, premium coaching, and real-world events.
-          </p>
+    <>
+      <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
+      
+      <section className="py-20 lg:py-28 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-3 block">THE ELITE PROGRAM</span>
+            <h2 className="font-serif font-bold text-3xl md:text-5xl mb-6 tracking-tight">Transform Every Area of Your Life</h2>
+            <p className="font-sans text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
+              Latina Empire's Elite Program is a comprehensive coaching system designed to help you achieve extraordinary results in all six dimensions of your life.
+            </p>
+          </div>
           
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pillars.map((pillar, index) => (
-              <Pillar 
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
+            {values.map((value, index) => (
+              <ValueItem 
                 key={index}
-                icon={pillar.icon} 
-                title={pillar.title} 
-                description={pillar.description}
+                icon={value.icon} 
+                title={value.title} 
+                description={value.description}
               />
             ))}
           </div>
+          
+          <div className="text-center">
+            <Button 
+              onClick={() => setIsModalOpen(true)}
+              className="bg-magenta text-white px-8 py-7 rounded-md font-sans font-semibold text-lg hover:bg-opacity-90 shadow-md h-auto transition-all inline-flex items-center"
+              size="lg"
+            >
+              Begin Your Transformation
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      
+      {/* Tony Robbins style image and text split section */}
+      <section className="bg-white">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
+          <div className="h-[400px] lg:h-auto bg-[url('https://images.unsplash.com/photo-1573164713988-8665321e3075?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80')] bg-center bg-cover bg-no-repeat"></div>
+          
+          <div className="flex items-center justify-center p-10 lg:p-16 xl:p-20">
+            <div className="max-w-xl">
+              <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-4 block">OUR APPROACH</span>
+              <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6 leading-tight">Latina-Centered Coaching That Gets Results</h2>
+              <p className="font-sans text-lg text-gray-700 leading-relaxed mb-8">
+                Our methodology combines proven success principles with cultural understanding to address the unique challenges and opportunities Latina professionals face in today's world.
+              </p>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start">
+                  <div className="h-6 w-6 rounded-full bg-magenta/10 flex items-center justify-center mt-1 mr-3">
+                    <div className="h-2 w-2 rounded-full bg-magenta"></div>
+                  </div>
+                  <span className="font-sans text-gray-700">Personalized coaching tailored to your specific goals and cultural context</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="h-6 w-6 rounded-full bg-magenta/10 flex items-center justify-center mt-1 mr-3">
+                    <div className="h-2 w-2 rounded-full bg-magenta"></div>
+                  </div>
+                  <span className="font-sans text-gray-700">Practical tools and strategies you can implement immediately</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="h-6 w-6 rounded-full bg-magenta/10 flex items-center justify-center mt-1 mr-3">
+                    <div className="h-2 w-2 rounded-full bg-magenta"></div>
+                  </div>
+                  <span className="font-sans text-gray-700">Community support from successful Latinas who understand your journey</span>
+                </li>
+              </ul>
+              <Button 
+                onClick={() => setIsModalOpen(true)}
+                className="bg-magenta text-white px-6 py-3 rounded-md font-sans font-semibold hover:bg-opacity-90 transition-all"
+              >
+                Learn More About Our Approach
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 
