@@ -13,9 +13,9 @@ const Hero = () => {
       
       <section className="min-h-[100vh] flex flex-col justify-center relative overflow-hidden bg-black text-white">
         <div className="container mx-auto px-4 md:px-10 z-10">
-          <div className="relative w-full max-w-6xl mx-auto">
+          <div className="relative w-full max-w-6xl mx-auto min-h-[100vh]">
             {/* Main image with rounded corners and enhanced floating effect */}
-            <div className="absolute inset-0 -mx-4 md:-mx-10 overflow-hidden md:rounded-2xl
+            <div className="absolute inset-4 md:inset-8 overflow-hidden rounded-3xl shadow-2xl
                 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-black/10 before:to-black/80 before:z-10
                 after:content-[''] after:absolute after:inset-0 after:bg-magenta/20 after:mix-blend-overlay after:z-0">
               <img 
