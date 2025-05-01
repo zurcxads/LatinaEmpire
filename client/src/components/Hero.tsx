@@ -11,7 +11,7 @@ const Hero = () => {
     <>
       <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
       
-      <section className="pt-16 min-h-screen md:min-h-[90vh] flex flex-col justify-end md:justify-center relative overflow-hidden bg-black text-white">
+      <section className="min-h-[100vh] flex flex-col justify-center relative overflow-hidden bg-black text-white">
         <div className="container mx-auto px-4 md:px-10 z-10">
           <div className="relative w-full max-w-6xl mx-auto">
             {/* Main image with rounded corners and enhanced floating effect */}
@@ -27,8 +27,8 @@ const Hero = () => {
             </div>
 
             {/* Content */}
-            <div className="relative z-30 text-white max-w-4xl mx-auto px-4 md:px-0 pb-20 pt-[50vh] md:py-20 text-center">
-              <h1 className="font-serif font-bold text-3xl md:text-5xl lg:text-6xl mb-4">
+            <div className="relative z-30 text-white max-w-4xl mx-auto px-4 md:px-0 py-10 text-center">
+              <h1 className="font-serif font-bold text-4xl md:text-6xl lg:text-7xl mb-6">
                 Transform Your Life & Legacy
               </h1>
               <p className="text-lg md:text-xl mb-6 opacity-90">
