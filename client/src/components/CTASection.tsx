@@ -40,7 +40,7 @@ const CTASection = () => {
               
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-magenta text-white px-8 py-6 h-auto rounded-md font-sans font-semibold text-lg hover:bg-opacity-90 shadow-md inline-flex items-center"
+                className="bg-white text-black px-8 py-6 h-auto rounded-full font-sans font-semibold text-lg hover:bg-gray-100 shadow-md inline-flex items-center"
               >
                 Register for Free Webinar
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -73,8 +73,8 @@ const CTASection = () => {
             
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10">
               <div className="bg-white/5 rounded-lg p-6 border border-white/10">
-                <div className="font-serif font-bold text-xl mb-2">$500</div>
-                <div className="text-white/80">Early Bird Discount</div>
+                <div className="font-serif font-bold text-xl mb-2">LIMITED</div>
+                <div className="text-white/80">Early Bird Offer</div>
               </div>
               <div className="bg-white/5 rounded-lg p-6 border border-white/10">
                 <div className="font-serif font-bold text-xl mb-2">12</div>

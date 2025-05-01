@@ -42,7 +42,7 @@ const EventCard = ({ event, onOpen }: { event: Event; onOpen?: () => void }) => 
           <Link href={`/events/${event.slug}`}>
             <Button 
               variant="outline" 
-              className="font-sans border-magenta text-magenta hover:bg-magenta hover:text-white transition-all"
+              className="font-sans border-white border-2 text-black hover:bg-gray-100 transition-all rounded-full"
             >
               Learn More
             </Button>
@@ -50,7 +50,7 @@ const EventCard = ({ event, onOpen }: { event: Event; onOpen?: () => void }) => 
           {onOpen && (
             <Button 
               onClick={onOpen}
-              className="font-sans bg-magenta text-white hover:bg-opacity-90 transition-all"
+              className="font-sans bg-black text-white hover:bg-gray-800 transition-all rounded-full"
             >
               Register Now
             </Button>
@@ -111,7 +111,7 @@ const EventsPreview = () => {
               <Link href="/events">
                 <Button 
                   variant="outline" 
-                  className="font-sans font-semibold border-2 border-magenta text-magenta px-5 py-2 rounded-md hover:bg-magenta hover:text-white transition-all inline-flex items-center"
+                  className="font-sans font-semibold border-2 border-black text-black px-5 py-2 rounded-full hover:bg-black hover:text-white transition-all inline-flex items-center"
                 >
                   View All Events
                   <ArrowRight className="h-4 w-4 ml-2" />

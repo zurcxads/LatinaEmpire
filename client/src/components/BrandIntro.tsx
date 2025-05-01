@@ -89,7 +89,7 @@ const BrandIntro = () => {
           <div className="text-center">
             <Button 
               onClick={() => setIsModalOpen(true)}
-              className="bg-magenta text-white px-8 py-7 rounded-md font-sans font-semibold text-lg hover:bg-opacity-90 shadow-md h-auto transition-all inline-flex items-center"
+              className="bg-black text-white px-8 py-7 rounded-full font-sans font-semibold text-lg hover:bg-gray-800 shadow-md h-auto transition-all inline-flex items-center"
               size="lg"
             >
               Begin Your Transformation
@@ -133,7 +133,7 @@ const BrandIntro = () => {
               </ul>
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-magenta text-white px-6 py-3 rounded-md font-sans font-semibold hover:bg-opacity-90 transition-all"
+                className="bg-black text-white px-6 py-3 rounded-full font-sans font-semibold hover:bg-gray-800 transition-all"
               >
                 Learn More About Our Approach
               </Button>
