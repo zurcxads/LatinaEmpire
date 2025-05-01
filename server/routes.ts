@@ -1,13 +1,49 @@
-import type { Express } from "express";
+import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import path from "path";
+import fs from "fs";
+
+// Helper function to read data from the events JSON file
+function getEventsData() {
+  try {
+    const dataPath = path.join(__dirname, "../data/events.json");
+    const fileContents = fs.readFileSync(dataPath, "utf8");
+    return JSON.parse(fileContents);
+  } catch (error) {
+    console.error("Error reading events data:", error);
+    return { events: [] };
+  }
+}
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // put application routes here
-  // prefix all routes with /api
+  // Events API routes
+  app.get("/api/events", (req: Request, res: Response) => {
+    try {
+      const data = getEventsData();
+      res.json(data);
+    } catch (error) {
+      console.error("Error serving events:", error);
+      res.status(500).json({ error: "Failed to fetch events" });
+    }
+  });
 
-  // use storage to perform CRUD operations on the storage interface
-  // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
+  app.get("/api/events/:slug", (req: Request, res: Response) => {
+    try {
+      const { slug } = req.params;
+      const data = getEventsData();
+      const event = data.events.find((e: any) => e.slug === slug);
+      
+      if (!event) {
+        return res.status(404).json({ error: "Event not found" });
+      }
+      
+      res.json(event);
+    } catch (error) {
+      console.error("Error serving event:", error);
+      res.status(500).json({ error: "Failed to fetch event details" });
+    }
+  });
 
   const httpServer = createServer(app);
 
