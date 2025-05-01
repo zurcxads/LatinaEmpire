@@ -52,7 +52,7 @@ const Navbar = () => {
           ? "bg-white shadow-md" 
           : "bg-transparent"
       }`}>
-        <nav className="container mx-auto px-4 md:px-6 py-4">
+        <nav className="container mx-auto px-4 md:px-6 py-2">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex-shrink-0">

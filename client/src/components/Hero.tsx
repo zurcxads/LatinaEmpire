@@ -11,7 +11,7 @@ const Hero = () => {
     <>
       <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
       
-      <section className="pt-24 min-h-[90vh] flex items-center justify-center relative overflow-hidden bg-black text-white">
+      <section className="pt-16 min-h-[85vh] md:min-h-[90vh] flex items-center justify-center relative overflow-hidden bg-black text-white">
         <div className="container mx-auto px-4 md:px-10 z-10">
           <div className="relative w-full max-w-6xl mx-auto">
             {/* Main image with rounded corners and enhanced floating effect */}
