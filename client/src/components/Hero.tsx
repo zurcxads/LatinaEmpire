@@ -11,9 +11,9 @@ const Hero = () => {
     <>
       <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
       
-      <section className="min-h-[100vh] flex flex-col justify-center relative overflow-hidden bg-black text-white">
+      <section className="pt-20 min-h-[calc(100vh-5rem)] flex flex-col justify-end relative overflow-hidden bg-black text-white">
         <div className="container mx-auto px-4 md:px-10 z-10">
-          <div className="relative w-full max-w-6xl mx-auto min-h-[100vh]">
+          <div className="relative w-full max-w-6xl mx-auto min-h-[calc(100vh-5rem)]">
             {/* Main image with rounded corners and enhanced floating effect */}
             <div className="absolute inset-4 md:inset-8 overflow-hidden rounded-3xl shadow-2xl
                 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-black/10 before:to-black/80 before:z-10
@@ -44,7 +44,7 @@ const Hero = () => {
             </div>
             
             {/* Content over the image */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+            <div className="absolute inset-x-0 bottom-0 flex flex-col items-center justify-center text-center p-6 pb-12 md:pb-16">
               <h1 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl xl:text-7xl text-white mb-6 md:mb-8 leading-tight tracking-tight mx-auto">
                 Latina Empire Elite Program
               </h1>
