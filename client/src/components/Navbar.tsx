@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Search } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import JoinModal from "./JoinModal";
 
 const Navbar = () => {
@@ -65,6 +65,33 @@ const Navbar = () => {
               </span>
             </Link>
 
+            <div className="flex items-center gap-4 lg:hidden">
+              <Button 
+                onClick={() => setIsModalOpen(true)}
+                className={`rounded-full px-4 py-2 font-medium h-auto ${
+                  scrolled 
+                    ? 'bg-black text-white hover:bg-gray-800' 
+                    : 'bg-white text-black hover:bg-gray-200'
+                }`}
+              >
+                START NOW
+              </Button>
+              <button 
+                type="button" 
+                onClick={toggleMenu}
+                className={`focus:outline-none ${
+                  scrolled || isOpen ? 'text-black' : 'text-white'
+                }`}
+                aria-label={isOpen ? "Close menu" : "Open menu"}
+              >
+                {isOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
+
             <div className="hidden lg:flex items-center space-x-8">
               {navLinks.map((link) => (
                 <Link
@@ -79,41 +106,17 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
-              <div className="flex items-center space-x-4">
-                <button 
-                  className={`hover:text-magenta transition-all ${
-                    scrolled ? 'text-black' : 'text-white'
-                  }`}
-                >
-                  <Search className="h-5 w-5" />
-                </button>
-                <Button 
-                  onClick={() => setIsModalOpen(true)}
-                  className={`rounded-full px-6 py-2 font-medium h-auto ${
-                    scrolled 
-                      ? 'bg-black text-white hover:bg-gray-800' 
-                      : 'bg-white text-black hover:bg-gray-200'
-                  }`}
-                >
-                  JOIN NOW
-                </Button>
-              </div>
+              <Button 
+                onClick={() => setIsModalOpen(true)}
+                className={`rounded-full px-6 py-2 font-medium h-auto ${
+                  scrolled 
+                    ? 'bg-black text-white hover:bg-gray-800' 
+                    : 'bg-white text-black hover:bg-gray-200'
+                }`}
+              >
+                JOIN NOW
+              </Button>
             </div>
-
-            <button 
-              type="button" 
-              onClick={toggleMenu}
-              className={`lg:hidden focus:outline-none ${
-                scrolled || isOpen ? 'text-black' : 'text-white'
-              }`}
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-            >
-              {isOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
           </div>
 
           {isOpen && (
@@ -132,17 +135,6 @@ const Navbar = () => {
                     {link.label}
                   </Link>
                 ))}
-                <div className="pt-4">
-                  <Button 
-                    onClick={() => {
-                      setIsModalOpen(true);
-                      setIsOpen(false);
-                    }}
-                    className="w-full bg-black text-white rounded-full py-2 font-medium hover:bg-gray-800"
-                  >
-                    JOIN NOW
-                  </Button>
-                </div>
               </div>
             </div>
           )}
