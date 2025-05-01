@@ -7,9 +7,16 @@ import fs from "fs";
 // Helper function to read data from the events JSON file
 function getEventsData() {
   try {
-    const dataPath = path.join(__dirname, "../data/events.json");
-    const fileContents = fs.readFileSync(dataPath, "utf8");
-    return JSON.parse(fileContents);
+    const dataPath = path.join(process.cwd(), "data/events.json");
+    console.log("Looking for events data at:", dataPath);
+    
+    if (fs.existsSync(dataPath)) {
+      const fileContents = fs.readFileSync(dataPath, "utf8");
+      return JSON.parse(fileContents);
+    } else {
+      console.log("Events data file not found at:", dataPath);
+      return { events: [] };
+    }
   } catch (error) {
     console.error("Error reading events data:", error);
     return { events: [] };

@@ -1,27 +1,73 @@
 import { useParams, Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Calendar, MapPin, Clock, Users, ArrowLeft, ArrowRight, Ticket } from "lucide-react";
+import { Calendar, MapPin, Clock, Users, ArrowLeft, ArrowRight, Ticket, Loader2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { getEventBySlug } from "@/data/events";
+import { eventsService } from "@/lib/eventsService";
 import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 const EventDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const [, setLocation] = useLocation();
-  const event = getEventBySlug(slug);
+  
+  // Fetch event data
+  const { data: event, isLoading, isError } = useQuery({
+    queryKey: [`/api/events/${slug}`],
+    queryFn: () => eventsService.getEventBySlug(slug),
+    retry: 1,
+  });
 
   useEffect(() => {
-    // If event not found, redirect to events page
-    if (!event) {
+    // If event not found after loading finished, redirect to events page
+    if (!isLoading && !event) {
       setLocation("/events");
     }
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
-  }, [event, setLocation]);
+  }, [event, isLoading, setLocation]);
 
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <div className="flex-grow flex items-center justify-center">
+          <div className="text-center">
+            <Loader2 className="h-12 w-12 animate-spin text-magenta mx-auto mb-4" />
+            <h2 className="font-serif text-xl">Loading event details...</h2>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  // Show error state
+  if (isError) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <div className="flex-grow flex items-center justify-center">
+          <div className="text-center max-w-md px-4">
+            <h2 className="font-serif text-2xl text-red-600 mb-4">Unable to Load Event</h2>
+            <p className="text-gray-700 mb-6">We encountered a problem while trying to load this event.</p>
+            <Link href="/events">
+              <Button className="bg-magenta text-white hover:bg-magenta/90">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Events
+              </Button>
+            </Link>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  // Redirect if event not found (handled in useEffect)
   if (!event) {
-    return null; // Will redirect in useEffect
+    return null;
   }
 
   return (

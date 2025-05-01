@@ -1,57 +1,68 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-
-interface Event {
-  image: string;
-  location: string;
-  date: string;
-  title: string;
-  description: string;
-}
+import { ArrowRight, Calendar, Loader2 } from "lucide-react";
+import { Link } from "wouter";
+import { useQuery } from "@tanstack/react-query";
+import { eventsService } from "@/lib/eventsService";
+import { Event } from "@/lib/types";
 
 const EventCard = ({ event }: { event: Event }) => {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all">
-      <img 
-        src={event.image} 
-        alt={event.title} 
-        className="w-full h-64 object-cover"
-      />
-      <div className="p-6">
-        <div className="flex justify-between items-center mb-4">
-          <span className="bg-magenta-light text-magenta text-xs font-semibold px-3 py-1 rounded-full">{event.location}</span>
-          <span className="text-gray-600 text-sm">{event.date}</span>
+    <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:shadow-magenta transition-all group">
+      <div className="relative h-64 overflow-hidden">
+        <img 
+          src={event.image} 
+          alt={event.name} 
+          className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+        />
+        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+          <span className="text-sm font-medium">{event.location}</span>
         </div>
-        <h3 className="font-serif font-bold text-xl mb-3">{event.title}</h3>
-        <p className="font-sans text-gray-600 mb-4">
-          {event.description}
+      </div>
+      <div className="p-6">
+        <div className="flex items-center mb-3 text-gray-600">
+          <Calendar className="h-4 w-4 mr-2" />
+          <span className="text-sm">{event.date}</span>
+        </div>
+        <h3 className="font-serif font-bold text-xl mb-3 group-hover:text-magenta transition-colors">{event.name}</h3>
+        <p className="font-sans text-gray-600 mb-4 line-clamp-3">
+          {event.shortDescription}
         </p>
-        <button className="font-sans font-semibold text-magenta hover:underline inline-flex items-center">
-          Learn More
-          <ArrowRight className="h-4 w-4 ml-1" />
-        </button>
+        <Link href={`/events/${event.slug}`}>
+          <button className="font-sans font-semibold text-magenta hover:underline inline-flex items-center">
+            Learn More
+            <ArrowRight className="h-4 w-4 ml-1" />
+          </button>
+        </Link>
       </div>
     </div>
   );
 };
 
+// Loading skeleton for event cards
+const EventCardSkeleton = () => (
+  <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm animate-pulse">
+    <div className="h-64 bg-gray-200"></div>
+    <div className="p-6">
+      <div className="h-4 bg-gray-200 rounded mb-3 w-1/3"></div>
+      <div className="h-6 bg-gray-200 rounded mb-3"></div>
+      <div className="h-4 bg-gray-200 rounded mb-2"></div>
+      <div className="h-4 bg-gray-200 rounded mb-2"></div>
+      <div className="h-4 bg-gray-200 rounded mb-4 w-2/3"></div>
+      <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+    </div>
+  </div>
+);
+
 const EventsPreview = () => {
-  const events: Event[] = [
-    {
-      image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-      location: "Miami, FL",
-      date: "June 15-17, 2023",
-      title: "Latina Leadership Summit",
-      description: "Three days of transformational workshops, networking, and inspiration for ambitious Latinas."
+  // Fetch upcoming events with React Query
+  const { data: upcomingEvents, isLoading, isError } = useQuery({
+    queryKey: ['/api/events/preview'],
+    queryFn: async () => {
+      const events = await eventsService.getUpcomingEvents();
+      // Limit to 2 events for the preview section
+      return events.slice(0, 2);
     },
-    {
-      image: "https://images.unsplash.com/photo-1529070538774-1843cb3265df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-      location: "Los Angeles, CA",
-      date: "September 8-9, 2023",
-      title: "Entrepreneurship Intensive",
-      description: "Master the fundamentals of building your own business with expert coaching and peer support."
-    }
-  ];
+  });
 
   return (
     <section className="py-20 bg-white">
@@ -63,20 +74,47 @@ const EventsPreview = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {events.map((event, index) => (
-            <EventCard key={index} event={event} />
-          ))}
-        </div>
+        {isLoading ? (
+          // Loading state
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <EventCardSkeleton />
+            <EventCardSkeleton />
+          </div>
+        ) : isError ? (
+          // Error state
+          <div className="bg-red-50 rounded-lg p-8 text-center">
+            <h3 className="font-serif font-semibold text-xl mb-2 text-red-600">Unable to Load Events</h3>
+            <p className="font-sans text-gray-700 mb-4">
+              We're having trouble loading our events. Please refresh the page or check back later.
+            </p>
+          </div>
+        ) : upcomingEvents && upcomingEvents.length > 0 ? (
+          // Display events
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {upcomingEvents.map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
+          </div>
+        ) : (
+          // No events available
+          <div className="bg-gray-50 rounded-lg p-8 text-center">
+            <h3 className="font-serif font-semibold text-xl mb-2">No Upcoming Events</h3>
+            <p className="font-sans text-gray-600 mb-4">
+              Check back soon for new event announcements, or join our mailing list to be the first to know.
+            </p>
+          </div>
+        )}
         
         <div className="text-center mt-12">
-          <Button 
-            variant="outline" 
-            className="inline-flex items-center font-sans font-semibold border-2 border-magenta text-magenta px-6 py-3 rounded hover:bg-magenta hover:text-white transition-all"
-          >
-            View All Events
-            <ArrowRight className="h-5 w-5 ml-2" />
-          </Button>
+          <Link href="/events">
+            <Button 
+              variant="outline" 
+              className="inline-flex items-center font-sans font-semibold border-2 border-magenta text-magenta px-6 py-3 rounded hover:bg-magenta hover:text-white transition-magenta"
+            >
+              View All Events
+              <ArrowRight className="h-5 w-5 ml-2" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
