@@ -1,4 +1,3 @@
-
 import { useQuery } from "@tanstack/react-query";
 import { eventsService } from "@/lib/eventsService";
 import { Button } from "@/components/ui/button";
@@ -8,7 +7,7 @@ import JoinModal from "./JoinModal";
 
 const NextEventBanner = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   const { data: nextEvent, isLoading } = useQuery({
     queryKey: ['/api/events/next'],
     queryFn: async () => {
@@ -16,53 +15,53 @@ const NextEventBanner = () => {
       return events && events.length > 0 ? events[0] : null;
     },
   });
-  
+
   if (isLoading || !nextEvent) {
     return null;
   }
-  
+
   return (
     <>
       <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
-      
+
       <section className="bg-black text-white">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-2 py-6">
             <Circle className="h-2 w-2 fill-magenta text-magenta animate-pulse relative after:absolute after:inset-0 after:rounded-full after:bg-magenta/30 after:animate-ping" />
             <span className="text-sm font-semibold tracking-widest uppercase">Next Event</span>
           </div>
-          
+
           <div className="relative overflow-hidden rounded-lg mb-6">
-            <div className="relative aspect-[21/9] overflow-hidden">
+            <div className="relative aspect-[16/9] overflow-hidden"> {/* Adjusted aspect ratio */}
               <img 
                 src={nextEvent.bannerImage || nextEvent.image} 
                 alt={nextEvent.name}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-black/40" />
-              
+
               {/* Content overlay */}
-              <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12">
-                <h2 className="font-serif font-bold text-3xl md:text-4xl lg:text-5xl mb-4">
+              <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8"> {/* Adjusted padding */}
+                <h2 className="font-serif font-bold text-2xl md:text-3xl lg:text-4xl mb-3"> {/* Reduced font size for better fit */}
                   {nextEvent.name}
                 </h2>
-                <p className="text-lg md:text-xl text-white/90 mb-6 max-w-2xl">
+                <p className="text-lg md:text-xl text-white/90 mb-4 max-w-2xl"> {/* Adjusted spacing */}
                   {nextEvent.shortDescription}
                 </p>
                 <Button 
                   onClick={() => setIsModalOpen(true)}
                   variant="outline" 
-                  className="w-fit border-2 border-white text-white hover:bg-white hover:text-black rounded-full px-8 py-6 text-lg font-semibold"
+                  className="w-fit border-2 border-white text-white hover:bg-white hover:text-black rounded-full px-6 py-4 text-lg font-semibold" {/* Adjusted padding */}
                 >
                   Get Tickets
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </div>
-              
+
               {/* Play button overlay */}
-              <div className="absolute top-1/2 right-12 -translate-y-1/2 hidden md:flex">
-                <button className="h-20 w-20 rounded-full bg-white/20 flex items-center justify-center border-2 border-white backdrop-blur-sm hover:bg-white/30 transition-all">
-                  <Play className="h-8 w-8 text-white fill-white" />
+              <div className="absolute top-1/2 right-6 -translate-y-1/2 hidden md:flex"> {/* Adjusted positioning */}
+                <button className="h-16 w-16 rounded-full bg-white/20 flex items-center justify-center border-2 border-white backdrop-blur-sm hover:bg-white/30 transition-all"> {/* Reduced size */}
+                  <Play className="h-6 w-6 text-white fill-white" /> {/* Reduced size */}
                 </button>
               </div>
             </div>
