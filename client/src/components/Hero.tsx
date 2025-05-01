@@ -27,20 +27,22 @@ const Hero = () => {
             </div>
 
             {/* Content */}
-            <div className="relative z-30 text-white max-w-4xl mx-auto px-4 md:px-0 py-10 text-center">
-              <h1 className="font-serif font-bold text-4xl md:text-6xl lg:text-7xl mb-6">
-                Transform Your Life & Legacy
-              </h1>
-              <p className="text-lg md:text-xl mb-6 opacity-90">
-                Join thousands of Latina leaders creating generational wealth and impact.
-              </p>
-              <Button 
-                onClick={() => setIsModalOpen(true)}
-                className="bg-white text-black hover:bg-gray-100 px-6 py-4 h-auto rounded-full font-sans font-medium text-base shadow-lg inline-flex items-center"
-              >
-                Begin Your Journey
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+            <div className="absolute bottom-12 left-0 right-0 z-30 text-white px-4 md:px-0 text-center">
+              <div className="max-w-3xl mx-auto">
+                <h1 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 md:mb-6">
+                  Transform Your Life & Legacy
+                </h1>
+                <p className="text-base sm:text-lg md:text-xl mb-6 opacity-90 max-w-xl mx-auto">
+                  Join thousands of Latina leaders creating generational wealth and impact.
+                </p>
+                <Button 
+                  onClick={() => setIsModalOpen(true)}
+                  className="bg-white/90 backdrop-blur-sm text-black hover:bg-white px-5 py-3 h-auto rounded-full font-sans font-medium text-sm md:text-base shadow-xl inline-flex items-center transition-all"
+                >
+                  Begin Your Journey
+                  <ArrowRight className="ml-2 h-3.5 w-3.5" />
+                </Button>
+              </div>
             </div>
             
             {/* Content over the image */}
