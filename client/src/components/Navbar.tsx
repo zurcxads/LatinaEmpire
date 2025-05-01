@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
@@ -14,7 +15,6 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  // Close mobile menu when navigating to a new page
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
@@ -27,11 +27,7 @@ const Navbar = () => {
     };
 
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 10);
     };
 
     window.addEventListener("resize", handleResize);
@@ -43,59 +39,49 @@ const Navbar = () => {
     };
   }, [isOpen]);
 
+  const navLinks = [
+    { href: "/", label: "HOME" },
+    { href: "/program", label: "PROGRAM" },
+    { href: "/events", label: "EVENTS" },
+    { href: "/ambassadors", label: "AMBASSADORS" },
+  ];
+
   return (
     <>
       <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
       
-      <header className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? "bg-white shadow-md" 
-          : "bg-transparent"
-      }`}>
-        <nav className="container mx-auto px-4 md:px-6 py-2">
+      <header 
+        className={`fixed w-full z-50 transition-all duration-300 ${
+          scrolled ? "bg-white shadow-md" : "bg-transparent"
+        } ${isOpen ? "bg-white" : ""}`}
+      >
+        <nav className="container mx-auto px-4 lg:px-6 py-4">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <Link href="/" className="flex items-center">
-                <span className={`font-serif font-bold text-2xl md:text-3xl ${
-                  scrolled ? "text-black" : "text-white"
-                }`}>Latina Empire</span>
-              </Link>
-            </div>
+            <Link href="/" className="flex-shrink-0">
+              <span className={`font-serif font-bold text-2xl md:text-3xl ${
+                scrolled || isOpen ? "text-black" : "text-white"
+              }`}>
+                Latina Empire
+              </span>
+            </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/" className={`font-sans font-medium hover:text-magenta transition-all ${
-                location === '/' 
-                  ? 'text-magenta' 
-                  : scrolled ? 'text-black' : 'text-white'
-              }`}>
-                HOME
-              </Link>
-              <Link href="/program" className={`font-sans font-medium hover:text-magenta transition-all ${
-                location === '/program' 
-                  ? 'text-magenta' 
-                  : scrolled ? 'text-black' : 'text-white'
-              }`}>
-                PROGRAM
-              </Link>
-              <Link href="/events" className={`font-sans font-medium hover:text-magenta transition-all ${
-                location.startsWith('/events') 
-                  ? 'text-magenta' 
-                  : scrolled ? 'text-black' : 'text-white'
-              }`}>
-                EVENTS
-              </Link>
-              <Link href="/ambassadors" className={`font-sans font-medium hover:text-magenta transition-all ${
-                location.startsWith('/ambassadors') 
-                  ? 'text-magenta' 
-                  : scrolled ? 'text-black' : 'text-white'
-              }`}>
-                AMBASSADORS
-              </Link>
-              <div className="flex items-center">
+            <div className="hidden lg:flex items-center space-x-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`font-sans font-medium hover:text-magenta transition-all ${
+                    (link.href === '/' ? location === '/' : location.startsWith(link.href))
+                      ? 'text-magenta'
+                      : scrolled ? 'text-black' : 'text-white'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <div className="flex items-center space-x-4">
                 <button 
-                  className={`mr-4 hover:text-magenta transition-all ${
+                  className={`hover:text-magenta transition-all ${
                     scrolled ? 'text-black' : 'text-white'
                   }`}
                 >
@@ -114,41 +100,38 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <button 
-                type="button" 
-                onClick={toggleMenu}
-                className={`focus:outline-none ${
-                  scrolled ? 'text-black' : 'text-white'
-                }`}
-                aria-label={isOpen ? "Close menu" : "Open menu"}
-              >
-                {isOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
-              </button>
-            </div>
+            <button 
+              type="button" 
+              onClick={toggleMenu}
+              className={`lg:hidden focus:outline-none ${
+                scrolled || isOpen ? 'text-black' : 'text-white'
+              }`}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+            >
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
           </div>
 
-          {/* Mobile Navigation */}
           {isOpen && (
-            <div className="md:hidden bg-white mt-4 rounded-lg shadow-xl p-4">
-              <div className="space-y-3">
-                <Link href="/" className={`block py-2 font-sans font-medium text-black hover:text-magenta ${location === '/' ? 'text-magenta' : ''}`}>
-                  HOME
-                </Link>
-                <Link href="/program" className={`block py-2 font-sans font-medium text-black hover:text-magenta ${location === '/program' ? 'text-magenta' : ''}`}>
-                  PROGRAM
-                </Link>
-                <Link href="/events" className={`block py-2 font-sans font-medium text-black hover:text-magenta ${location.startsWith('/events') ? 'text-magenta' : ''}`}>
-                  EVENTS
-                </Link>
-                <Link href="/ambassadors" className={`block py-2 font-sans font-medium text-black hover:text-magenta ${location.startsWith('/ambassadors') ? 'text-magenta' : ''}`}>
-                  AMBASSADORS
-                </Link>
+            <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t">
+              <div className="container mx-auto px-4 py-4 space-y-4">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`block py-2 font-sans font-medium text-black hover:text-magenta ${
+                      (link.href === '/' ? location === '/' : location.startsWith(link.href))
+                        ? 'text-magenta'
+                        : ''
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
                 <div className="pt-4">
                   <Button 
                     onClick={() => {
