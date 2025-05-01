@@ -15,13 +15,13 @@ const Hero = () => {
         <div className="container mx-auto px-4 md:px-10 z-10">
           <div className="relative w-full max-w-6xl mx-auto">
             {/* Main image with rounded corners and enhanced floating effect */}
-            <div className="absolute inset-0 -mx-4 md:-mx-10 overflow-hidden md:rounded-2xl
+            <div className="absolute inset-4 md:inset-8 lg:inset-12 overflow-hidden rounded-2xl shadow-2xl
                 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-black/10 before:to-black/80 before:z-10
                 after:content-[''] after:absolute after:inset-0 after:bg-magenta/20 after:mix-blend-overlay after:z-0">
               <img 
                 src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
                 alt="Conference stage with audience" 
-                className="w-full h-full object-cover relative z-[5] transform transition-transform duration-700 md:rounded-2xl"
+                className="w-full h-full object-cover relative z-[5] transform transition-all duration-700 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/90 z-20"></div>
             </div>
