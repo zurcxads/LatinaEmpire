@@ -10,6 +10,8 @@ import EventDetail from "@/pages/EventDetail";
 import Program from "@/pages/Program";
 import Ambassadors from "@/pages/Ambassadors";
 import AmbassadorDetail from "@/pages/AmbassadorDetail";
+import Contact from "@/pages/Contact";
+import Join from "@/pages/Join";
 
 function Router() {
   return (
@@ -20,6 +22,8 @@ function Router() {
       <Route path="/program" component={Program} />
       <Route path="/ambassadors" component={Ambassadors} />
       <Route path="/ambassadors/:slug" component={AmbassadorDetail} />
+      <Route path="/contact" component={Contact} />
+      <Route path="/join" component={Join} />
       <Route component={NotFound} />
     </Switch>
   );
