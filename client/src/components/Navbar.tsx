@@ -1,15 +1,21 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [location] = useLocation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  // Close mobile menu when navigating to a new page
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -48,12 +54,30 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="font-sans text-sm font-medium hover:text-magenta transition-all">Home</Link>
-            <Link href="/program" className="font-sans text-sm font-medium hover:text-magenta transition-all">Program</Link>
-            <Link href="/events" className="font-sans text-sm font-medium hover:text-magenta transition-all">Events</Link>
-            <Link href="/ambassadors" className="font-sans text-sm font-medium hover:text-magenta transition-all">Ambassadors</Link>
-            <Link href="/join" className="font-sans text-sm font-medium hover:text-magenta transition-all">Join</Link>
-            <Link href="/contact" className="font-sans text-sm font-medium hover:text-magenta transition-all">Contact</Link>
+            <Link href="/" className={`font-sans text-sm font-medium hover:text-magenta transition-all relative ${location === '/' ? 'text-magenta' : ''}`}>
+              Home
+              {location === '/' && <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-magenta"></span>}
+            </Link>
+            <Link href="/program" className={`font-sans text-sm font-medium hover:text-magenta transition-all relative ${location === '/program' ? 'text-magenta' : ''}`}>
+              Program
+              {location === '/program' && <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-magenta"></span>}
+            </Link>
+            <Link href="/events" className={`font-sans text-sm font-medium hover:text-magenta transition-all relative ${location.startsWith('/events') ? 'text-magenta' : ''}`}>
+              Events
+              {location.startsWith('/events') && <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-magenta"></span>}
+            </Link>
+            <Link href="/ambassadors" className={`font-sans text-sm font-medium hover:text-magenta transition-all relative ${location.startsWith('/ambassadors') ? 'text-magenta' : ''}`}>
+              Ambassadors
+              {location.startsWith('/ambassadors') && <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-magenta"></span>}
+            </Link>
+            <Link href="/join" className={`font-sans text-sm font-medium hover:text-magenta transition-all relative ${location === '/join' ? 'text-magenta' : ''}`}>
+              Join
+              {location === '/join' && <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-magenta"></span>}
+            </Link>
+            <Link href="/contact" className={`font-sans text-sm font-medium hover:text-magenta transition-all relative ${location === '/contact' ? 'text-magenta' : ''}`}>
+              Contact
+              {location === '/contact' && <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-magenta"></span>}
+            </Link>
             <Link href="/program">
               <Button className="bg-magenta text-white hover:bg-magenta hover:bg-opacity-90">Apply Now</Button>
             </Link>
@@ -79,12 +103,12 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         <div className={`md:hidden ${isOpen ? "block" : "hidden"} transition-all`}>
           <div className="px-2 pt-2 pb-4 space-y-1 sm:px-3">
-            <Link href="/" className="block py-2 font-sans text-base font-medium hover:text-magenta">Home</Link>
-            <Link href="/program" className="block py-2 font-sans text-base font-medium hover:text-magenta">Program</Link>
-            <Link href="/events" className="block py-2 font-sans text-base font-medium hover:text-magenta">Events</Link>
-            <Link href="/ambassadors" className="block py-2 font-sans text-base font-medium hover:text-magenta">Ambassadors</Link>
-            <Link href="/join" className="block py-2 font-sans text-base font-medium hover:text-magenta">Join</Link>
-            <Link href="/contact" className="block py-2 font-sans text-base font-medium hover:text-magenta">Contact</Link>
+            <Link href="/" className={`block py-2 font-sans text-base font-medium hover:text-magenta ${location === '/' ? 'text-magenta' : ''}`}>Home</Link>
+            <Link href="/program" className={`block py-2 font-sans text-base font-medium hover:text-magenta ${location === '/program' ? 'text-magenta' : ''}`}>Program</Link>
+            <Link href="/events" className={`block py-2 font-sans text-base font-medium hover:text-magenta ${location.startsWith('/events') ? 'text-magenta' : ''}`}>Events</Link>
+            <Link href="/ambassadors" className={`block py-2 font-sans text-base font-medium hover:text-magenta ${location.startsWith('/ambassadors') ? 'text-magenta' : ''}`}>Ambassadors</Link>
+            <Link href="/join" className={`block py-2 font-sans text-base font-medium hover:text-magenta ${location === '/join' ? 'text-magenta' : ''}`}>Join</Link>
+            <Link href="/contact" className={`block py-2 font-sans text-base font-medium hover:text-magenta ${location === '/contact' ? 'text-magenta' : ''}`}>Contact</Link>
             <Link href="/program" className="w-full block">
               <Button className="w-full bg-magenta text-white hover:bg-magenta hover:bg-opacity-90 mt-4">Apply Now</Button>
             </Link>

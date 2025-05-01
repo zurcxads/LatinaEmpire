@@ -110,3 +110,27 @@
 .bg-magenta-light {
   background-color: rgba(216, 27, 96, 0.1);
 }
+
+/* Focus styles for accessibility */
+.focus-visible\:ring-magenta:focus-visible {
+  --tw-ring-color: #D81B60;
+  --tw-ring-offset-width: 2px;
+}
+
+/* Hover effects for cards and interactive elements */
+.hover\:shadow-magenta:hover {
+  box-shadow: 0 0 15px rgba(216, 27, 96, 0.3);
+}
+
+.hover\:scale-102:hover {
+  transform: scale(1.02);
+}
+
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+/* Transition utilities */
+.transition-magenta {
+  transition: all 0.3s ease;
+}
