@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
+import JoinModal from "./JoinModal";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [location] = useLocation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -42,80 +44,128 @@ const Navbar = () => {
   }, [isOpen]);
 
   return (
-    <header className={`fixed w-full bg-white z-50 transition-all duration-300 ${scrolled ? "shadow-md" : ""}`}>
-      <nav className="container mx-auto px-4 md:px-6 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
-              <span className="font-serif font-bold text-2xl md:text-3xl">Latina Empire</span>
-            </Link>
+    <>
+      <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
+      
+      <header className={`fixed w-full z-50 transition-all duration-300 ${
+        scrolled 
+          ? "bg-white shadow-md" 
+          : "bg-transparent"
+      }`}>
+        <nav className="container mx-auto px-4 md:px-6 py-4">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <Link href="/" className="flex items-center">
+                <span className={`font-serif font-bold text-2xl md:text-3xl ${
+                  scrolled ? "text-black" : "text-white"
+                }`}>Latina Empire</span>
+              </Link>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-8">
+              <Link href="/" className={`font-sans font-medium hover:text-magenta transition-all ${
+                location === '/' 
+                  ? 'text-magenta' 
+                  : scrolled ? 'text-black' : 'text-white'
+              }`}>
+                HOME
+              </Link>
+              <Link href="/program" className={`font-sans font-medium hover:text-magenta transition-all ${
+                location === '/program' 
+                  ? 'text-magenta' 
+                  : scrolled ? 'text-black' : 'text-white'
+              }`}>
+                PROGRAM
+              </Link>
+              <Link href="/events" className={`font-sans font-medium hover:text-magenta transition-all ${
+                location.startsWith('/events') 
+                  ? 'text-magenta' 
+                  : scrolled ? 'text-black' : 'text-white'
+              }`}>
+                EVENTS
+              </Link>
+              <Link href="/ambassadors" className={`font-sans font-medium hover:text-magenta transition-all ${
+                location.startsWith('/ambassadors') 
+                  ? 'text-magenta' 
+                  : scrolled ? 'text-black' : 'text-white'
+              }`}>
+                AMBASSADORS
+              </Link>
+              <div className="flex items-center">
+                <button 
+                  className={`mr-4 hover:text-magenta transition-all ${
+                    scrolled ? 'text-black' : 'text-white'
+                  }`}
+                >
+                  <Search className="h-5 w-5" />
+                </button>
+                <Button 
+                  onClick={() => setIsModalOpen(true)}
+                  className={`rounded-full px-6 py-2 font-medium h-auto ${
+                    scrolled 
+                      ? 'bg-black text-white hover:bg-gray-800' 
+                      : 'bg-white text-black hover:bg-gray-200'
+                  }`}
+                >
+                  JOIN NOW
+                </Button>
+              </div>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button 
+                type="button" 
+                onClick={toggleMenu}
+                className={`focus:outline-none ${
+                  scrolled ? 'text-black' : 'text-white'
+                }`}
+                aria-label={isOpen ? "Close menu" : "Open menu"}
+              >
+                {isOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className={`font-sans text-sm font-medium hover:text-magenta transition-all relative ${location === '/' ? 'text-magenta' : ''}`}>
-              Home
-              {location === '/' && <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-magenta"></span>}
-            </Link>
-            <Link href="/program" className={`font-sans text-sm font-medium hover:text-magenta transition-all relative ${location === '/program' ? 'text-magenta' : ''}`}>
-              Program
-              {location === '/program' && <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-magenta"></span>}
-            </Link>
-            <Link href="/events" className={`font-sans text-sm font-medium hover:text-magenta transition-all relative ${location.startsWith('/events') ? 'text-magenta' : ''}`}>
-              Events
-              {location.startsWith('/events') && <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-magenta"></span>}
-            </Link>
-            <Link href="/ambassadors" className={`font-sans text-sm font-medium hover:text-magenta transition-all relative ${location.startsWith('/ambassadors') ? 'text-magenta' : ''}`}>
-              Ambassadors
-              {location.startsWith('/ambassadors') && <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-magenta"></span>}
-            </Link>
-            <Link href="/join" className={`font-sans text-sm font-medium hover:text-magenta transition-all relative ${location === '/join' ? 'text-magenta' : ''}`}>
-              Join
-              {location === '/join' && <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-magenta"></span>}
-            </Link>
-            <Link href="/contact" className={`font-sans text-sm font-medium hover:text-magenta transition-all relative ${location === '/contact' ? 'text-magenta' : ''}`}>
-              Contact
-              {location === '/contact' && <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-magenta"></span>}
-            </Link>
-            <Link href="/program">
-              <Button className="bg-magenta text-white hover:bg-magenta hover:bg-opacity-90">Apply Now</Button>
-            </Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button 
-              type="button" 
-              onClick={toggleMenu}
-              className="text-gray-900 hover:text-magenta focus:outline-none"
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-            >
-              {isOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        <div className={`md:hidden ${isOpen ? "block" : "hidden"} transition-all`}>
-          <div className="px-2 pt-2 pb-4 space-y-1 sm:px-3">
-            <Link href="/" className={`block py-2 font-sans text-base font-medium hover:text-magenta ${location === '/' ? 'text-magenta' : ''}`}>Home</Link>
-            <Link href="/program" className={`block py-2 font-sans text-base font-medium hover:text-magenta ${location === '/program' ? 'text-magenta' : ''}`}>Program</Link>
-            <Link href="/events" className={`block py-2 font-sans text-base font-medium hover:text-magenta ${location.startsWith('/events') ? 'text-magenta' : ''}`}>Events</Link>
-            <Link href="/ambassadors" className={`block py-2 font-sans text-base font-medium hover:text-magenta ${location.startsWith('/ambassadors') ? 'text-magenta' : ''}`}>Ambassadors</Link>
-            <Link href="/join" className={`block py-2 font-sans text-base font-medium hover:text-magenta ${location === '/join' ? 'text-magenta' : ''}`}>Join</Link>
-            <Link href="/contact" className={`block py-2 font-sans text-base font-medium hover:text-magenta ${location === '/contact' ? 'text-magenta' : ''}`}>Contact</Link>
-            <Link href="/program" className="w-full block">
-              <Button className="w-full bg-magenta text-white hover:bg-magenta hover:bg-opacity-90 mt-4">Apply Now</Button>
-            </Link>
-          </div>
-        </div>
-      </nav>
-    </header>
+          {/* Mobile Navigation */}
+          {isOpen && (
+            <div className="md:hidden bg-white mt-4 rounded-lg shadow-xl p-4">
+              <div className="space-y-3">
+                <Link href="/" className={`block py-2 font-sans font-medium text-black hover:text-magenta ${location === '/' ? 'text-magenta' : ''}`}>
+                  HOME
+                </Link>
+                <Link href="/program" className={`block py-2 font-sans font-medium text-black hover:text-magenta ${location === '/program' ? 'text-magenta' : ''}`}>
+                  PROGRAM
+                </Link>
+                <Link href="/events" className={`block py-2 font-sans font-medium text-black hover:text-magenta ${location.startsWith('/events') ? 'text-magenta' : ''}`}>
+                  EVENTS
+                </Link>
+                <Link href="/ambassadors" className={`block py-2 font-sans font-medium text-black hover:text-magenta ${location.startsWith('/ambassadors') ? 'text-magenta' : ''}`}>
+                  AMBASSADORS
+                </Link>
+                <div className="pt-4">
+                  <Button 
+                    onClick={() => {
+                      setIsModalOpen(true);
+                      setIsOpen(false);
+                    }}
+                    className="w-full bg-black text-white rounded-full py-2 font-medium hover:bg-gray-800"
+                  >
+                    JOIN NOW
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
+        </nav>
+      </header>
+    </>
   );
 };
 
