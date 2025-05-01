@@ -28,18 +28,18 @@ const Hero = () => {
 
             {/* Content */}
             <div className="relative z-30 text-white max-w-4xl mx-auto px-4 md:px-0 py-20 text-center">
-              <h1 className="font-serif font-bold text-4xl md:text-6xl lg:text-7xl mb-6">
+              <h1 className="font-serif font-bold text-3xl md:text-5xl lg:text-6xl mb-4">
                 Transform Your Life & Legacy
               </h1>
-              <p className="text-xl md:text-2xl mb-8 opacity-90">
+              <p className="text-lg md:text-xl mb-6 opacity-90">
                 Join thousands of Latina leaders creating generational wealth and impact.
               </p>
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-white text-black hover:bg-gray-100 px-8 py-6 h-auto rounded-full font-sans font-semibold text-lg shadow-xl inline-flex items-center"
+                className="bg-white text-black hover:bg-gray-100 px-6 py-4 h-auto rounded-full font-sans font-medium text-base shadow-lg inline-flex items-center"
               >
                 Begin Your Journey
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
             
