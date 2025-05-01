@@ -32,7 +32,7 @@ const NextEventBanner = () => {
           </div>
 
           <div className="relative overflow-hidden rounded-lg mb-6">
-            <div className="relative aspect-[16/9] overflow-hidden"> {/* Adjusted aspect ratio */}
+            <div className="relative aspect-[16/9] overflow-hidden">
               <img 
                 src={nextEvent.bannerImage || nextEvent.image} 
                 alt={nextEvent.name}
@@ -41,17 +41,17 @@ const NextEventBanner = () => {
               <div className="absolute inset-0 bg-black/40" />
 
               {/* Content overlay */}
-              <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8"> {/* Adjusted padding */}
-                <h2 className="font-serif font-bold text-2xl md:text-3xl lg:text-4xl mb-3"> {/* Reduced font size for better fit */}
+              <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+                <h2 className="font-serif font-bold text-2xl md:text-3xl lg:text-4xl mb-3">
                   {nextEvent.name}
                 </h2>
-                <p className="text-lg md:text-xl text-white/90 mb-4 max-w-2xl"> {/* Adjusted spacing */}
+                <p className="text-lg md:text-xl text-white/90 mb-4 max-w-2xl">
                   {nextEvent.shortDescription}
                 </p>
                 <Button 
                   onClick={() => setIsModalOpen(true)}
                   variant="outline" 
-                  className="w-fit border-2 border-white text-white hover:bg-white hover:text-black rounded-full px-6 py-4 text-lg font-semibold" {/* Adjusted padding */}
+                  className="w-fit border-2 border-white text-white hover:bg-white hover:text-black rounded-full px-6 py-4 text-lg font-semibold"
                 >
                   Get Tickets
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -59,9 +59,9 @@ const NextEventBanner = () => {
               </div>
 
               {/* Play button overlay */}
-              <div className="absolute top-1/2 right-6 -translate-y-1/2 hidden md:flex"> {/* Adjusted positioning */}
-                <button className="h-16 w-16 rounded-full bg-white/20 flex items-center justify-center border-2 border-white backdrop-blur-sm hover:bg-white/30 transition-all"> {/* Reduced size */}
-                  <Play className="h-6 w-6 text-white fill-white" /> {/* Reduced size */}
+              <div className="absolute top-1/2 right-6 -translate-y-1/2 hidden md:flex">
+                <button className="h-16 w-16 rounded-full bg-white/20 flex items-center justify-center border-2 border-white backdrop-blur-sm hover:bg-white/30 transition-all">
+                  <Play className="h-6 w-6 text-white fill-white" />
                 </button>
               </div>
             </div>
