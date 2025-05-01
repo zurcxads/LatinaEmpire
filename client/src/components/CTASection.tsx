@@ -89,13 +89,13 @@ const CTASection = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-magenta text-white px-8 py-6 h-auto rounded-md font-sans font-semibold text-lg hover:bg-opacity-90 shadow-md w-full sm:w-auto"
+                className="bg-white text-black px-8 py-6 h-auto rounded-full font-sans font-semibold text-lg hover:bg-gray-100 shadow-md w-full sm:w-auto"
               >
                 Join the Elite Program
               </Button>
               <Button 
                 variant="outline" 
-                className="bg-transparent border-2 border-white text-white px-8 py-6 h-auto rounded-md font-sans font-semibold text-lg hover:bg-white hover:text-black transition-all w-full sm:w-auto"
+                className="bg-transparent border-2 border-white text-white px-8 py-6 h-auto rounded-full font-sans font-semibold text-lg hover:bg-white hover:text-black transition-all w-full sm:w-auto"
               >
                 Learn More
               </Button>
