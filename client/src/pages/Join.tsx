@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Users, Zap, Calendar, Star, ArrowRight, Check } from "lucide-react";
+import { Users, Zap, Calendar, Star, ArrowRight, Check, AlertCircle, Loader } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useToast } from "@/hooks/use-toast";
 
 const BenefitCard = ({ 
   icon, 
@@ -26,21 +27,79 @@ const BenefitCard = ({
 };
 
 const Join = () => {
+  const { toast } = useToast();
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   
-  const handleSubmit = (e: React.FormEvent) => {
+  // Validate email format
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return emailRegex.test(email);
+  };
+  
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+    
+    // Clear error when user starts typing again
+    if (emailError) {
+      setEmailError(null);
+    }
+  };
+  
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate email
+    if (!email.trim()) {
+      setEmailError("Email is required");
+      return;
+    }
+    
+    if (!validateEmail(email)) {
+      setEmailError("Please enter a valid email address");
+      return;
+    }
+    
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // This is where you would connect to a backend API or email service
+      // Example: await fetch('/api/subscribe', { method: 'POST', body: JSON.stringify({ email }) });
+      
+      // For now, we'll simulate an API call
       console.log("Join form submitted:", email);
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Show success state
       setIsSubmitting(false);
       setIsSubmitted(true);
+      
+      // Clear form
       setEmail("");
-    }, 1000);
+      
+      // Log for future implementation
+      console.log("Ready to integrate this form with a service like Mailchimp, ConvertKit, or a custom API endpoint at '/api/subscribe'");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setIsSubmitting(false);
+      
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    }
+  };
+  
+  // Handler for try again button
+  const handleTryAgain = () => {
+    setIsSubmitted(false);
+    setEmailError(null);
   };
 
   return (
@@ -187,31 +246,59 @@ const Join = () => {
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Check className="h-8 w-8 text-green-600" />
                 </div>
-                <h3 className="font-serif font-bold text-2xl mb-2">Welcome to the Empire!</h3>
-                <p className="text-gray-700 mb-4">
-                  Check your inbox to confirm your email and access the community.
+                <h3 className="font-serif font-bold text-2xl mb-2">You're In!</h3>
+                <p className="text-gray-700 mb-6">
+                  Check your inbox for a confirmation email and next steps to access the community.
                 </p>
+                <Button 
+                  variant="outline" 
+                  onClick={handleTryAgain}
+                  className="border-magenta text-magenta hover:bg-magenta hover:text-white"
+                >
+                  Join with Another Email
+                </Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+              <form onSubmit={handleSubmit} className="max-w-md mx-auto" noValidate>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Input
-                    type="email"
-                    placeholder="Enter your email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="flex-grow py-3 px-4 rounded-md border-0"
-                  />
+                  <div className="relative flex-grow">
+                    <Input
+                      type="email"
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={handleEmailChange}
+                      className={`py-3 px-4 rounded-md border-transparent focus:border-transparent ${
+                        emailError ? 'ring-2 ring-red-500' : ''
+                      }`}
+                      aria-invalid={!!emailError}
+                      aria-describedby={emailError ? "email-error" : undefined}
+                    />
+                    {emailError && (
+                      <div 
+                        id="email-error" 
+                        className="absolute -bottom-6 left-0 text-xs text-red-300 flex items-center bg-red-900/40 px-2 py-1 rounded"
+                      >
+                        <AlertCircle className="h-3 w-3 mr-1" />
+                        {emailError}
+                      </div>
+                    )}
+                  </div>
                   <Button 
                     type="submit" 
-                    className="bg-black text-white hover:bg-gray-900 px-6"
+                    className="bg-black text-white hover:bg-gray-900 px-6 flex items-center justify-center min-w-[100px]"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "Joining..." : "Join Now"}
+                    {isSubmitting ? (
+                      <>
+                        <Loader className="h-4 w-4 animate-spin mr-2" />
+                        <span>Joining...</span>
+                      </>
+                    ) : (
+                      "Join Now"
+                    )}
                   </Button>
                 </div>
-                <p className="text-white/80 text-sm mt-3">
+                <p className="text-white/80 text-sm mt-6">
                   We respect your privacy and will never share your information.
                 </p>
               </form>
