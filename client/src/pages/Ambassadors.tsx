@@ -8,7 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ambassadorsService } from "@/lib/ambassadorsService";
 import { Ambassador } from "@/lib/types";
 
-const AmbassadorCard = ({ ambassador }: { ambassador: typeof ambassadors[0] }) => {
+const AmbassadorCard = ({ ambassador }: { ambassador: Ambassador }) => {
   return (
     <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm transition-all hover:shadow-md group">
       <div className="relative h-80 overflow-hidden">
@@ -45,19 +45,47 @@ const AmbassadorCard = ({ ambassador }: { ambassador: typeof ambassadors[0] }) =
   );
 };
 
+// Loading skeleton for ambassador cards
+const AmbassadorCardSkeleton = () => (
+  <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm animate-pulse">
+    <div className="h-80 bg-gray-200"></div>
+    <div className="p-6">
+      <div className="h-6 bg-gray-200 rounded mb-3 w-2/3"></div>
+      <div className="h-4 bg-gray-200 rounded mb-3 w-1/3"></div>
+      <div className="flex items-center mb-4">
+        <div className="w-8 h-8 flex-shrink-0 rounded-full bg-gray-300 mr-2"></div>
+        <div className="h-4 bg-gray-200 rounded w-4/5"></div>
+      </div>
+      <div className="h-4 bg-gray-200 rounded mb-2"></div>
+      <div className="h-4 bg-gray-200 rounded mb-2"></div>
+      <div className="h-4 bg-gray-200 rounded mb-4 w-4/5"></div>
+      <div className="h-10 bg-gray-200 rounded"></div>
+    </div>
+  </div>
+);
+
 const Ambassadors = () => {
   const [searchQuery, setSearchQuery] = useState("");
-
-  const filteredAmbassadors = ambassadors.filter(ambassador => {
-    const searchTerm = searchQuery.toLowerCase();
-    return (
-      ambassador.name.toLowerCase().includes(searchTerm) ||
-      ambassador.location.toLowerCase().includes(searchTerm) ||
-      ambassador.country.toLowerCase().includes(searchTerm) ||
-      ambassador.title.toLowerCase().includes(searchTerm) ||
-      ambassador.expertise.some(e => e.toLowerCase().includes(searchTerm))
-    );
+  
+  // Fetch ambassadors data with React Query
+  const { data: ambassadors, isLoading, isError } = useQuery({
+    queryKey: ['/api/ambassadors'],
+    queryFn: ambassadorsService.getAllAmbassadors,
   });
+
+  // Filter ambassadors based on search query
+  const filteredAmbassadors = ambassadors && searchQuery 
+    ? ambassadors.filter((ambassador: Ambassador) => {
+        const searchTerm = searchQuery.toLowerCase();
+        return (
+          ambassador.name.toLowerCase().includes(searchTerm) ||
+          ambassador.location.toLowerCase().includes(searchTerm) ||
+          ambassador.country.toLowerCase().includes(searchTerm) ||
+          ambassador.title.toLowerCase().includes(searchTerm) ||
+          ambassador.expertise.some((e: string) => e.toLowerCase().includes(searchTerm))
+        );
+      })
+    : ambassadors;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -96,17 +124,54 @@ const Ambassadors = () => {
       {/* Ambassadors Grid */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          {filteredAmbassadors.length > 0 ? (
+          {isLoading ? (
+            // Loading state
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredAmbassadors.map((ambassador) => (
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <AmbassadorCardSkeleton key={i} />
+              ))}
+            </div>
+          ) : isError ? (
+            // Error state
+            <div className="text-center py-12 bg-red-50 rounded-lg p-8">
+              <h3 className="font-serif font-semibold text-xl mb-2 text-red-600">Unable to Load Ambassadors</h3>
+              <p className="text-gray-700 mb-4">
+                We're having trouble loading our ambassadors. Please refresh the page or check back later.
+              </p>
+              <Button 
+                onClick={() => window.location.reload()}
+                className="bg-white text-magenta border-2 border-magenta hover:bg-magenta/10"
+              >
+                Refresh Page
+              </Button>
+            </div>
+          ) : filteredAmbassadors && filteredAmbassadors.length > 0 ? (
+            // Display ambassadors
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredAmbassadors.map((ambassador: Ambassador) => (
                 <AmbassadorCard key={ambassador.id} ambassador={ambassador} />
               ))}
             </div>
+          ) : searchQuery ? (
+            // No search results
+            <div className="text-center py-12 bg-gray-50 rounded-lg p-8">
+              <h3 className="font-serif font-semibold text-xl mb-2">No Ambassadors Found</h3>
+              <p className="text-gray-600 mb-4">
+                We couldn't find any ambassadors matching your search criteria. Try different keywords.
+              </p>
+              <Button 
+                onClick={() => setSearchQuery("")}
+                className="bg-white text-magenta border-2 border-magenta hover:bg-magenta/10"
+              >
+                Clear Search
+              </Button>
+            </div>
           ) : (
-            <div className="text-center py-12">
-              <h3 className="font-serif font-semibold text-xl mb-2">No ambassadors found</h3>
-              <p className="text-gray-600">
-                Try adjusting your search criteria to find our amazing ambassadors.
+            // No ambassadors available
+            <div className="text-center py-12 bg-gray-50 rounded-lg p-8">
+              <h3 className="font-serif font-semibold text-xl mb-2">No Ambassadors Yet</h3>
+              <p className="text-gray-600 mb-4">
+                We're in the process of adding our ambassadors. Check back soon!
               </p>
             </div>
           )}

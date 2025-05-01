@@ -12,12 +12,16 @@ import {
   Twitter, 
   Globe, 
   Users,
-  Star
+  Star,
+  Loader2
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { getAmbassadorBySlug } from "@/data/ambassadors";
-import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { ambassadorsService } from "@/lib/ambassadorsService";
+import { Ambassador } from "@/lib/types";
+import { useEffect, Fragment } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const SocialMediaLink = ({ 
   platform, 
@@ -63,22 +67,129 @@ const SocialMediaLink = ({
   );
 };
 
+// Loading skeleton for ambassador profile
+const AmbassadorDetailSkeleton = () => (
+  <Fragment>
+    <section className="pt-32 pb-20 bg-center bg-cover bg-gray-800 animate-pulse">
+      <div className="container mx-auto px-4 md:px-6 text-white">
+        <div className="h-10 w-48 bg-white/20 rounded-full mb-6"></div>
+        <div className="max-w-4xl">
+          <div className="h-12 bg-white/20 rounded mb-4 w-3/4"></div>
+          <div className="h-8 bg-white/20 rounded mb-6 w-1/2"></div>
+          <div className="flex flex-wrap gap-4 mb-6">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="h-8 w-32 bg-white/20 rounded-full"></div>
+            ))}
+          </div>
+          <div className="h-10 w-64 bg-magenta/50 rounded-full"></div>
+        </div>
+      </div>
+    </section>
+    <section className="py-16 bg-white">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          {/* Main Content Skeleton */}
+          <div className="lg:col-span-2">
+            <div className="h-10 bg-gray-200 rounded mb-6 w-1/3"></div>
+            <div className="space-y-4">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <div key={i} className="h-4 bg-gray-200 rounded w-full"></div>
+              ))}
+            </div>
+            <div className="mt-12">
+              <div className="h-8 bg-gray-200 rounded mb-4 w-1/4"></div>
+              <div className="flex flex-wrap gap-2">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="h-6 w-24 bg-gray-200 rounded-full"></div>
+                ))}
+              </div>
+            </div>
+          </div>
+          {/* Sidebar Skeleton */}
+          <div className="lg:col-span-1">
+            <div className="bg-gray-50 rounded-lg p-6">
+              <div className="mb-6 flex justify-center">
+                <div className="w-40 h-40 rounded-full bg-gray-200"></div>
+              </div>
+              <div className="space-y-6 mb-8">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="flex items-start">
+                    <div className="w-8 h-8 bg-gray-200 rounded-full mr-3"></div>
+                    <div className="flex-1">
+                      <div className="h-4 bg-gray-200 rounded mb-2 w-1/2"></div>
+                      <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="h-10 bg-gray-200 rounded mb-6 w-1/2"></div>
+              <div className="h-10 bg-magenta/20 rounded w-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </Fragment>
+);
+
 const AmbassadorDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const [, setLocation] = useLocation();
-  const ambassador = getAmbassadorBySlug(slug);
+  
+  // Fetch ambassador data with React Query
+  const { data: ambassador, isLoading, isError } = useQuery({
+    queryKey: [`/api/ambassadors/${slug}`],
+    queryFn: async () => {
+      if (!slug) {
+        return null;
+      }
+      const ambassador = await ambassadorsService.getAmbassadorBySlug(slug);
+      return ambassador;
+    },
+  });
 
   useEffect(() => {
-    // If ambassador not found, redirect to ambassadors page
-    if (!ambassador) {
-      setLocation("/ambassadors");
-    }
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
-  }, [ambassador, setLocation]);
+  }, []);
 
-  if (!ambassador) {
-    return null; // Will redirect in useEffect
+  // Handle loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <AmbassadorDetailSkeleton />
+        <Footer />
+      </div>
+    );
+  }
+
+  // Handle error state or ambassador not found
+  if (isError || !ambassador) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <section className="pt-32 pb-32 flex items-center justify-center">
+          <div className="text-center max-w-lg p-8">
+            <h1 className="font-serif font-bold text-3xl mb-4">
+              {isError ? "Something went wrong" : "Ambassador Not Found"}
+            </h1>
+            <p className="text-gray-600 mb-6">
+              {isError 
+                ? "We're having trouble loading this ambassador's profile. Please try again later."
+                : "The ambassador you're looking for doesn't exist or may have been removed."}
+            </p>
+            <Link href="/ambassadors">
+              <Button className="bg-magenta text-white hover:bg-magenta/90">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Ambassadors
+              </Button>
+            </Link>
+          </div>
+        </section>
+        <Footer />
+      </div>
+    );
   }
 
   return (
