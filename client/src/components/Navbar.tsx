@@ -50,7 +50,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/" className="font-sans text-sm font-medium hover:text-magenta transition-all">Home</Link>
             <Link href="#" className="font-sans text-sm font-medium hover:text-magenta transition-all">Program</Link>
-            <Link href="#" className="font-sans text-sm font-medium hover:text-magenta transition-all">Events</Link>
+            <Link href="/events" className="font-sans text-sm font-medium hover:text-magenta transition-all">Events</Link>
             <Link href="#" className="font-sans text-sm font-medium hover:text-magenta transition-all">Ambassadors</Link>
             <Link href="#" className="font-sans text-sm font-medium hover:text-magenta transition-all">Join</Link>
             <Link href="#" className="font-sans text-sm font-medium hover:text-magenta transition-all">Contact</Link>
@@ -79,7 +79,7 @@ const Navbar = () => {
           <div className="px-2 pt-2 pb-4 space-y-1 sm:px-3">
             <Link href="/" className="block py-2 font-sans text-base font-medium hover:text-magenta">Home</Link>
             <Link href="#" className="block py-2 font-sans text-base font-medium hover:text-magenta">Program</Link>
-            <Link href="#" className="block py-2 font-sans text-base font-medium hover:text-magenta">Events</Link>
+            <Link href="/events" className="block py-2 font-sans text-base font-medium hover:text-magenta">Events</Link>
             <Link href="#" className="block py-2 font-sans text-base font-medium hover:text-magenta">Ambassadors</Link>
             <Link href="#" className="block py-2 font-sans text-base font-medium hover:text-magenta">Join</Link>
             <Link href="#" className="block py-2 font-sans text-base font-medium hover:text-magenta">Contact</Link>
