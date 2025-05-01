@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MapPin, Star, Search } from "lucide-react";
+import { ArrowRight, MapPin, Star, Search, Loader2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ambassadors } from "@/data/ambassadors";
+import { useQuery } from "@tanstack/react-query";
+import { ambassadorsService } from "@/lib/ambassadorsService";
+import { Ambassador } from "@/lib/types";
 
 const AmbassadorCard = ({ ambassador }: { ambassador: typeof ambassadors[0] }) => {
   return (

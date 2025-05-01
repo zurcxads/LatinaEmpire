@@ -21,7 +21,37 @@ export interface Event {
   locationAddress?: string;
 }
 
+// Ambassador interface for consistent typing
+export interface Ambassador {
+  id: string;
+  slug: string;
+  name: string;
+  title: string;
+  location: string;
+  country: string;
+  quote: string;
+  shortBio: string;
+  fullBio: string;
+  image: string;
+  bannerImage?: string;
+  socialMedia: {
+    instagram?: string;
+    linkedin?: string;
+    twitter?: string;
+    website?: string;
+  };
+  yearsInProgram: number;
+  eventsHosted: number;
+  membersSince: string;
+  languages: string[];
+  expertise: string[];
+}
+
 // API response types
 export interface EventsResponse {
   events: Event[];
+}
+
+export interface AmbassadorsResponse {
+  ambassadors: Ambassador[];
 }
