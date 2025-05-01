@@ -7,6 +7,7 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Events from "@/pages/Events";
 import EventDetail from "@/pages/EventDetail";
+import Program from "@/pages/Program";
 
 function Router() {
   return (
@@ -14,6 +15,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/events" component={Events} />
       <Route path="/events/:slug" component={EventDetail} />
+      <Route path="/program" component={Program} />
       <Route component={NotFound} />
     </Switch>
   );
