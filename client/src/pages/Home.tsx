@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import NextEventBanner from "@/components/NextEventBanner";
 import ProgramCarousel from "@/components/ProgramCarousel";
@@ -7,15 +6,12 @@ import Testimonial from "@/components/Testimonial";
 import PillarsSection from "@/components/PillarsSection";
 import FounderSection from "@/components/FounderSection";
 import ShopSection from "@/components/ShopSection";
-
 import PodcastSection from "@/components/PodcastSection";
 import FinalCTA from "@/components/FinalCTA";
-import Footer from "@/components/Footer";
 
 const Home = () => {
   return (
-    <div className="min-h-screen flex flex-col">
-
+    <div className="flex flex-col">
       {/* SECTION 1: Hero Banner - Full-screen flagship program promo */}
       <Hero />
 
@@ -25,23 +21,23 @@ const Home = () => {
       {/* SECTION 3: Event/Program Carousel - Horizontal slider */}
       <ProgramCarousel />
 
-      {/* SECTION 4: Testimonials */}
+      {/* SECTION 4: Pillars Section */}
+      <PillarsSection />
+
+      {/* SECTION 5: Testimonials */}
       <Testimonial />
 
-      {/* SECTION 5: Meet Our Founder */}
+      {/* SECTION 6: Meet Our Founder */}
       <FounderSection />
 
-      {/* SECTION 6: Shop Preview */}
+      {/* SECTION 7: Shop Preview */}
       <ShopSection />
 
-
-      {/* SECTION 7: Podcast Section */}
+      {/* SECTION 8: Podcast Section */}
       <PodcastSection />
 
       {/* SECTION 9: Final CTA Section */}
       <FinalCTA />
-
-      <Footer />
     </div>
   );
 };
