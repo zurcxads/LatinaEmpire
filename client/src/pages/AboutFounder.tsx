@@ -77,9 +77,6 @@ const AboutFounder = () => {
               <div className="absolute -bottom-5 -right-5 w-32 h-32 bg-magenta/10 rounded-full hidden md:block"></div>
             </div>
             <div>
-              <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-3 block">
-                ORIGINS
-              </span>
               <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6 tracking-tight">
                 Early Life
               </h2>
@@ -102,9 +99,6 @@ const AboutFounder = () => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <div>
-              <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-3 block">
-                PHILOSOPHY
-              </span>
               <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6 tracking-tight">
                 Guiding Principles
               </h2>
@@ -147,9 +141,6 @@ const AboutFounder = () => {
               <div className="absolute -bottom-5 -right-5 w-32 h-32 bg-magenta/10 rounded-full hidden md:block"></div>
             </div>
             <div>
-              <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-3 block">
-                MISSION
-              </span>
               <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6 tracking-tight">
                 Life Dedication
               </h2>
@@ -182,12 +173,12 @@ const AboutFounder = () => {
         </div>
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="flex items-center">
-            <div className="w-full lg:w-3/5 ml-auto">
+          <div className="flex flex-col items-center text-center">
+            <div className="max-w-3xl">
               <p className="font-serif text-4xl md:text-5xl text-white leading-tight mb-6">
                 "I decided that I was going to find a way, somehow, someday, to give back and pay it forward."
               </p>
-              <div className="flex items-center">
+              <div className="flex items-center justify-center">
                 <div className="h-10 w-10 rounded-full bg-magenta flex-shrink-0 mr-3 overflow-hidden">
                   <img 
                     src="https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg" 
@@ -235,9 +226,6 @@ const AboutFounder = () => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-3 block">
-                THE JOURNEY
-              </span>
               <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6 tracking-tight">
                 From Purpose to Profit
               </h2>
