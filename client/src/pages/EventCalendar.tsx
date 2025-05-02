@@ -307,18 +307,35 @@ const EventCalendar = () => {
       
       {/* CTA Section */}
       <section className="py-20 bg-black text-white">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Join Us?</h2>
-          <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-            Don't miss the opportunity to be part of our powerful community of Latina leaders.
-            Stay updated with all our events.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/join">
-              <Button variant="default" className="rounded-full bg-white hover:bg-gray-100 text-black px-6">
-                Join Our Community
-              </Button>
-            </Link>
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="relative mx-auto max-w-5xl rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-purple-600 via-pink-500 to-amber-400">
+            {/* Background gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60"></div>
+            
+            {/* Background Image */}
+            <div className="absolute inset-0 opacity-50">
+              <img 
+                src="/assets/Screenshot 2025-05-02 at 2.34.24 AM.png" 
+                alt="Abstract background" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            
+            {/* Content */}
+            <div className="relative z-10 px-6 py-16 md:px-12 md:py-20 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white drop-shadow-sm">Ready to Join Us?</h2>
+              <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+                Don't miss the opportunity to be part of our powerful community of Latina leaders.
+                Stay updated with all our events.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link href="/join">
+                  <Button variant="default" className="rounded-full bg-white hover:bg-gray-100 text-black px-6 font-medium">
+                    Join Our Community
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
