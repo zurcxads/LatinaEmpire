@@ -89,7 +89,6 @@ const EventDetail = () => {
             <h2 className="font-serif text-xl">Loading event details...</h2>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
@@ -111,7 +110,6 @@ const EventDetail = () => {
             </Link>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
