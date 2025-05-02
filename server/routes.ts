@@ -33,6 +33,11 @@ function getAmbassadorsData() {
   return getJsonData("ambassadors");
 }
 
+// Get blog data
+function getBlogData() {
+  return getJsonData("blog");
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Events API routes
   app.get("/api/events", (req: Request, res: Response) => {
@@ -90,6 +95,62 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error serving ambassador:", error);
       res.status(500).json({ error: "Failed to fetch ambassador details" });
+    }
+  });
+
+  // Blog API routes
+  app.get("/api/blog", (req: Request, res: Response) => {
+    try {
+      const data = getBlogData();
+      if (!data || !data.blog) {
+        return res.status(404).json({ error: "Blog data not found" });
+      }
+      
+      // Support filtering by category
+      const { category, tag, featured } = req.query;
+      let filteredBlog = [...data.blog];
+      
+      if (category) {
+        filteredBlog = filteredBlog.filter((post: any) => 
+          post.category.toLowerCase() === (category as string).toLowerCase()
+        );
+      }
+      
+      if (tag) {
+        filteredBlog = filteredBlog.filter((post: any) => 
+          post.tags.some((t: string) => t.toLowerCase() === (tag as string).toLowerCase())
+        );
+      }
+      
+      if (featured === 'true') {
+        filteredBlog = filteredBlog.filter((post: any) => post.featured);
+      }
+      
+      res.json({
+        blog: filteredBlog,
+        categories: data.categories,
+        popularTags: data.popularTags
+      });
+    } catch (error) {
+      console.error("Error serving blog posts:", error);
+      res.status(500).json({ error: "Failed to fetch blog posts" });
+    }
+  });
+
+  app.get("/api/blog/:slug", (req: Request, res: Response) => {
+    try {
+      const { slug } = req.params;
+      const data = getBlogData();
+      const post = data.blog.find((p: any) => p.slug === slug);
+      
+      if (!post) {
+        return res.status(404).json({ error: "Blog post not found" });
+      }
+      
+      res.json(post);
+    } catch (error) {
+      console.error("Error serving blog post:", error);
+      res.status(500).json({ error: "Failed to fetch blog post details" });
     }
   });
 
