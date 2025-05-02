@@ -1,10 +1,10 @@
-import ErrorBoundary from "@/components/ErrorBoundary";
+
 import { Switch, Route } from "wouter";
-import { queryClient } from "./lib/queryClient";
-import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
+import { QueryClientProvider } from "@tanstack/react-query";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/not-found";
+import { queryClient } from "@/lib/queryClient";
+
 import Home from "@/pages/Home";
 import Events from "@/pages/Events";
 import EventDetail from "@/pages/EventDetail";
@@ -13,37 +13,42 @@ import Ambassadors from "@/pages/Ambassadors";
 import AmbassadorDetail from "@/pages/AmbassadorDetail";
 import Contact from "@/pages/Contact";
 import Join from "@/pages/Join";
+import NotFound from "@/pages/not-found";
+import ErrorBoundary from "@/components/ErrorBoundary";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 function Router() {
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/events" component={Events} />
-        <Route path="/events/:slug" component={EventDetail} />
-        <Route path="/program" component={Program} />
-        <Route path="/ambassadors" component={Ambassadors} />
-        <Route path="/ambassadors/:slug" component={AmbassadorDetail} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/join" component={Join} />
-        <Route component={NotFound} />
-      </Switch>
-    </>
+      <main className="flex-grow">
+        <Switch>
+          <Route path="/" component={Home} />
+          <Route path="/events" component={Events} />
+          <Route path="/events/:slug" component={EventDetail} />
+          <Route path="/program" component={Program} />
+          <Route path="/ambassadors" component={Ambassadors} />
+          <Route path="/ambassadors/:slug" component={AmbassadorDetail} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/join" component={Join} />
+          <Route component={NotFound} />
+        </Switch>
+      </main>
+      <Footer />
+    </div>
   );
 }
 
-function App() {
+export default function App() {
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
-          <Toaster />
           <Router />
+          <Toaster />
         </TooltipProvider>
       </QueryClientProvider>
     </ErrorBoundary>
   );
 }
-
-export default App;

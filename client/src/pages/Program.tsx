@@ -80,7 +80,6 @@ const Program = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
@@ -91,7 +90,7 @@ const Program = () => {
             <p className="font-sans text-lg md:text-xl text-gray-700 mb-10">
               A transformative journey to align your purpose, passion, and power.
             </p>
-            <Button className="bg-magenta text-white px-8 py-6 h-auto rounded text-lg hover:bg-opacity-90 shadow-md">
+            <Button className="bg-magenta text-white px-8 py-6 h-auto rounded-full text-lg hover:bg-opacity-90 shadow-md">
               Apply Now
             </Button>
           </div>

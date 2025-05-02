@@ -54,7 +54,7 @@ const EventCard = ({ event }: { event: Event }) => {
   );
 };
 
-// Loading skeleton for event cards
+// Loading skeleton for event cards (retained for loading state)
 const EventCardSkeleton = () => (
   <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm animate-pulse">
     <div className="h-64 bg-gray-200"></div>
@@ -77,54 +77,35 @@ const EventCardSkeleton = () => (
 );
 
 const Events = () => {
-  const [showPastEvents, setShowPastEvents] = useState(false);
-  
-  // Use React Query to fetch upcoming events
   const upcomingEventsQuery = useQuery({
     queryKey: ['/api/events/upcoming'],
     queryFn: () => eventsService.getUpcomingEvents(),
   });
-  
-  // Use React Query to fetch past events, but don't fetch until needed
-  const pastEventsQuery = useQuery({
-    queryKey: ['/api/events/past'],
-    queryFn: () => eventsService.getPastEvents(),
-    // Only fetch when showPastEvents is true
-    enabled: showPastEvents,
-  });
 
   const upcomingEvents = upcomingEventsQuery.data || [];
-  const pastEvents = pastEventsQuery.data || [];
   const isLoadingUpcoming = upcomingEventsQuery.isLoading;
-  const isLoadingPast = pastEventsQuery.isLoading && showPastEvents;
-  const hasError = upcomingEventsQuery.isError || (showPastEvents && pastEventsQuery.isError);
+  const hasError = upcomingEventsQuery.isError;
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-serif font-bold text-4xl md:text-5xl mb-6">Upcoming Experiences</h1>
-            <p className="font-sans text-lg text-gray-700 mb-8">
-              Attend immersive Latina Empire events around the world.
+            <h1 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl mb-6">
+              Upcoming Events
+            </h1>
+            <p className="font-sans text-lg md:text-xl text-gray-700 mb-10">
+              Join us at our transformative events designed to empower Latina professionals.
             </p>
           </div>
         </div>
       </section>
-      
+
       {/* Upcoming Events Section */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="mb-12">
-            <h2 className="font-serif font-bold text-3xl mb-4">Upcoming Events</h2>
-            <p className="font-sans text-gray-700">
-              Join us at these transformational events designed exclusively for ambitious Latinas.
-            </p>
-          </div>
-          
           {isLoadingUpcoming ? (
             // Loading state
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -162,93 +143,6 @@ const Events = () => {
           )}
         </div>
       </section>
-      
-      {/* Past Events Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-12 gap-4">
-            <div>
-              <h2 className="font-serif font-bold text-3xl mb-4">Past Events</h2>
-              <p className="font-sans text-gray-700">
-                Relive the moments from our previous gatherings.
-              </p>
-            </div>
-            
-            <Button
-              variant="ghost"
-              onClick={() => setShowPastEvents(!showPastEvents)}
-              className="flex items-center text-gray-700 hover:text-magenta"
-            >
-              {showPastEvents ? (
-                <>
-                  Hide Past Events
-                  <ChevronUp className="ml-2 h-5 w-5" />
-                </>
-              ) : (
-                <>
-                  Show Past Events
-                  <ChevronDown className="ml-2 h-5 w-5" />
-                </>
-              )}
-            </Button>
-          </div>
-          
-          {/* Loading state */}
-          {isLoadingPast && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[...Array(3)].map((_, index) => (
-                <EventCardSkeleton key={index} />
-              ))}
-            </div>
-          )}
-          
-          {/* Error state */}
-          {showPastEvents && pastEventsQuery.isError && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-8 text-center">
-              <h3 className="font-serif font-semibold text-xl mb-2 text-red-600">Unable to Load Events</h3>
-              <p className="font-sans text-gray-700 mb-4">
-                We're having trouble loading past events. Please refresh the page or try again later.
-              </p>
-              <Button 
-                onClick={() => pastEventsQuery.refetch()}
-                className="bg-magenta text-white hover:bg-magenta/90"
-              >
-                Try Again
-              </Button>
-            </div>
-          )}
-          
-          {/* Past events list */}
-          {showPastEvents && !isLoadingPast && !pastEventsQuery.isError && pastEvents.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {pastEvents.map((event) => (
-                <EventCard key={event.id} event={event} />
-              ))}
-            </div>
-          )}
-          
-          {/* No past events */}
-          {showPastEvents && !isLoadingPast && !pastEventsQuery.isError && pastEvents.length === 0 && (
-            <div className="bg-white rounded-lg p-8 text-center">
-              <h3 className="font-serif font-semibold text-xl mb-2">No Past Events</h3>
-              <p className="font-sans text-gray-600">
-                We don't have any past events to display at this time.
-              </p>
-            </div>
-          )}
-          
-          {/* Collapsed past events */}
-          {!showPastEvents && pastEventsQuery.data && pastEventsQuery.data.length > 0 && (
-            <div className="bg-white rounded-lg p-8 text-center">
-              <h3 className="font-serif font-semibold text-xl mb-2">{pastEventsQuery.data.length} Past Events Available</h3>
-              <p className="font-sans text-gray-600 mb-4">
-                Click the "Show Past Events" button to view our previous events.
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
-      
       <Footer />
     </div>
   );
