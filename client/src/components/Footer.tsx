@@ -33,7 +33,56 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
             
             
+            <div className="md:col-span-2">
+              <h3 className="font-sans uppercase tracking-wider text-sm font-semibold mb-6">Program</h3>
+              <ul className="space-y-4">
+                <li><Link href="/program" className="font-sans text-white/70 hover:text-white transition-all">Elite Program</Link></li>
+                <li><Link href="/program" className="font-sans text-white/70 hover:text-white transition-all">Coaching</Link></li>
+                <li><Link href="/program" className="font-sans text-white/70 hover:text-white transition-all">Membership</Link></li>
+                <li><Link href="/program" className="font-sans text-white/70 hover:text-white transition-all">Results</Link></li>
+                <li><Link href="/program" className="font-sans text-white/70 hover:text-white transition-all">Success Stories</Link></li>
+              </ul>
+            </div>
             
+            <div className="md:col-span-2">
+              <h3 className="font-sans uppercase tracking-wider text-sm font-semibold mb-6">Events</h3>
+              <ul className="space-y-4">
+                <li><Link href="/events" className="font-sans text-white/70 hover:text-white transition-all">Upcoming Events</Link></li>
+                <li><Link href="/events" className="font-sans text-white/70 hover:text-white transition-all">Virtual Seminars</Link></li>
+                <li><Link href="/events" className="font-sans text-white/70 hover:text-white transition-all">Live Conferences</Link></li>
+                <li><Link href="/events" className="font-sans text-white/70 hover:text-white transition-all">Workshops</Link></li>
+                <li><Link href="/events" className="font-sans text-white/70 hover:text-white transition-all">Past Events</Link></li>
+              </ul>
+            </div>
+            
+            <div className="md:col-span-2">
+              <h3 className="font-sans uppercase tracking-wider text-sm font-semibold mb-6">Resources</h3>
+              <ul className="space-y-4">
+                <li><Link href="/ambassadors" className="font-sans text-white/70 hover:text-white transition-all">Ambassadors</Link></li>
+                <li><Link href="/join" className="font-sans text-white/70 hover:text-white transition-all">Community</Link></li>
+                <li><Link href="/program" className="font-sans text-white/70 hover:text-white transition-all">Free Resources</Link></li>
+                <li><Link href="#" className="font-sans text-white/70 hover:text-white transition-all">Blog</Link></li>
+                <li><Link href="#" className="font-sans text-white/70 hover:text-white transition-all">Podcast</Link></li>
+              </ul>
+            </div>
+            
+            <div className="md:col-span-3">
+              <h3 className="font-sans uppercase tracking-wider text-sm font-semibold mb-6">Contact</h3>
+              <ul className="space-y-4">
+                <li className="font-sans text-white/70">
+                  <span className="block font-semibold text-white mb-1">Email Us:</span> 
+                  <a href="mailto:hello@latinaempire.com" className="hover:text-white transition-all">hello@latinaempire.com</a>
+                </li>
+                <li className="font-sans text-white/70">
+                  <span className="block font-semibold text-white mb-1">Call Us:</span> 
+                  <a href="tel:+18005551234" className="hover:text-white transition-all">(800) 555-1234</a>
+                </li>
+                <li className="font-sans text-white/70">
+                  <span className="block font-semibold text-white mb-1">Location:</span> 
+                  123 Ocean Drive,<br />Miami, FL 33139
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
