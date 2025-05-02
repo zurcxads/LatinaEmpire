@@ -306,9 +306,9 @@ const EventCalendar = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-20 bg-black text-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="relative mx-auto max-w-5xl rounded-3xl overflow-hidden shadow-2xl">
+      <section className="py-16 bg-black text-white">
+        <div className="container mx-auto px-2 md:px-4">
+          <div className="relative mx-auto max-w-6xl rounded-3xl overflow-hidden shadow-2xl">
             {/* Background gradient overlay with animation */}
             <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-600/90 via-pink-500/80 to-purple-600/90 bg-[size:200%_200%] animate-gradient-slow"></div>
             
@@ -317,7 +317,7 @@ const EventCalendar = () => {
             <div className="absolute bottom-0 right-1/4 w-1/3 h-1/3 bg-amber-300/20 blur-3xl rounded-full"></div>
             
             {/* Content */}
-            <div className="relative z-10 px-6 py-16 md:px-12 md:py-20 text-center">
+            <div className="relative z-10 px-2 py-12 md:px-6 md:py-16 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white drop-shadow-sm">Ready to Join Us?</h2>
               <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
                 Don't miss the opportunity to be part of our powerful community of Latina leaders.
