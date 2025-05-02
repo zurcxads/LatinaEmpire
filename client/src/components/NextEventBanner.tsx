@@ -51,7 +51,7 @@ const NextEventBanner = () => {
                 <Button 
                   onClick={() => setIsModalOpen(true)}
                   variant="outline" 
-                  className="w-fit border-2 border-white text-white hover:bg-white hover:text-black rounded-full px-6 py-4 text-lg font-semibold"
+                  className="w-fit border-2 border-white bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-black rounded-full px-6 py-4 text-lg font-semibold"
                 >
                   Get Tickets
                   <ArrowRight className="ml-2 h-5 w-5" />
