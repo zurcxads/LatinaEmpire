@@ -1,73 +1,142 @@
-import { Brain, DollarSign, Trophy, Landmark } from "lucide-react";
+import { useState } from "react";
+import { X } from "lucide-react";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerClose,
+} from "@/components/ui/drawer";
+import { cn } from "@/lib/utils";
 
-type PillarProps = {
-  icon: JSX.Element;
-  title: string;
-  description: string;
-};
+interface PillarCategoryProps {
+  label: string;
+  isActive: boolean;
+  onClick: () => void;
+}
 
-const PillarCard = ({ icon, title, description }: PillarProps) => {
-  return (
-    <div className="bg-white p-8 rounded-lg hover:shadow-xl transition-all duration-300 text-center">
-      <div className="mx-auto mb-5 w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center">
-        {icon}
-      </div>
-      <h3 className="font-serif font-bold text-xl mb-4">{title}</h3>
-      <p className="text-gray-600">{description}</p>
-    </div>
-  );
-};
+const PillarCategory = ({ label, isActive, onClick }: PillarCategoryProps) => (
+  <button
+    onClick={onClick}
+    className={cn(
+      "group text-left font-serif font-bold text-4xl md:text-6xl lg:text-7xl transition-all duration-300 block mb-4 hover:opacity-90",
+      isActive ? "text-black" : "text-black"
+    )}
+  >
+    <span className="relative">
+      {label}
+      <span className={cn(
+        "absolute bottom-2 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full",
+        isActive ? "w-full" : "w-0"
+      )}></span>
+    </span>
+  </button>
+);
 
 const PillarsSection = () => {
-  const pillars = [
-    {
-      icon: <Brain className="h-8 w-8 text-magenta" />,
-      title: "Mindset",
-      description: "Develop a growth mindset and break through limiting beliefs that hold you back."
-    },
-    {
-      icon: <DollarSign className="h-8 w-8 text-magenta" />,
-      title: "Wealth",
-      description: "Build financial freedom through proven strategies for generating abundance."
-    },
-    {
-      icon: <Trophy className="h-8 w-8 text-magenta" />,
-      title: "Leadership",
-      description: "Cultivate the confidence and skills to lead with impact in any environment."
-    },
-    {
-      icon: <Landmark className="h-8 w-8 text-magenta" />,
-      title: "Legacy",
-      description: "Create a lasting impact that extends beyond you to future generations."
-    }
-  ];
+  const [openPillar, setOpenPillar] = useState<string | null>(null);
+
+  const handleOpenChange = (open: boolean) => {
+    if (!open) setOpenPillar(null);
+  };
+
+  const handlePillarClick = (pillar: string) => {
+    setOpenPillar(pillar);
+  };
 
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-20 md:py-24 bg-white">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="mb-16 text-center max-w-3xl mx-auto">
-          <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-3 block">
-            THE FRAMEWORK
-          </span>
-          <h2 className="font-serif font-bold text-3xl md:text-5xl mb-6">
-            Pillars for an Empowered Latina Life
-          </h2>
-          <p className="text-gray-600 text-lg">
-            Our comprehensive approach addresses the fundamental areas that lead to lasting fulfillment and success.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {pillars.map((pillar, index) => (
-            <PillarCard
-              key={index}
-              icon={pillar.icon}
-              title={pillar.title}
-              description={pillar.description}
-            />
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
+          {/* Left column: Text */}
+          <div className="flex flex-col justify-center">
+            <span className="font-sans uppercase tracking-wider text-gray-600 font-semibold text-sm mb-3 block">
+              OUR MISSION
+            </span>
+            
+            <div className="mt-6 mb-12">
+              <PillarCategory 
+                label="Heart" 
+                isActive={openPillar === 'heart'} 
+                onClick={() => handlePillarClick('heart')} 
+              />
+              <PillarCategory 
+                label="Mind" 
+                isActive={openPillar === 'mind'} 
+                onClick={() => handlePillarClick('mind')} 
+              />
+              <PillarCategory 
+                label="Money" 
+                isActive={openPillar === 'money'} 
+                onClick={() => handlePillarClick('money')} 
+              />
+            </div>
+          </div>
+          
+          {/* Right column: Image */}
+          <div className="relative h-full min-h-[350px] lg:min-h-[450px]">
+            <div className="rounded-2xl overflow-hidden h-full shadow-xl">
+              <img 
+                src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                alt="Live event with audience" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </div>
+
+      {/* Heart Drawer */}
+      <Drawer open={openPillar === 'heart'} onOpenChange={handleOpenChange}>
+        <DrawerContent className="bg-black/95 text-white">
+          <DrawerHeader>
+            <div className="flex justify-between items-center">
+              <DrawerTitle className="font-serif text-3xl">Heart</DrawerTitle>
+              <DrawerClose className="rounded-full h-8 w-8 flex items-center justify-center bg-white/10">
+                <X className="h-4 w-4" />
+              </DrawerClose>
+            </div>
+            <DrawerDescription className="text-white/70 text-lg max-w-2xl mx-auto mt-4 text-center">
+              Explore all content related to Heart — coming soon.
+            </DrawerDescription>
+          </DrawerHeader>
+        </DrawerContent>
+      </Drawer>
+
+      {/* Mind Drawer */}
+      <Drawer open={openPillar === 'mind'} onOpenChange={handleOpenChange}>
+        <DrawerContent className="bg-black/95 text-white">
+          <DrawerHeader>
+            <div className="flex justify-between items-center">
+              <DrawerTitle className="font-serif text-3xl">Mind</DrawerTitle>
+              <DrawerClose className="rounded-full h-8 w-8 flex items-center justify-center bg-white/10">
+                <X className="h-4 w-4" />
+              </DrawerClose>
+            </div>
+            <DrawerDescription className="text-white/70 text-lg max-w-2xl mx-auto mt-4 text-center">
+              Explore all content related to Mind — coming soon.
+            </DrawerDescription>
+          </DrawerHeader>
+        </DrawerContent>
+      </Drawer>
+
+      {/* Money Drawer */}
+      <Drawer open={openPillar === 'money'} onOpenChange={handleOpenChange}>
+        <DrawerContent className="bg-black/95 text-white">
+          <DrawerHeader>
+            <div className="flex justify-between items-center">
+              <DrawerTitle className="font-serif text-3xl">Money</DrawerTitle>
+              <DrawerClose className="rounded-full h-8 w-8 flex items-center justify-center bg-white/10">
+                <X className="h-4 w-4" />
+              </DrawerClose>
+            </div>
+            <DrawerDescription className="text-white/70 text-lg max-w-2xl mx-auto mt-4 text-center">
+              Explore all content related to Money — coming soon.
+            </DrawerDescription>
+          </DrawerHeader>
+        </DrawerContent>
+      </Drawer>
     </section>
   );
 };
