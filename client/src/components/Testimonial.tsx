@@ -1,7 +1,14 @@
-import { useState, useCallback, useEffect } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
+import { Quote } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
+import { Card } from "@/components/ui/card";
 
 type TestimonialType = {
   quote: string;
@@ -49,123 +56,132 @@ const testimonials: TestimonialType[] = [
   }
 ];
 
+const TestimonialCard = ({ testimonial }: { testimonial: TestimonialType }) => {
+  return (
+    <Card className="bg-white rounded-xl shadow-md overflow-hidden h-full border-0 hover:shadow-lg transition-all duration-300">
+      <div className="p-6 flex flex-col h-full">
+        <div className="relative mb-4">
+          <div className="absolute -top-2 -left-2 w-10 h-10 rounded-full bg-magenta flex items-center justify-center">
+            <Quote className="h-5 w-5 text-white" />
+          </div>
+          <div className="pt-2 pl-10">
+            <p className="text-gray-700 italic leading-relaxed line-clamp-4">"{testimonial.quote}"</p>
+          </div>
+        </div>
+        
+        <div className="mt-auto flex items-center pt-4">
+          <div className="w-12 h-12 rounded-full overflow-hidden mr-3 flex-shrink-0">
+            <img 
+              src={testimonial.image} 
+              alt={testimonial.name} 
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div>
+            <h4 className="font-serif font-bold text-base">{testimonial.name}</h4>
+            <div className="text-gray-600 text-sm">
+              {testimonial.title}
+              {testimonial.location && (
+                <span> • {testimonial.location}</span>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </Card>
+  );
+};
+
 const Testimonial = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-  const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
-  const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
-
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setPrevBtnDisabled(!emblaApi.canScrollPrev());
-    setNextBtnDisabled(!emblaApi.canScrollNext());
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
+  const [api, setApi] = useState<any>(null);
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (!emblaApi) return;
+    if (!api) return;
     
-    onSelect();
-    emblaApi.on("select", onSelect);
-    emblaApi.on("reInit", onSelect);
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+    
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
     
     return () => {
-      emblaApi.off("select", onSelect);
-      emblaApi.off("reInit", onSelect);
+      window.removeEventListener('resize', checkMobile);
     };
-  }, [emblaApi, onSelect]);
+  }, []);
 
   return (
-    <section className="py-24 bg-white text-black">
+    <section className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-3 block">
+            TESTIMONIALS
+          </span>
+          <h2 className="font-serif font-bold text-3xl md:text-5xl mb-4 tracking-tight">
+            What Our Members Say
+          </h2>
+          <p className="text-gray-600 text-lg">
+            Real stories from women transforming their lives with Latina Empire.
+          </p>
+        </div>
+        
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12 md:mb-16 text-center">
-            <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-3 block">TESTIMONIALS</span>
-            <h2 className="font-serif font-bold text-3xl md:text-5xl mb-6 tracking-tight">
-              What Our Members Say
-            </h2>
-          </div>
-          
-          <div className="relative">
-            <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex">
-                {testimonials.map((testimonial, index) => (
-                  <div key={index} className="flex-[0_0_100%] min-w-0 pl-4 md:pl-8 lg:pl-12">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-                      <div className="relative">
-                        <div className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-magenta flex items-center justify-center">
-                          <Quote className="h-5 w-5 text-white" />
-                        </div>
-                        <img 
-                          src={testimonial.image} 
-                          alt={testimonial.name} 
-                          className="w-full h-[350px] md:h-[400px] object-cover rounded-lg shadow-lg"
-                        />
-                      </div>
-                      
-                      <div className="flex flex-col justify-center">
-                        <blockquote className="font-serif text-xl md:text-2xl leading-relaxed mb-8 text-gray-800">
-                          "{testimonial.quote}"
-                        </blockquote>
-                        <div className="flex flex-col">
-                          <p className="font-sans font-bold text-lg mb-1">{testimonial.name}</p>
-                          <p className="font-sans text-gray-600">
-                            {testimonial.title}
-                            {testimonial.location && (
-                              <span> • {testimonial.location}</span>
-                            )}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+            setApi={setApi}
+          >
+            <CarouselContent className="-ml-4">
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem 
+                  key={index} 
+                  className={cn(
+                    "pl-4 md:basis-1/2 lg:basis-1/3",
+                    isMobile ? "basis-full" : ""
+                  )}
+                >
+                  <div className="p-1 h-full">
+                    <TestimonialCard testimonial={testimonial} />
                   </div>
-                ))}
-              </div>
-            </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
             
-            <div className="flex justify-center mt-10 gap-3">
-              <Button
-                onClick={scrollPrev}
-                disabled={prevBtnDisabled}
-                variant="outline"
-                size="icon"
-                className="h-10 w-10 rounded-full border-gray-300 text-gray-700 hover:bg-gray-100 hover:text-black"
-              >
-                <ArrowLeft className="h-5 w-5" />
-              </Button>
+            <div className="flex items-center justify-center mt-8 space-x-2">
+              <CarouselPrevious className="static transform-none h-9 w-9 rounded-full border-gray-300 hover:bg-gray-200" />
               
-              <div className="flex gap-1.5 items-center">
-                {testimonials.map((_, index) => (
-                  <div
-                    key={index}
-                    className={`h-2 rounded-full transition-all ${
-                      selectedIndex === index 
-                        ? 'w-8 bg-magenta' 
-                        : 'w-2 bg-gray-300'
-                    }`}
+              <div className="flex space-x-1">
+                {Array.from({ length: count }).map((_, i) => (
+                  <button
+                    key={i}
+                    className={cn(
+                      "h-2.5 w-2.5 rounded-full transition-all",
+                      current === i ? "bg-magenta scale-125" : "bg-gray-300"
+                    )}
+                    onClick={() => api?.scrollTo(i)}
+                    aria-label={`Go to slide ${i + 1}`}
                   />
                 ))}
               </div>
               
-              <Button
-                onClick={scrollNext}
-                disabled={nextBtnDisabled}
-                variant="outline"
-                size="icon"
-                className="h-10 w-10 rounded-full border-gray-300 text-gray-700 hover:bg-gray-100 hover:text-black"
-              >
-                <ArrowRight className="h-5 w-5" />
-              </Button>
+              <CarouselNext className="static transform-none h-9 w-9 rounded-full border-gray-300 hover:bg-gray-200" />
             </div>
-          </div>
+          </Carousel>
         </div>
       </div>
     </section>
