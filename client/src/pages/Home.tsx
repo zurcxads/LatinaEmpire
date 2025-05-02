@@ -15,7 +15,6 @@ import Footer from "@/components/Footer";
 const Home = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
       
       {/* SECTION 1: Hero Banner - Full-screen flagship program promo */}
       <Hero />

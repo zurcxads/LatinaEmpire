@@ -16,17 +16,20 @@ import Join from "@/pages/Join";
 
 function Router() {
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/events" component={Events} />
-      <Route path="/events/:slug" component={EventDetail} />
-      <Route path="/program" component={Program} />
-      <Route path="/ambassadors" component={Ambassadors} />
-      <Route path="/ambassadors/:slug" component={AmbassadorDetail} />
-      <Route path="/contact" component={Contact} />
-      <Route path="/join" component={Join} />
-      <Route component={NotFound} />
-    </Switch>
+    <>
+      <Navbar />
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/events" component={Events} />
+        <Route path="/events/:slug" component={EventDetail} />
+        <Route path="/program" component={Program} />
+        <Route path="/ambassadors" component={Ambassadors} />
+        <Route path="/ambassadors/:slug" component={AmbassadorDetail} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/join" component={Join} />
+        <Route component={NotFound} />
+      </Switch>
+    </>
   );
 }
 
