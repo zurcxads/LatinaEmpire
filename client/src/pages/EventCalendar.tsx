@@ -4,8 +4,6 @@ import { format, parse, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { MapPin, Clock, Calendar as CalendarIcon, ChevronLeft, ChevronRight, Filter, Search } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { eventsService } from "@/lib/eventsService";
 import { Event } from "@/lib/types";
 import { useQuery } from "@tanstack/react-query";
@@ -262,7 +260,6 @@ const EventCalendar = () => {
   
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
       
       {/* Hero Section */}
       <section className="pt-24 pb-20 bg-black text-white">
@@ -325,8 +322,6 @@ const EventCalendar = () => {
           </div>
         </div>
       </section>
-      
-      <Footer />
     </div>
   );
 };
