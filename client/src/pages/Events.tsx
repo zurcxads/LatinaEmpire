@@ -11,9 +11,9 @@ import { useQuery } from "@tanstack/react-query";
 const EventCard = ({ event }: { event: Event }) => {
   return (
     <Link href={`/events/${event.slug}`} className="block">
-      <div className="relative aspect-[4/3] rounded-lg overflow-hidden group cursor-pointer">
+      <div className="relative aspect-[16/9] md:aspect-[4/3] rounded-xl overflow-hidden group cursor-pointer">
         {/* Background Image with Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10" />
         <img 
           src={event.image} 
           alt={event.name}
@@ -25,56 +25,56 @@ const EventCard = ({ event }: { event: Event }) => {
         />
         
         {/* Content Overlay */}
-        <div className="absolute inset-0 z-20 p-6 lg:p-8 flex flex-col justify-between text-white">
-          <div>
+        <div className="absolute inset-0 z-20 p-6 md:p-8 lg:p-10 flex flex-col justify-end text-white">
+          <div className="max-w-2xl">
             {/* In-person/Virtual Tag */}
-            <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm mb-4">
-              <span className="text-xs uppercase tracking-wide font-medium">IN-PERSON & VIRTUAL</span>
+            <div className="inline-flex items-center bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm mb-6">
+              <span className="text-[11px] md:text-xs uppercase tracking-wider font-medium">IN-PERSON & VIRTUAL</span>
             </div>
             
             {/* Title */}
-            <h3 className="font-sans font-bold text-2xl lg:text-3xl mb-3 leading-tight">{event.name}</h3>
+            <h3 className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl mb-4 leading-tight tracking-tight">
+              {event.name}
+            </h3>
             
             {/* Description */}
-            <p className="text-white/80 text-sm lg:text-base max-w-md mb-6 line-clamp-3">
+            <p className="text-white/90 text-base md:text-lg max-w-2xl mb-8 line-clamp-2 leading-relaxed">
               {event.shortDescription}
             </p>
-          </div>
-          
-          <div className="w-full">
+
             {/* Event Details */}
-            <div className="flex flex-wrap gap-6 mb-4 text-white/90 text-sm uppercase">
+            <div className="flex items-center gap-8 mb-4 text-white/90 text-sm uppercase">
               <div>
-                <div className="text-[10px] text-white/60 mb-1">DATE</div>
-                <div>{event.date}</div>
+                <div className="text-[10px] text-white/60 mb-1.5 tracking-wider">DATE</div>
+                <div className="font-medium">{event.date}</div>
               </div>
               <div>
-                <div className="text-[10px] text-white/60 mb-1">PLACE</div>
-                <div>{event.location}</div>
+                <div className="text-[10px] text-white/60 mb-1.5 tracking-wider">PLACE</div>
+                <div className="font-medium">{event.location}</div>
               </div>
               {event.startTime && (
                 <div>
-                  <div className="text-[10px] text-white/60 mb-1">TIMEZONE</div>
-                  <div>Eastern</div>
+                  <div className="text-[10px] text-white/60 mb-1.5 tracking-wider">TIMEZONE</div>
+                  <div className="font-medium">Eastern</div>
                 </div>
               )}
             </div>
-            
-            {/* Brand Logo */}
-            <div className="absolute bottom-6 lg:bottom-8 right-6 lg:right-8 bg-black/80 rounded h-16 w-32 flex items-center justify-center px-2">
-              <div className="text-white uppercase font-bold text-center leading-tight">
-                <span className="text-xs">LATINA</span>
-                <div className="text-xl tracking-tight">EMPIRE</div>
-              </div>
+
+            {/* Learn More Button - Always visible on mobile, shows on hover for desktop */}
+            <div className="mt-6 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <Button className="bg-white text-black hover:bg-white/90 px-8 py-6 h-auto rounded-full text-sm font-medium tracking-wide">
+                Learn More
+              </Button>
             </div>
           </div>
-        </div>
-        
-        {/* Learn More Button - Shows on Hover */}
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/90 to-transparent flex items-center px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30">
-          <Button className="bg-white text-black hover:bg-white/90 px-6 py-2 rounded-full">
-            Learn More
-          </Button>
+            
+          {/* Brand Logo */}
+          <div className="absolute top-6 right-6 md:bottom-8 md:top-auto md:right-8 bg-black/80 backdrop-blur-sm rounded-lg h-16 w-32 flex items-center justify-center px-2">
+            <div className="text-white uppercase font-bold text-center leading-tight">
+              <span className="text-xs tracking-wider">LATINA</span>
+              <div className="text-xl tracking-tight">EMPIRE</div>
+            </div>
+          </div>
         </div>
       </div>
     </Link>
