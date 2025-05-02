@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'wouter';
 import { Circle, ArrowRight } from 'lucide-react';
@@ -14,11 +13,11 @@ const ShopSection = () => {
             <span className="uppercase tracking-widest text-sm">SHOP</span>
             <Circle className="w-2 h-2 fill-magenta text-magenta" />
           </div>
-          
+
           <h2 className="text-5xl md:text-6xl font-serif mb-6">
             Explore products &<br />programs
           </h2>
-          
+
           <p className="text-gray-400 max-w-2xl mx-auto">
             Turn any hour of the day into an opportunity for transformation with resources from
             the number one personal development program of all time.
@@ -85,7 +84,7 @@ const ShopSection = () => {
 
         <div className="text-center">
           <Link href="/shop">
-            <Button variant="outline" className="border-white/20 hover:bg-white/5 group">
+            <Button className="bg-magenta hover:bg-magenta/90 group">
               Shop All
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
