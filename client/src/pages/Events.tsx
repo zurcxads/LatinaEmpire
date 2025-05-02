@@ -102,22 +102,32 @@ const Events = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gray-50">
+      <section className="pt-28 pb-16 bg-black text-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl mb-6">
-              Upcoming Events
-            </h1>
-            <p className="font-sans text-lg md:text-xl text-gray-700 mb-10">
-              Join us at our transformative events designed to empower Latina professionals.
-            </p>
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+            <div className="lg:max-w-2xl mb-10 lg:mb-0">
+              <h1 className="font-sans font-bold text-5xl md:text-6xl lg:text-7xl mb-6 tracking-tight leading-tight">
+                Explore Tony Robbins events
+              </h1>
+            </div>
+            <div className="lg:max-w-md">
+              <div className="bg-black text-white">
+                <p className="text-base md:text-lg mb-4">
+                  Create your own success story through the massive impact of a Tony Robbins event. Call <a href="tel:858-290-4113" className="underline hover:text-magenta transition-colors">858-290-4113</a> now to learn more about Tony's events.
+                </p>
+                <Button className="bg-white text-black hover:bg-gray-100 font-medium px-6 py-5 h-auto">
+                  View the calendar
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Upcoming Events Section */}
+      {/* Tony Robbins Events Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
+          <h2 className="font-serif font-bold text-3xl mb-10 text-center">Upcoming Tony Robbins Events</h2>
           {isLoadingUpcoming ? (
             // Loading state
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
