@@ -140,7 +140,9 @@ const EventCalendar = () => {
   });
   
   // Get unique locations for the filter
-  const uniqueLocations = Array.from(new Set(events.map(event => event.location)));
+  const uniqueLocations = events
+    .map(event => event.location)
+    .filter((location, index, self) => self.indexOf(location) === index);
   const locations = ["all", ...uniqueLocations];
   
   // Filter events based on selected location

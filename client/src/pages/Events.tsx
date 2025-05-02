@@ -126,10 +126,12 @@ const Events = () => {
                 <p className="text-base md:text-lg mb-4 text-gray-300">
                   Whether it's a workshop, live activation, or global gathering — this is where your next chapter begins.
                 </p>
-                <Button className="bg-white hover:bg-gray-100 text-black font-semibold text-lg py-1.5 px-8 rounded-full transition-all shadow-xl w-fit">
-                  View the calendar
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
+                <Link href="/events-calendar">
+                  <Button className="bg-white hover:bg-gray-100 text-black font-semibold text-lg py-1.5 px-8 rounded-full transition-all shadow-xl w-fit">
+                    View the calendar
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
