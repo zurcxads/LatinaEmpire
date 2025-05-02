@@ -107,13 +107,13 @@ const Events = () => {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
             <div className="lg:max-w-2xl mb-10 lg:mb-0">
               <h1 className="font-sans font-bold text-5xl md:text-6xl lg:text-7xl mb-6 tracking-tight leading-tight">
-                Explore Tony Robbins events
+                Explore Latina Empire Events
               </h1>
             </div>
             <div className="lg:max-w-md">
               <div className="bg-black text-white">
-                <p className="text-base md:text-lg mb-4">
-                  Create your own success story through the massive impact of a Tony Robbins event. Call <a href="tel:858-290-4113" className="underline hover:text-magenta transition-colors">858-290-4113</a> now to learn more about Tony's events.
+                <p className="text-base md:text-lg mb-4 text-gray-300">
+                  Join us in-person and experience the energy, connection, and transformation of Latina Empire events. Whether it's a workshop, live activation, or global gathering — this is where your next chapter begins.
                 </p>
                 <Button className="bg-white text-black hover:bg-gray-100 font-medium px-6 py-5 h-auto">
                   View the calendar
@@ -124,10 +124,10 @@ const Events = () => {
         </div>
       </section>
 
-      {/* Tony Robbins Events Section */}
+      {/* Latina Empire Events Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <h2 className="font-serif font-bold text-3xl mb-10 text-center">Upcoming Tony Robbins Events</h2>
+          <h2 className="font-serif font-bold text-3xl mb-10 text-center">Upcoming Latina Empire Events</h2>
           {isLoadingUpcoming ? (
             // Loading state
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
