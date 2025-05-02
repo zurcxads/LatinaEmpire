@@ -248,7 +248,7 @@ const Events = () => {
                   {/* Content Overlay */}
                   <div className="absolute inset-0 z-20 p-10 md:p-14 lg:p-20 flex flex-col justify-end text-white">
                     {/* Tag at top */}
-                    <div className="absolute top-10 left-10 md:top-14 md:left-14 lg:top-20 lg:left-20">
+                    <div className="absolute top-8 left-8">
                       <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
                         <span className="text-xs uppercase tracking-wider font-medium">LEADERSHIP ACADEMY</span>
                       </div>
@@ -308,7 +308,7 @@ const Events = () => {
             <div className="relative aspect-[21/9] rounded-xl overflow-hidden bg-black shadow-lg">
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10"></div>
               <div className="absolute inset-0 z-20 p-10 md:p-14 lg:p-20 flex flex-col justify-end">
-                <div className="absolute top-10 left-10 md:top-14 md:left-14 lg:top-20 lg:left-20">
+                <div className="absolute top-8 left-8">
                   <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
                     <span className="text-xs uppercase tracking-wider font-medium text-white">COMING SOON</span>
                   </div>
