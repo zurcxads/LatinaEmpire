@@ -65,7 +65,7 @@ const EventDetail = () => {
   // Handler for Learn More button
   const scrollToContent = () => {
     if (contentRef.current) {
-      contentRef.current.scrollIntoView({ behavior: 'smooth' });
+      contentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -216,6 +216,108 @@ const EventDetail = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Benefits Section */}
+      <section className="py-16 bg-black text-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-12">
+            <div className="flex justify-center mb-2">
+              <span className="inline-block h-3 w-3 rounded-full bg-magenta"></span>
+            </div>
+            <div className="uppercase text-sm tracking-widest text-gray-400 mb-2">KEY BENEFITS</div>
+            <h2 className="font-serif font-bold text-4xl md:text-5xl mb-0">Drive meaningful change</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 max-w-6xl mx-auto">
+            {/* Item 1 */}
+            <div className="flex flex-col items-start">
+              <div className="mb-4 p-4 bg-gray-800 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 2v5"></path>
+                  <path d="M8 2v5"></path>
+                  <path d="M3 10h18"></path>
+                </svg>
+              </div>
+              <h3 className="font-semibold text-xl mb-2">Learn from the experts</h3>
+              <p className="text-gray-400">
+                Get insights from experts in persuasion, non-verbal communication, coaching and more.
+              </p>
+            </div>
+            
+            {/* Item 2 */}
+            <div className="flex flex-col items-start">
+              <div className="mb-4 p-4 bg-gray-800 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 8v8"></path>
+                  <path d="M8 12h8"></path>
+                </svg>
+              </div>
+              <h3 className="font-semibold text-xl mb-2">Retrain your brain</h3>
+              <p className="text-gray-400">
+                Discover your identity as a leader and gain a new level of emotional mastery and clarity.
+              </p>
+            </div>
+            
+            {/* Item 3 */}
+            <div className="flex flex-col items-start">
+              <div className="mb-4 p-4 bg-gray-800 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <h3 className="font-semibold text-xl mb-2">Decode body language</h3>
+              <p className="text-gray-400">
+                Tune into what people are really saying by understanding non-verbal communication.
+              </p>
+            </div>
+            
+            {/* Item 4 */}
+            <div className="flex flex-col items-start">
+              <div className="mb-4 p-4 bg-gray-800 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </div>
+              <h3 className="font-semibold text-xl mb-2">Communicate with impact</h3>
+              <p className="text-gray-400">
+                Learn to inspire, persuade, and connect with others for measurable results and change.
+              </p>
+            </div>
+            
+            {/* Item 5 */}
+            <div className="flex flex-col items-start">
+              <div className="mb-4 p-4 bg-gray-800 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="12" rx="2" ry="2"></rect>
+                  <line x1="2" y1="20" x2="22" y2="20"></line>
+                </svg>
+              </div>
+              <h3 className="font-semibold text-xl mb-2">Experience real-time mentoring</h3>
+              <p className="text-gray-400">
+                Practice what you learn with team building exercises led by professional mentors.
+              </p>
+            </div>
+            
+            {/* Item 6 */}
+            <div className="flex flex-col items-start">
+              <div className="mb-4 p-4 bg-gray-800 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                </svg>
+              </div>
+              <h3 className="font-semibold text-xl mb-2">Increase your influence</h3>
+              <p className="text-gray-400">
+                Overcome the psychological challenges of leadership and learn what motivates people.
+              </p>
             </div>
           </div>
         </div>
