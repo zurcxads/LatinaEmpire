@@ -40,6 +40,17 @@ const AboutFounder = () => {
         </div>
       </section>
 
+      {/* Inspirational Quote Section */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="font-serif text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight text-gray-900">
+              An extraordinary life is one on your terms, both of deep meaning and incredible impact. Driven by the pursuit of excellence and guided by a profound sense of purpose, Perla Tamez Casasnovas has inspired thousands to dream bigger and reach higher.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Early Life Section */}
       <section className="section-padding bg-white" id="early-life">
         <div className="container mx-auto px-4 md:px-6">
