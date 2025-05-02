@@ -11,9 +11,9 @@ import { useQuery } from "@tanstack/react-query";
 const EventCard = ({ event }: { event: Event }) => {
   return (
     <Link href={`/events/${event.slug}`} className="block">
-      <div className="relative aspect-[16/9] md:aspect-[4/3] rounded-xl overflow-hidden group cursor-pointer">
+      <div className="relative aspect-video rounded-lg overflow-hidden group cursor-pointer">
         {/* Background Image with Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10" />
         <img 
           src={event.image} 
           alt={event.name}
@@ -25,49 +25,52 @@ const EventCard = ({ event }: { event: Event }) => {
         />
         
         {/* Content Overlay */}
-        <div className="absolute inset-0 z-20 p-6 md:p-8 lg:p-10 flex flex-col justify-end text-white">
-          <div className="max-w-2xl">
-            {/* In-person/Virtual Tag */}
-            <div className="inline-flex items-center bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm mb-6">
-              <span className="text-[11px] md:text-xs uppercase tracking-wider font-medium">IN-PERSON & VIRTUAL</span>
+        <div className="absolute inset-0 z-20 flex flex-col justify-end text-white">
+          {/* Tag at top */}
+          <div className="absolute top-6 left-6">
+            <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
+              <span className="text-[10px] uppercase tracking-wider font-medium">IN-PERSON & VIRTUAL</span>
             </div>
-            
-            {/* Title */}
-            <h3 className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl mb-4 leading-tight tracking-tight">
+          </div>
+          
+          {/* Main content at bottom */}
+          <div className="p-6 lg:p-8">
+            {/* Title - Simplified and larger */}
+            <h3 className="font-sans font-bold text-2xl md:text-3xl mb-2 leading-tight tracking-tight">
               {event.name}
             </h3>
             
-            {/* Description */}
-            <p className="text-white/90 text-base md:text-lg max-w-2xl mb-8 line-clamp-2 leading-relaxed">
+            {/* Description - Hidden on small screens, shortened on all screens */}
+            <p className="text-white/80 text-sm md:text-base max-w-md mb-4 hidden sm:block line-clamp-2">
               {event.shortDescription}
             </p>
 
-            {/* Event Details */}
-            <div className="flex items-center gap-8 text-white/90 text-sm uppercase">
+            {/* Event Details - Simplified */}
+            <div className="flex items-center gap-6 text-white/90 text-xs uppercase">
               <div>
-                <div className="text-[10px] text-white/60 mb-1.5 tracking-wider">DATE</div>
+                <div className="text-[10px] text-white/60 mb-1 tracking-wider">DATE</div>
                 <div className="font-medium">{event.date}</div>
               </div>
               <div>
-                <div className="text-[10px] text-white/60 mb-1.5 tracking-wider">PLACE</div>
+                <div className="text-[10px] text-white/60 mb-1 tracking-wider">PLACE</div>
                 <div className="font-medium">{event.location}</div>
               </div>
-              {event.startTime && (
-                <div>
-                  <div className="text-[10px] text-white/60 mb-1.5 tracking-wider">TIMEZONE</div>
-                  <div className="font-medium">Eastern</div>
-                </div>
-              )}
             </div>
-
+          </div>
+          
+          {/* Brand Logo - Smaller and positioned at top */}
+          <div className="absolute top-6 right-6 bg-black/70 backdrop-blur-sm rounded px-3 py-1.5">
+            <div className="text-white uppercase font-bold text-center leading-none">
+              <span className="text-[8px] tracking-wider">LATINA</span>
+              <div className="text-sm tracking-tight">EMPIRE</div>
             </div>
-            
-          {/* Brand Logo */}
-          <div className="absolute top-6 right-6 md:bottom-8 md:top-auto md:right-8 bg-black/80 backdrop-blur-sm rounded-lg h-16 w-32 flex items-center justify-center px-2">
-            <div className="text-white uppercase font-bold text-center leading-tight">
-              <span className="text-xs tracking-wider">LATINA</span>
-              <div className="text-xl tracking-tight">EMPIRE</div>
-            </div>
+          </div>
+          
+          {/* Learn More Button - Shows on Hover */}
+          <div className="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <Button className="bg-white text-black hover:bg-white/90 rounded-full text-sm px-4 py-1.5 h-auto">
+              Learn More
+            </Button>
           </div>
         </div>
       </div>
@@ -77,32 +80,31 @@ const EventCard = ({ event }: { event: Event }) => {
 
 // Loading skeleton for event cards
 const EventCardSkeleton = () => (
-  <div className="relative aspect-[4/3] rounded-lg overflow-hidden animate-pulse bg-gray-800">
+  <div className="relative aspect-video rounded-lg overflow-hidden animate-pulse bg-gray-800">
     {/* Simulating the gradient overlay */}
-    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20 z-10"></div>
+    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
     
-    <div className="absolute inset-0 z-20 p-6 lg:p-8 flex flex-col justify-between">
-      <div>
-        {/* Tag skeleton */}
-        <div className="h-6 w-32 bg-white/20 rounded-full mb-4"></div>
-        
-        {/* Title skeleton */}
-        <div className="h-8 bg-white/30 rounded mb-3 w-3/4"></div>
-        <div className="h-8 bg-white/30 rounded mb-6 w-1/2"></div>
-        
-        {/* Description skeleton */}
-        <div className="h-4 bg-white/20 rounded mb-2 w-full"></div>
-        <div className="h-4 bg-white/20 rounded mb-2 w-full"></div>
-        <div className="h-4 bg-white/20 rounded mb-6 w-2/3"></div>
+    <div className="absolute inset-0 z-20 flex flex-col">
+      {/* Tag skeleton - top left */}
+      <div className="absolute top-6 left-6">
+        <div className="h-5 w-28 bg-white/20 rounded-full"></div>
       </div>
       
-      <div>
+      {/* Logo skeleton - top right */}
+      <div className="absolute top-6 right-6 h-8 w-16 bg-black/70 rounded"></div>
+      
+      {/* Content skeleton - bottom */}
+      <div className="absolute bottom-0 left-0 w-full p-6 lg:p-8">
+        {/* Title skeleton */}
+        <div className="h-7 bg-white/30 rounded mb-2 w-3/4"></div>
+        <div className="h-7 bg-white/30 rounded mb-4 w-1/2"></div>
+        
+        {/* Description skeleton - hide on small screens */}
+        <div className="hidden sm:block h-4 bg-white/20 rounded mb-2 w-full"></div>
+        <div className="hidden sm:block h-4 bg-white/20 rounded mb-4 w-2/3"></div>
+        
         {/* Event details skeleton */}
-        <div className="flex gap-6 mb-4">
-          <div className="w-20">
-            <div className="h-3 bg-white/20 rounded mb-1 w-full"></div>
-            <div className="h-4 bg-white/30 rounded w-full"></div>
-          </div>
+        <div className="flex gap-6">
           <div className="w-20">
             <div className="h-3 bg-white/20 rounded mb-1 w-full"></div>
             <div className="h-4 bg-white/30 rounded w-full"></div>
@@ -112,9 +114,6 @@ const EventCardSkeleton = () => (
             <div className="h-4 bg-white/30 rounded w-full"></div>
           </div>
         </div>
-        
-        {/* Logo skeleton */}
-        <div className="absolute bottom-6 lg:bottom-8 right-6 lg:right-8 bg-black/40 rounded h-16 w-32"></div>
       </div>
     </div>
   </div>
