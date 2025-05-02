@@ -277,7 +277,7 @@ const EventCalendar = () => {
               Create your own success story through the powerful impact of a Latina Empire event.
             </p>
             <Link href="/events">
-              <Button className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 h-auto">
+              <Button variant="default" className="rounded-full bg-white hover:bg-gray-100 text-black px-6">
                 View all events
               </Button>
             </Link>
@@ -299,83 +299,11 @@ const EventCalendar = () => {
             <div className="text-center py-12">
               <div className="text-xl">No events found</div>
               <p className="text-gray-500 mt-2">
-                {location !== "all" 
-                  ? `There are no events scheduled in ${location}` 
-                  : "There are no upcoming events at this time"}
+                There are no upcoming events at this time
               </p>
             </div>
           ) : (
-            <>
-              {/* Table View */}
-              {view === "table" && (
-                <EventTable events={filteredEvents} />
-              )}
-              
-              {/* Calendar View */}
-              {view === "calendar" && (
-                <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
-                  {/* Calendar Days */}
-                  {eachDayOfInterval({
-                    start: startOfMonth(currentMonth),
-                    end: endOfMonth(currentMonth)
-                  }).map((date, index) => {
-                    // Get events for this day
-                    const dayEvents = filteredEvents.filter(event => {
-                      const eventDate = parseEventDate(event.date);
-                      return eventDate && isSameDay(eventDate, date);
-                    });
-                    
-                    return (
-                      <div 
-                        key={date.toISOString()} 
-                        className={`border rounded-lg p-2 min-h-[120px] ${
-                          hasEvents(date) ? 'border-pink-200 bg-pink-50' : ''
-                        } ${
-                          isSameDay(date, new Date()) ? 'border-black' : ''
-                        }`}
-                      >
-                        <div className="text-sm font-medium mb-1">
-                          {format(date, "EEE")} {format(date, "d")}
-                        </div>
-                        {dayEvents.length > 0 ? (
-                          <div className="space-y-1">
-                            {dayEvents.map((event, i) => (
-                              <Link key={event.id} href={`/events/${event.slug}`}>
-                                <div className="p-1 bg-pink-100 hover:bg-pink-200 rounded text-xs truncate cursor-pointer">
-                                  {event.name}
-                                </div>
-                              </Link>
-                            ))}
-                          </div>
-                        ) : (
-                          <div className="text-xs text-gray-400">No events</div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-              
-              {/* List View */}
-              {view === "list" && (
-                <div className="space-y-4">
-                  {selectedDate ? (
-                    <div>
-                      <h2 className="text-2xl font-bold mb-4">
-                        Events on {format(selectedDate, "MMMM d, yyyy")}
-                      </h2>
-                      <DayEventsList events={filteredEvents} date={selectedDate} />
-                    </div>
-                  ) : (
-                    <div className="space-y-4">
-                      {filteredEvents.map(event => (
-                        <EventListItem key={event.id} event={event} />
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
-            </>
+            <EventTable events={filteredEvents} />
           )}
         </div>
       </section>
@@ -390,12 +318,12 @@ const EventCalendar = () => {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/join">
-              <Button className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 h-auto">
+              <Button variant="default" className="rounded-full bg-white hover:bg-gray-100 text-black px-6">
                 Join Our Community
               </Button>
             </Link>
             <Link href="/contact">
-              <Button variant="outline" className="text-white border-white hover:bg-white/10 rounded-full px-8 py-6 h-auto">
+              <Button variant="outline" className="rounded-full text-white border-white hover:bg-white/10 px-6">
                 Contact Us
               </Button>
             </Link>
