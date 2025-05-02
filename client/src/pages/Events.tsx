@@ -9,9 +9,18 @@ import { Event } from "@/lib/types";
 import { useQuery } from "@tanstack/react-query";
 
 const EventCard = ({ event }: { event: Event }) => {
+  // Generate a random event type for the demo
+  const eventTypes = [
+    { tag: "VIRTUAL", name: "LEADERSHIP ACADEMY" },
+    { tag: "IN-PERSON", name: "BUSINESS MASTERY" },
+    { tag: "HYBRID", name: "LIFE MASTERY" },
+    { tag: "VIRTUAL", name: "SUCCESS SUMMIT" }
+  ];
+  const eventType = eventTypes[Math.floor(Math.random() * eventTypes.length)];
+  
   return (
     <Link href={`/events/${event.slug}`} className="block">
-      <div className="relative aspect-[16/10] rounded-lg overflow-hidden group cursor-pointer">
+      <div className="relative aspect-[16/9] rounded-xl overflow-hidden group cursor-pointer shadow-lg">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10" />
         <img 
@@ -25,37 +34,32 @@ const EventCard = ({ event }: { event: Event }) => {
         />
         
         {/* Content Overlay */}
-        <div className="absolute inset-0 z-20 p-10 flex flex-col justify-center text-white">
+        <div className="absolute inset-0 z-20 p-8 md:p-10 flex flex-col justify-end text-white">
           {/* Tag at top */}
           <div className="absolute top-8 left-8">
             <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
-              <span className="text-[10px] uppercase tracking-wider font-medium">IN-PERSON & VIRTUAL</span>
+              <span className="text-xs uppercase tracking-wider font-medium">{eventType.tag}</span>
             </div>
           </div>
           
-          {/* Main content centered */}
-          <div className="max-w-lg">
+          {/* Main content at bottom */}
+          <div className="w-full">
             {/* Title - Large and Bold */}
-            <h3 className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl mb-6 leading-tight tracking-tight">
-              {event.name}
+            <h3 className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl mb-4 leading-tight tracking-tight">
+              {event.name.split(' ').slice(0, 4).join(' ')}
             </h3>
             
-            {/* Description - Larger and more visible */}
-            <p className="text-white/80 text-base md:text-lg lg:text-xl max-w-md mb-8 leading-relaxed">
-              {event.shortDescription}
+            {/* Simple Description */}
+            <p className="text-white/90 text-base md:text-lg max-w-xl mb-0 leading-relaxed">
+              {event.shortDescription.split('.')[0]}.
             </p>
-
-            {/* Learn More Button */}
-            <Button className="bg-white text-black hover:bg-white/90 rounded-full px-6 py-2.5 h-auto text-base">
-              Learn More
-            </Button>
           </div>
           
-          {/* Brand Logo - Top right */}
-          <div className="absolute top-8 right-8 bg-black/70 backdrop-blur-sm rounded px-4 py-2">
-            <div className="text-white uppercase font-bold text-center leading-none">
-              <span className="text-[10px] tracking-wider">LATINA</span>
-              <div className="text-sm tracking-tight">EMPIRE</div>
+          {/* Brand Logo - Bottom right */}
+          <div className="absolute bottom-8 right-8 bg-black text-white p-3 rounded">
+            <div className="uppercase font-bold text-center leading-none">
+              <div className="text-xs tracking-widest mb-1">{eventType.name.split(' ')[0]}</div>
+              <div className="text-sm tracking-wider">{eventType.name.split(' ')[1] || "ACADEMY"}</div>
             </div>
           </div>
         </div>
@@ -66,7 +70,7 @@ const EventCard = ({ event }: { event: Event }) => {
 
 // Loading skeleton for event cards
 const EventCardSkeleton = () => (
-  <div className="relative aspect-[16/10] rounded-lg overflow-hidden animate-pulse bg-gray-800">
+  <div className="relative aspect-[16/9] rounded-xl overflow-hidden animate-pulse bg-gray-800 shadow-lg">
     {/* Simulating the gradient overlay */}
     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10"></div>
     
@@ -76,22 +80,19 @@ const EventCardSkeleton = () => (
         <div className="h-5 w-28 bg-white/20 rounded-full"></div>
       </div>
       
-      {/* Logo skeleton - top right */}
-      <div className="absolute top-8 right-8 h-8 w-16 bg-black/70 rounded"></div>
-      
-      {/* Content skeleton - centered */}
-      <div className="absolute inset-0 p-10 flex flex-col justify-center">
+      {/* Content skeleton - bottom left */}
+      <div className="absolute bottom-0 left-0 right-0 p-8">
         {/* Title skeleton */}
-        <div className="h-9 bg-white/30 rounded mb-2 w-3/5"></div>
-        <div className="h-9 bg-white/30 rounded mb-6 w-2/5"></div>
+        <div className="h-10 bg-white/30 rounded mb-2 w-1/2"></div>
+        <div className="h-10 bg-white/30 rounded mb-6 w-1/3"></div>
         
         {/* Description skeleton */}
-        <div className="h-5 bg-white/20 rounded mb-2 w-full max-w-md"></div>
-        <div className="h-5 bg-white/20 rounded mb-8 w-4/5 max-w-sm"></div>
-        
-        {/* Button skeleton */}
-        <div className="h-10 bg-white/90 rounded-full w-32"></div>
+        <div className="h-5 bg-white/20 rounded mb-2 w-full max-w-xl"></div>
+        <div className="h-5 bg-white/20 rounded w-2/3 max-w-lg"></div>
       </div>
+      
+      {/* Logo skeleton - bottom right */}
+      <div className="absolute bottom-8 right-8 h-16 w-24 bg-black rounded"></div>
     </div>
   </div>
 );
@@ -141,15 +142,43 @@ const Events = () => {
             // Loading state
             <div className="space-y-16">
               {/* Featured event skeleton */}
-              <div className="relative aspect-[21/9] rounded-lg overflow-hidden animate-pulse bg-gray-800">
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10"></div>
-                <div className="absolute inset-0 z-20 p-10 flex flex-col justify-center">
-                  <div className="h-5 w-32 bg-white/20 rounded-full mb-6"></div>
-                  <div className="h-12 bg-white/30 rounded mb-3 w-1/2 max-w-xl"></div>
-                  <div className="h-12 bg-white/30 rounded mb-6 w-1/3 max-w-md"></div>
-                  <div className="h-6 bg-white/20 rounded mb-2 w-full max-w-xl"></div>
-                  <div className="h-6 bg-white/20 rounded mb-8 w-2/3 max-w-lg"></div>
-                  <div className="h-10 bg-white/90 rounded-full w-40"></div>
+              <div className="relative aspect-[21/9] rounded-xl overflow-hidden animate-pulse bg-gray-800 shadow-lg mb-16">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
+                <div className="absolute inset-0 z-20 flex flex-col">
+                  {/* Tag skeleton - top left */}
+                  <div className="absolute top-10 left-10 md:top-14 md:left-14 lg:top-20 lg:left-20">
+                    <div className="h-5 w-36 bg-white/20 rounded-full"></div>
+                  </div>
+                  
+                  {/* Content skeleton - bottom left */}
+                  <div className="absolute bottom-20 left-10 right-0 md:left-14 lg:left-20 p-0">
+                    {/* Title skeleton */}
+                    <div className="h-14 bg-white/30 rounded mb-3 w-3/4 max-w-xl"></div>
+                    <div className="h-14 bg-white/30 rounded mb-8 w-1/2 max-w-md"></div>
+                    
+                    {/* Description skeleton */}
+                    <div className="h-8 bg-white/20 rounded mb-2 w-full max-w-2xl"></div>
+                    <div className="h-8 bg-white/20 rounded mb-12 w-4/5 max-w-2xl"></div>
+                    
+                    {/* Event details skeleton */}
+                    <div className="flex gap-8">
+                      <div className="w-24">
+                        <div className="h-3 bg-white/30 rounded mb-2 w-full"></div>
+                        <div className="h-5 bg-white/40 rounded w-full"></div>
+                      </div>
+                      <div className="w-24">
+                        <div className="h-3 bg-white/30 rounded mb-2 w-full"></div>
+                        <div className="h-5 bg-white/40 rounded w-full"></div>
+                      </div>
+                      <div className="w-24">
+                        <div className="h-3 bg-white/30 rounded mb-2 w-full"></div>
+                        <div className="h-5 bg-white/40 rounded w-full"></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Logo skeleton - top right */}
+                  <div className="absolute top-10 right-10 md:top-14 md:right-14 lg:top-20 lg:right-20 h-24 w-36 bg-black rounded"></div>
                 </div>
               </div>
               
@@ -165,53 +194,77 @@ const Events = () => {
             </div>
           ) : hasError ? (
             // Error state
-            <div className="relative aspect-video rounded-lg overflow-hidden bg-black">
-              <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
-              <div className="absolute inset-0 z-20 p-10 lg:p-16 flex flex-col justify-center items-start max-w-2xl">
-                <h3 className="font-sans font-bold text-3xl lg:text-4xl mb-4 text-white leading-tight">Unable to Load Events</h3>
-                <p className="font-sans text-white/80 text-lg mb-8 max-w-lg">
-                  We're having trouble connecting to our event database. This might be a temporary connection issue.
-                </p>
-                <Button 
-                  onClick={() => upcomingEventsQuery.refetch()}
-                  className="bg-white text-black hover:bg-white/90 font-medium px-6 py-3"
-                >
-                  Retry Connection
-                </Button>
+            <div className="relative aspect-[21/9] rounded-xl overflow-hidden bg-black shadow-lg">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10"></div>
+              <div className="absolute inset-0 z-20 p-10 md:p-14 lg:p-20 flex flex-col justify-end">
+                <div className="absolute top-10 left-10 md:top-14 md:left-14 lg:top-20 lg:left-20">
+                  <div className="inline-flex items-center bg-red-900/70 px-3 py-1 rounded-full backdrop-blur-sm">
+                    <span className="text-xs uppercase tracking-wider font-medium text-white">CONNECTION ERROR</span>
+                  </div>
+                </div>
+                
+                <div className="max-w-4xl">
+                  <h3 className="font-sans font-bold text-5xl md:text-6xl lg:text-7xl mb-6 text-white leading-tight">
+                    Unable to
+                    <br />
+                    load events
+                  </h3>
+                  <p className="text-white/90 text-xl md:text-2xl max-w-3xl mb-12 leading-relaxed">
+                    We're having trouble connecting to our event database. This might be a temporary connection issue.
+                  </p>
+                  <Button 
+                    onClick={() => upcomingEventsQuery.refetch()}
+                    className="bg-white text-black hover:bg-white/90 rounded-full px-8 py-3 h-auto text-base"
+                  >
+                    Retry Connection
+                  </Button>
+                </div>
+                
+                {/* Brand Logo */}
+                <div className="absolute top-10 right-10 md:top-14 md:right-14 lg:top-20 lg:right-20 bg-black/90 p-4 rounded">
+                  <div className="text-white uppercase font-bold text-center leading-none">
+                    <div className="text-sm tracking-widest mb-1">LATINA</div>
+                    <div className="text-2xl tracking-wider">EMPIRE</div>
+                  </div>
+                </div>
               </div>
             </div>
           ) : upcomingEvents.length > 0 ? (
             <div className="space-y-16">
               {/* Featured Event */}
-              <div className="relative aspect-[21/9] rounded-lg overflow-hidden">
-                {/* Background Image with Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10" />
-                <img 
-                  src={upcomingEvents[0].image} 
-                  alt={upcomingEvents[0].name}
-                  className="w-full h-full object-cover"
-                />
-                
-                {/* Content Overlay */}
-                <div className="absolute inset-0 z-20 p-8 md:p-12 lg:p-16 flex flex-col justify-center text-white">
-                  {/* Tag */}
-                  <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm mb-8">
-                    <span className="text-xs uppercase tracking-wider font-medium">IN-PERSON & VIRTUAL</span>
-                  </div>
+              <Link href={`/events/${upcomingEvents[0].slug}`} className="block mb-16">
+                <div className="relative aspect-[21/9] rounded-xl overflow-hidden shadow-lg">
+                  {/* Background Image with Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10" />
+                  <img 
+                    src={upcomingEvents[0].image} 
+                    alt={upcomingEvents[0].name}
+                    className="w-full h-full object-cover"
+                  />
                   
-                  <div className="max-w-3xl">
-                    {/* Title */}
-                    <h3 className="font-sans font-bold text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight tracking-tight">
-                      {upcomingEvents[0].name}
-                    </h3>
+                  {/* Content Overlay */}
+                  <div className="absolute inset-0 z-20 p-10 md:p-14 lg:p-20 flex flex-col justify-end text-white">
+                    {/* Tag at top */}
+                    <div className="absolute top-10 left-10 md:top-14 md:left-14 lg:top-20 lg:left-20">
+                      <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
+                        <span className="text-xs uppercase tracking-wider font-medium">BUSINESS MASTERY</span>
+                      </div>
+                    </div>
                     
-                    {/* Description */}
-                    <p className="text-white/80 text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
-                      {upcomingEvents[0].shortDescription}
-                    </p>
-
+                    <div className="max-w-4xl">
+                      {/* Title */}
+                      <h3 className="font-sans font-bold text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight tracking-tight">
+                        Grow your business <br />exponentially
+                      </h3>
+                      
+                      {/* Description */}
+                      <p className="text-white/90 text-xl md:text-2xl max-w-3xl mb-0 leading-relaxed">
+                        Get the concrete strategies and tools that have transformed thousands of businesses at every stage.
+                      </p>
+                    </div>
+                    
                     {/* Event Details */}
-                    <div className="flex flex-wrap items-center gap-8 text-white/90 text-sm uppercase mb-8">
+                    <div className="flex flex-wrap items-center gap-8 text-white/90 text-sm uppercase mt-12">
                       <div>
                         <div className="text-[10px] text-white/60 mb-1 tracking-wider">DATE</div>
                         <div className="font-medium">{upcomingEvents[0].date}</div>
@@ -225,24 +278,17 @@ const Events = () => {
                         <div className="font-medium">Eastern</div>
                       </div>
                     </div>
-                    
-                    {/* CTA Button */}
-                    <Link href={`/events/${upcomingEvents[0].slug}`}>
-                      <Button className="bg-white text-black hover:bg-white/90 rounded-full px-8 py-3 h-auto text-base">
-                        Learn More
-                      </Button>
-                    </Link>
-                  </div>
                   
-                  {/* Brand Logo */}
-                  <div className="absolute top-8 right-8 md:right-16 bg-black/70 backdrop-blur-sm rounded px-6 py-4">
-                    <div className="text-white uppercase font-bold text-center leading-none">
-                      <span className="text-xs tracking-wider">LATINA</span>
-                      <div className="text-2xl tracking-tight">EMPIRE</div>
+                    {/* Brand Logo */}
+                    <div className="absolute top-10 right-10 md:top-14 md:right-14 lg:top-20 lg:right-20 bg-black/90 p-4 rounded">
+                      <div className="text-white uppercase font-bold text-center leading-none">
+                        <div className="text-sm tracking-widest mb-1">TONY ROBBINS</div>
+                        <div className="text-2xl tracking-wider">BUSINESS<br/>MASTERY</div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
               
               {/* Other Events - Skip the first (featured) event */}
               {upcomingEvents.length > 1 && (
@@ -257,19 +303,36 @@ const Events = () => {
               )}
             </div>
           ) : (
-            <div className="relative aspect-video rounded-lg overflow-hidden bg-black">
-              <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
-              <div className="absolute inset-0 z-20 p-10 lg:p-16 flex flex-col justify-center items-start max-w-2xl">
-                <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm mb-6">
-                  <span className="text-xs uppercase tracking-wide font-medium text-white">COMING SOON</span>
+            <div className="relative aspect-[21/9] rounded-xl overflow-hidden bg-black shadow-lg">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10"></div>
+              <div className="absolute inset-0 z-20 p-10 md:p-14 lg:p-20 flex flex-col justify-end">
+                <div className="absolute top-10 left-10 md:top-14 md:left-14 lg:top-20 lg:left-20">
+                  <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
+                    <span className="text-xs uppercase tracking-wider font-medium text-white">COMING SOON</span>
+                  </div>
                 </div>
-                <h3 className="font-sans font-bold text-3xl lg:text-4xl mb-4 text-white leading-tight">New Events Being Planned</h3>
-                <p className="font-sans text-white/80 text-lg mb-8 max-w-lg">
-                  We're currently planning our next series of transformative events. Join our mailing list to be the first to know when registrations open.
-                </p>
-                <Button className="bg-white text-black hover:bg-white/90 font-medium px-6 py-3">
-                  Join Our Mailing List
-                </Button>
+                
+                <div className="max-w-4xl">
+                  <h3 className="font-sans font-bold text-5xl md:text-6xl lg:text-7xl mb-6 text-white leading-tight">
+                    New events
+                    <br />
+                    being planned
+                  </h3>
+                  <p className="text-white/90 text-xl md:text-2xl max-w-3xl mb-12 leading-relaxed">
+                    We're currently planning our next series of transformative events. Join our mailing list to be the first to know when registrations open.
+                  </p>
+                  <Button className="bg-white text-black hover:bg-white/90 rounded-full px-8 py-3 h-auto text-base">
+                    Join Our Mailing List
+                  </Button>
+                </div>
+                
+                {/* Brand Logo */}
+                <div className="absolute top-10 right-10 md:top-14 md:right-14 lg:top-20 lg:right-20 bg-black/90 p-4 rounded">
+                  <div className="text-white uppercase font-bold text-center leading-none">
+                    <div className="text-sm tracking-widest mb-1">LATINA</div>
+                    <div className="text-2xl tracking-wider">EMPIRE</div>
+                  </div>
+                </div>
               </div>
             </div>
           )}
