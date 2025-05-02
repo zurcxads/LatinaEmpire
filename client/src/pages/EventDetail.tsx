@@ -127,14 +127,6 @@ const EventDetail = () => {
 
       {/* Event Banner */}
       <section className="bg-black pt-10 pb-0 relative">
-        {/* Back to Events button */}
-        <div className="container mx-auto px-4 md:px-12 mb-4">
-          <Link href="/events" className="inline-flex items-center text-white bg-black/30 px-4 py-2 rounded-full hover:bg-black/50 transition-all backdrop-blur-sm">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Events
-          </Link>
-        </div>
-        
         {/* Full-width event banner with rounded corners */}
         <div className="mx-4 md:mx-12 rounded-[24px] overflow-hidden relative">
           <div 
@@ -150,6 +142,14 @@ const EventDetail = () => {
           >
             {/* Dark overlay gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90"></div>
+            
+            {/* Back to Events button - positioned on top left corner of image */}
+            <div className="absolute top-6 left-6 z-20">
+              <Link href="/events" className="inline-flex items-center text-white bg-black/30 px-4 py-2 rounded-full hover:bg-black/50 transition-all backdrop-blur-sm">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Events
+              </Link>
+            </div>
             
             {/* Content container */}
             <div className="absolute bottom-0 left-0 right-0 px-10 pb-16 z-10">
