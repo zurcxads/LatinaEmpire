@@ -651,12 +651,12 @@ const EventDetail = () => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             {/* Top Left - Logo */}
-            <div className="bg-[#61B3FF] p-8 md:p-12 rounded-lg flex flex-col justify-center items-center text-center">
+            <div className="bg-[#E83E8C] p-8 md:p-12 rounded-lg flex flex-col justify-center items-center text-center">
               <div className="max-w-[300px]">
                 <div className="text-center mb-2">
-                  <p className="uppercase tracking-wide text-black font-bold text-sm mb-1">TONY ROBBINS</p>
-                  <h3 className="font-serif text-4xl md:text-5xl font-black tracking-tight text-black leading-none">LEADERSHIP</h3>
-                  <p className="uppercase tracking-widest text-black font-medium text-sm mt-1">ACADEMY</p>
+                  <p className="uppercase tracking-wide text-white font-bold text-sm mb-1">LATINA EMPIRE</p>
+                  <h3 className="font-serif text-4xl md:text-5xl font-black tracking-tight text-white leading-none">LEADERSHIP</h3>
+                  <p className="uppercase tracking-widest text-white font-medium text-sm mt-1">ACADEMY</p>
                 </div>
               </div>
             </div>
@@ -664,17 +664,17 @@ const EventDetail = () => {
             {/* Top Right - Title */}
             <div className="bg-white p-8 md:p-12 flex flex-col justify-center">
               <h2 className="font-serif font-bold text-3xl md:text-4xl lg:text-5xl leading-tight">
-                Get Tony's own<br />leadership secrets
+                Access exclusive<br />leadership expertise
               </h2>
             </div>
             
             {/* Bottom Left - Paragraph */}
             <div className="bg-white p-8 md:p-12 flex flex-col justify-center">
               <p className="text-gray-600">
-                Take part in the only program that provides full immersion in the proprietary leadership 
-                training system Tony Robbins has leveraged for nearly five decades to empower and 
-                change the lives of millions. Learn skills from world-renowned experts in neuro-linguistic 
-                programming, persuasion, coaching and more.
+                Join our immersive leadership program that provides full access to the proprietary 
+                training system Latina Empire has developed specifically for ambitious Latina professionals.
+                Learn advanced skills from renowned experts in communication, negotiation, networking, 
+                cultural intelligence, and executive presence designed to elevate your career to new heights.
               </p>
             </div>
             
@@ -682,11 +682,11 @@ const EventDetail = () => {
             <div className="rounded-lg overflow-hidden h-full">
               <img 
                 src="https://images.unsplash.com/photo-1609921212029-bb5a28e60960?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
-                alt="Virtual Leadership Conference" 
+                alt="Latina Empire Leadership Academy" 
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   e.currentTarget.classList.add("placeholder-image");
-                  e.currentTarget.alt = "Virtual Leadership Conference";
+                  e.currentTarget.alt = "Latina Empire Leadership Academy";
                 }}
               />
             </div>
@@ -868,7 +868,7 @@ const EventDetail = () => {
                 {/* FAQ Item 1 */}
                 <div className="border-b border-gray-200 pb-4">
                   <div className="flex justify-between items-center cursor-pointer py-2">
-                    <h3 className="font-serif font-medium text-lg">What is Leadership Academy?</h3>
+                    <h3 className="font-serif font-medium text-lg">What is the Latina Empire Leadership Academy?</h3>
                     <div className="text-gray-400">
                       <ChevronDown className="h-5 w-5" />
                     </div>
@@ -878,7 +878,7 @@ const EventDetail = () => {
                 {/* FAQ Item 2 */}
                 <div className="border-b border-gray-200 pb-4">
                   <div className="flex justify-between items-center cursor-pointer py-2">
-                    <h3 className="font-serif font-medium text-lg">What makes Leadership Academy different?</h3>
+                    <h3 className="font-serif font-medium text-lg">What makes the Latina Empire Leadership Academy unique?</h3>
                     <div className="text-gray-400">
                       <ChevronDown className="h-5 w-5" />
                     </div>
@@ -888,7 +888,7 @@ const EventDetail = () => {
                 {/* FAQ Item 3 */}
                 <div className="border-b border-gray-200 pb-4">
                   <div className="flex justify-between items-center cursor-pointer py-2">
-                    <h3 className="font-serif font-medium text-lg">Who is Leadership Academy for?</h3>
+                    <h3 className="font-serif font-medium text-lg">Who is the Latina Empire Leadership Academy for?</h3>
                     <div className="text-gray-400">
                       <ChevronDown className="h-5 w-5" />
                     </div>
@@ -898,7 +898,7 @@ const EventDetail = () => {
                 {/* FAQ Item 4 */}
                 <div className="border-b border-gray-200 pb-4">
                   <div className="flex justify-between items-center cursor-pointer py-2">
-                    <h3 className="font-serif font-medium text-lg">What can I expect to gain from attending Leadership Academy?</h3>
+                    <h3 className="font-serif font-medium text-lg">What can I expect to gain from attending the Latina Empire Leadership Academy?</h3>
                     <div className="text-gray-400">
                       <ChevronDown className="h-5 w-5" />
                     </div>
@@ -908,7 +908,7 @@ const EventDetail = () => {
                 {/* FAQ Item 5 */}
                 <div className="border-b border-gray-200 pb-4">
                   <div className="flex justify-between items-center cursor-pointer py-2">
-                    <h3 className="font-serif font-medium text-lg">Is Leadership Academy only for business leaders?</h3>
+                    <h3 className="font-serif font-medium text-lg">Is the Latina Empire Leadership Academy only for business leaders?</h3>
                     <div className="text-gray-400">
                       <ChevronDown className="h-5 w-5" />
                     </div>
@@ -928,7 +928,7 @@ const EventDetail = () => {
                 {/* FAQ Item 7 */}
                 <div className="border-b border-gray-200 pb-4">
                   <div className="flex justify-between items-center cursor-pointer py-2">
-                    <h3 className="font-serif font-medium text-lg">Who will I learn from at Leadership Academy?</h3>
+                    <h3 className="font-serif font-medium text-lg">Who will I learn from at the Latina Empire Leadership Academy?</h3>
                     <div className="text-gray-400">
                       <ChevronDown className="h-5 w-5" />
                     </div>
@@ -1020,10 +1020,10 @@ const EventDetail = () => {
               <div className="p-4">
                 <div className="uppercase text-xs tracking-wider text-gray-400 mb-2">LEADERSHIP</div>
                 <h3 className="font-serif font-bold text-xl mb-2 group-hover:text-magenta transition-colors">
-                  Leadership Secret Two: A Leader's Edge in Uncertain Times
+                  5 Strategies for Latina Leaders to Navigate Global Markets
                 </h3>
                 <p className="text-sm text-gray-400 line-clamp-2">
-                  In the previous post we discussed the quality of pure energy and its impact on your ability to inspire and lead a team. Today...
+                  In our previous post, we explored how cultural intelligence creates a competitive edge. Today we're diving into specific strategies for...
                 </p>
               </div>
             </div>
@@ -1040,10 +1040,10 @@ const EventDetail = () => {
               <div className="p-4">
                 <div className="uppercase text-xs tracking-wider text-gray-400 mb-2">BUSINESS</div>
                 <h3 className="font-serif font-bold text-xl mb-2 group-hover:text-magenta transition-colors">
-                  How to be a leader at work
+                  Breaking the Glass Ceiling: Latina Leadership in Corporate America
                 </h3>
                 <p className="text-sm text-gray-400 line-clamp-2">
-                  Think back on your favorite manager or boss you've had. What set them apart? Chances are, they were a good listener, able to...
+                  Our research with successful Latina executives reveals key strategies for overcoming bias and advancing to the C-suite. Learn how to...
                 </p>
               </div>
             </div>
@@ -1060,10 +1060,10 @@ const EventDetail = () => {
               <div className="p-4">
                 <div className="uppercase text-xs tracking-wider text-gray-400 mb-2">LEADERSHIP • ACADEMY</div>
                 <h3 className="font-serif font-bold text-xl mb-2 group-hover:text-magenta transition-colors">
-                  Influencing from the inside out
+                  Leveraging Cultural Heritage in Leadership
                 </h3>
                 <p className="text-sm text-gray-400 line-clamp-2">
-                  The most effective leaders understand that influence begins with mastering your internal state before focusing on external tactics.
+                  Latina Empire Academy teaches how embracing your cultural roots creates an authentic leadership style that bridges diverse perspectives in today's global business environment.
                 </p>
               </div>
             </div>
