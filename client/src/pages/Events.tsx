@@ -12,8 +12,8 @@ const EventCard = ({ event }: { event: Event }) => {
   // Generate a random event type for the demo
   const eventTypes = [
     { tag: "VIRTUAL", name: "LEADERSHIP ACADEMY" },
-    { tag: "IN-PERSON", name: "BUSINESS MASTERY" },
-    { tag: "HYBRID", name: "LIFE MASTERY" },
+    { tag: "IN-PERSON", name: "LATINA ACADEMY" },
+    { tag: "HYBRID", name: "EMPIRE ACADEMY" },
     { tag: "VIRTUAL", name: "SUCCESS SUMMIT" }
   ];
   const eventType = eventTypes[Math.floor(Math.random() * eventTypes.length)];
@@ -250,19 +250,19 @@ const Events = () => {
                     {/* Tag at top */}
                     <div className="absolute top-10 left-10 md:top-14 md:left-14 lg:top-20 lg:left-20">
                       <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
-                        <span className="text-xs uppercase tracking-wider font-medium">BUSINESS MASTERY</span>
+                        <span className="text-xs uppercase tracking-wider font-medium">LEADERSHIP ACADEMY</span>
                       </div>
                     </div>
                     
                     <div className="max-w-4xl pr-32">
                       {/* Title */}
                       <h3 className="font-sans font-bold text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight tracking-tight">
-                        Grow your business <br />exponentially
+                        Unleash your Latina <br />leadership potential
                       </h3>
                       
                       {/* Description */}
                       <p className="text-white/90 text-xl md:text-2xl max-w-2xl mb-0 leading-relaxed">
-                        Get the concrete strategies and tools that have transformed thousands of businesses at every stage.
+                        Join our transformative academy where Latina professionals build the skills, network, and confidence to lead in any industry.
                       </p>
                     </div>
                     
@@ -285,8 +285,8 @@ const Events = () => {
                     {/* Brand Logo */}
                     <div className="absolute bottom-10 right-10 md:bottom-14 md:right-14 lg:bottom-20 lg:right-20 bg-black text-white p-3 rounded">
                       <div className="uppercase font-bold text-center leading-none">
-                        <div className="text-xs tracking-widest mb-1">TONY ROBBINS</div>
-                        <div className="text-sm tracking-wider">BUSINESS<br/>MASTERY</div>
+                        <div className="text-xs tracking-widest mb-1">LATINA EMPIRE</div>
+                        <div className="text-sm tracking-wider">LEADERSHIP<br/>ACADEMY</div>
                       </div>
                     </div>
                   </div>
