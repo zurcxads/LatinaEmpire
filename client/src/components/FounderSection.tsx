@@ -40,7 +40,7 @@ const FounderSection = () => {
           <div className="relative">
             <div className="rounded-2xl overflow-hidden shadow-xl">
               <img 
-                src={images.founder}
+                src="https://img.freepik.com/free-vector/cute-latina-business-woman-cartoon-character_254949-113.jpg"
                 alt="Perla Tamez Casasnovas, Founder of Latina Empire" 
                 className="w-full h-full object-cover"
               />
