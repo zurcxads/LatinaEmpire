@@ -1073,50 +1073,9 @@ const EventDetail = () => {
         </div>
       </section>
 
-      {/* Location Map Placeholder */}
-      {event.locationMapUrl && !event.isPast && (
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4 md:px-6">
-            <h2 className="font-serif font-bold text-2xl md:text-3xl mb-6 text-center">Event Location</h2>
-            <div className="bg-gray-200 h-[400px] rounded-lg flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="h-12 w-12 text-magenta mx-auto mb-3" />
-                <p className="font-sans font-semibold mb-1">{event.location}</p>
-                {event.locationAddress && <p className="font-sans text-gray-600">{event.locationAddress}</p>}
-                <a 
-                  href={event.locationMapUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="font-sans text-magenta mt-3 inline-block hover:underline"
-                >
-                  Open in Google Maps
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
-      {/* Call to Action */}
-      {!event.isPast && (
-        <section className="py-16 bg-black text-white">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="font-serif font-bold text-3xl mb-6">Ready to Join Us?</h2>
-              <p className="font-sans text-lg opacity-90 mb-8">
-                Secure your spot at this transformational event. Limited spaces available.
-              </p>
-              <Button 
-                className="bg-magenta text-white px-8 py-6 h-auto rounded font-sans font-semibold text-base hover:bg-opacity-90 inline-flex items-center"
-                size="lg"
-              >
-                Register Now
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </div>
-          </div>
-        </section>
-      )}
+
+
 
       <Footer />
     </div>
