@@ -6,10 +6,16 @@ const QuizSection = () => {
   const [isStarted, setIsStarted] = useState(false);
   
   return (
-    <section className="py-16 md:py-24 bg-black text-white relative overflow-hidden">
-      {/* Background gradient effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-magenta/20 to-black z-0"></div>
-      <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-magenta/20 blur-3xl"></div>
+    <section className="py-16 md:py-24 text-white relative overflow-hidden">
+      {/* Background image and overlay */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/60 z-10"></div>
+        <img 
+          src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80"
+          alt="Motivational background" 
+          className="w-full h-full object-cover"
+        />
+      </div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {!isStarted ? (
