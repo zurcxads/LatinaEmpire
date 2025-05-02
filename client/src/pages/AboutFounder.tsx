@@ -86,6 +86,39 @@ const AboutFounder = () => {
         </div>
       </section>
 
+      {/* Quote before Journey Section */}
+      <section className="relative py-24 overflow-hidden bg-black">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-black/80 z-10"></div>
+          <img 
+            src="https://images.pexels.com/photos/7433922/pexels-photo-7433922.jpeg" 
+            alt="Background" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <div className="flex items-center">
+            <div className="w-full lg:w-3/5 ml-auto">
+              <p className="font-serif text-4xl md:text-5xl text-white leading-tight mb-6">
+                "I decided that I was going to find a way, somehow, someday, to give back and pay it forward."
+              </p>
+              <div className="flex items-center">
+                <div className="h-10 w-10 rounded-full bg-magenta flex-shrink-0 mr-3 overflow-hidden">
+                  <img 
+                    src="https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg" 
+                    alt="Perla Tamez Casasnovas" 
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <span className="text-white font-medium">Perla Tamez Casasnovas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* The Spark / Rise to Entrepreneurship */}
       <section className="section-padding bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
