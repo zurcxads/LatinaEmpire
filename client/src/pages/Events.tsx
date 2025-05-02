@@ -198,19 +198,19 @@ const Events = () => {
             <div className="relative aspect-[21/9] rounded-xl overflow-hidden bg-black shadow-lg">
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10"></div>
               <div className="absolute inset-0 z-20 p-10 md:p-14 lg:p-20 flex flex-col justify-end">
-                <div className="absolute top-10 left-10 md:top-14 md:left-14 lg:top-20 lg:left-20">
+                <div className="absolute top-1/3 left-10 md:left-14 lg:left-20">
                   <div className="inline-flex items-center bg-red-900/70 px-3 py-1 rounded-full backdrop-blur-sm">
                     <span className="text-xs uppercase tracking-wider font-medium text-white">CONNECTION ERROR</span>
                   </div>
                 </div>
                 
-                <div className="max-w-4xl">
+                <div className="max-w-4xl pr-32">
                   <h3 className="font-sans font-bold text-5xl md:text-6xl lg:text-7xl mb-6 text-white leading-tight">
                     Unable to
                     <br />
                     load events
                   </h3>
-                  <p className="text-white/90 text-xl md:text-2xl max-w-2xl mb-12 leading-relaxed pr-4">
+                  <p className="text-white/90 text-xl md:text-2xl max-w-2xl mb-12 leading-relaxed">
                     We're having trouble connecting to our event database. This might be a temporary connection issue.
                   </p>
                   <Button 
@@ -245,21 +245,21 @@ const Events = () => {
                   
                   {/* Content Overlay */}
                   <div className="absolute inset-0 z-20 p-10 md:p-14 lg:p-20 flex flex-col justify-end text-white">
-                    {/* Tag at top */}
-                    <div className="absolute top-10 left-10 md:top-14 md:left-14 lg:top-20 lg:left-20">
+                    {/* Tag at middle left */}
+                    <div className="absolute top-1/3 left-10 md:left-14 lg:left-20">
                       <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
                         <span className="text-xs uppercase tracking-wider font-medium">BUSINESS MASTERY</span>
                       </div>
                     </div>
                     
-                    <div className="max-w-4xl">
+                    <div className="max-w-4xl pr-32">
                       {/* Title */}
                       <h3 className="font-sans font-bold text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight tracking-tight">
                         Grow your business <br />exponentially
                       </h3>
                       
                       {/* Description */}
-                      <p className="text-white/90 text-xl md:text-2xl max-w-2xl mb-0 leading-relaxed pr-4">
+                      <p className="text-white/90 text-xl md:text-2xl max-w-2xl mb-0 leading-relaxed">
                         Get the concrete strategies and tools that have transformed thousands of businesses at every stage.
                       </p>
                     </div>
@@ -306,19 +306,19 @@ const Events = () => {
             <div className="relative aspect-[21/9] rounded-xl overflow-hidden bg-black shadow-lg">
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10"></div>
               <div className="absolute inset-0 z-20 p-10 md:p-14 lg:p-20 flex flex-col justify-end">
-                <div className="absolute top-10 left-10 md:top-14 md:left-14 lg:top-20 lg:left-20">
+                <div className="absolute top-1/3 left-10 md:left-14 lg:left-20">
                   <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
                     <span className="text-xs uppercase tracking-wider font-medium text-white">COMING SOON</span>
                   </div>
                 </div>
                 
-                <div className="max-w-4xl">
+                <div className="max-w-4xl pr-32">
                   <h3 className="font-sans font-bold text-5xl md:text-6xl lg:text-7xl mb-6 text-white leading-tight">
                     New events
                     <br />
                     being planned
                   </h3>
-                  <p className="text-white/90 text-xl md:text-2xl max-w-2xl mb-12 leading-relaxed pr-4">
+                  <p className="text-white/90 text-xl md:text-2xl max-w-2xl mb-12 leading-relaxed">
                     We're currently planning our next series of transformative events. Join our mailing list to be the first to know when registrations open.
                   </p>
                   <Button className="bg-white text-black hover:bg-white/90 rounded-full px-8 py-1.5 h-auto text-base">
