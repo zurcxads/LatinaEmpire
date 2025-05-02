@@ -26,7 +26,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-black text-white">
-      <div className="border-t border-white/10">
+      <div>
         <div className="container mx-auto px-4 md:px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
             <div className="md:col-span-3">
@@ -105,7 +105,7 @@ const Footer = () => {
       </div>
       
       {/* Copyright */}
-      <div className="border-t border-white/10">
+      <div>
         <div className="container mx-auto px-4 md:px-6 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="font-sans text-white/50 text-sm">
