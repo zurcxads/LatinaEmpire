@@ -127,81 +127,96 @@ const EventDetail = () => {
 
       {/* Event Banner */}
       <section 
-        className="h-[580px] bg-center bg-cover bg-no-repeat relative flex items-end"
-        style={{ 
-          backgroundImage: `url('${event.bannerImage || event.image}')` 
-        }}
-        onError={(e) => {
-          const section = e.currentTarget as HTMLElement;
-          section.style.backgroundImage = "";
-          section.classList.add("hero-placeholder");
-        }}
+        className="bg-black py-16"
       >
-        {/* Dark overlay gradient at the bottom */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90"></div>
-        
-        {/* Event badge in top left */}
-        <div className="absolute top-28 left-4 md:left-12 z-10">
-          <Link href="/events" className="inline-flex items-center text-white bg-black/30 px-4 py-2 rounded-full mb-6 hover:bg-black/50 transition-all backdrop-blur-sm">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Events
-          </Link>
-          <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
-            <span className="text-xs uppercase tracking-wider font-medium text-white">{getEventType()}</span>
+        <div className="container mx-auto px-4 md:px-12 relative">
+          {/* Back to Events button - kept where it is */}
+          <div className="mb-12">
+            <Link href="/events" className="inline-flex items-center text-white bg-black/30 px-4 py-2 rounded-full hover:bg-black/50 transition-all backdrop-blur-sm">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Events
+            </Link>
           </div>
-        </div>
-        
-        {/* Event badge in top right (optional) - like in the reference image */}
-        <div className="absolute top-28 right-4 md:right-12 z-10">
-          <div className="bg-black p-4 rounded-lg shadow-lg">
-            <div className="text-center text-white uppercase">
-              <div className="font-bold text-lg tracking-wide">{getEventBadgeTitle().sub}</div>
-              <div className="font-bold text-2xl tracking-wide">{getEventBadgeTitle().main}</div>
-              <div className="mt-1 text-sm tracking-wide">{event.location}</div>
-            </div>
-          </div>
-        </div>
-        
-        {/* Content container */}
-        <div className="container mx-auto px-4 md:px-12 relative z-10 text-white pb-16">
-          <div className="max-w-4xl">
-            {/* Title and Description */}
-            <h1 className="font-serif font-bold text-5xl md:text-6xl leading-tight mb-4">
-              Rejuvenate your health<br />and build your wealth
-            </h1>
-            <p className="font-sans text-lg md:text-xl mb-8 max-w-2xl opacity-90">
-              Embark on a journey of change in a tropical oasis with the leading minds in health, wellbeing, finance and more.
-            </p>
-            
-            {/* Event details and CTA */}
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-              <div className="flex items-center gap-10">
-                <div>
-                  <p className="uppercase text-xs tracking-wider mb-1 opacity-80">DATE</p>
-                  <p className="text-lg font-medium">{event.date}</p>
-                </div>
-                <div>
-                  <p className="uppercase text-xs tracking-wider mb-1 opacity-80">PLACE</p>
-                  <p className="text-lg font-medium">{event.location}</p>
-                </div>
-                <div>
-                  <p className="uppercase text-xs tracking-wider mb-1 opacity-80">TIMEZONE</p>
-                  <div className="flex items-center">
-                    <Globe className="h-4 w-4 mr-1" />
-                    <span className="text-lg font-medium">
-                      {event.location === "Santa Fe, NM" ? "MST" : "Local Time"}
-                    </span>
-                  </div>
+          
+          <div className="relative rounded-2xl overflow-hidden">
+            {/* Background image with curved edges */}
+            <div 
+              className="h-[480px] bg-center bg-cover bg-no-repeat relative"
+              style={{ 
+                backgroundImage: `url('${event.bannerImage || event.image}')` 
+              }}
+              onError={(e) => {
+                const section = e.currentTarget as HTMLElement;
+                section.style.backgroundImage = "";
+                section.classList.add("hero-placeholder");
+              }}
+            >
+              {/* Dark overlay gradient at the bottom */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90"></div>
+              
+              {/* In-person tag hovering above title */}
+              <div className="absolute top-8 left-8 z-10">
+                <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
+                  <span className="text-xs uppercase tracking-wider font-medium text-white">{getEventType()}</span>
                 </div>
               </div>
               
-              {/* CTA Button */}
-              <Button 
-                onClick={scrollToContent}
-                className="bg-white text-black hover:bg-white/90 px-8 py-2 h-12 rounded-full font-medium"
-              >
-                Learn more
-              </Button>
+              {/* Content container */}
+              <div className="absolute bottom-0 left-0 right-0 px-8 md:px-12 pb-16 z-10">
+                <div className="flex flex-col md:flex-row items-end justify-between">
+                  <div className="max-w-3xl">
+                    {/* Title and Description */}
+                    <h1 className="font-serif font-bold text-5xl md:text-6xl leading-tight mb-4 text-white">
+                      Rejuvenate your health<br />and build your wealth
+                    </h1>
+                    <p className="font-sans text-lg md:text-xl mb-8 max-w-2xl text-white/90">
+                      Embark on a journey of change in a tropical oasis with the leading minds in health, wellbeing, finance and more.
+                    </p>
+                    
+                    {/* Event details and CTA - rearranged */}
+                    <div className="flex flex-wrap md:flex-nowrap items-center gap-8">
+                      {/* CTA Button now on the left */}
+                      <Button 
+                        onClick={scrollToContent}
+                        className="bg-white text-black hover:bg-white/90 px-8 py-2 h-12 rounded-full font-medium order-last md:order-first"
+                      >
+                        Learn more
+                      </Button>
+
+                      <div className="flex items-center gap-6 md:gap-10">
+                        <div>
+                          <p className="uppercase text-xs tracking-wider mb-1 text-white/80">DATE</p>
+                          <p className="text-lg font-medium text-white">{event.date}</p>
+                        </div>
+                        <div>
+                          <p className="uppercase text-xs tracking-wider mb-1 text-white/80">PLACE</p>
+                          <p className="text-lg font-medium text-white">{event.location}</p>
+                        </div>
+                        <div>
+                          <p className="uppercase text-xs tracking-wider mb-1 text-white/80">TIMEZONE</p>
+                          <div className="flex items-center">
+                            <Globe className="h-4 w-4 mr-1 text-white" />
+                            <span className="text-lg font-medium text-white">
+                              {event.location === "Santa Fe, NM" ? "MST" : "Local Time"}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Event badge now in bottom right corner, aligned with elements */}
+                  <div className="mt-8 md:mt-0">
+                    <div className="bg-black p-4 rounded-lg shadow-lg">
+                      <div className="text-center text-white uppercase">
+                        <div className="font-bold text-lg tracking-wide">{getEventBadgeTitle().sub}</div>
+                        <div className="font-bold text-2xl tracking-wide">{getEventBadgeTitle().main}</div>
+                        <div className="mt-1 text-sm tracking-wide">{event.location}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
