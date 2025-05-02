@@ -1,10 +1,35 @@
+
 import React from 'react';
 import { Link } from 'wouter';
 import { Circle, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel';
 
 const ShopSection = () => {
+  const products = [
+    {
+      name: 'Empire Journal',
+      price: 24.99,
+      image: '/empire-journal.jpg'
+    },
+    {
+      name: 'Heart Mind Money Tee',
+      price: 32.99,
+      image: '/heart-mind-tee.jpg'
+    },
+    {
+      name: 'Latina Empowerment Planner',
+      price: 29.99,
+      image: '/planner.jpg'
+    },
+    {
+      name: 'Empire Water Bottle',
+      price: 18.99,
+      image: '/water-bottle.jpg'
+    }
+  ];
+
   return (
     <section className="py-24 bg-[#000000] text-white">
       <div className="container mx-auto px-4">
@@ -32,57 +57,37 @@ const ShopSection = () => {
           <Button variant="link" className="text-gray-400 hover:text-white">Supplements</Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          <Card className="bg-white/5 border-white/10 transition-transform hover:-translate-y-1">
-            <CardContent className="p-6">
-              <div className="relative mb-4">
-                <img src="/empire-journal.jpg" alt="Empire Journal" className="w-full aspect-square object-cover rounded-lg" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg"></div>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Empire Journal</h3>
-              <p className="text-gray-400 mb-4">$24.99</p>
-              <Button className="w-full bg-magenta hover:bg-magenta/90">Add to cart</Button>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white/5 border-white/10 transition-transform hover:-translate-y-1">
-            <CardContent className="p-6">
-              <div className="relative mb-4">
-                <img src="/heart-mind-tee.jpg" alt="Heart Mind Money Tee" className="w-full aspect-square object-cover rounded-lg" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg"></div>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Heart Mind Money Tee</h3>
-              <p className="text-gray-400 mb-4">$32.99</p>
-              <Button className="w-full bg-magenta hover:bg-magenta/90">Add to cart</Button>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white/5 border-white/10 transition-transform hover:-translate-y-1">
-            <CardContent className="p-6">
-              <div className="relative mb-4">
-                <img src="/planner.jpg" alt="Latina Empowerment Planner" className="w-full aspect-square object-cover rounded-lg" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg"></div>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Latina Empowerment Planner</h3>
-              <p className="text-gray-400 mb-4">$29.99</p>
-              <Button className="w-full bg-magenta hover:bg-magenta/90">Add to cart</Button>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white/5 border-white/10 transition-transform hover:-translate-y-1">
-            <CardContent className="p-6">
-              <div className="relative mb-4">
-                <img src="/water-bottle.jpg" alt="Empire Water Bottle" className="w-full aspect-square object-cover rounded-lg" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg"></div>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Empire Water Bottle</h3>
-              <p className="text-gray-400 mb-4">$18.99</p>
-              <Button className="w-full bg-magenta hover:bg-magenta/90">Add to cart</Button>
-            </CardContent>
-          </Card>
+        <div className="relative">
+          <Carousel
+            opts={{
+              align: 'start',
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {products.map((product, index) => (
+                <CarouselItem key={index} className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                  <Card className="bg-white/5 border-white/10 transition-transform hover:-translate-y-1">
+                    <CardContent className="p-6">
+                      <div className="relative mb-4">
+                        <img src={product.image} alt={product.name} className="w-full aspect-square object-cover rounded-lg" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg"></div>
+                      </div>
+                      <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
+                      <p className="text-gray-400 mb-4">${product.price}</p>
+                      <Button className="w-full bg-magenta hover:bg-magenta/90">Add to cart</Button>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="absolute -left-12 text-white border-white/20" />
+            <CarouselNext className="absolute -right-12 text-white border-white/20" />
+          </Carousel>
         </div>
 
-        <div className="text-center">
+        <div className="text-center mt-12">
           <Link href="/shop">
             <Button className="bg-magenta hover:bg-magenta/90 group">
               Shop All
