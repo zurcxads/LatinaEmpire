@@ -121,8 +121,8 @@ const Navbar = () => {
           </div>
 
           {isOpen && (
-            <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t">
-              <div className="container mx-auto px-4 py-4 space-y-4">
+            <div className="lg:hidden fixed top-[64px] left-0 right-0 bottom-0 bg-white shadow-xl border-t overflow-y-auto z-50">
+              <div className="container mx-auto px-4 py-6 space-y-6">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
