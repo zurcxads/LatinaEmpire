@@ -32,15 +32,9 @@ const ImpactCarousel = () => {
   }, [images.length]);
 
   return (
-    <section className="py-16 md:py-20 bg-black">
+    <section className="py-0">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-4xl mx-auto text-center mb-12">
-          <p className="font-serif text-3xl md:text-4xl text-white leading-tight">
-            Now she's a recognized Latina leader, the founder of a global empowerment platform, and has impacted thousands with her transformative programs.
-          </p>
-        </div>
-        
-        <div className="flex overflow-hidden relative rounded-xl h-[300px] md:h-[400px] mt-10">
+        <div className="flex overflow-hidden relative rounded-xl h-[300px] md:h-[400px]">
           {images.map((image, index) => (
             <div 
               key={index}
