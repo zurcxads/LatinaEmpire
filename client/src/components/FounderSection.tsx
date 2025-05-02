@@ -39,7 +39,7 @@ const FounderSection = () => {
           <div className="relative">
             <div className="rounded-2xl overflow-hidden shadow-xl">
               <img 
-                src="https://images.pexels.com/photos/7262404/pexels-photo-7262404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src={images.founder}
                 alt="Perla Tamez Casasnovas, Founder of Latina Empire" 
                 className="w-full h-full object-cover"
               />
