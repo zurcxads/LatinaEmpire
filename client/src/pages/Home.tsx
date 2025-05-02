@@ -15,40 +15,35 @@ import Footer from "@/components/Footer";
 const Home = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      
+
       {/* SECTION 1: Hero Banner - Full-screen flagship program promo */}
       <Hero />
-      
+
       {/* SECTION 2: Next Event Promo Banner */}
       <NextEventBanner />
-      
+
       {/* SECTION 3: Event/Program Carousel - Horizontal slider */}
       <ProgramCarousel />
-      
-      {/* SECTION 4: Pillars Section */}
-      <PillarsSection />
-      
-      {/* SECTION 5: Testimonials */}
+
+      {/* SECTION 4: Testimonials */}
       <Testimonial />
-      
-      {/* SECTION 6: Meet Our Founder */}
+
+      {/* SECTION 5: Meet Our Founder */}
       <FounderSection />
-      
-      {/* SECTION 7: Shop Preview */}
+
+      {/* SECTION 6: Shop Preview */}
       <ShopSection />
-      
-      {/* SECTION 8: Brand Introduction - Core Values */}
-      <BrandIntro />
-      
-      {/* SECTION 9: Coaching Section */}
+
+
+      {/* SECTION 7: Coaching Section */}
       <CoachingSection />
-      
-      {/* SECTION 10: Podcast Section */}
+
+      {/* SECTION 8: Podcast Section */}
       <PodcastSection />
-      
-      {/* SECTION 11: Final CTA Section */}
+
+      {/* SECTION 9: Final CTA Section */}
       <FinalCTA />
-      
+
       <Footer />
     </div>
   );
