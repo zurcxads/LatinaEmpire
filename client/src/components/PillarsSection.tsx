@@ -49,7 +49,20 @@ const PillarsSection = () => {
     <section className="py-20 md:py-24 bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-          {/* Left column: Text */}
+          {/* Left column: Image */}
+          <div className="flex items-center justify-center">
+            <div className="relative h-[350px] w-[350px]">
+              <div className="rounded-2xl overflow-hidden shadow-xl h-full">
+                <img 
+                  src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                  alt="Live event with audience" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Right column: Text */}
           <div className="flex flex-col justify-start h-full">
             <div className="flex items-center gap-2 mb-6">
               <span className="font-sans uppercase tracking-wider text-gray-600 font-semibold text-sm">
@@ -77,18 +90,7 @@ const PillarsSection = () => {
             </div>
           </div>
 
-          {/* Right column: Image */}
-          <div className="flex items-center justify-center">
-            <div className="relative h-[350px] w-[350px]">
-              <div className="rounded-2xl overflow-hidden shadow-xl h-full">
-                <img 
-                  src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                  alt="Live event with audience" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
 
