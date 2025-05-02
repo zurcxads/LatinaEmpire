@@ -43,6 +43,7 @@ const Navbar = () => {
     { href: "/", label: "HOME" },
     { href: "/program", label: "PROGRAM" },
     { href: "/events", label: "EVENTS" },
+    { href: "/blog", label: "BLOG" },
     { href: "/ambassadors", label: "AMBASSADORS" },
     { href: "/about-founder", label: "OUR FOUNDER" },
   ];

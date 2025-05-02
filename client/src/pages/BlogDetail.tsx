@@ -77,7 +77,7 @@ const SocialShare = ({ post }: { post: BlogPost }) => {
   };
   
   const handleShare = () => {
-    if (navigator.share) {
+    if (typeof navigator !== 'undefined' && 'share' in navigator) {
       navigator.share({
         title: post.title,
         text: post.excerpt,
@@ -143,7 +143,7 @@ const SocialShare = ({ post }: { post: BlogPost }) => {
           </TooltipContent>
         </Tooltip>
         
-        {navigator.share && (
+        {typeof navigator !== 'undefined' && 'share' in navigator && (
           <Tooltip>
             <TooltipTrigger asChild>
               <button 

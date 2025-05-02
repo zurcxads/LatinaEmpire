@@ -15,6 +15,8 @@ import AmbassadorDetail from "@/pages/AmbassadorDetail";
 import Contact from "@/pages/Contact";
 import Join from "@/pages/Join";
 import AboutFounder from "@/pages/AboutFounder";
+import Blog from "@/pages/Blog";
+import BlogDetail from "@/pages/BlogDetail";
 import NotFound from "@/pages/not-found";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import Navbar from "@/components/Navbar";
@@ -33,6 +35,8 @@ function Router() {
           <Route path="/program" component={Program} />
           <Route path="/ambassadors" component={Ambassadors} />
           <Route path="/ambassadors/:slug" component={AmbassadorDetail} />
+          <Route path="/blog" component={Blog} />
+          <Route path="/blog/:slug" component={BlogDetail} />
           <Route path="/contact" component={Contact} />
           <Route path="/join" component={Join} />
           <Route path="/about-founder" component={AboutFounder} />
