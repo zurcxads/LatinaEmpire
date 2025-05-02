@@ -98,7 +98,7 @@ const AboutFounder = () => {
       </section>
       
       {/* Guiding Principles Section */}
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <div>
@@ -231,7 +231,7 @@ const AboutFounder = () => {
       </section>
 
       {/* The Spark / Rise to Entrepreneurship */}
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -251,10 +251,15 @@ const AboutFounder = () => {
               Yet at the height of her corporate success, Perla experienced what she calls her "clarity moment." Despite her achievements, she noticed a pattern: talented Latina professionals were consistently underrepresented in leadership, not due to lack of talent or drive, but because of systemic barriers and missing support networks.
             </p>
 
-            <div className="my-12 bg-magenta/5 p-8 md:p-12 border-l-4 border-magenta rounded-r-lg">
-              <p className="text-2xl md:text-3xl text-gray-800 italic font-serif">
-                "I didn't just want success — I wanted to rewrite the Latina playbook."
-              </p>
+            <div className="my-12 flex items-center justify-center">
+              <div className="relative py-12 px-8 md:px-16 bg-gradient-to-r from-magenta/10 to-magenta/5 rounded-xl shadow-sm w-full max-w-3xl">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-magenta to-magenta/30 rounded-t-xl"></div>
+                <span className="text-magenta text-5xl absolute top-6 left-8 opacity-20 font-serif">"</span>
+                <p className="text-2xl md:text-3xl text-gray-800 font-serif text-center relative z-10">
+                  I didn't just want success — I wanted to rewrite the Latina playbook.
+                </p>
+                <span className="text-magenta text-5xl absolute bottom-6 right-8 opacity-20 font-serif">"</span>
+              </div>
             </div>
             
             <p className="text-gray-700 text-lg mb-6 leading-relaxed">
