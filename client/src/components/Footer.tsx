@@ -25,48 +25,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-black text-white">
-      {/* Newsletter Section */}
-      <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-          <div>
-            <h3 className="font-serif font-bold text-3xl md:text-4xl mb-4">Get Latina Empire Updates</h3>
-            <p className="font-sans text-lg text-white/70 mb-0 max-w-xl">
-              Join our newsletter for the latest events, exclusive content and program updates.
-            </p>
-          </div>
-          
-          <div className="w-full">
-            {subscribed ? (
-              <div className="bg-white/10 rounded-lg p-6 text-center">
-                <p className="text-white font-semibold text-lg">
-                  Thank you for subscribing!
-                </p>
-                <p className="text-white/70">
-                  Check your inbox for a confirmation email.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-                <Input
-                  type="email"
-                  placeholder="Enter your email address"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="flex-grow py-6 px-6 rounded-full border-0 bg-white/10 text-white placeholder-white/50 focus:ring-magenta"
-                />
-                <Button 
-                  type="submit" 
-                  className="bg-white text-black hover:bg-gray-100 rounded-full py-6 px-8 h-auto"
-                >
-                  Subscribe
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </form>
-            )}
-          </div>
-        </div>
-      </div>
+      
       
       {/* Main Footer */}
       <div className="border-t border-white/10">
