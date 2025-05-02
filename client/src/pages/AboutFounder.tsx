@@ -169,6 +169,8 @@ const AboutFounder = () => {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-black/80 z-10"></div>
+          {/* Fade effect at the bottom */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-20"></div>
           <img 
             src="https://images.pexels.com/photos/7433922/pexels-photo-7433922.jpeg" 
             alt="Background" 
