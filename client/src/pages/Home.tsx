@@ -7,6 +7,7 @@ import PillarsSection from "@/components/PillarsSection";
 import FounderSection from "@/components/FounderSection";
 import ShopSection from "@/components/ShopSection";
 import PodcastSection from "@/components/PodcastSection";
+import QuizSection from "@/components/QuizSection";
 import FinalCTA from "@/components/FinalCTA";
 
 const Home = () => {
@@ -21,22 +22,25 @@ const Home = () => {
       {/* SECTION 3: Event/Program Carousel - Horizontal slider */}
       <ProgramCarousel />
 
-      {/* SECTION 4: Pillars Section */}
+      {/* SECTION 4: Life Mastery Quiz */}
+      <QuizSection />
+
+      {/* SECTION 5: Pillars Section */}
       <PillarsSection />
 
-      {/* SECTION 5: Testimonials */}
+      {/* SECTION 6: Testimonials */}
       <Testimonial />
 
-      {/* SECTION 6: Meet Our Founder */}
+      {/* SECTION 7: Meet Our Founder */}
       <FounderSection />
 
-      {/* SECTION 7: Shop Preview */}
+      {/* SECTION 8: Shop Preview */}
       <ShopSection />
 
-      {/* SECTION 8: Podcast Section */}
+      {/* SECTION 9: Podcast Section */}
       <PodcastSection />
 
-      {/* SECTION 9: Final CTA Section */}
+      {/* SECTION 10: Final CTA Section */}
       <FinalCTA />
     </div>
   );
