@@ -17,8 +17,8 @@ const AboutFounder = () => {
         
         {/* Container with padding for rounded corners */}
         <div className="absolute inset-x-8 top-24 bottom-8 rounded-3xl overflow-hidden z-0">
-          {/* Background Image with Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
+          {/* Background Image with Overlay - Bottom Fade Only */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10"></div>
           <img 
             src="https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg" 
             alt="Perla Tamez Casasnovas" 
