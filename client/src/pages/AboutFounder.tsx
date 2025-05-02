@@ -11,9 +11,9 @@ const AboutFounder = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-start overflow-hidden bg-black text-white">
+      <section className="relative min-h-[90vh] flex items-center justify-start overflow-hidden bg-black text-white pt-8 px-8 pb-8">
         {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-6 rounded-3xl overflow-hidden z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
           <img 
             src="https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg" 
@@ -24,7 +24,7 @@ const AboutFounder = () => {
         
         {/* Content */}
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="max-w-2xl py-20">
+          <div className="max-w-2xl py-16">
             <div className="mb-8">
               <span className="inline-flex items-center text-white/90 uppercase text-sm tracking-wider font-medium">
                 <span className="mr-2 h-1.5 w-1.5 rounded-full bg-magenta"></span>
