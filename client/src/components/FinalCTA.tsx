@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import JoinModal from "./JoinModal";
@@ -9,21 +10,21 @@ const FinalCTA = () => {
     <>
       <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
       
-      <section className="py-28 bg-gray-50">
+      <section className="py-24 bg-[#f9f9f9]">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="font-serif font-bold text-4xl md:text-6xl mb-8 leading-tight">
-              Are You Ready to Join the Movement?
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl mb-6 text-black">
+              Ready to Step Into Your Power?
             </h2>
-            <p className="font-sans text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
-              Join thousands of Latinas who are transforming their lives, building wealth, and creating lasting impact.
+            <p className="font-sans text-lg md:text-xl text-gray-700 mb-10 max-w-2xl mx-auto">
+              Join a global sisterhood of driven Latinas committed to building legacy, wealth, and purpose.
             </p>
             
             <Button 
               onClick={() => setIsModalOpen(true)}
-              className="bg-black text-white hover:bg-gray-800 rounded-full font-semibold text-xl py-7 px-12 shadow-xl"
+              className="bg-[#D81B60] hover:bg-[#C2185B] text-white text-xl font-semibold py-8 px-12 rounded-xl shadow-xl transform transition-transform hover:scale-105"
             >
-              Join the Community
+              Join the Movement
             </Button>
           </div>
         </div>
