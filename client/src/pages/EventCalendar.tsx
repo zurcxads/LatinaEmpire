@@ -3,12 +3,13 @@ import { Link } from "wouter";
 import { format, parse, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, parseISO, isValid } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import { MapPin, Clock, Calendar as CalendarIcon, ChevronLeft, ChevronRight, Filter } from "lucide-react";
+import { MapPin, Clock, Calendar as CalendarIcon, ChevronLeft, ChevronRight, Filter, Search } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { eventsService } from "@/lib/eventsService";
 import { Event } from "@/lib/types";
 import { useQuery } from "@tanstack/react-query";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -24,6 +25,15 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 // Helper function to convert the date format used in the API to a Date object
 const parseEventDate = (dateString: string): Date | null => {
@@ -127,8 +137,89 @@ const DayEventsList = ({ events, date }: { events: Event[], date: Date }) => {
   );
 };
 
+// Component for the table view of events
+const EventTable = ({ events }: { events: Event[] }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  
+  // Filter events based on the search term
+  const filteredEvents = events.filter(event => 
+    event.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    event.location.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  
+  // Check if an event is upcoming or past
+  const isUpcoming = (event: Event) => {
+    if (event.isPast) return false;
+    
+    const eventDate = parseEventDate(event.date);
+    if (!eventDate) return false;
+    
+    return eventDate >= new Date();
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Search input */}
+      <div className="relative w-full md:w-1/2 lg:w-1/3">
+        <Input
+          type="text"
+          placeholder="Search events by name or location..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="pl-10"
+        />
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+      </div>
+      
+      {/* Table */}
+      <div className="overflow-auto border rounded-lg">
+        <Table className="min-w-full">
+          <TableHeader>
+            <TableRow className="bg-gray-50 hover:bg-gray-50">
+              <TableHead className="py-4 px-6 text-left font-semibold text-sm">Event</TableHead>
+              <TableHead className="py-4 px-6 text-left font-semibold text-sm">Date</TableHead>
+              <TableHead className="py-4 px-6 text-left font-semibold text-sm">Location</TableHead>
+              <TableHead></TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {filteredEvents.length > 0 ? (
+              filteredEvents.map(event => (
+                <TableRow key={event.id} className="border-t">
+                  <TableCell className="py-6 px-6 font-medium">{event.name}</TableCell>
+                  <TableCell className="py-6 px-6 text-gray-600">{event.date}</TableCell>
+                  <TableCell className="py-6 px-6 text-gray-600">{event.location}</TableCell>
+                  <TableCell className="py-6 px-6 text-right">
+                    {isUpcoming(event) ? (
+                      <Link href={`/events/${event.slug}`}>
+                        <Button variant="default" className="rounded-full bg-black hover:bg-gray-800 text-white px-6">
+                          View event
+                        </Button>
+                      </Link>
+                    ) : (
+                      <Button variant="outline" className="rounded-full" disabled>
+                        Coming soon
+                      </Button>
+                    )}
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={4} className="py-10 text-center text-gray-500">
+                  No events match your search criteria
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
+    </div>
+  );
+};
+
 const EventCalendar = () => {
-  const [view, setView] = useState<"calendar" | "list">("calendar");
+  const [view, setView] = useState<"calendar" | "list" | "table">("table");
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [location, setLocation] = useState<string>("all");
@@ -197,10 +288,7 @@ const EventCalendar = () => {
               Create your own success story through the powerful impact of a Latina Empire event.
             </p>
             <Link href="/events">
-              <Button 
-                variant="outline" 
-                className="rounded-md border-white text-white hover:bg-white hover:text-black px-5 py-2 transition-colors"
-              >
+              <Button className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 h-auto">
                 View all events
               </Button>
             </Link>
@@ -215,6 +303,14 @@ const EventCalendar = () => {
           <div className="flex flex-wrap gap-4 justify-between items-center mb-8">
             {/* View toggle */}
             <div className="flex border rounded-lg overflow-hidden">
+              <Button
+                variant={view === "table" ? "default" : "outline"}
+                onClick={() => setView("table")}
+                className="rounded-none"
+              >
+                <Filter className="h-4 w-4 mr-2" />
+                Table View
+              </Button>
               <Button
                 variant={view === "calendar" ? "default" : "outline"}
                 onClick={() => setView("calendar")}
@@ -254,59 +350,76 @@ const EventCalendar = () => {
             </div>
           </div>
           
-          {/* Calendar or List View */}
-          {view === "calendar" ? (
-            <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
-              {/* Calendar Days */}
-              {eachDayOfInterval({
-                start: startOfMonth(currentMonth),
-                end: endOfMonth(currentMonth)
-              }).map((date, index) => {
-                // Get events for this day
-                const dayEvents = filteredEvents.filter(event => {
-                  const eventDate = parseEventDate(event.date);
-                  return eventDate && isSameDay(eventDate, date);
-                });
-                
-                return (
-                  <div 
-                    key={date.toISOString()} 
-                    className={`border rounded-lg p-2 min-h-[120px] ${
-                      hasEvents(date) ? 'border-pink-200 bg-pink-50' : ''
-                    } ${
-                      isSameDay(date, new Date()) ? 'border-black' : ''
-                    }`}
-                  >
-                    <div className="text-sm font-medium mb-1">
-                      {format(date, "EEE")} {format(date, "d")}
-                    </div>
-                    {dayEvents.length > 0 ? (
-                      <div className="space-y-1">
-                        {dayEvents.map((event, i) => (
-                          <Link key={event.id} href={`/events/${event.slug}`}>
-                            <div className="p-1 bg-pink-100 hover:bg-pink-200 rounded text-xs truncate cursor-pointer">
-                              {event.name}
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    ) : (
-                      <div className="text-xs text-gray-400">No events</div>
-                    )}
-                  </div>
-                );
-              })}
+          {/* Loading spinner */}
+          {isLoading ? (
+            <div className="text-center py-12">
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-black"></div>
+              <p className="mt-4">Loading events...</p>
+            </div>
+          ) : filteredEvents.length === 0 ? (
+            <div className="text-center py-12">
+              <div className="text-xl">No events found</div>
+              <p className="text-gray-500 mt-2">
+                {location !== "all" 
+                  ? `There are no events scheduled in ${location}` 
+                  : "There are no upcoming events at this time"}
+              </p>
             </div>
           ) : (
-            // List View
-            <div className="space-y-4">
-              {isLoading ? (
-                <div className="text-center py-12">
-                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-black"></div>
-                  <p className="mt-4">Loading events...</p>
+            <>
+              {/* Table View */}
+              {view === "table" && (
+                <EventTable events={filteredEvents} />
+              )}
+              
+              {/* Calendar View */}
+              {view === "calendar" && (
+                <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
+                  {/* Calendar Days */}
+                  {eachDayOfInterval({
+                    start: startOfMonth(currentMonth),
+                    end: endOfMonth(currentMonth)
+                  }).map((date, index) => {
+                    // Get events for this day
+                    const dayEvents = filteredEvents.filter(event => {
+                      const eventDate = parseEventDate(event.date);
+                      return eventDate && isSameDay(eventDate, date);
+                    });
+                    
+                    return (
+                      <div 
+                        key={date.toISOString()} 
+                        className={`border rounded-lg p-2 min-h-[120px] ${
+                          hasEvents(date) ? 'border-pink-200 bg-pink-50' : ''
+                        } ${
+                          isSameDay(date, new Date()) ? 'border-black' : ''
+                        }`}
+                      >
+                        <div className="text-sm font-medium mb-1">
+                          {format(date, "EEE")} {format(date, "d")}
+                        </div>
+                        {dayEvents.length > 0 ? (
+                          <div className="space-y-1">
+                            {dayEvents.map((event, i) => (
+                              <Link key={event.id} href={`/events/${event.slug}`}>
+                                <div className="p-1 bg-pink-100 hover:bg-pink-200 rounded text-xs truncate cursor-pointer">
+                                  {event.name}
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="text-xs text-gray-400">No events</div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
-              ) : filteredEvents.length > 0 ? (
-                <>
+              )}
+              
+              {/* List View */}
+              {view === "list" && (
+                <div className="space-y-4">
                   {selectedDate ? (
                     <div>
                       <h2 className="text-2xl font-bold mb-4">
@@ -321,18 +434,9 @@ const EventCalendar = () => {
                       ))}
                     </div>
                   )}
-                </>
-              ) : (
-                <div className="text-center py-12">
-                  <div className="text-xl">No events found</div>
-                  <p className="text-gray-500 mt-2">
-                    {location !== "all" 
-                      ? `There are no events scheduled in ${location}` 
-                      : "There are no upcoming events at this time"}
-                  </p>
                 </div>
               )}
-            </div>
+            </>
           )}
         </div>
       </section>
