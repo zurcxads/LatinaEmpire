@@ -159,17 +159,6 @@ const EventTable = ({ events }: { events: Event[] }) => {
 
   return (
     <div className="space-y-6">
-      {/* Search input */}
-      <div className="relative w-full md:w-1/2 lg:w-1/3">
-        <Input
-          type="text"
-          placeholder="Search events by name or location..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="pl-10"
-        />
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-      </div>
       
       {/* Table */}
       <div className="overflow-auto border rounded-lg">
@@ -299,56 +288,6 @@ const EventCalendar = () => {
       {/* Main Content Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          {/* Controls and filters */}
-          <div className="flex flex-wrap gap-4 justify-between items-center mb-8">
-            {/* View toggle */}
-            <div className="flex border rounded-lg overflow-hidden">
-              <Button
-                variant={view === "table" ? "default" : "outline"}
-                onClick={() => setView("table")}
-                className="rounded-none"
-              >
-                <Filter className="h-4 w-4 mr-2" />
-                Table View
-              </Button>
-              <Button
-                variant={view === "calendar" ? "default" : "outline"}
-                onClick={() => setView("calendar")}
-                className="rounded-none"
-              >
-                <CalendarIcon className="h-4 w-4 mr-2" />
-                Calendar View
-              </Button>
-              <Button
-                variant={view === "list" ? "default" : "outline"}
-                onClick={() => setView("list")}
-                className="rounded-none"
-              >
-                <Filter className="h-4 w-4 mr-2" />
-                List View
-              </Button>
-            </div>
-            
-            {/* Location filter */}
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-medium">Filter by location:</span>
-              <Select
-                value={location}
-                onValueChange={(value) => setLocation(value)}
-              >
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Select location" />
-                </SelectTrigger>
-                <SelectContent>
-                  {locations.map(loc => (
-                    <SelectItem key={loc} value={loc}>
-                      {loc === "all" ? "All Locations" : loc}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
           
           {/* Loading spinner */}
           {isLoading ? (
