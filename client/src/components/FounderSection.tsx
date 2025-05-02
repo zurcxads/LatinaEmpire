@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import { images } from "@/data/images";
 
 const FounderSection = () => {
   return (
