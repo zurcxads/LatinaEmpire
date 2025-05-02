@@ -44,6 +44,7 @@ const Navbar = () => {
     { href: "/program", label: "PROGRAM" },
     { href: "/events", label: "EVENTS" },
     { href: "/ambassadors", label: "AMBASSADORS" },
+    { href: "/about-founder", label: "OUR FOUNDER" },
   ];
 
   return (

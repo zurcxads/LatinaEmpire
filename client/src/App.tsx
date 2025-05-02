@@ -13,6 +13,7 @@ import Ambassadors from "@/pages/Ambassadors";
 import AmbassadorDetail from "@/pages/AmbassadorDetail";
 import Contact from "@/pages/Contact";
 import Join from "@/pages/Join";
+import AboutFounder from "@/pages/AboutFounder";
 import NotFound from "@/pages/not-found";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import Navbar from "@/components/Navbar";
@@ -32,6 +33,7 @@ function Router() {
           <Route path="/ambassadors/:slug" component={AmbassadorDetail} />
           <Route path="/contact" component={Contact} />
           <Route path="/join" component={Join} />
+          <Route path="/about-founder" component={AboutFounder} />
           <Route component={NotFound} />
         </Switch>
       </main>
