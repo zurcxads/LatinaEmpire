@@ -442,6 +442,104 @@ const EventDetail = () => {
         </div>
       </section>
 
+      {/* Leadership Carousel Section */}
+      <section className="py-16 bg-white border-t border-gray-100">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="font-serif font-bold text-4xl md:text-5xl leading-tight mb-6">
+                Leadership is the<br />most important<br />skill you can master
+              </h2>
+            </div>
+            <div>
+              <p className="text-gray-600 text-lg">
+                Top leaders didn't just make the most of their innate talents – they committed themselves to learning how to motivate, inspire, and positively impact those around them.
+              </p>
+            </div>
+          </div>
+          
+          <div className="mt-12 overflow-hidden relative">
+            <div className="flex space-x-6 animate-carousel">
+              {/* Image 1 */}
+              <div className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 rounded-lg overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                  alt="Leadership Event" 
+                  className="w-full h-64 object-cover rounded-lg"
+                  onError={(e) => {
+                    e.currentTarget.classList.add("placeholder-image");
+                    e.currentTarget.alt = "Leadership Event Image";
+                  }}
+                />
+              </div>
+              
+              {/* Image 2 */}
+              <div className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 rounded-lg overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1503428593586-e225b39bddfe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                  alt="Leadership Training" 
+                  className="w-full h-64 object-cover rounded-lg"
+                  onError={(e) => {
+                    e.currentTarget.classList.add("placeholder-image");
+                    e.currentTarget.alt = "Leadership Training Image";
+                  }}
+                />
+              </div>
+              
+              {/* Image 3 */}
+              <div className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 rounded-lg overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                  alt="Team Building" 
+                  className="w-full h-64 object-cover rounded-lg"
+                  onError={(e) => {
+                    e.currentTarget.classList.add("placeholder-image");
+                    e.currentTarget.alt = "Team Building Image";
+                  }}
+                />
+              </div>
+              
+              {/* Duplicate images for continuous scroll */}
+              <div className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 rounded-lg overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                  alt="Leadership Event" 
+                  className="w-full h-64 object-cover rounded-lg"
+                  onError={(e) => {
+                    e.currentTarget.classList.add("placeholder-image");
+                    e.currentTarget.alt = "Leadership Event Image";
+                  }}
+                />
+              </div>
+              
+              <div className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 rounded-lg overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1503428593586-e225b39bddfe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                  alt="Leadership Training" 
+                  className="w-full h-64 object-cover rounded-lg"
+                  onError={(e) => {
+                    e.currentTarget.classList.add("placeholder-image");
+                    e.currentTarget.alt = "Leadership Training Image";
+                  }}
+                />
+              </div>
+              
+              <div className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 rounded-lg overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                  alt="Team Building" 
+                  className="w-full h-64 object-cover rounded-lg"
+                  onError={(e) => {
+                    e.currentTarget.classList.add("placeholder-image");
+                    e.currentTarget.alt = "Team Building Image";
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Location Map Placeholder */}
       {event.locationMapUrl && !event.isPast && (
         <section className="py-16 bg-gray-50">
