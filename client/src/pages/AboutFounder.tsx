@@ -11,39 +11,38 @@ const AboutFounder = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-black text-white">
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          {/* Left Column - Text */}
-          <div className="flex flex-col justify-center px-8 py-16 md:py-24 md:px-12 bg-black">
-            <div className="mb-10">
+      <section className="relative min-h-[90vh] flex items-center justify-start overflow-hidden bg-black text-white">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
+          <img 
+            src="https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg" 
+            alt="Perla Tamez Casasnovas" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
+        {/* Content */}
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <div className="max-w-2xl py-20">
+            <div className="mb-8">
               <span className="inline-flex items-center text-white/90 uppercase text-sm tracking-wider font-medium">
                 <span className="mr-2 h-1.5 w-1.5 rounded-full bg-magenta"></span>
                 About Perla
               </span>
             </div>
             
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-none mb-8 max-w-lg">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-none mb-8">
               Extraordinary lives answer to a higher calling
             </h1>
             
-            <Button
-              asChild
-              className="bg-magenta hover:bg-magenta/90 text-white font-medium text-lg w-fit px-6 py-5 h-auto rounded-lg mt-4"
+            <Link 
+              href="#early-life" 
+              className="font-sans inline-flex items-center text-white hover:text-magenta transition-colors no-underline text-base font-medium"
             >
-              <Link href="#early-life">
-                Read Her Story
-                <ArrowDown className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </div>
-          
-          {/* Right Column - Image */}
-          <div className="relative h-[50vh] md:h-auto">
-            <img 
-              src="https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg" 
-              alt="Perla Tamez Casasnovas" 
-              className="w-full h-full object-cover object-center"
-            />
+              READ HER STORY
+              <ArrowDown className="ml-2 h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
