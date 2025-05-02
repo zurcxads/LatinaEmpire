@@ -6,6 +6,7 @@ import BrandIntro from "@/components/BrandIntro";
 import Testimonial from "@/components/Testimonial";
 import PillarsSection from "@/components/PillarsSection";
 import FounderSection from "@/components/FounderSection";
+import ShopSection from "@/components/ShopSection";
 import CoachingSection from "@/components/CoachingSection";
 import PodcastSection from "@/components/PodcastSection";
 import FinalCTA from "@/components/FinalCTA";
@@ -34,16 +35,19 @@ const Home = () => {
       {/* SECTION 6: Meet Our Founder */}
       <FounderSection />
       
-      {/* SECTION 7: Brand Introduction - Core Values */}
+      {/* SECTION 7: Shop Preview */}
+      <ShopSection />
+      
+      {/* SECTION 8: Brand Introduction - Core Values */}
       <BrandIntro />
       
-      {/* SECTION 8: Coaching Section */}
+      {/* SECTION 9: Coaching Section */}
       <CoachingSection />
       
-      {/* SECTION 9: Podcast Section */}
+      {/* SECTION 10: Podcast Section */}
       <PodcastSection />
       
-      {/* SECTION 10: Final CTA Section */}
+      {/* SECTION 11: Final CTA Section */}
       <FinalCTA />
       
       <Footer />
