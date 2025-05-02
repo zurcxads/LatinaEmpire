@@ -185,76 +185,25 @@ const EventCalendar = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-28 pb-16 bg-black text-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
-            <div className="lg:max-w-2xl mb-6 lg:mb-0">
-              <h1 className="font-sans font-bold text-5xl md:text-6xl lg:text-7xl mb-6 tracking-tight leading-tight">
-                Latina Empire
-                <br />
-                Events Calendar
-              </h1>
-              <p className="text-base md:text-lg text-gray-300">
-                Explore our upcoming events, workshops, and programs designed to empower and inspire Latina professionals.
-              </p>
-            </div>
-            <div className="lg:max-w-md">
-              <div className="bg-black/40 backdrop-blur-sm p-6 rounded-lg border border-white/10">
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="font-semibold text-2xl">
-                    {format(currentMonth, "MMMM yyyy")}
-                  </h2>
-                  <div className="flex gap-2">
-                    <Button 
-                      onClick={goToPreviousMonth} 
-                      variant="outline" 
-                      size="icon" 
-                      className="h-8 w-8 border-white/20 text-white hover:bg-white/10 hover:text-white"
-                    >
-                      <ChevronLeft className="h-4 w-4" />
-                    </Button>
-                    <Button 
-                      onClick={goToNextMonth} 
-                      variant="outline" 
-                      size="icon" 
-                      className="h-8 w-8 border-white/20 text-white hover:bg-white/10 hover:text-white"
-                    >
-                      <ChevronRight className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-                <div className="grid grid-cols-7 gap-1 text-center text-xs mb-2">
-                  {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map(day => (
-                    <div key={day} className="py-1">{day}</div>
-                  ))}
-                </div>
-                {eachDayOfInterval({
-                  start: startOfMonth(currentMonth),
-                  end: endOfMonth(currentMonth)
-                }).map((date, i) => {
-                  // Calculate the day of the week (0-6, Sunday is 0)
-                  const dayOfWeek = date.getDay();
-                  
-                  // Add empty cells for days before the first day of the month
-                  const emptyBeforeCells = i === 0 ? Array.from({ length: dayOfWeek }).map((_, j) => (
-                    <div key={`empty-before-${j}`} className="h-8 w-8"></div>
-                  )) : [];
-                  
-                  return [
-                    ...emptyBeforeCells,
-                    <button
-                      key={date.toISOString()}
-                      className={`h-8 w-8 rounded-full flex items-center justify-center text-sm 
-                        ${isSameDay(date, selectedDate || new Date()) ? 'bg-white text-black' : ''} 
-                        ${hasEvents(date) && !isSameDay(date, selectedDate || new Date()) ? 'border-2 border-pink-500' : ''}`}
-                      onClick={() => setSelectedDate(date)}
-                    >
-                      {format(date, "d")}
-                    </button>
-                  ];
-                })}
-              </div>
-            </div>
+      <section className="pt-24 pb-20 bg-black text-white">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="max-w-5xl">
+            <h1 className="font-sans font-bold text-6xl md:text-7xl lg:text-8xl mb-6 tracking-tight leading-none">
+              Latina Empire
+              <br />
+              events calendar
+            </h1>
+            <p className="text-base md:text-lg text-gray-300 mb-6 max-w-xl">
+              Create your own success story through the powerful impact of a Latina Empire event.
+            </p>
+            <Link href="/events">
+              <Button 
+                variant="outline" 
+                className="rounded-md border-white text-white hover:bg-white hover:text-black px-5 py-2 transition-colors"
+              >
+                View all events
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
