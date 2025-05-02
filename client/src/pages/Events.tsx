@@ -198,7 +198,7 @@ const Events = () => {
             <div className="relative aspect-[21/9] rounded-xl overflow-hidden bg-black shadow-lg">
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10"></div>
               <div className="absolute inset-0 z-20 p-10 md:p-14 lg:p-20 flex flex-col justify-end">
-                <div className="absolute top-1/3 left-10 md:left-14 lg:left-20">
+                <div className="absolute top-10 left-10 md:top-14 md:left-14 lg:top-20 lg:left-20">
                   <div className="inline-flex items-center bg-red-900/70 px-3 py-1 rounded-full backdrop-blur-sm">
                     <span className="text-xs uppercase tracking-wider font-medium text-white">CONNECTION ERROR</span>
                   </div>
@@ -245,8 +245,8 @@ const Events = () => {
                   
                   {/* Content Overlay */}
                   <div className="absolute inset-0 z-20 p-10 md:p-14 lg:p-20 flex flex-col justify-end text-white">
-                    {/* Tag at middle left */}
-                    <div className="absolute top-1/3 left-10 md:left-14 lg:left-20">
+                    {/* Tag at top */}
+                    <div className="absolute top-10 left-10 md:top-14 md:left-14 lg:top-20 lg:left-20">
                       <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
                         <span className="text-xs uppercase tracking-wider font-medium">BUSINESS MASTERY</span>
                       </div>
@@ -281,10 +281,10 @@ const Events = () => {
                     </div>
                   
                     {/* Brand Logo */}
-                    <div className="absolute top-10 right-10 md:top-14 md:right-14 lg:top-20 lg:right-20 bg-black/90 p-4 rounded">
-                      <div className="text-white uppercase font-bold text-center leading-none">
-                        <div className="text-sm tracking-widest mb-1">TONY ROBBINS</div>
-                        <div className="text-2xl tracking-wider">BUSINESS<br/>MASTERY</div>
+                    <div className="absolute bottom-10 right-10 md:bottom-14 md:right-14 lg:bottom-20 lg:right-20 bg-black text-white p-3 rounded">
+                      <div className="uppercase font-bold text-center leading-none">
+                        <div className="text-xs tracking-widest mb-1">TONY ROBBINS</div>
+                        <div className="text-sm tracking-wider">BUSINESS<br/>MASTERY</div>
                       </div>
                     </div>
                   </div>
@@ -306,7 +306,7 @@ const Events = () => {
             <div className="relative aspect-[21/9] rounded-xl overflow-hidden bg-black shadow-lg">
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10"></div>
               <div className="absolute inset-0 z-20 p-10 md:p-14 lg:p-20 flex flex-col justify-end">
-                <div className="absolute top-1/3 left-10 md:left-14 lg:left-20">
+                <div className="absolute top-10 left-10 md:top-14 md:left-14 lg:top-20 lg:left-20">
                   <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
                     <span className="text-xs uppercase tracking-wider font-medium text-white">COMING SOON</span>
                   </div>
