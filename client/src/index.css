@@ -93,27 +93,53 @@
 }
 
 /* Hero section specific styles */
+/* Global component styles */
+.section-heading {
+  @apply font-serif font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-tight;
+}
+
+.section-subheading {
+  @apply font-sans text-lg md:text-xl lg:text-2xl opacity-90 leading-relaxed;
+}
+
+.section-padding {
+  @apply py-16 md:py-24 lg:py-32;
+}
+
+/* Consistent button styles */
+.primary-button {
+  @apply bg-magenta text-white hover:bg-magenta/90 font-semibold px-8 py-6 rounded-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg disabled:opacity-50 disabled:hover:scale-100;
+}
+
+.secondary-button {
+  @apply bg-white text-black hover:bg-gray-100 font-semibold px-8 py-6 rounded-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg disabled:opacity-50 disabled:hover:scale-100;
+}
+
+.outline-button {
+  @apply border-2 border-magenta text-magenta hover:bg-magenta/10 font-semibold px-8 py-6 rounded-full transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:hover:scale-100;
+}
+
+/* Card styles */
+.content-card {
+  @apply bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl;
+}
+
+/* Gradient overlays */
+.overlay-gradient {
+  @apply absolute inset-0 bg-gradient-to-br from-black/80 to-transparent;
+}
+
+/* Hero specific styles that extend the global styles */
 .hero-heading {
-  font-size: clamp(2.5rem, 8vw, 5rem);
-  letter-spacing: -0.02em;
+  @apply section-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl;
 }
 
 .hero-subheading {
-  font-size: clamp(1.125rem, 4vw, 1.5rem);
-  letter-spacing: -0.01em;
+  @apply section-subheading;
 }
 
 .hero-button {
-  padding: 1.75rem 3rem;
-  font-size: 1.125rem;
-  font-weight: 600;
-  border-radius: 9999px;
-  transition: all 0.2s;
-}
-
-.hero-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+  @apply primary-button text-lg;
 }
 
 .elite-hero-bg {

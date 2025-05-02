@@ -26,7 +26,7 @@ const FinalCTA = () => {
             
             <Button 
               onClick={() => setIsModalOpen(true)}
-              className="bg-[#D81B60] hover:bg-[#D81B60]/90 text-white text-xl font-bold py-8 px-16 rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-[#D81B60]/25 uppercase tracking-wide"
+              className="primary-button text-xl uppercase tracking-wide"
             >
               Join the Movement Now
             </Button>
