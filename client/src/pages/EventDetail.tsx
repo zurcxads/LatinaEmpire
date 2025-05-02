@@ -1,15 +1,16 @@
 import { useParams, Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Calendar, MapPin, Clock, Users, ArrowLeft, ArrowRight, Ticket, Loader2 } from "lucide-react";
+import { Calendar, MapPin, Clock, Users, ArrowLeft, ArrowRight, Ticket, Loader2, Globe } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { eventsService } from "@/lib/eventsService";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 const EventDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const [, setLocation] = useLocation();
+  const contentRef = useRef<HTMLDivElement>(null);
   
   // Fetch event data
   const { data: event, isLoading, isError } = useQuery({
@@ -17,6 +18,56 @@ const EventDetail = () => {
     queryFn: () => eventsService.getEventBySlug(slug),
     retry: 1,
   });
+  
+  // Function to determine event type (in-person, virtual, hybrid)
+  const getEventType = () => {
+    if (!event) return "IN-PERSON"; // Default
+    
+    // Use the location to make a guess about event type
+    if (event.location.toLowerCase().includes("virtual") || 
+        event.location.toLowerCase().includes("online") ||
+        event.location.toLowerCase().includes("zoom")) {
+      return "VIRTUAL";
+    } else if (event.location.toLowerCase().includes("hybrid")) {
+      return "HYBRID";
+    } else {
+      return "IN-PERSON";
+    }
+  };
+  
+  // Function to generate a compact title for the event badge
+  const getEventBadgeTitle = () => {
+    if (!event) return { main: "MASTERY", sub: "EVENT" };
+    
+    const nameParts = event.name.toUpperCase().split(' ');
+    
+    // For short names, use as is
+    if (nameParts.length <= 2) {
+      return { main: nameParts.join(' '), sub: "EVENT" };
+    }
+    
+    // For "Latina X" format, make it more compact
+    if (nameParts[0] === "LATINA" && nameParts.length >= 3) {
+      return { 
+        main: `${nameParts[1]} MASTERY`, 
+        sub: "LATINA EMPIRE" 
+      };
+    }
+    
+    // For longer names, create a balanced split
+    const midPoint = Math.ceil(nameParts.length / 2);
+    return {
+      main: nameParts.slice(midPoint).join(' '),
+      sub: nameParts.slice(0, midPoint).join(' ')
+    };
+  };
+  
+  // Handler for Learn More button
+  const scrollToContent = () => {
+    if (contentRef.current) {
+      contentRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     // If event not found after loading finished, redirect to events page
@@ -76,9 +127,9 @@ const EventDetail = () => {
 
       {/* Event Banner */}
       <section 
-        className="pt-32 pb-20 bg-center bg-cover bg-no-repeat relative"
+        className="h-[580px] bg-center bg-cover bg-no-repeat relative flex items-end"
         style={{ 
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${event.bannerImage || event.image}')` 
+          backgroundImage: `url('${event.bannerImage || event.image}')` 
         }}
         onError={(e) => {
           const section = e.currentTarget as HTMLElement;
@@ -86,39 +137,78 @@ const EventDetail = () => {
           section.classList.add("hero-placeholder");
         }}
       >
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-white">
+        {/* Dark overlay gradient at the bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90"></div>
+        
+        {/* Event badge in top left */}
+        <div className="absolute top-28 left-4 md:left-12 z-10">
+          <Link href="/events" className="inline-flex items-center text-white bg-black/30 px-4 py-2 rounded-full mb-6 hover:bg-black/50 transition-all backdrop-blur-sm">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Events
+          </Link>
+          <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
+            <span className="text-xs uppercase tracking-wider font-medium text-white">{getEventType()}</span>
+          </div>
+        </div>
+        
+        {/* Event badge in top right (optional) - like in the reference image */}
+        <div className="absolute top-28 right-4 md:right-12 z-10">
+          <div className="bg-black p-4 rounded-lg shadow-lg">
+            <div className="text-center text-white uppercase">
+              <div className="font-bold text-lg tracking-wide">{getEventBadgeTitle().sub}</div>
+              <div className="font-bold text-2xl tracking-wide">{getEventBadgeTitle().main}</div>
+              <div className="mt-1 text-sm tracking-wide">{event.location}</div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Content container */}
+        <div className="container mx-auto px-4 md:px-12 relative z-10 text-white pb-16">
           <div className="max-w-4xl">
-            <Link href="/events" className="inline-flex items-center text-white bg-black/30 px-4 py-2 rounded-full mb-6 hover:bg-black/50 transition-all backdrop-blur-sm">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Events
-            </Link>
-            <h1 className="font-serif font-bold text-4xl md:text-5xl mb-4">{event.name}</h1>
-            <div className="flex flex-wrap gap-4 mb-6">
-              <div className="flex items-center bg-black/30 px-3 py-1.5 rounded-full backdrop-blur-sm">
-                <Calendar className="h-4 w-4 mr-2" />
-                <span className="text-sm">{event.date}</span>
-              </div>
-              <div className="flex items-center bg-black/30 px-3 py-1.5 rounded-full backdrop-blur-sm">
-                <MapPin className="h-4 w-4 mr-2" />
-                <span className="text-sm">{event.location}</span>
-              </div>
-              {(event.startTime && event.endTime) && (
-                <div className="flex items-center bg-black/30 px-3 py-1.5 rounded-full backdrop-blur-sm">
-                  <Clock className="h-4 w-4 mr-2" />
-                  <span className="text-sm">{event.startTime} - {event.endTime}</span>
+            {/* Title and Description */}
+            <h1 className="font-serif font-bold text-5xl md:text-6xl leading-tight mb-4">
+              Rejuvenate your health<br />and build your wealth
+            </h1>
+            <p className="font-sans text-lg md:text-xl mb-8 max-w-2xl opacity-90">
+              Embark on a journey of change in a tropical oasis with the leading minds in health, wellbeing, finance and more.
+            </p>
+            
+            {/* Event details and CTA */}
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+              <div className="flex items-center gap-10">
+                <div>
+                  <p className="uppercase text-xs tracking-wider mb-1 opacity-80">DATE</p>
+                  <p className="text-lg font-medium">{event.date}</p>
                 </div>
-              )}
-              <div className="flex items-center bg-black/30 px-3 py-1.5 rounded-full backdrop-blur-sm">
-                <Users className="h-4 w-4 mr-2" />
-                <span className="text-sm">Hosted by {event.host}</span>
+                <div>
+                  <p className="uppercase text-xs tracking-wider mb-1 opacity-80">PLACE</p>
+                  <p className="text-lg font-medium">{event.location}</p>
+                </div>
+                <div>
+                  <p className="uppercase text-xs tracking-wider mb-1 opacity-80">TIMEZONE</p>
+                  <div className="flex items-center">
+                    <Globe className="h-4 w-4 mr-1" />
+                    <span className="text-lg font-medium">
+                      {event.location === "Santa Fe, NM" ? "MST" : "Local Time"}
+                    </span>
+                  </div>
+                </div>
               </div>
+              
+              {/* CTA Button */}
+              <Button 
+                onClick={scrollToContent}
+                className="bg-white text-black hover:bg-white/90 px-8 py-2 h-12 rounded-full font-medium"
+              >
+                Learn more
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
       {/* Event Content */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white" ref={contentRef}>
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
