@@ -201,3 +201,21 @@
 .transition-magenta {
   transition: all 0.3s ease;
 }
+
+/* Global placeholder image styling - Tony Robbins style */
+.placeholder-image {
+  background-color: #f8f0f4; /* Light pink background as fallback */
+  background-image: linear-gradient(135deg, rgba(216, 27, 96, 0.3), rgba(155, 81, 224, 0.2));
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* Hero placeholder with dark overlay for text */
+.hero-placeholder {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), linear-gradient(135deg, rgba(216, 27, 96, 0.5), rgba(155, 81, 224, 0.3));
+  background-position: center;
+  background-size: cover;
+  border-radius: 0;
+}

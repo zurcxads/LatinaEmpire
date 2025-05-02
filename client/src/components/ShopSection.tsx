@@ -70,9 +70,17 @@ const ShopSection = () => {
                 <CarouselItem key={index} className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                   <Card className="bg-white/5 border-white/10 transition-transform hover:-translate-y-1">
                     <CardContent className="p-6">
-                      <div className="relative mb-4">
-                        <img src={product.image} alt={product.name} className="w-full aspect-square object-cover rounded-lg" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg"></div>
+                      <div className="relative mb-4 rounded-lg overflow-hidden aspect-square">
+                        <img 
+                          src={product.image} 
+                          alt={product.name} 
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.currentTarget.classList.add("hidden");
+                            e.currentTarget.parentElement?.classList.add("placeholder-image");
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       </div>
                       <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
                       <p className="text-gray-400 mb-4">${product.price}</p>

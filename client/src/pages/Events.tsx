@@ -14,7 +14,11 @@ const EventCard = ({ event }: { event: Event }) => {
       <div className="relative h-64 overflow-hidden">
         <img 
           src={event.image} 
-          alt={event.name} 
+          alt={event.name}
+          onError={(e) => {
+            e.currentTarget.classList.add("hidden");
+            e.currentTarget.parentElement?.classList.add("placeholder-image");
+          }}
           className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
         />
         <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
@@ -31,13 +35,21 @@ const EventCard = ({ event }: { event: Event }) => {
           {event.shortDescription}
         </p>
         <div className="flex items-center mb-4">
-          {event.hostImage && (
-            <img 
-              src={event.hostImage} 
-              alt={event.host} 
-              className="w-10 h-10 rounded-full object-cover mr-3"
-            />
-          )}
+          <div className="w-10 h-10 rounded-full overflow-hidden mr-3">
+            {event.hostImage ? (
+              <img 
+                src={event.hostImage} 
+                alt={event.host} 
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.classList.add("hidden");
+                  e.currentTarget.parentElement?.classList.add("placeholder-image");
+                }}
+              />
+            ) : (
+              <div className="placeholder-image w-full h-full rounded-full"></div>
+            )}
+          </div>
           <div>
             <p className="font-sans font-semibold text-sm">Hosted by {event.host}</p>
             {event.hostTitle && <p className="font-sans text-xs text-gray-500">{event.hostTitle}</p>}
