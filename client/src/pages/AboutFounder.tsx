@@ -16,7 +16,7 @@ const AboutFounder = () => {
         <div className="h-16 w-full absolute top-0 left-0 z-20"></div>
         
         {/* Container with padding for rounded corners */}
-        <div className="absolute inset-x-8 top-16 bottom-8 rounded-3xl overflow-hidden z-0">
+        <div className="absolute inset-x-8 top-24 bottom-8 rounded-3xl overflow-hidden z-0">
           {/* Background Image with Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
           <img 
