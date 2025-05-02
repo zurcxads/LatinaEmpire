@@ -1,6 +1,6 @@
 import { useParams, Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Calendar, MapPin, Clock, Users, ArrowLeft, ArrowRight, Ticket, Loader2, Globe } from "lucide-react";
+import { Calendar, MapPin, Clock, Users, ArrowLeft, ArrowRight, Ticket, Loader2, Globe, ChevronDown } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { eventsService } from "@/lib/eventsService";
@@ -221,8 +221,132 @@ const EventDetail = () => {
         </div>
       </section>
 
+      {/* Event Content - Redesigned */}
+      <section className="py-16 bg-black text-white" ref={contentRef}>
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div className="lg:col-span-2">
+              <div className="mb-8">
+                <div className="flex mb-2">
+                  <span className="inline-block h-3 w-3 rounded-full bg-magenta"></span>
+                </div>
+                <div className="uppercase text-sm tracking-widest text-gray-400 mb-2">ABOUT THIS EVENT</div>
+                <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6">Transform your leadership</h2>
+              </div>
+              <div className="prose max-w-none font-sans text-gray-300">
+                <p className="whitespace-pre-line leading-relaxed">
+                  {event.description}
+                </p>
+              </div>
+            </div>
+
+            <div className="lg:col-span-1">
+              <div className="bg-gray-900 rounded-lg p-8 sticky top-24 border border-gray-800">
+                <div className="mb-6">
+                  <h3 className="font-serif font-semibold text-xl mb-6 text-white">Event Details</h3>
+                  
+                  <div className="space-y-6">
+                    <div className="flex">
+                      <Calendar className="h-5 w-5 text-magenta mr-3 flex-shrink-0" />
+                      <div>
+                        <p className="font-sans font-semibold text-white text-sm mb-1">DATE</p>
+                        <p className="font-sans text-gray-300">{event.date}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex">
+                      <Clock className="h-5 w-5 text-magenta mr-3 flex-shrink-0" />
+                      <div>
+                        <p className="font-sans font-semibold text-white text-sm mb-1">TIME</p>
+                        <p className="font-sans text-gray-300">
+                          {event.startTime && event.endTime ? `${event.startTime} - ${event.endTime}` : 'TBA'}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex">
+                      <MapPin className="h-5 w-5 text-magenta mr-3 flex-shrink-0" />
+                      <div>
+                        <p className="font-sans font-semibold text-white text-sm mb-1">LOCATION</p>
+                        <p className="font-sans text-gray-300">{event.location}</p>
+                        {event.locationAddress && (
+                          <p className="font-sans text-gray-400 text-sm mt-1">{event.locationAddress}</p>
+                        )}
+                        {event.locationMapUrl && (
+                          <a 
+                            href={event.locationMapUrl} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="font-sans text-magenta text-sm mt-2 inline-block hover:underline"
+                          >
+                            View on Map
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                    
+                    <div className="flex">
+                      <Users className="h-5 w-5 text-magenta mr-3 flex-shrink-0" />
+                      <div>
+                        <p className="font-sans font-semibold text-white text-sm mb-1">HOST</p>
+                        <div className="flex items-center mt-2">
+                          <div className="w-10 h-10 rounded-full overflow-hidden mr-3 bg-gray-800">
+                            {event.hostImage ? (
+                              <img 
+                                src={event.hostImage} 
+                                alt={event.host} 
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  e.currentTarget.classList.add("hidden");
+                                  e.currentTarget.parentElement?.classList.add("placeholder-image");
+                                }}
+                              />
+                            ) : (
+                              <div className="placeholder-image w-full h-full rounded-full"></div>
+                            )}
+                          </div>
+                          <div>
+                            <p className="font-sans text-white">{event.host}</p>
+                            {event.hostTitle && <p className="font-sans text-sm text-gray-400">{event.hostTitle}</p>}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {event.ticketPrice && (
+                      <div className="flex">
+                        <Ticket className="h-5 w-5 text-magenta mr-3 flex-shrink-0" />
+                        <div>
+                          <p className="font-sans font-semibold text-white text-sm mb-1">PRICE</p>
+                          <p className="font-sans text-gray-300">{event.ticketPrice}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                
+                {event.ticketLink && !event.isPast && (
+                  <Button 
+                    className="w-full bg-white text-black hover:bg-gray-200 flex items-center justify-center font-medium px-6 py-3 h-auto rounded-full mt-4"
+                  >
+                    Get Tickets
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                )}
+                
+                {event.isPast && (
+                  <div className="text-center p-3 bg-gray-800 rounded-md mt-4">
+                    <p className="font-sans text-gray-300">This event has ended</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Key Benefits Section */}
-      <section className="py-16 bg-black text-white">
+      <section className="py-16 bg-black text-white border-t border-gray-800">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
             <div className="flex justify-center mb-2">
@@ -323,124 +447,7 @@ const EventDetail = () => {
         </div>
       </section>
 
-      {/* Event Content */}
-      <section className="py-16 bg-white" ref={contentRef}>
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2">
-              <h2 className="font-serif font-bold text-2xl md:text-3xl mb-6">About This Event</h2>
-              <div className="prose max-w-none font-sans">
-                <p className="whitespace-pre-line text-gray-700 leading-relaxed">
-                  {event.description}
-                </p>
-              </div>
-            </div>
 
-            <div className="lg:col-span-1">
-              <div className="bg-gray-50 rounded-lg p-6 sticky top-24">
-                <div className="mb-6">
-                  <h3 className="font-serif font-semibold text-xl mb-4">Event Details</h3>
-                  
-                  <div className="space-y-4">
-                    <div className="flex">
-                      <Calendar className="h-5 w-5 text-magenta mr-3 flex-shrink-0" />
-                      <div>
-                        <p className="font-sans font-semibold">Date</p>
-                        <p className="font-sans text-gray-600">{event.date}</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex">
-                      <Clock className="h-5 w-5 text-magenta mr-3 flex-shrink-0" />
-                      <div>
-                        <p className="font-sans font-semibold">Time</p>
-                        <p className="font-sans text-gray-600">
-                          {event.startTime && event.endTime ? `${event.startTime} - ${event.endTime}` : 'TBA'}
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex">
-                      <MapPin className="h-5 w-5 text-magenta mr-3 flex-shrink-0" />
-                      <div>
-                        <p className="font-sans font-semibold">Location</p>
-                        <p className="font-sans text-gray-600">{event.location}</p>
-                        {event.locationAddress && (
-                          <p className="font-sans text-gray-600 text-sm mt-1">{event.locationAddress}</p>
-                        )}
-                        {event.locationMapUrl && (
-                          <a 
-                            href={event.locationMapUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="font-sans text-magenta text-sm mt-1 inline-block hover:underline"
-                          >
-                            View on Map
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                    
-                    <div className="flex">
-                      <Users className="h-5 w-5 text-magenta mr-3 flex-shrink-0" />
-                      <div>
-                        <p className="font-sans font-semibold">Host</p>
-                        <div className="flex items-center mt-2">
-                          <div className="w-10 h-10 rounded-full overflow-hidden mr-3">
-                            {event.hostImage ? (
-                              <img 
-                                src={event.hostImage} 
-                                alt={event.host} 
-                                className="w-full h-full object-cover"
-                                onError={(e) => {
-                                  e.currentTarget.classList.add("hidden");
-                                  e.currentTarget.parentElement?.classList.add("placeholder-image");
-                                }}
-                              />
-                            ) : (
-                              <div className="placeholder-image w-full h-full rounded-full"></div>
-                            )}
-                          </div>
-                          <div>
-                            <p className="font-sans">{event.host}</p>
-                            {event.hostTitle && <p className="font-sans text-sm text-gray-500">{event.hostTitle}</p>}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {event.ticketPrice && (
-                      <div className="flex">
-                        <Ticket className="h-5 w-5 text-magenta mr-3 flex-shrink-0" />
-                        <div>
-                          <p className="font-sans font-semibold">Price</p>
-                          <p className="font-sans text-gray-600">{event.ticketPrice}</p>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-                
-                {event.ticketLink && !event.isPast && (
-                  <Button 
-                    className="w-full bg-magenta text-white hover:bg-opacity-90 flex items-center justify-center"
-                    size="lg"
-                  >
-                    Get Tickets
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                )}
-                
-                {event.isPast && (
-                  <div className="text-center p-3 bg-gray-200 rounded-md">
-                    <p className="font-sans text-gray-600">This event has ended</p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Leadership Carousel Section */}
       <section className="py-16 bg-white border-t border-gray-100">
@@ -832,6 +839,234 @@ const EventDetail = () => {
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* FAQ Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mb-12">
+            <div className="flex mb-2">
+              <span className="inline-block h-3 w-3 rounded-full bg-black"></span>
+            </div>
+            <div className="uppercase text-sm tracking-widest text-gray-400 mb-2">FREQUENTLY ASKED QUESTIONS</div>
+            <h2 className="font-serif font-bold text-4xl md:text-5xl leading-tight">
+              FAQs
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="col-span-1">
+              <button className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-lg transition-colors duration-200 font-medium">
+                Contact Us
+              </button>
+            </div>
+            
+            <div className="col-span-1 md:col-span-3">
+              <div className="space-y-4">
+                {/* FAQ Item 1 */}
+                <div className="border-b border-gray-200 pb-4">
+                  <div className="flex justify-between items-center cursor-pointer py-2">
+                    <h3 className="font-serif font-medium text-lg">What is Leadership Academy?</h3>
+                    <div className="text-gray-400">
+                      <ChevronDown className="h-5 w-5" />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* FAQ Item 2 */}
+                <div className="border-b border-gray-200 pb-4">
+                  <div className="flex justify-between items-center cursor-pointer py-2">
+                    <h3 className="font-serif font-medium text-lg">What makes Leadership Academy different?</h3>
+                    <div className="text-gray-400">
+                      <ChevronDown className="h-5 w-5" />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* FAQ Item 3 */}
+                <div className="border-b border-gray-200 pb-4">
+                  <div className="flex justify-between items-center cursor-pointer py-2">
+                    <h3 className="font-serif font-medium text-lg">Who is Leadership Academy for?</h3>
+                    <div className="text-gray-400">
+                      <ChevronDown className="h-5 w-5" />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* FAQ Item 4 */}
+                <div className="border-b border-gray-200 pb-4">
+                  <div className="flex justify-between items-center cursor-pointer py-2">
+                    <h3 className="font-serif font-medium text-lg">What can I expect to gain from attending Leadership Academy?</h3>
+                    <div className="text-gray-400">
+                      <ChevronDown className="h-5 w-5" />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* FAQ Item 5 */}
+                <div className="border-b border-gray-200 pb-4">
+                  <div className="flex justify-between items-center cursor-pointer py-2">
+                    <h3 className="font-serif font-medium text-lg">Is Leadership Academy only for business leaders?</h3>
+                    <div className="text-gray-400">
+                      <ChevronDown className="h-5 w-5" />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* FAQ Item 6 */}
+                <div className="border-b border-gray-200 pb-4">
+                  <div className="flex justify-between items-center cursor-pointer py-2">
+                    <h3 className="font-serif font-medium text-lg">How long is the event, and what is the schedule like?</h3>
+                    <div className="text-gray-400">
+                      <ChevronDown className="h-5 w-5" />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* FAQ Item 7 */}
+                <div className="border-b border-gray-200 pb-4">
+                  <div className="flex justify-between items-center cursor-pointer py-2">
+                    <h3 className="font-serif font-medium text-lg">Who will I learn from at Leadership Academy?</h3>
+                    <div className="text-gray-400">
+                      <ChevronDown className="h-5 w-5" />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* FAQ Item 8 */}
+                <div className="border-b border-gray-200 pb-4">
+                  <div className="flex justify-between items-center cursor-pointer py-2">
+                    <h3 className="font-serif font-medium text-lg">Will I have access to a community or networking opportunities?</h3>
+                    <div className="text-gray-400">
+                      <ChevronDown className="h-5 w-5" />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* FAQ Item 9 */}
+                <div className="border-b border-gray-200 pb-4">
+                  <div className="flex justify-between items-center cursor-pointer py-2">
+                    <h3 className="font-serif font-medium text-lg">What is the refund policy?</h3>
+                    <div className="text-gray-400">
+                      <ChevronDown className="h-5 w-5" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Full-width CTA Section */}
+      <section className="relative h-[500px] md:h-[600px] overflow-hidden">
+        {/* Background image with overlay */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ 
+            backgroundImage: `url('https://images.unsplash.com/photo-1591115765373-5207764f72e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')` 
+          }}
+        >
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black opacity-70"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-white px-4">
+          <h2 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl mb-6">
+            Become the leader<br />you aspire to be
+          </h2>
+          <Button 
+            className="bg-white text-black hover:bg-gray-100 px-8 py-3 h-auto rounded-full font-medium mt-6"
+          >
+            Schedule a call
+          </Button>
+        </div>
+      </section>
+      
+      {/* Blog Section */}
+      <section className="py-16 bg-black text-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-wrap items-center justify-between mb-8">
+            <div className="flex items-center space-x-4">
+              <h2 className="font-serif font-bold text-3xl md:text-4xl">Blog</h2>
+              <Link href="/blog" className="text-white/80 hover:text-white flex items-center">
+                Explore our blog
+                <ChevronDown className="h-4 w-4 ml-2 rotate-[-90deg]" />
+              </Link>
+            </div>
+            <div className="hidden md:flex space-x-2">
+              <button className="rounded-full p-2 bg-black border border-gray-700 hover:bg-gray-800">
+                <ArrowLeft className="h-5 w-5" />
+              </button>
+              <button className="rounded-full p-2 bg-black border border-gray-700 hover:bg-gray-800">
+                <ArrowRight className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Blog Post 1 */}
+            <div className="bg-black rounded-lg overflow-hidden group">
+              <div className="relative h-56 overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                  alt="Leadership blog post" 
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-4">
+                <div className="uppercase text-xs tracking-wider text-gray-400 mb-2">LEADERSHIP</div>
+                <h3 className="font-serif font-bold text-xl mb-2 group-hover:text-magenta transition-colors">
+                  Leadership Secret Two: A Leader's Edge in Uncertain Times
+                </h3>
+                <p className="text-sm text-gray-400 line-clamp-2">
+                  In the previous post we discussed the quality of pure energy and its impact on your ability to inspire and lead a team. Today...
+                </p>
+              </div>
+            </div>
+            
+            {/* Blog Post 2 */}
+            <div className="bg-black rounded-lg overflow-hidden group">
+              <div className="relative h-56 overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1542744094-3a31f272c490?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                  alt="Business leadership blog post" 
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-4">
+                <div className="uppercase text-xs tracking-wider text-gray-400 mb-2">BUSINESS</div>
+                <h3 className="font-serif font-bold text-xl mb-2 group-hover:text-magenta transition-colors">
+                  How to be a leader at work
+                </h3>
+                <p className="text-sm text-gray-400 line-clamp-2">
+                  Think back on your favorite manager or boss you've had. What set them apart? Chances are, they were a good listener, able to...
+                </p>
+              </div>
+            </div>
+            
+            {/* Blog Post 3 */}
+            <div className="bg-black rounded-lg overflow-hidden group">
+              <div className="relative h-56 overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1589666564459-93cdd3ab856a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                  alt="Influence blog post" 
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-4">
+                <div className="uppercase text-xs tracking-wider text-gray-400 mb-2">LEADERSHIP • ACADEMY</div>
+                <h3 className="font-serif font-bold text-xl mb-2 group-hover:text-magenta transition-colors">
+                  Influencing from the inside out
+                </h3>
+                <p className="text-sm text-gray-400 line-clamp-2">
+                  The most effective leaders understand that influence begins with mastering your internal state before focusing on external tactics.
+                </p>
               </div>
             </div>
           </div>
