@@ -12,7 +12,7 @@ const AboutFounder = () => {
     <div className="bg-white">
       {/* Hero Section */}
       <section className="pt-20 relative min-h-screen overflow-hidden bg-black text-white">
-        <div className="absolute inset-0 z-10">
+        <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
           <img 
             src="https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg" 
@@ -22,7 +22,7 @@ const AboutFounder = () => {
         </div>
         <div className="container mx-auto px-4 md:px-6 min-h-[calc(100vh-5rem)] flex items-center relative z-20">
           <div className="max-w-4xl">
-            <h1 className="hero-heading text-white mb-6 md:mb-8">
+            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 md:mb-8">
               The Story of Latina Empire
             </h1>
             <p className="font-sans text-xl md:text-2xl text-white/90 mb-8 md:mb-10 font-light leading-relaxed">
@@ -30,7 +30,7 @@ const AboutFounder = () => {
             </p>
             <Button
               asChild
-              className="secondary-button text-lg"
+              className="bg-magenta hover:bg-magenta/90 text-white font-medium text-lg px-6 py-6 h-auto rounded-lg"
             >
               <Link href="#early-life">
                 Read Her Story
@@ -42,7 +42,7 @@ const AboutFounder = () => {
       </section>
 
       {/* Inspirational Quote Section */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center">
             <p className="font-serif text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight text-gray-900">
@@ -53,7 +53,7 @@ const AboutFounder = () => {
       </section>
 
       {/* Early Life Section */}
-      <section className="section-padding bg-white" id="early-life">
+      <section className="py-16 md:py-20 bg-white" id="early-life">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <div className="relative">
@@ -70,7 +70,7 @@ const AboutFounder = () => {
               <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-3 block">
                 ORIGINS
               </span>
-              <h2 className="font-serif font-bold text-3xl md:text-4xl lg:text-5xl mb-6 tracking-tight">
+              <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6 tracking-tight">
                 Early Life
               </h2>
               <p className="text-gray-700 leading-relaxed text-lg mb-4">
@@ -87,7 +87,7 @@ const AboutFounder = () => {
         </div>
       </section>
 
-      {/* Quote before Journey Section */}
+      {/* Quote Section */}
       <section className="relative py-24 overflow-hidden bg-black">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
@@ -149,14 +149,14 @@ const AboutFounder = () => {
       </section>
 
       {/* The Spark / Rise to Entrepreneurship */}
-      <section className="section-padding bg-gray-50">
+      <section className="py-16 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-3 block">
                 THE JOURNEY
               </span>
-              <h2 className="section-heading mb-6">
+              <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6 tracking-tight">
                 From Purpose to Profit
               </h2>
             </div>
@@ -169,7 +169,7 @@ const AboutFounder = () => {
               Yet at the height of her corporate success, Perla experienced what she calls her "clarity moment." Despite her achievements, she noticed a pattern: talented Latina professionals were consistently underrepresented in leadership, not due to lack of talent or drive, but because of systemic barriers and missing support networks.
             </p>
 
-            <div className="my-12 content-card bg-magenta/5 p-8 md:p-12 border-l-4 border-magenta">
+            <div className="my-12 bg-magenta/5 p-8 md:p-12 border-l-4 border-magenta rounded-r-lg">
               <p className="text-2xl md:text-3xl text-gray-800 italic font-serif">
                 "I didn't just want success — I wanted to rewrite the Latina playbook."
               </p>
@@ -187,23 +187,23 @@ const AboutFounder = () => {
       </section>
 
       {/* The Mission of Latina Empire */}
-      <section className="section-padding bg-white">
+      <section className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-3 block">
               THE FRAMEWORK
             </span>
-            <h2 className="section-heading mb-6">
+            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6 tracking-tight">
               Heart. Mind. Money.
             </h2>
-            <p className="section-subheading text-gray-700">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               The revolutionary framework at the core of Latina Empire
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {/* Heart */}
-            <div className="content-card">
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-magenta/10 rounded-full flex items-center justify-center mb-6">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-magenta"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
               </div>
@@ -214,7 +214,7 @@ const AboutFounder = () => {
             </div>
 
             {/* Mind */}
-            <div className="content-card">
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-magenta/10 rounded-full flex items-center justify-center mb-6">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-magenta"><path d="M2 12h1"></path><path d="M6 12h1"></path><path d="M10 12h1"></path><path d="M14 12h1"></path><path d="M18 12h1"></path><path d="M22 12h1"></path><path d="M12 2v1"></path><path d="M12 6v1"></path><path d="M12 10v1"></path><path d="M12 18v1"></path><path d="M12 22v1"></path><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></svg>
               </div>
@@ -225,7 +225,7 @@ const AboutFounder = () => {
             </div>
 
             {/* Money */}
-            <div className="content-card">
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-magenta/10 rounded-full flex items-center justify-center mb-6">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-magenta"><circle cx="12" cy="12" r="10"></circle><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><path d="M12 18V6"></path></svg>
               </div>
@@ -237,24 +237,25 @@ const AboutFounder = () => {
           </div>
 
           <div className="mt-16 max-w-3xl mx-auto">
-            <p className="text-gray-700 text-lg leading-relaxed">
-              "The Heart-Mind-Money framework emerged from countless conversations with Latina professionals," explains Perla. "We saw that traditional professional development focused on skills and strategy but ignored the cultural and emotional dimensions that are essential to our experience. Our approach integrates all aspects of who we are."
+            <p className="text-gray-700 text-lg leading-relaxed italic text-center">
+              "The Heart-Mind-Money framework emerged from countless conversations with Latina professionals. We saw that traditional professional development focused on skills and strategy but ignored the cultural and emotional dimensions that are essential to our experience. Our approach integrates all aspects of who we are."
             </p>
+            <p className="text-right text-gray-500 mt-4 font-medium">— Perla Tamez Casasnovas</p>
           </div>
         </div>
       </section>
 
       {/* Timeline / Milestones */}
-      <section className="section-padding bg-gray-50 overflow-hidden">
+      <section className="py-16 md:py-20 bg-gray-50 overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-3 block">
               KEY MOMENTS
             </span>
-            <h2 className="section-heading mb-6">
+            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6 tracking-tight">
               Milestones
             </h2>
-            <p className="section-subheading text-gray-700">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               The journey of building Latina Empire
             </p>
           </div>
@@ -316,11 +317,11 @@ const AboutFounder = () => {
       </section>
 
       {/* Dual Cards CTA Section */}
-      <section className="py-16 bg-black">
+      <section className="py-16 md:py-20 bg-black">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {/* Card 1 - Framework for Success */}
-            <div className="relative rounded-xl overflow-hidden h-[350px]">
+            <div className="relative rounded-xl overflow-hidden h-[350px] shadow-lg">
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10"></div>
               <img 
                 src="https://images.pexels.com/photos/6325907/pexels-photo-6325907.jpeg" 
@@ -346,7 +347,7 @@ const AboutFounder = () => {
             </div>
 
             {/* Card 2 - Real Community Impact */}
-            <div className="relative rounded-xl overflow-hidden h-[350px]">
+            <div className="relative rounded-xl overflow-hidden h-[350px] shadow-lg">
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10"></div>
               <img 
                 src="https://images.pexels.com/photos/8192042/pexels-photo-8192042.jpeg" 
