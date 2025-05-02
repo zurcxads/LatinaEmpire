@@ -203,7 +203,7 @@ const AboutFounder = () => {
       <section className="py-16 md:py-20 bg-black">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <p className="font-serif text-3xl md:text-4xl text-white leading-tight">
+            <p className="font-serif text-2xl md:text-2xl lg:text-3xl text-white leading-tight">
               Now she's a recognized Latina leader, the founder of a global empowerment platform, and has impacted thousands with her transformative programs.
             </p>
           </div>
@@ -212,15 +212,15 @@ const AboutFounder = () => {
           <ImpactCarousel />
           
           <div className="max-w-4xl mx-auto mt-12 space-y-6">
-            <p className="font-serif text-xl text-white leading-relaxed">
+            <p className="font-sans text-base md:text-lg text-white/90 leading-relaxed">
               She's been featured in Latina Magazine's 25 most influential Latinas, recognized by Hispanic Business Journal as one of the "Rising Stars in Business," and selected by the National Association of Professional Women as one of the "Top Ten Latina Leaders to Watch."
             </p>
             
-            <p className="font-serif text-xl text-white leading-relaxed">
+            <p className="font-sans text-base md:text-lg text-white/90 leading-relaxed">
               Forbes' feature article called her the "Latina Empowerment Catalyst."
             </p>
             
-            <p className="font-serif text-xl text-white leading-relaxed">
+            <p className="font-sans text-base md:text-lg text-white/90 leading-relaxed">
               And it's why corporations and organizations seek her guidance to create more inclusive workplaces.
             </p>
           </div>
