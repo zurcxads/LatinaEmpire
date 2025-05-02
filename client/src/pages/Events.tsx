@@ -20,7 +20,7 @@ const EventCard = ({ event }: { event: Event }) => {
   
   return (
     <Link href={`/events/${event.slug}`} className="block">
-      <div className="relative aspect-[16/9] rounded-xl overflow-hidden group cursor-pointer shadow-lg">
+      <div className="relative aspect-[16/11] rounded-xl overflow-hidden group cursor-pointer shadow-lg">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10" />
         <img 
@@ -43,14 +43,14 @@ const EventCard = ({ event }: { event: Event }) => {
           </div>
           
           {/* Main content at bottom */}
-          <div className="w-full">
+          <div className="w-full pr-32">
             {/* Title - Large and Bold */}
             <h3 className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl mb-4 leading-tight tracking-tight">
               {event.name.split(' ').slice(0, 4).join(' ')}
             </h3>
             
             {/* Simple Description */}
-            <p className="text-white/90 text-base md:text-lg max-w-md mb-0 leading-relaxed pr-4">
+            <p className="text-white/90 text-base md:text-lg max-w-md mb-0 leading-relaxed">
               {event.shortDescription.split('.')[0]}.
             </p>
           </div>
@@ -70,7 +70,7 @@ const EventCard = ({ event }: { event: Event }) => {
 
 // Loading skeleton for event cards
 const EventCardSkeleton = () => (
-  <div className="relative aspect-[16/9] rounded-xl overflow-hidden animate-pulse bg-gray-800 shadow-lg">
+  <div className="relative aspect-[16/11] rounded-xl overflow-hidden animate-pulse bg-gray-800 shadow-lg">
     {/* Simulating the gradient overlay */}
     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10"></div>
     
@@ -82,13 +82,15 @@ const EventCardSkeleton = () => (
       
       {/* Content skeleton - bottom left */}
       <div className="absolute bottom-0 left-0 right-0 p-8">
-        {/* Title skeleton */}
-        <div className="h-10 bg-white/30 rounded mb-2 w-1/2"></div>
-        <div className="h-10 bg-white/30 rounded mb-6 w-1/3"></div>
-        
-        {/* Description skeleton */}
-        <div className="h-5 bg-white/20 rounded mb-2 w-full max-w-xl"></div>
-        <div className="h-5 bg-white/20 rounded w-2/3 max-w-lg"></div>
+        <div className="pr-32">
+          {/* Title skeleton */}
+          <div className="h-10 bg-white/30 rounded mb-2 w-1/2"></div>
+          <div className="h-10 bg-white/30 rounded mb-6 w-1/3"></div>
+          
+          {/* Description skeleton */}
+          <div className="h-5 bg-white/20 rounded mb-2 w-full max-w-md"></div>
+          <div className="h-5 bg-white/20 rounded w-2/3 max-w-md"></div>
+        </div>
       </div>
       
       {/* Logo skeleton - bottom right */}
