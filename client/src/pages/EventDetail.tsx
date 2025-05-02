@@ -126,43 +126,41 @@ const EventDetail = () => {
       <Navbar />
 
       {/* Event Banner */}
-      <section 
-        className="bg-black py-16"
-      >
-        <div className="container mx-auto px-4 md:px-12 relative">
-          {/* Back to Events button - kept where it is */}
-          <div className="mb-12">
-            <Link href="/events" className="inline-flex items-center text-white bg-black/30 px-4 py-2 rounded-full hover:bg-black/50 transition-all backdrop-blur-sm">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Events
-            </Link>
-          </div>
-          
-          <div className="relative rounded-2xl overflow-hidden">
-            {/* Background image with curved edges */}
-            <div 
-              className="h-[480px] bg-center bg-cover bg-no-repeat relative"
-              style={{ 
-                backgroundImage: `url('${event.bannerImage || event.image}')` 
-              }}
-              onError={(e) => {
-                const section = e.currentTarget as HTMLElement;
-                section.style.backgroundImage = "";
-                section.classList.add("hero-placeholder");
-              }}
-            >
-              {/* Dark overlay gradient at the bottom */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90"></div>
-              
-              {/* In-person tag hovering above title */}
-              <div className="absolute top-8 left-8 z-10">
-                <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
-                  <span className="text-xs uppercase tracking-wider font-medium text-white">{getEventType()}</span>
-                </div>
+      <section className="bg-black pt-10 pb-0 relative">
+        {/* Back to Events button */}
+        <div className="container mx-auto px-4 md:px-12 mb-4">
+          <Link href="/events" className="inline-flex items-center text-white bg-black/30 px-4 py-2 rounded-full hover:bg-black/50 transition-all backdrop-blur-sm">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Events
+          </Link>
+        </div>
+        
+        {/* Full-width event banner with rounded corners */}
+        <div className="mx-4 md:mx-12 rounded-[24px] overflow-hidden relative">
+          <div 
+            className="w-full h-[600px] bg-center bg-cover bg-no-repeat relative"
+            style={{ 
+              backgroundImage: `url('${event.bannerImage || event.image}')` 
+            }}
+            onError={(e) => {
+              const section = e.currentTarget as HTMLElement;
+              section.style.backgroundImage = "";
+              section.classList.add("hero-placeholder");
+            }}
+          >
+            {/* Dark overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90"></div>
+            
+            {/* In-person tag hovering above title */}
+            <div className="absolute top-10 left-10 z-10">
+              <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
+                <span className="text-xs uppercase tracking-wider font-medium text-white">{getEventType()}</span>
               </div>
-              
-              {/* Content container */}
-              <div className="absolute bottom-0 left-0 right-0 px-8 md:px-12 pb-16 z-10">
+            </div>
+            
+            {/* Content container */}
+            <div className="absolute bottom-0 left-0 right-0 px-10 pb-16 z-10">
+              <div className="container mx-auto">
                 <div className="flex flex-col md:flex-row items-end justify-between">
                   <div className="max-w-3xl">
                     {/* Title and Description */}
@@ -174,29 +172,30 @@ const EventDetail = () => {
                     </p>
                     
                     {/* Event details and CTA - rearranged */}
-                    <div className="flex flex-wrap md:flex-nowrap items-center gap-8">
-                      {/* CTA Button now on the left */}
+                    <div className="flex flex-col sm:flex-row items-center sm:items-end gap-6">
+                      {/* CTA Button on the left */}
                       <Button 
                         onClick={scrollToContent}
-                        className="bg-white text-black hover:bg-white/90 px-8 py-2 h-12 rounded-full font-medium order-last md:order-first"
+                        className="bg-white text-black hover:bg-white/90 px-8 py-3 h-auto rounded-full font-medium mb-4 sm:mb-0"
                       >
                         Learn more
                       </Button>
 
-                      <div className="flex items-center gap-6 md:gap-10">
+                      {/* Event details in a row */}
+                      <div className="flex flex-wrap items-center gap-x-8 gap-y-4 ml-0 sm:ml-6">
                         <div>
                           <p className="uppercase text-xs tracking-wider mb-1 text-white/80">DATE</p>
-                          <p className="text-lg font-medium text-white">{event.date}</p>
+                          <p className="text-base font-medium text-white">{event.date}</p>
                         </div>
                         <div>
                           <p className="uppercase text-xs tracking-wider mb-1 text-white/80">PLACE</p>
-                          <p className="text-lg font-medium text-white">{event.location}</p>
+                          <p className="text-base font-medium text-white">{event.location}</p>
                         </div>
                         <div>
                           <p className="uppercase text-xs tracking-wider mb-1 text-white/80">TIMEZONE</p>
                           <div className="flex items-center">
                             <Globe className="h-4 w-4 mr-1 text-white" />
-                            <span className="text-lg font-medium text-white">
+                            <span className="text-base font-medium text-white">
                               {event.location === "Santa Fe, NM" ? "MST" : "Local Time"}
                             </span>
                           </div>
@@ -205,8 +204,8 @@ const EventDetail = () => {
                     </div>
                   </div>
                   
-                  {/* Event badge now in bottom right corner, aligned with elements */}
-                  <div className="mt-8 md:mt-0">
+                  {/* Event badge in bottom right corner */}
+                  <div className="hidden md:block">
                     <div className="bg-black p-4 rounded-lg shadow-lg">
                       <div className="text-center text-white uppercase">
                         <div className="font-bold text-lg tracking-wide">{getEventBadgeTitle().sub}</div>
