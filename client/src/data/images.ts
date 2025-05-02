@@ -5,5 +5,3 @@ export const images = {
   heroBackground: "https://images.unsplash.com/photo-1573164574001-518958d9bab2",
   // Add more image URLs here
 };
-
-export default images;
