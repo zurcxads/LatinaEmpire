@@ -5,6 +5,7 @@ import ProgramCarousel from "@/components/ProgramCarousel";
 import BrandIntro from "@/components/BrandIntro";
 import Testimonial from "@/components/Testimonial";
 import PillarsSection from "@/components/PillarsSection";
+import FounderSection from "@/components/FounderSection";
 import CoachingSection from "@/components/CoachingSection";
 import PodcastSection from "@/components/PodcastSection";
 import FinalCTA from "@/components/FinalCTA";
@@ -30,16 +31,19 @@ const Home = () => {
       {/* SECTION 5: Testimonials */}
       <Testimonial />
       
-      {/* SECTION 6: Brand Introduction - Core Values */}
+      {/* SECTION 6: Meet Our Founder */}
+      <FounderSection />
+      
+      {/* SECTION 7: Brand Introduction - Core Values */}
       <BrandIntro />
       
-      {/* SECTION 7: Coaching Section */}
+      {/* SECTION 8: Coaching Section */}
       <CoachingSection />
       
-      {/* SECTION 8: Podcast Section */}
+      {/* SECTION 9: Podcast Section */}
       <PodcastSection />
       
-      {/* SECTION 9: Final CTA Section */}
+      {/* SECTION 10: Final CTA Section */}
       <FinalCTA />
       
       <Footer />
