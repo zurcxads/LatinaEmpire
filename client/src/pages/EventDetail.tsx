@@ -539,6 +539,107 @@ const EventDetail = () => {
           </div>
         </div>
       </section>
+      
+      {/* Agenda Section */}
+      <section className="py-16 bg-white border-t border-gray-100">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mb-12">
+            <div className="flex mb-2">
+              <span className="inline-block h-3 w-3 rounded-full bg-magenta"></span>
+            </div>
+            <div className="uppercase text-sm tracking-widest text-gray-400 mb-2">AGENDA</div>
+            <h2 className="font-serif font-bold text-4xl md:text-5xl leading-tight">
+              More than 45 years of<br />expertise in 3 powerful days
+            </h2>
+          </div>
+          
+          {/* Day 1 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+              <div className="text-gray-400 font-medium mb-2">Day 1</div>
+              <h3 className="font-serif font-bold text-2xl md:text-3xl mb-4">Awaken your inner leader</h3>
+              <p className="text-gray-600">
+                Learn why people think, feel, and behave the way they do; how to utilize advanced 
+                communication styles; and the fundamentals of leadership.
+              </p>
+            </div>
+            <div>
+              <img 
+                src="https://images.unsplash.com/photo-1531263060782-b024de9b9793?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                alt="Leadership Day 1" 
+                className="rounded-lg shadow-lg w-full h-64 object-cover"
+                onError={(e) => {
+                  e.currentTarget.classList.add("placeholder-image");
+                  e.currentTarget.alt = "Leadership Workshop Day 1";
+                }}
+              />
+            </div>
+          </div>
+          
+          {/* Day 2 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+              <div className="text-gray-400 font-medium mb-2">Day 2</div>
+              <h3 className="font-serif font-bold text-2xl md:text-3xl mb-4">Lead through obstacles</h3>
+              <p className="text-gray-600">
+                Begin using neuro-linguistic programming and deciphering body language 
+                communication, while learning how to create positive change.
+              </p>
+            </div>
+            <div>
+              <img 
+                src="https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                alt="Leadership Day 2" 
+                className="rounded-lg shadow-lg w-full h-64 object-cover"
+                onError={(e) => {
+                  e.currentTarget.classList.add("placeholder-image");
+                  e.currentTarget.alt = "Team Building Day 2";
+                }}
+              />
+            </div>
+          </div>
+          
+          {/* Day 3 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="text-gray-400 font-medium mb-2">Day 3</div>
+              <h3 className="font-serif font-bold text-2xl md:text-3xl mb-4">Transform your influence</h3>
+              <p className="text-gray-600">
+                Master the psychology of leadership excellence and learn how to inspire others 
+                to achieve their best through empowering delegation and motivation techniques.
+              </p>
+            </div>
+            <div>
+              <img 
+                src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                alt="Leadership Day 3" 
+                className="rounded-lg shadow-lg w-full h-64 object-cover"
+                onError={(e) => {
+                  e.currentTarget.classList.add("placeholder-image");
+                  e.currentTarget.alt = "Leadership Transformation Day 3";
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Leadership Legacy CTA */}
+      <section className="py-16 bg-black text-white">
+        <div className="container mx-auto px-4 md:px-6 text-center max-w-4xl">
+          <h2 className="font-serif font-bold text-4xl md:text-5xl leading-tight mb-4">
+            Create your leadership legacy
+          </h2>
+          <p className="text-gray-300 text-lg mb-8">
+            Be more, inspire more, give more than you ever thought possible.
+          </p>
+          <Button 
+            className="bg-white text-black hover:bg-gray-100 px-8 py-3 h-auto rounded-full font-medium"
+          >
+            Schedule a call
+          </Button>
+        </div>
+      </section>
 
       {/* Location Map Placeholder */}
       {event.locationMapUrl && !event.isPast && (
