@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
@@ -25,13 +26,29 @@ const Footer = () => {
 
   return (
     <footer className="bg-black text-white">
-      
-      
-      {/* Main Footer */}
       <div className="border-t border-white/10">
         <div className="container mx-auto px-4 md:px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
-            
+            <div className="md:col-span-3">
+              <img src="/logo-white.png" alt="Latina Empire" className="h-8 mb-6" />
+              <div className="flex space-x-4 mb-6">
+                <a href="#" className="text-white/70 hover:text-white transition-all">
+                  <FaInstagram className="h-5 w-5" />
+                </a>
+                <a href="#" className="text-white/70 hover:text-white transition-all">
+                  <FaFacebookF className="h-5 w-5" />
+                </a>
+                <a href="#" className="text-white/70 hover:text-white transition-all">
+                  <FaYoutube className="h-5 w-5" />
+                </a>
+                <a href="#" className="text-white/70 hover:text-white transition-all">
+                  <FaLinkedinIn className="h-5 w-5" />
+                </a>
+                <a href="#" className="text-white/70 hover:text-white transition-all">
+                  <FaTwitter className="h-5 w-5" />
+                </a>
+              </div>
+            </div>
             
             <div className="md:col-span-2">
               <h3 className="font-sans uppercase tracking-wider text-sm font-semibold mb-6">Program</h3>
