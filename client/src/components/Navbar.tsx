@@ -69,7 +69,11 @@ const Navbar = () => {
             <div className="flex items-center gap-2 lg:hidden">
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className={scrolled ? 'primary-button' : 'secondary-button'}
+                className={`rounded-full px-6 py-1.5 font-medium h-auto text-sm ${
+                  scrolled 
+                    ? 'bg-black text-white hover:bg-gray-800' 
+                    : 'bg-white text-black hover:bg-gray-200'
+                }`}
               >
                 START NOW
               </Button>
@@ -105,7 +109,7 @@ const Navbar = () => {
               ))}
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className={`rounded-full px-6 py-2 font-medium h-auto ${
+                className={`rounded-full px-8 py-1.5 font-medium h-auto ${
                   scrolled 
                     ? 'bg-black text-white hover:bg-gray-800' 
                     : 'bg-white text-black hover:bg-gray-200'

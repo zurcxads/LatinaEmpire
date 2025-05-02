@@ -108,15 +108,15 @@
 
 /* Consistent button styles */
 .primary-button {
-  @apply bg-magenta text-white hover:bg-magenta/90 font-semibold px-8 py-6 rounded-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg disabled:opacity-50 disabled:hover:scale-100;
+  @apply bg-magenta text-white hover:bg-magenta/90 font-semibold px-8 py-1.5 rounded-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg disabled:opacity-50 disabled:hover:scale-100;
 }
 
 .secondary-button {
-  @apply bg-white text-black hover:bg-gray-100 font-semibold px-8 py-6 rounded-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg disabled:opacity-50 disabled:hover:scale-100;
+  @apply bg-white text-black hover:bg-gray-100 font-semibold px-8 py-1.5 rounded-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg disabled:opacity-50 disabled:hover:scale-100;
 }
 
 .outline-button {
-  @apply border-2 border-magenta text-magenta hover:bg-magenta/10 font-semibold px-8 py-6 rounded-full transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:hover:scale-100;
+  @apply border-2 border-magenta text-magenta hover:bg-magenta/10 font-semibold px-8 py-1.5 rounded-full transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:hover:scale-100;
 }
 
 /* Card styles */
