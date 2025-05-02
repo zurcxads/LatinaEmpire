@@ -63,7 +63,7 @@ const PillarsSection = () => {
           </div>
 
           {/* Right column: Text */}
-          <div className="flex flex-col justify-start h-full">
+          <div className="flex flex-col justify-center items-center h-full text-center">
             <div className="flex items-center gap-2 mb-6">
               <span className="font-sans uppercase tracking-wider text-gray-600 font-semibold text-sm">
                 OUR MISSION
