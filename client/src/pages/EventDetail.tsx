@@ -126,11 +126,11 @@ const EventDetail = () => {
       <Navbar />
 
       {/* Event Banner */}
-      <section className="bg-black pt-10 pb-0 relative">
+      <section className="bg-black pt-20 pb-0 relative">
         {/* Full-width event banner with rounded corners */}
         <div className="mx-4 md:mx-12 rounded-[24px] overflow-hidden relative">
           <div 
-            className="w-full h-[600px] bg-center bg-cover bg-no-repeat relative"
+            className="w-full h-[550px] bg-center bg-cover bg-no-repeat relative"
             style={{ 
               backgroundImage: `url('${event.bannerImage || event.image}')` 
             }}
