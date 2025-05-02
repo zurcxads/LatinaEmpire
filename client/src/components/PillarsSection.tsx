@@ -48,12 +48,15 @@ const PillarsSection = () => {
   return (
     <section className="py-20 md:py-24 bg-white">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left column: Text */}
           <div className="flex flex-col justify-center">
-            <span className="font-sans uppercase tracking-wider text-gray-600 font-semibold text-sm mb-3 block">
-              OUR MISSION
-            </span>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="font-sans uppercase tracking-wider text-gray-600 font-semibold text-sm">
+                OUR MISSION
+              </span>
+              <div className="w-2 h-2 rounded-full bg-magenta animate-pulse shadow-[0_0_8px_4px_rgba(236,72,153,0.3)]"></div>
+            </div>
             
             <div className="mt-6 mb-12">
               <PillarCategory 
