@@ -72,31 +72,7 @@ const Footer = () => {
       <div className="border-t border-white/10">
         <div className="container mx-auto px-4 md:px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
-            <div className="md:col-span-3">
-              <Link href="/" className="inline-block mb-6">
-                <span className="font-serif font-bold text-3xl">Latina Empire</span>
-              </Link>
-              <p className="font-sans text-white/70 mb-6">
-                Empowering Latinas to reach their highest potential through community, coaching, and connection.
-              </p>
-              <div className="flex space-x-5 mb-8">
-                <a href="https://instagram.com/latinaempire" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-magenta transition-all" aria-label="Instagram">
-                  <FaInstagram className="text-lg" />
-                </a>
-                <a href="https://facebook.com/latinaempire" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-magenta transition-all" aria-label="Facebook">
-                  <FaFacebookF className="text-lg" />
-                </a>
-                <a href="https://youtube.com/latinaempire" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-magenta transition-all" aria-label="YouTube">
-                  <FaYoutube className="text-lg" />
-                </a>
-                <a href="https://twitter.com/latinaempire" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-magenta transition-all" aria-label="Twitter">
-                  <FaTwitter className="text-lg" />
-                </a>
-                <a href="https://linkedin.com/company/latinaempire" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-magenta transition-all" aria-label="LinkedIn">
-                  <FaLinkedinIn className="text-lg" />
-                </a>
-              </div>
-            </div>
+            
             
             <div className="md:col-span-2">
               <h3 className="font-sans uppercase tracking-wider text-sm font-semibold mb-6">Program</h3>
