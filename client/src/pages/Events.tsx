@@ -246,7 +246,7 @@ const Events = () => {
                   />
                   
                   {/* Content Overlay */}
-                  <div className="absolute inset-0 z-20 p-10 md:p-14 lg:p-20 flex flex-col justify-end text-white">
+                  <div className="absolute inset-0 z-20 p-8 md:p-10 flex flex-col justify-end text-white">
                     {/* Tag at top */}
                     <div className="absolute top-8 left-8">
                       <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
@@ -254,36 +254,20 @@ const Events = () => {
                       </div>
                     </div>
                     
-                    <div className="max-w-4xl pr-32">
+                    <div className="w-full pr-32">
                       {/* Title */}
-                      <h3 className="font-sans font-bold text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight tracking-tight">
+                      <h3 className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl mb-4 leading-tight tracking-tight">
                         Unleash your Latina <br />leadership potential
                       </h3>
                       
                       {/* Description */}
-                      <p className="text-white/90 text-xl md:text-2xl max-w-2xl mb-0 leading-relaxed">
+                      <p className="text-white/90 text-base md:text-lg max-w-md mb-0 leading-relaxed">
                         Join our transformative academy where Latina professionals build the skills, network, and confidence to lead in any industry.
                       </p>
                     </div>
-                    
-                    {/* Event Details */}
-                    <div className="flex flex-wrap items-center gap-8 text-white/90 text-sm uppercase mt-12">
-                      <div>
-                        <div className="text-[10px] text-white/60 mb-1 tracking-wider">DATE</div>
-                        <div className="font-medium">{upcomingEvents[0].date}</div>
-                      </div>
-                      <div>
-                        <div className="text-[10px] text-white/60 mb-1 tracking-wider">PLACE</div>
-                        <div className="font-medium">{upcomingEvents[0].location}</div>
-                      </div>
-                      <div>
-                        <div className="text-[10px] text-white/60 mb-1 tracking-wider">TIMEZONE</div>
-                        <div className="font-medium">Eastern</div>
-                      </div>
-                    </div>
                   
                     {/* Brand Logo */}
-                    <div className="absolute bottom-10 right-10 md:bottom-14 md:right-14 lg:bottom-20 lg:right-20 bg-black text-white p-3 rounded">
+                    <div className="absolute bottom-8 right-8 bg-black text-white p-3 rounded">
                       <div className="uppercase font-bold text-center leading-none">
                         <div className="text-xs tracking-widest mb-1">LATINA EMPIRE</div>
                         <div className="text-sm tracking-wider">LEADERSHIP<br/>ACADEMY</div>
@@ -307,20 +291,20 @@ const Events = () => {
           ) : (
             <div className="relative aspect-[21/9] rounded-xl overflow-hidden bg-black shadow-lg">
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10"></div>
-              <div className="absolute inset-0 z-20 p-10 md:p-14 lg:p-20 flex flex-col justify-end">
+              <div className="absolute inset-0 z-20 p-8 md:p-10 flex flex-col justify-end">
                 <div className="absolute top-8 left-8">
                   <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
                     <span className="text-xs uppercase tracking-wider font-medium text-white">COMING SOON</span>
                   </div>
                 </div>
                 
-                <div className="max-w-4xl pr-32">
-                  <h3 className="font-sans font-bold text-5xl md:text-6xl lg:text-7xl mb-6 text-white leading-tight">
+                <div className="w-full pr-32">
+                  <h3 className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl mb-4 text-white leading-tight">
                     New events
                     <br />
                     being planned
                   </h3>
-                  <p className="text-white/90 text-xl md:text-2xl max-w-2xl mb-12 leading-relaxed">
+                  <p className="text-white/90 text-base md:text-lg max-w-md mb-8 leading-relaxed">
                     We're currently planning our next series of transformative events. Join our mailing list to be the first to know when registrations open.
                   </p>
                   <Button className="bg-white text-black hover:bg-white/90 rounded-full px-8 py-1.5 h-auto text-base">
@@ -329,7 +313,7 @@ const Events = () => {
                 </div>
                 
                 {/* Brand Logo */}
-                <div className="absolute bottom-10 right-10 md:bottom-14 md:right-14 lg:bottom-20 lg:right-20 bg-black text-white p-3 rounded">
+                <div className="absolute bottom-8 right-8 bg-black text-white p-3 rounded">
                   <div className="uppercase font-bold text-center leading-none">
                     <div className="text-xs tracking-widest mb-1">LATINA</div>
                     <div className="text-sm tracking-wider">EMPIRE</div>
