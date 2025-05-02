@@ -308,18 +308,13 @@ const EventCalendar = () => {
       {/* CTA Section */}
       <section className="py-20 bg-black text-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="relative mx-auto max-w-5xl rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-purple-600 via-pink-500 to-amber-400">
-            {/* Background gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60"></div>
+          <div className="relative mx-auto max-w-5xl rounded-3xl overflow-hidden shadow-2xl">
+            {/* Background gradient overlay with animation */}
+            <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-600/90 via-pink-500/80 to-purple-600/90 bg-[size:200%_200%] animate-gradient-slow"></div>
             
-            {/* Background Image */}
-            <div className="absolute inset-0 opacity-50">
-              <img 
-                src="/assets/Screenshot 2025-05-02 at 2.34.24 AM.png" 
-                alt="Abstract background" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+            {/* Soft light blur effects */}
+            <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-white/20 blur-3xl rounded-full"></div>
+            <div className="absolute bottom-0 right-1/4 w-1/3 h-1/3 bg-amber-300/20 blur-3xl rounded-full"></div>
             
             {/* Content */}
             <div className="relative z-10 px-6 py-16 md:px-12 md:py-20 text-center">
@@ -330,7 +325,7 @@ const EventCalendar = () => {
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link href="/join">
-                  <Button variant="default" className="rounded-full bg-white hover:bg-gray-100 text-black px-6 font-medium">
+                  <Button variant="default" className="rounded-full bg-white hover:bg-gray-100 text-black px-10 py-6 text-lg font-medium shadow-xl transition-all hover:shadow-pink-500/20 hover:scale-105">
                     Join Our Community
                   </Button>
                 </Link>
