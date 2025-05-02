@@ -133,10 +133,9 @@ const Events = () => {
         </div>
       </section>
 
-      {/* Latina Empire Events Section */}
+      {/* Events Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <h2 className="font-serif font-bold text-3xl mb-10 text-center">Latina Empire Events</h2>
           
           {isLoadingUpcoming ? (
             // Loading state
