@@ -11,32 +11,39 @@ const AboutFounder = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="pt-20 relative min-h-screen overflow-hidden bg-black text-white">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
-          <img 
-            src="https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg" 
-            alt="Perla Tamez Casasnovas" 
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="container mx-auto px-4 md:px-6 min-h-[calc(100vh-5rem)] flex items-center relative z-20">
-          <div className="max-w-4xl">
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 md:mb-8">
-              The Story of Latina Empire
+      <section className="relative overflow-hidden bg-black text-white">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {/* Left Column - Text */}
+          <div className="flex flex-col justify-center px-8 py-16 md:py-24 md:px-12 bg-black">
+            <div className="mb-10">
+              <span className="inline-flex items-center text-white/90 uppercase text-sm tracking-wider font-medium">
+                <span className="mr-2 h-1.5 w-1.5 rounded-full bg-magenta"></span>
+                About Perla
+              </span>
+            </div>
+            
+            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-none mb-8 max-w-lg">
+              Extraordinary lives answer to a higher calling
             </h1>
-            <p className="font-sans text-xl md:text-2xl text-white/90 mb-8 md:mb-10 font-light leading-relaxed">
-              Meet Perla Tamez Casasnovas — Entrepreneur. Leader. Visionary.
-            </p>
+            
             <Button
               asChild
-              className="bg-magenta hover:bg-magenta/90 text-white font-medium text-lg px-6 py-6 h-auto rounded-lg"
+              className="bg-magenta hover:bg-magenta/90 text-white font-medium text-lg w-fit px-6 py-5 h-auto rounded-lg mt-4"
             >
               <Link href="#early-life">
                 Read Her Story
                 <ArrowDown className="ml-2 h-5 w-5" />
               </Link>
             </Button>
+          </div>
+          
+          {/* Right Column - Image */}
+          <div className="relative h-[50vh] md:h-auto">
+            <img 
+              src="https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg" 
+              alt="Perla Tamez Casasnovas" 
+              className="w-full h-full object-cover object-center"
+            />
           </div>
         </div>
       </section>
