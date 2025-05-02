@@ -114,7 +114,7 @@ const Events = () => {
       <section className="pt-28 pb-16 bg-black text-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
-            <div className="lg:max-w-2xl mb-10 lg:mb-0">
+            <div className="lg:max-w-2xl mb-0">
               <h1 className="font-sans font-bold text-5xl md:text-6xl lg:text-7xl mb-6 tracking-tight leading-tight">
                 Explore Latina Empire Events
               </h1>
