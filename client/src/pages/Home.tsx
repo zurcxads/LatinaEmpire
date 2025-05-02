@@ -7,7 +7,7 @@ import Testimonial from "@/components/Testimonial";
 import PillarsSection from "@/components/PillarsSection";
 import FounderSection from "@/components/FounderSection";
 import ShopSection from "@/components/ShopSection";
-import CoachingSection from "@/components/CoachingSection";
+
 import PodcastSection from "@/components/PodcastSection";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
@@ -35,10 +35,7 @@ const Home = () => {
       <ShopSection />
 
 
-      {/* SECTION 7: Coaching Section */}
-      <CoachingSection />
-
-      {/* SECTION 8: Podcast Section */}
+      {/* SECTION 7: Podcast Section */}
       <PodcastSection />
 
       {/* SECTION 9: Final CTA Section */}
