@@ -50,7 +50,7 @@ const EventCard = ({ event }: { event: Event }) => {
             </h3>
             
             {/* Simple Description */}
-            <p className="text-white/90 text-base md:text-lg max-w-xl mb-0 leading-relaxed">
+            <p className="text-white/90 text-base md:text-lg max-w-md mb-0 leading-relaxed pr-4">
               {event.shortDescription.split('.')[0]}.
             </p>
           </div>
@@ -124,7 +124,7 @@ const Events = () => {
                 <p className="text-base md:text-lg mb-4 text-gray-300">
                   Whether it's a workshop, live activation, or global gathering — this is where your next chapter begins.
                 </p>
-                <Button className="bg-white hover:bg-gray-100 text-black font-semibold text-lg py-6 px-10 rounded-full transition-all shadow-xl w-fit">
+                <Button className="bg-white hover:bg-gray-100 text-black font-semibold text-lg py-1.5 px-8 rounded-full transition-all shadow-xl w-fit">
                   View the calendar
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -208,12 +208,12 @@ const Events = () => {
                     <br />
                     load events
                   </h3>
-                  <p className="text-white/90 text-xl md:text-2xl max-w-3xl mb-12 leading-relaxed">
+                  <p className="text-white/90 text-xl md:text-2xl max-w-2xl mb-12 leading-relaxed pr-4">
                     We're having trouble connecting to our event database. This might be a temporary connection issue.
                   </p>
                   <Button 
                     onClick={() => upcomingEventsQuery.refetch()}
-                    className="bg-white text-black hover:bg-white/90 rounded-full px-8 py-3 h-auto text-base"
+                    className="bg-white text-black hover:bg-white/90 rounded-full px-8 py-1.5 h-auto text-base"
                   >
                     Retry Connection
                   </Button>
@@ -257,7 +257,7 @@ const Events = () => {
                       </h3>
                       
                       {/* Description */}
-                      <p className="text-white/90 text-xl md:text-2xl max-w-3xl mb-0 leading-relaxed">
+                      <p className="text-white/90 text-xl md:text-2xl max-w-2xl mb-0 leading-relaxed pr-4">
                         Get the concrete strategies and tools that have transformed thousands of businesses at every stage.
                       </p>
                     </div>
@@ -316,10 +316,10 @@ const Events = () => {
                     <br />
                     being planned
                   </h3>
-                  <p className="text-white/90 text-xl md:text-2xl max-w-3xl mb-12 leading-relaxed">
+                  <p className="text-white/90 text-xl md:text-2xl max-w-2xl mb-12 leading-relaxed pr-4">
                     We're currently planning our next series of transformative events. Join our mailing list to be the first to know when registrations open.
                   </p>
-                  <Button className="bg-white text-black hover:bg-white/90 rounded-full px-8 py-3 h-auto text-base">
+                  <Button className="bg-white text-black hover:bg-white/90 rounded-full px-8 py-1.5 h-auto text-base">
                     Join Our Mailing List
                   </Button>
                 </div>
