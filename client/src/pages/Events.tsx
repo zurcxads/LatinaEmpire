@@ -43,7 +43,7 @@ const EventCard = ({ event }: { event: Event }) => {
             </p>
 
             {/* Event Details */}
-            <div className="flex items-center gap-8 mb-4 text-white/90 text-sm uppercase">
+            <div className="flex items-center gap-8 text-white/90 text-sm uppercase">
               <div>
                 <div className="text-[10px] text-white/60 mb-1.5 tracking-wider">DATE</div>
                 <div className="font-medium">{event.date}</div>
@@ -60,13 +60,7 @@ const EventCard = ({ event }: { event: Event }) => {
               )}
             </div>
 
-            {/* Learn More Button - Always visible on mobile, shows on hover for desktop */}
-            <div className="mt-6 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <Button className="bg-white text-black hover:bg-white/90 px-8 py-6 h-auto rounded-full text-sm font-medium tracking-wide">
-                Learn More
-              </Button>
             </div>
-          </div>
             
           {/* Brand Logo */}
           <div className="absolute top-6 right-6 md:bottom-8 md:top-auto md:right-8 bg-black/80 backdrop-blur-sm rounded-lg h-16 w-32 flex items-center justify-center px-2">
