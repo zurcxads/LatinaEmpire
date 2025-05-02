@@ -78,8 +78,8 @@ const PillarsSection = () => {
           </div>
 
           {/* Right column: Image */}
-          <div>
-            <div className="relative h-[400px]">
+          <div className="flex items-center justify-center">
+            <div className="relative h-[350px] w-[350px]">
               <div className="rounded-2xl overflow-hidden shadow-xl h-full">
                 <img 
                   src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
