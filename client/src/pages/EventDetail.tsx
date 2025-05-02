@@ -968,11 +968,11 @@ const EventDetail = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ 
-            backgroundImage: `url('https://images.unsplash.com/photo-1591115765373-5207764f72e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')` 
+            backgroundImage: `url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')` 
           }}
         >
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-black opacity-70"></div>
+          {/* Dark overlay with gradient fade at bottom */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/70 to-black/90"></div>
         </div>
         
         {/* Content */}
