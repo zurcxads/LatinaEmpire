@@ -135,20 +135,39 @@ const Events = () => {
       {/* Latina Empire Events Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <h2 className="font-serif font-bold text-3xl mb-10 text-center">Upcoming Latina Empire Events</h2>
+          <h2 className="font-serif font-bold text-3xl mb-10 text-center">Latina Empire Events</h2>
+          
           {isLoadingUpcoming ? (
             // Loading state
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-              {[...Array(2)].map((_, index) => (
-                <EventCardSkeleton key={index} />
-              ))}
+            <div className="space-y-16">
+              {/* Featured event skeleton */}
+              <div className="relative aspect-[21/9] rounded-lg overflow-hidden animate-pulse bg-gray-800">
+                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10"></div>
+                <div className="absolute inset-0 z-20 p-10 flex flex-col justify-center">
+                  <div className="h-5 w-32 bg-white/20 rounded-full mb-6"></div>
+                  <div className="h-12 bg-white/30 rounded mb-3 w-1/2 max-w-xl"></div>
+                  <div className="h-12 bg-white/30 rounded mb-6 w-1/3 max-w-md"></div>
+                  <div className="h-6 bg-white/20 rounded mb-2 w-full max-w-xl"></div>
+                  <div className="h-6 bg-white/20 rounded mb-8 w-2/3 max-w-lg"></div>
+                  <div className="h-10 bg-white/90 rounded-full w-40"></div>
+                </div>
+              </div>
+              
+              {/* Regular events skeleton */}
+              <div>
+                <h3 className="font-serif font-bold text-2xl mb-8">More Upcoming Events</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+                  {[...Array(2)].map((_, index) => (
+                    <EventCardSkeleton key={index} />
+                  ))}
+                </div>
+              </div>
             </div>
           ) : hasError ? (
             // Error state
             <div className="relative aspect-video rounded-lg overflow-hidden bg-black">
               <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
               <div className="absolute inset-0 z-20 p-10 lg:p-16 flex flex-col justify-center items-start max-w-2xl">
-
                 <h3 className="font-sans font-bold text-3xl lg:text-4xl mb-4 text-white leading-tight">Unable to Load Events</h3>
                 <p className="font-sans text-white/80 text-lg mb-8 max-w-lg">
                   We're having trouble connecting to our event database. This might be a temporary connection issue.
@@ -162,10 +181,80 @@ const Events = () => {
               </div>
             </div>
           ) : upcomingEvents.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-              {upcomingEvents.map((event) => (
-                <EventCard key={event.id} event={event} />
-              ))}
+            <div className="space-y-16">
+              {/* Featured Event */}
+              <div className="relative aspect-[21/9] rounded-lg overflow-hidden">
+                {/* Background Image with Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10" />
+                <img 
+                  src={upcomingEvents[0].image} 
+                  alt={upcomingEvents[0].name}
+                  className="w-full h-full object-cover"
+                />
+                
+                {/* Content Overlay */}
+                <div className="absolute inset-0 z-20 p-8 md:p-12 lg:p-16 flex flex-col justify-center text-white">
+                  {/* Tag */}
+                  <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm mb-8">
+                    <span className="text-xs uppercase tracking-wider font-medium">IN-PERSON & VIRTUAL</span>
+                  </div>
+                  
+                  <div className="max-w-3xl">
+                    {/* Title */}
+                    <h3 className="font-sans font-bold text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight tracking-tight">
+                      {upcomingEvents[0].name}
+                    </h3>
+                    
+                    {/* Description */}
+                    <p className="text-white/80 text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
+                      {upcomingEvents[0].shortDescription}
+                    </p>
+
+                    {/* Event Details */}
+                    <div className="flex flex-wrap items-center gap-8 text-white/90 text-sm uppercase mb-8">
+                      <div>
+                        <div className="text-[10px] text-white/60 mb-1 tracking-wider">DATE</div>
+                        <div className="font-medium">{upcomingEvents[0].date}</div>
+                      </div>
+                      <div>
+                        <div className="text-[10px] text-white/60 mb-1 tracking-wider">PLACE</div>
+                        <div className="font-medium">{upcomingEvents[0].location}</div>
+                      </div>
+                      <div>
+                        <div className="text-[10px] text-white/60 mb-1 tracking-wider">TIMEZONE</div>
+                        <div className="font-medium">Eastern</div>
+                      </div>
+                    </div>
+                    
+                    {/* CTA Button */}
+                    <Link href={`/events/${upcomingEvents[0].slug}`}>
+                      <Button className="bg-white text-black hover:bg-white/90 rounded-full px-8 py-3 h-auto text-base">
+                        Learn More
+                      </Button>
+                    </Link>
+                  </div>
+                  
+                  {/* Brand Logo */}
+                  <div className="absolute top-8 right-8 md:right-16 bg-black/70 backdrop-blur-sm rounded px-6 py-4">
+                    <div className="text-white uppercase font-bold text-center leading-none">
+                      <span className="text-xs tracking-wider">LATINA</span>
+                      <div className="text-2xl tracking-tight">EMPIRE</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Other Events - Skip the first (featured) event */}
+              {upcomingEvents.length > 1 && (
+                <div>
+                  <h3 className="font-serif font-bold text-2xl mb-8">More Upcoming Events</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+                    {upcomingEvents.slice(1).map((event) => (
+                      <EventCard key={event.id} event={event} />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           ) : (
             <div className="relative aspect-video rounded-lg overflow-hidden bg-black">
