@@ -145,14 +145,19 @@ const EventTable = ({ events }: { events: Event[] }) => {
     event.location.toLowerCase().includes(searchTerm.toLowerCase())
   );
   
-  // Check if an event is upcoming or past
+  // Check if an event is upcoming and available or coming soon
   const isUpcoming = (event: Event) => {
+    // Past events are not available
     if (event.isPast) return false;
     
-    const eventDate = parseEventDate(event.date);
-    if (!eventDate) return false;
+    // Only specific events are available now
+    const availableEventSlugs = [
+      "latina-wellness-retreat-2024",
+      "latinas-in-tech-summit-2024"
+    ];
     
-    return eventDate >= new Date();
+    // Check if this event is in our available list
+    return availableEventSlugs.includes(event.slug);
   };
 
   return (
