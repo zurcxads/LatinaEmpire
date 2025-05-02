@@ -28,7 +28,7 @@ const FounderSection = () => {
                 className="bg-magenta hover:bg-magenta/90 text-white rounded-full px-6 py-3 h-auto font-medium"
               >
                 <Link href="/about-founder">
-                  Meet Perla
+                  Meet Perla Tamez
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -39,7 +39,7 @@ const FounderSection = () => {
           <div className="relative">
             <div className="rounded-2xl overflow-hidden shadow-xl">
               <img 
-                src="https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src="https://images.pexels.com/photos/7262404/pexels-photo-7262404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 alt="Perla Tamez Casasnovas, Founder of Latina Empire" 
                 className="w-full h-full object-cover"
               />
