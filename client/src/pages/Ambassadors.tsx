@@ -16,6 +16,10 @@ const AmbassadorCard = ({ ambassador }: { ambassador: Ambassador }) => {
           src={ambassador.image} 
           alt={ambassador.name} 
           className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+          onError={(e) => {
+            e.currentTarget.classList.add("hidden");
+            e.currentTarget.parentElement?.classList.add("placeholder-image");
+          }}
         />
         <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center">
           <MapPin className="h-3 w-3 mr-1 text-magenta" />

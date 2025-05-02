@@ -202,6 +202,11 @@ const AmbassadorDetail = () => {
         style={{ 
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${ambassador.bannerImage || ambassador.image}')` 
         }}
+        onError={(e) => {
+          const section = e.currentTarget as HTMLElement;
+          section.style.backgroundImage = "";
+          section.classList.add("hero-placeholder");
+        }}
       >
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-white">
           <div className="max-w-4xl">
@@ -272,6 +277,10 @@ const AmbassadorDetail = () => {
                       src={ambassador.image} 
                       alt={ambassador.name} 
                       className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.currentTarget.classList.add("hidden");
+                        e.currentTarget.parentElement?.classList.add("placeholder-image");
+                      }}
                     />
                   </div>
                 </div>
