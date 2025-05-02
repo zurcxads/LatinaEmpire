@@ -322,11 +322,6 @@ const EventCalendar = () => {
                 Join Our Community
               </Button>
             </Link>
-            <Link href="/contact">
-              <Button variant="outline" className="rounded-full text-white border-white hover:bg-white/10 px-6">
-                Contact Us
-              </Button>
-            </Link>
           </div>
         </div>
       </section>
