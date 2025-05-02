@@ -164,10 +164,10 @@ const EventDetail = () => {
                     </div>
                     
                     {/* Title and Description */}
-                    <h1 className="font-serif font-bold text-5xl md:text-6xl leading-tight mb-4 text-white">
+                    <h1 className="font-serif font-bold text-4xl md:text-5xl leading-tight mb-4 text-white">
                       Rejuvenate your health<br />and build your wealth
                     </h1>
-                    <p className="font-sans text-lg md:text-xl mb-8 max-w-2xl text-white/90">
+                    <p className="font-sans text-base md:text-lg mb-6 max-w-2xl text-white/90">
                       Embark on a journey of change in a tropical oasis with the leading minds in health, wellbeing, finance and more.
                     </p>
                     
@@ -206,11 +206,11 @@ const EventDetail = () => {
                   
                   {/* Event badge in bottom right corner */}
                   <div className="hidden md:block">
-                    <div className="bg-black p-4 rounded-lg shadow-lg">
+                    <div className="bg-black p-3 rounded-lg shadow-lg">
                       <div className="text-center text-white uppercase">
-                        <div className="font-bold text-lg tracking-wide">{getEventBadgeTitle().sub}</div>
-                        <div className="font-bold text-2xl tracking-wide">{getEventBadgeTitle().main}</div>
-                        <div className="mt-1 text-sm tracking-wide">{event.location}</div>
+                        <div className="font-bold text-sm tracking-wide">{getEventBadgeTitle().sub}</div>
+                        <div className="font-bold text-xl tracking-wide">{getEventBadgeTitle().main}</div>
+                        <div className="mt-1 text-xs tracking-wide">{event.location}</div>
                       </div>
                     </div>
                   </div>
