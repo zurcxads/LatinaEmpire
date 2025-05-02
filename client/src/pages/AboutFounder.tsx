@@ -315,23 +315,61 @@ const AboutFounder = () => {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="section-padding bg-magenta">
+      {/* Dual Cards CTA Section */}
+      <section className="py-20 bg-black">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="section-heading text-white mb-6">
-              Join the Movement
-            </h2>
-            <p className="font-sans text-xl md:text-2xl text-white mb-10 leading-relaxed">
-              Be part of the next chapter in Latina history.
-            </p>
-            <Button
-              onClick={() => setIsModalOpen(true)}
-              className="secondary-button text-xl shadow-xl hover:scale-[1.02]"
-            >
-              Join Now
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Card 1 - Framework for Success */}
+            <div className="relative rounded-xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10"></div>
+              <img 
+                src="https://images.pexels.com/photos/6325907/pexels-photo-6325907.jpeg" 
+                alt="A Framework for Success" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 p-10 flex flex-col justify-end z-20">
+                <h3 className="text-white text-3xl md:text-4xl font-serif mb-3">
+                  A Framework for Success
+                </h3>
+                <p className="text-white/80 mb-6">
+                  Comprised of 3 key pillars, the Heart-Mind-Money Framework bridges the gap between where you are and where you want to go.
+                </p>
+                <Button
+                  asChild
+                  className="w-fit bg-white hover:bg-white/90 text-black"
+                >
+                  <Link href="/program">
+                    Learn more
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Card 2 - Real Community Impact */}
+            <div className="relative rounded-xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10"></div>
+              <img 
+                src="https://images.pexels.com/photos/8192042/pexels-photo-8192042.jpeg" 
+                alt="Real Community Impact" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 p-10 flex flex-col justify-end z-20">
+                <h3 className="text-white text-3xl md:text-4xl font-serif mb-3">
+                  An Impact with Measurable Results
+                </h3>
+                <p className="text-white/80 mb-6">
+                  Our ambassador program has empowered Latinas across 27 countries to create local impact with global support.
+                </p>
+                <Button
+                  asChild
+                  className="w-fit bg-white hover:bg-white/90 text-black"
+                >
+                  <Link href="/ambassadors">
+                    Learn more
+                  </Link>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
