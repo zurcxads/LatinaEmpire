@@ -640,6 +640,54 @@ const EventDetail = () => {
           </Button>
         </div>
       </section>
+      
+      {/* 4-Grid Leadership Academy Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+            {/* Top Left - Logo */}
+            <div className="bg-[#61B3FF] p-8 md:p-12 rounded-lg flex flex-col justify-center items-center text-center">
+              <div className="max-w-[300px]">
+                <div className="text-center mb-2">
+                  <p className="uppercase tracking-wide text-black font-bold text-sm mb-1">TONY ROBBINS</p>
+                  <h3 className="font-serif text-4xl md:text-5xl font-black tracking-tight text-black leading-none">LEADERSHIP</h3>
+                  <p className="uppercase tracking-widest text-black font-medium text-sm mt-1">ACADEMY</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Top Right - Title */}
+            <div className="bg-white p-8 md:p-12 flex flex-col justify-center">
+              <h2 className="font-serif font-bold text-3xl md:text-4xl lg:text-5xl leading-tight">
+                Get Tony's own<br />leadership secrets
+              </h2>
+            </div>
+            
+            {/* Bottom Left - Paragraph */}
+            <div className="bg-white p-8 md:p-12 flex flex-col justify-center">
+              <p className="text-gray-600">
+                Take part in the only program that provides full immersion in the proprietary leadership 
+                training system Tony Robbins has leveraged for nearly five decades to empower and 
+                change the lives of millions. Learn skills from world-renowned experts in neuro-linguistic 
+                programming, persuasion, coaching and more.
+              </p>
+            </div>
+            
+            {/* Bottom Right - Image */}
+            <div className="rounded-lg overflow-hidden h-full">
+              <img 
+                src="https://images.unsplash.com/photo-1609921212029-bb5a28e60960?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                alt="Virtual Leadership Conference" 
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.classList.add("placeholder-image");
+                  e.currentTarget.alt = "Virtual Leadership Conference";
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Location Map Placeholder */}
       {event.locationMapUrl && !event.isPast && (
