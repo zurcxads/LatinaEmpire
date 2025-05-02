@@ -10,7 +10,7 @@ import { Ambassador } from "@/lib/types";
 
 const AmbassadorCard = ({ ambassador }: { ambassador: Ambassador }) => {
   return (
-    <div className="bg-black border border-white/10 rounded-lg overflow-hidden shadow-[0_0_15px_rgba(255,255,255,0.05)] transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] group backdrop-blur-sm">
+    <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg group">
       <div className="relative h-80 overflow-hidden">
         <img 
           src={ambassador.image} 
@@ -21,25 +21,25 @@ const AmbassadorCard = ({ ambassador }: { ambassador: Ambassador }) => {
             e.currentTarget.parentElement?.classList.add("placeholder-image");
           }}
         />
-        <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full flex items-center">
+        <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full flex items-center shadow-sm">
           <MapPin className="h-3 w-3 mr-1 text-magenta" />
-          <span className="text-xs font-medium text-white">{ambassador.location}, {ambassador.country}</span>
+          <span className="text-xs font-medium text-gray-800">{ambassador.location}, {ambassador.country}</span>
         </div>
       </div>
       <div className="p-6">
-        <h3 className="font-serif font-bold text-xl mb-1 text-white group-hover:text-magenta transition-colors">{ambassador.name}</h3>
-        <p className="text-sm text-white/60 mb-3">{ambassador.title}</p>
+        <h3 className="font-serif font-bold text-xl mb-1 text-gray-900 group-hover:text-magenta transition-colors">{ambassador.name}</h3>
+        <p className="text-sm text-gray-600 mb-3">{ambassador.title}</p>
         <div className="flex items-center mb-4">
-          <div className="w-8 h-8 flex-shrink-0 rounded-full bg-black border border-magenta/30 flex items-center justify-center mr-2">
+          <div className="w-8 h-8 flex-shrink-0 rounded-full bg-gray-100 border border-magenta/30 flex items-center justify-center mr-2">
             <Star className="h-4 w-4 text-magenta" />
           </div>
-          <p className="text-sm text-white/80 italic">"{ambassador.quote}"</p>
+          <p className="text-sm text-gray-700 italic">"{ambassador.quote}"</p>
         </div>
-        <p className="font-sans text-white/60 mb-4 line-clamp-3">
+        <p className="font-sans text-gray-600 mb-4 line-clamp-3">
           {ambassador.shortBio}
         </p>
         <Link href={`/ambassadors/${ambassador.slug}`}>
-          <Button className="w-full bg-black border border-magenta/50 text-white hover:bg-magenta/20 hover:border-magenta transition-all flex items-center justify-center">
+          <Button className="w-full bg-white border border-magenta hover:bg-magenta hover:text-white text-magenta transition-all flex items-center justify-center">
             View Profile
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
@@ -51,48 +51,35 @@ const AmbassadorCard = ({ ambassador }: { ambassador: Ambassador }) => {
 
 // Loading skeleton for ambassador cards
 const AmbassadorCardSkeleton = () => (
-  <div className="bg-black border border-white/10 rounded-lg overflow-hidden shadow-[0_0_15px_rgba(255,255,255,0.05)] animate-pulse">
-    <div className="h-80 bg-white/5"></div>
+  <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md animate-pulse">
+    <div className="h-80 bg-gray-200"></div>
     <div className="p-6">
-      <div className="h-6 bg-white/5 rounded mb-3 w-2/3"></div>
-      <div className="h-4 bg-white/5 rounded mb-3 w-1/3"></div>
+      <div className="h-6 bg-gray-200 rounded mb-3 w-2/3"></div>
+      <div className="h-4 bg-gray-200 rounded mb-3 w-1/3"></div>
       <div className="flex items-center mb-4">
-        <div className="w-8 h-8 flex-shrink-0 rounded-full bg-white/5 mr-2 border border-white/10"></div>
-        <div className="h-4 bg-white/5 rounded w-4/5"></div>
+        <div className="w-8 h-8 flex-shrink-0 rounded-full bg-gray-200 mr-2 border border-gray-300"></div>
+        <div className="h-4 bg-gray-200 rounded w-4/5"></div>
       </div>
-      <div className="h-4 bg-white/5 rounded mb-2"></div>
-      <div className="h-4 bg-white/5 rounded mb-2"></div>
-      <div className="h-4 bg-white/5 rounded mb-4 w-4/5"></div>
-      <div className="h-10 bg-white/5 rounded border border-white/10"></div>
+      <div className="h-4 bg-gray-200 rounded mb-2"></div>
+      <div className="h-4 bg-gray-200 rounded mb-2"></div>
+      <div className="h-4 bg-gray-200 rounded mb-4 w-4/5"></div>
+      <div className="h-10 bg-gray-200 rounded"></div>
     </div>
   </div>
 );
 
 const Ambassadors = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  
   // Fetch ambassadors data with React Query
   const { data: ambassadors, isLoading, isError } = useQuery({
     queryKey: ['/api/ambassadors'],
     queryFn: ambassadorsService.getAllAmbassadors,
   });
 
-  // Filter ambassadors based on search query
-  const filteredAmbassadors = ambassadors && searchQuery 
-    ? ambassadors.filter((ambassador: Ambassador) => {
-        const searchTerm = searchQuery.toLowerCase();
-        return (
-          ambassador.name.toLowerCase().includes(searchTerm) ||
-          ambassador.location.toLowerCase().includes(searchTerm) ||
-          ambassador.country.toLowerCase().includes(searchTerm) ||
-          ambassador.title.toLowerCase().includes(searchTerm) ||
-          ambassador.expertise.some((e: string) => e.toLowerCase().includes(searchTerm))
-        );
-      })
-    : ambassadors;
+  // No filter needed as search is removed
+  const filteredAmbassadors = ambassadors;
 
   return (
-    <div className="min-h-screen flex flex-col bg-black">
+    <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
       
       {/* Hero Section */}
@@ -118,21 +105,15 @@ const Ambassadors = () => {
         </div>
       </section>
       
-      {/* Ambassadors Grid with Search */}
-      <section className="py-16 bg-black">
+      {/* Ambassadors Grid */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          {/* Search bar */}
-          <div className="max-w-xl mx-auto mb-12">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/50 h-5 w-5" />
-              <input
-                type="text"
-                placeholder="Search ambassadors by name, location, or expertise..."
-                className="w-full pl-10 pr-4 py-3 border border-white/10 rounded-full focus:outline-none focus:ring-2 focus:ring-magenta focus:border-transparent bg-black/50 text-white shadow-[0_0_10px_rgba(255,255,255,0.03)] backdrop-blur-sm"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h2 className="font-serif font-bold text-2xl text-black mb-4">Our Global Community</h2>
+            <div className="w-20 h-1 bg-magenta mx-auto mb-4"></div>
+            <p className="text-black/70">
+              Discover our network of ambassadors leading the Latina Empire movement across the globe
+            </p>
           </div>
           
           {isLoading ? (
@@ -144,14 +125,14 @@ const Ambassadors = () => {
             </div>
           ) : isError ? (
             // Error state
-            <div className="text-center py-12 border border-red-800 rounded-lg p-8 bg-black shadow-[0_0_20px_rgba(220,38,38,0.2)]">
-              <h3 className="font-serif font-semibold text-xl mb-2 text-red-500">Unable to Load Ambassadors</h3>
-              <p className="text-white/70 mb-4">
+            <div className="text-center py-12 border border-red-200 rounded-lg p-8 bg-red-50 shadow-md">
+              <h3 className="font-serif font-semibold text-xl mb-2 text-red-600">Unable to Load Ambassadors</h3>
+              <p className="text-gray-700 mb-4">
                 We're having trouble loading our ambassadors. Please refresh the page or check back later.
               </p>
               <Button 
                 onClick={() => window.location.reload()}
-                className="bg-black text-white hover:bg-red-900/30 border border-red-800"
+                className="bg-white text-red-600 hover:bg-red-50 border border-red-300"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Refresh Page
@@ -164,25 +145,11 @@ const Ambassadors = () => {
                 <AmbassadorCard key={ambassador.id} ambassador={ambassador} />
               ))}
             </div>
-          ) : searchQuery ? (
-            // No search results
-            <div className="text-center py-12 border border-white/10 rounded-lg p-8 bg-black shadow-[0_0_15px_rgba(255,255,255,0.05)]">
-              <h3 className="font-serif font-semibold text-xl mb-2 text-white">No Ambassadors Found</h3>
-              <p className="text-white/60 mb-4">
-                We couldn't find any ambassadors matching your search criteria. Try different keywords.
-              </p>
-              <Button 
-                onClick={() => setSearchQuery("")}
-                className="bg-black text-white hover:bg-magenta/20 border border-magenta/50"
-              >
-                Clear Search
-              </Button>
-            </div>
           ) : (
             // No ambassadors available
-            <div className="text-center py-12 border border-white/10 rounded-lg p-8 bg-black shadow-[0_0_15px_rgba(255,255,255,0.05)]">
-              <h3 className="font-serif font-semibold text-xl mb-2 text-white">No Ambassadors Yet</h3>
-              <p className="text-white/60 mb-4">
+            <div className="text-center py-12 border border-gray-200 rounded-lg p-8 bg-gray-50 shadow-md">
+              <h3 className="font-serif font-semibold text-xl mb-2 text-gray-800">No Ambassadors Yet</h3>
+              <p className="text-gray-600 mb-4">
                 We're in the process of adding our ambassadors. Check back soon!
               </p>
             </div>
