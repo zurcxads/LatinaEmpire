@@ -86,6 +86,76 @@ const AboutFounder = () => {
           </div>
         </div>
       </section>
+      
+      {/* Guiding Principles Section */}
+      <section className="py-16 md:py-20 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <div>
+              <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-3 block">
+                PHILOSOPHY
+              </span>
+              <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6 tracking-tight">
+                Guiding Principles
+              </h2>
+              <p className="text-gray-700 leading-relaxed text-lg mb-4">
+                At the core of Perla's leadership approach is her commitment to authentic representation. "When we fully embrace who we are, including our cultural heritage, we unlock a unique power," she explains. This belief has shaped every aspect of Latina Empire's development.
+              </p>
+              <p className="text-gray-700 leading-relaxed text-lg mb-4">
+                "Too often, professional development for underrepresented groups focuses on assimilation rather than leveraging cultural differences as strengths," Perla notes. "Our approach flips that narrative completely."
+              </p>
+              <p className="text-gray-700 leading-relaxed text-lg">
+                This philosophy extends beyond business to encompass a holistic view of success that balances career advancement with personal fulfillment, community impact, and financial prosperity—without compromising cultural identity.
+              </p>
+            </div>
+            <div className="relative order-first md:order-last">
+              <div className="rounded-2xl overflow-hidden shadow-xl">
+                <img 
+                  src="https://images.pexels.com/photos/6893988/pexels-photo-6893988.jpeg" 
+                  alt="Perla speaking at a leadership conference" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-5 -left-5 w-32 h-32 bg-magenta/10 rounded-full hidden md:block"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Life Dedication Section */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <div className="relative">
+              <div className="rounded-2xl overflow-hidden shadow-xl">
+                <img 
+                  src="https://images.pexels.com/photos/7713516/pexels-photo-7713516.jpeg" 
+                  alt="Perla mentoring Latina professionals" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-5 -right-5 w-32 h-32 bg-magenta/10 rounded-full hidden md:block"></div>
+            </div>
+            <div>
+              <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-3 block">
+                MISSION
+              </span>
+              <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6 tracking-tight">
+                Life Dedication
+              </h2>
+              <p className="text-gray-700 leading-relaxed text-lg mb-4">
+                What began as a career pivot has evolved into Perla's life purpose: creating economic opportunity and leadership pathways for Latina women globally. She has dedicated herself to dismantling systemic barriers that have historically limited Latina advancement.
+              </p>
+              <p className="text-gray-700 leading-relaxed text-lg mb-4">
+                "I believe that when Latinas thrive, whole communities transform," Perla emphasizes. "Our economic empowerment creates ripples that extend across generations, industries, and borders."
+              </p>
+              <p className="text-gray-700 leading-relaxed text-lg">
+                This dedication has led Perla to personally mentor over 500 Latina professionals, develop community programs in underserved areas, and advocate for policy changes that support equity in the workplace—all while building Latina Empire into a movement that extends far beyond its initial business model.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Quote Section */}
       <section className="relative py-24 overflow-hidden bg-black">
