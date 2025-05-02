@@ -8,6 +8,7 @@ import { queryClient } from "@/lib/queryClient";
 import Home from "@/pages/Home";
 import Events from "@/pages/Events";
 import EventDetail from "@/pages/EventDetail";
+import EventCalendar from "@/pages/EventCalendar";
 import Program from "@/pages/Program";
 import Ambassadors from "@/pages/Ambassadors";
 import AmbassadorDetail from "@/pages/AmbassadorDetail";
@@ -28,6 +29,7 @@ function Router() {
           <Route path="/" component={Home} />
           <Route path="/events" component={Events} />
           <Route path="/events/:slug" component={EventDetail} />
+          <Route path="/events-calendar" component={EventCalendar} />
           <Route path="/program" component={Program} />
           <Route path="/ambassadors" component={Ambassadors} />
           <Route path="/ambassadors/:slug" component={AmbassadorDetail} />
