@@ -151,18 +151,18 @@ const EventDetail = () => {
             {/* Dark overlay gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90"></div>
             
-            {/* In-person tag hovering above title */}
-            <div className="absolute top-10 left-10 z-10">
-              <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
-                <span className="text-xs uppercase tracking-wider font-medium text-white">{getEventType()}</span>
-              </div>
-            </div>
-            
             {/* Content container */}
             <div className="absolute bottom-0 left-0 right-0 px-10 pb-16 z-10">
               <div className="container mx-auto">
                 <div className="flex flex-col md:flex-row items-end justify-between">
                   <div className="max-w-3xl">
+                    {/* In-person tag on top of title */}
+                    <div className="mb-4">
+                      <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
+                        <span className="text-xs uppercase tracking-wider font-medium text-white">{getEventType()}</span>
+                      </div>
+                    </div>
+                    
                     {/* Title and Description */}
                     <h1 className="font-serif font-bold text-5xl md:text-6xl leading-tight mb-4 text-white">
                       Rejuvenate your health<br />and build your wealth
