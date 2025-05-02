@@ -124,8 +124,9 @@ const Events = () => {
                 <p className="text-base md:text-lg mb-4 text-gray-300">
                   Join us in-person and experience the energy, connection, and transformation of Latina Empire events. Whether it's a workshop, live activation, or global gathering — this is where your next chapter begins.
                 </p>
-                <Button className="bg-white text-black hover:bg-gray-100 font-medium px-6 py-5 h-auto">
+                <Button className="bg-white hover:bg-gray-100 text-black font-semibold text-lg py-6 px-10 rounded-full transition-all shadow-xl w-fit">
                   View the calendar
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </div>
             </div>
