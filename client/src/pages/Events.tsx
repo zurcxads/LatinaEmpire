@@ -183,7 +183,6 @@ const Events = () => {
               
               {/* Regular events skeleton */}
               <div>
-                <h3 className="font-serif font-bold text-2xl mb-8">More Upcoming Events</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
                   {[...Array(2)].map((_, index) => (
                     <EventCardSkeleton key={index} />
@@ -292,7 +291,6 @@ const Events = () => {
               {/* Other Events - Skip the first (featured) event */}
               {upcomingEvents.length > 1 && (
                 <div>
-                  <h3 className="font-serif font-bold text-2xl mb-8">More Upcoming Events</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
                     {upcomingEvents.slice(1).map((event) => (
                       <EventCard key={event.id} event={event} />
