@@ -80,6 +80,11 @@ const EventDetail = () => {
         style={{ 
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${event.bannerImage || event.image}')` 
         }}
+        onError={(e) => {
+          const section = e.currentTarget as HTMLElement;
+          section.style.backgroundImage = "";
+          section.classList.add("hero-placeholder");
+        }}
       >
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-white">
           <div className="max-w-4xl">
@@ -175,13 +180,21 @@ const EventDetail = () => {
                       <div>
                         <p className="font-sans font-semibold">Host</p>
                         <div className="flex items-center mt-2">
-                          {event.hostImage && (
-                            <img 
-                              src={event.hostImage} 
-                              alt={event.host} 
-                              className="w-10 h-10 rounded-full object-cover mr-3"
-                            />
-                          )}
+                          <div className="w-10 h-10 rounded-full overflow-hidden mr-3">
+                            {event.hostImage ? (
+                              <img 
+                                src={event.hostImage} 
+                                alt={event.host} 
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  e.currentTarget.classList.add("hidden");
+                                  e.currentTarget.parentElement?.classList.add("placeholder-image");
+                                }}
+                              />
+                            ) : (
+                              <div className="placeholder-image w-full h-full rounded-full"></div>
+                            )}
+                          </div>
                           <div>
                             <p className="font-sans">{event.host}</p>
                             {event.hostTitle && <p className="font-sans text-sm text-gray-500">{event.hostTitle}</p>}

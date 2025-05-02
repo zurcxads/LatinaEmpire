@@ -42,6 +42,10 @@ const FounderSection = () => {
                 src="https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 alt="Perla Tamez Casasnovas, Founder of Latina Empire" 
                 className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.classList.add("hidden");
+                  e.currentTarget.parentElement?.classList.add("placeholder-image");
+                }}
               />
             </div>
             

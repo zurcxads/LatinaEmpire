@@ -75,6 +75,10 @@ const TestimonialCard = ({ testimonial }: { testimonial: TestimonialType }) => {
               src={testimonial.image} 
               alt={testimonial.name} 
               className="w-full h-full object-cover"
+              onError={(e) => {
+                e.currentTarget.classList.add("hidden");
+                e.currentTarget.parentElement?.classList.add("placeholder-image");
+              }}
             />
           </div>
           <div>
