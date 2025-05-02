@@ -222,10 +222,10 @@ const Events = () => {
                 </div>
                 
                 {/* Brand Logo */}
-                <div className="absolute top-10 right-10 md:top-14 md:right-14 lg:top-20 lg:right-20 bg-black/90 p-4 rounded">
-                  <div className="text-white uppercase font-bold text-center leading-none">
-                    <div className="text-sm tracking-widest mb-1">LATINA</div>
-                    <div className="text-2xl tracking-wider">EMPIRE</div>
+                <div className="absolute bottom-10 right-10 md:bottom-14 md:right-14 lg:bottom-20 lg:right-20 bg-black text-white p-3 rounded">
+                  <div className="uppercase font-bold text-center leading-none">
+                    <div className="text-xs tracking-widest mb-1">LATINA</div>
+                    <div className="text-sm tracking-wider">EMPIRE</div>
                   </div>
                 </div>
               </div>
@@ -327,10 +327,10 @@ const Events = () => {
                 </div>
                 
                 {/* Brand Logo */}
-                <div className="absolute top-10 right-10 md:top-14 md:right-14 lg:top-20 lg:right-20 bg-black/90 p-4 rounded">
-                  <div className="text-white uppercase font-bold text-center leading-none">
-                    <div className="text-sm tracking-widest mb-1">LATINA</div>
-                    <div className="text-2xl tracking-wider">EMPIRE</div>
+                <div className="absolute bottom-10 right-10 md:bottom-14 md:right-14 lg:bottom-20 lg:right-20 bg-black text-white p-3 rounded">
+                  <div className="uppercase font-bold text-center leading-none">
+                    <div className="text-xs tracking-widest mb-1">LATINA</div>
+                    <div className="text-sm tracking-wider">EMPIRE</div>
                   </div>
                 </div>
               </div>
