@@ -65,7 +65,7 @@ const Navbar = () => {
               </span>
             </Link>
 
-            <div className="flex items-center gap-4 lg:hidden">
+            <div className="flex items-center gap-2 lg:hidden">
               <Button 
                 onClick={() => setIsModalOpen(true)}
                 className={`rounded-full px-4 py-2 font-medium h-auto ${

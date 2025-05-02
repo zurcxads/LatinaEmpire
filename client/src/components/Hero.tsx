@@ -16,11 +16,11 @@ const Hero = () => {
           <div className="flex flex-col lg:flex-row items-end justify-between gap-8 min-h-[calc(100vh-5rem)]">
             {/* Main Hero Content - Left Side */}
             <div className="flex-1 flex flex-col justify-center lg:max-w-2xl py-12">
-              <h1 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl xl:text-7xl text-white mb-6 md:mb-8 leading-tight tracking-tight">
+              <h1 className="font-serif font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl text-white mb-6 md:mb-8 leading-tight tracking-tight">
                 Transform Your Life & Legacy
               </h1>
 
-              <p className="font-sans text-xl md:text-2xl text-white/90 mb-8 md:mb-10 max-w-xl">
+              <p className="font-sans text-base md:text-lg lg:text-xl text-white/90 mb-8 md:mb-10 max-w-xl">
                 Join thousands of Latina leaders creating generational wealth and impact.
               </p>
 

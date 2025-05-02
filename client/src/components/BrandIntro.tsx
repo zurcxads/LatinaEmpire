@@ -27,7 +27,7 @@ const ValueItem = ({ icon, title, description }: ValueProps) => {
 
 const BrandIntro = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   const values = [
     {
       icon: <Target className="text-magenta text-2xl" />,
@@ -64,7 +64,7 @@ const BrandIntro = () => {
   return (
     <>
       <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
-      
+
       <section className="py-20 lg:py-28 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
@@ -74,8 +74,8 @@ const BrandIntro = () => {
               Latina Empire's Elite Program is a comprehensive coaching system designed to help you achieve extraordinary results in all six dimensions of your life.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mb-16">
             {values.map((value, index) => (
               <ValueItem 
                 key={index}
@@ -85,7 +85,7 @@ const BrandIntro = () => {
               />
             ))}
           </div>
-          
+
           <div className="text-center">
             <Button 
               onClick={() => setIsModalOpen(true)}
@@ -98,12 +98,12 @@ const BrandIntro = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Tony Robbins style image and text split section */}
       <section className="bg-white">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="h-[400px] lg:h-auto bg-[url('https://images.unsplash.com/photo-1573164713988-8665321e3075?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80')] bg-center bg-cover bg-no-repeat"></div>
-          
+
           <div className="flex items-center justify-center p-10 lg:p-16 xl:p-20">
             <div className="max-w-xl">
               <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-4 block">OUR APPROACH</span>

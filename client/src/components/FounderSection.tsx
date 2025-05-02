@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const FounderSection = () => {
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-12 px-4 md:py-24 md:px-6 bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
           {/* Left Column - Text */}
