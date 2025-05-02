@@ -2,7 +2,6 @@ import { useParams, Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Clock, Users, ArrowLeft, ArrowRight, Ticket, Loader2, Globe, ChevronDown } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { eventsService } from "@/lib/eventsService";
 import { useEffect, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -1070,12 +1069,6 @@ const EventDetail = () => {
           </div>
         </div>
       </section>
-
-
-
-
-
-      <Footer />
     </div>
   );
 };
