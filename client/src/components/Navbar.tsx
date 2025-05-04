@@ -190,53 +190,7 @@ const Navbar = () => {
         </header>
       </div>
       
-      {/* Mobile menu - only shown on small screens */}
-      <div className="lg:hidden fixed bottom-4 left-0 right-0 z-50 flex justify-center">
-        <div className="bg-black/40 backdrop-blur-sm rounded-full px-3 py-1.5 flex space-x-3">
-          <Button 
-            onClick={() => toggleMenu('about')}
-            className={`rounded-full px-3 py-0.5 h-auto text-xs ${
-              activeMenu === 'about' 
-                ? 'bg-white text-black hover:bg-white/90' 
-                : 'bg-transparent text-white border border-white/30 hover:bg-white/10'
-            }`}
-          >
-            About
-          </Button>
-          <Button 
-            onClick={() => toggleMenu('explore')}
-            className={`rounded-full px-3 py-0.5 h-auto text-xs ${
-              activeMenu === 'explore'
-                ? 'bg-white text-black hover:bg-white/90'
-                : 'bg-transparent text-white border border-white/30 hover:bg-white/10'
-            }`}
-          >
-            Explore
-          </Button>
-          <Button 
-            onClick={() => toggleMenu('contact')}
-            className={`rounded-full px-3 py-0.5 h-auto text-xs ${
-              activeMenu === 'contact' 
-                ? 'bg-white text-black hover:bg-white/90' 
-                : 'bg-transparent text-white border border-white/30 hover:bg-white/10'
-            }`}
-          >
-            Contact
-          </Button>
-        </div>
-      </div>
 
-      {/* Home button - only shown when not on home page */}
-      {location !== '/' && (
-        <div className="fixed bottom-20 right-6 z-50">
-          <Button
-            onClick={() => window.location.href = '/'}
-            className="rounded-full bg-white text-black hover:bg-white/90 p-3 h-auto w-auto shadow-lg"
-          >
-            <ArrowRight className="h-5 w-5 rotate-225" />
-          </Button>
-        </div>
-      )}
     </>
   );
 };
