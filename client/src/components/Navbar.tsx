@@ -2,19 +2,24 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
-import { X, Instagram, Phone, Mail, ArrowRight } from "lucide-react";
+import { X, Instagram, Phone, Mail, ArrowRight, Menu } from "lucide-react";
 import JoinModal from "./JoinModal";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [location] = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const marqueeRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   
   // Close menus when navigating to a new page
   useEffect(() => {
     setActiveMenu(null);
+    setMobileMenuOpen(false);
   }, [location]);
 
   // Handle scroll and resize events
@@ -30,12 +35,39 @@ const Navbar = () => {
     };
   }, []);
 
+  // Add click outside listener to close menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      // If the menu is open and we click outside, close it
+      if (activeMenu && overlayRef.current && !overlayRef.current.contains(event.target as Node)) {
+        setActiveMenu(null);
+      }
+    };
+
+    // Add event listener when menu is open
+    if (activeMenu) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [activeMenu]);
+
   // Toggle menu function
   const toggleMenu = (menu: string) => {
     if (activeMenu === menu) {
       setActiveMenu(null);
     } else {
       setActiveMenu(menu);
+    }
+  };
+
+  // Toggle mobile menu
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+    if (activeMenu) {
+      setActiveMenu(null);
     }
   };
 
@@ -128,47 +160,109 @@ const Navbar = () => {
     <>
       <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
       
+      {/* Overlay for closing the menu when clicking outside */}
+      {activeMenu && (
+        <div 
+          className="fixed inset-0 z-40" 
+          onClick={() => setActiveMenu(null)}
+        />
+      )}
+      
       <div className="w-full flex items-center justify-center fixed z-50 pt-3 px-5">
-        <header className="bg-black/15 backdrop-blur-sm max-w-4xl w-full rounded-2xl overflow-hidden shadow-xl">
+        <header className="bg-black/15 backdrop-blur-sm max-w-4xl w-full rounded-2xl overflow-hidden shadow-xl" ref={overlayRef}>
           {/* Main navigation bar */}
           <nav className="relative z-20">
             <div className="flex flex-col">
-              {/* Top row with main navigation links */}
+              {/* Top row with logo and navigation links */}
               <div className="flex items-center justify-between px-4 py-2 relative">
-                {/* Main nav buttons */}
-                <button 
-                  onClick={() => toggleMenu('about')}
-                  className={`px-4 py-1 text-sm transition-all relative ${
-                    activeMenu === 'about' 
-                      ? 'text-black bg-white rounded-md' 
-                      : 'text-white hover:text-white/80'
-                  }`}
-                >
-                  About
-                </button>
+                {/* Logo */}
+                <Link href="/" className="text-white font-bold mr-4">
+                  <span className="hidden md:inline">LATINA EMPIRE</span>
+                  <span className="md:hidden">LE</span>
+                </Link>
                 
-                <button 
-                  onClick={() => toggleMenu('explore')}
-                  className={`px-4 py-1 text-sm transition-all ${
-                    activeMenu === 'explore'
-                      ? 'text-black bg-white rounded-md'
-                      : 'text-white hover:text-white/80'
-                  }`}
-                >
-                  Explore
-                </button>
+                {/* Navigation links - desktop */}
+                <div className="hidden md:flex items-center space-x-1">
+                  <button 
+                    onClick={() => toggleMenu('about')}
+                    className={`px-4 py-1 text-sm transition-all relative ${
+                      activeMenu === 'about' 
+                        ? 'text-black bg-white rounded-md' 
+                        : 'text-white hover:text-white/80'
+                    }`}
+                  >
+                    About
+                  </button>
+                  
+                  <button 
+                    onClick={() => toggleMenu('explore')}
+                    className={`px-4 py-1 text-sm transition-all ${
+                      activeMenu === 'explore'
+                        ? 'text-black bg-white rounded-md'
+                        : 'text-white hover:text-white/80'
+                    }`}
+                  >
+                    Explore
+                  </button>
+                  
+                  <button 
+                    onClick={() => toggleMenu('contact')}
+                    className={`px-4 py-1 text-sm transition-all ${
+                      activeMenu === 'contact' 
+                        ? 'text-black bg-white rounded-md' 
+                        : 'text-white hover:text-white/80'
+                    }`}
+                  >
+                    Contact
+                  </button>
+                </div>
                 
-                <button 
-                  onClick={() => toggleMenu('contact')}
-                  className={`px-4 py-1 text-sm transition-all ${
-                    activeMenu === 'contact' 
-                      ? 'text-black bg-white rounded-md' 
-                      : 'text-white hover:text-white/80'
-                  }`}
+                {/* Join Button */}
+                <Button 
+                  className="bg-white text-black hover:bg-white/90 text-xs px-4 py-1 h-auto md:ml-auto"
+                  onClick={() => setIsModalOpen(true)}
                 >
-                  Contact
+                  Join
+                </Button>
+                
+                {/* Mobile menu toggle */}
+                <button 
+                  className="md:hidden ml-3 text-white p-1"
+                  onClick={toggleMobileMenu}
+                >
+                  {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
                 </button>
               </div>
+              
+              {/* Mobile navigation menu */}
+              {mobileMenuOpen && (
+                <div className="md:hidden bg-black/90 text-white p-3">
+                  <button 
+                    onClick={() => toggleMenu('about')}
+                    className={`block w-full text-left px-4 py-2 text-sm ${
+                      activeMenu === 'about' ? 'bg-white/10' : ''
+                    }`}
+                  >
+                    About
+                  </button>
+                  <button 
+                    onClick={() => toggleMenu('explore')}
+                    className={`block w-full text-left px-4 py-2 text-sm ${
+                      activeMenu === 'explore' ? 'bg-white/10' : ''
+                    }`}
+                  >
+                    Explore
+                  </button>
+                  <button 
+                    onClick={() => toggleMenu('contact')}
+                    className={`block w-full text-left px-4 py-2 text-sm ${
+                      activeMenu === 'contact' ? 'bg-white/10' : ''
+                    }`}
+                  >
+                    Contact
+                  </button>
+                </div>
+              )}
               
               {/* Continuously scrolling marquee tagline */}
               <div className="whitespace-nowrap overflow-hidden px-4 pb-1.5" ref={marqueeRef}>
@@ -189,8 +283,6 @@ const Navbar = () => {
           )}
         </header>
       </div>
-      
-
     </>
   );
 };
