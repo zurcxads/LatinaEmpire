@@ -35,7 +35,8 @@ import {
 } from "@/components/ui/tabs";
 
 // Featured post section (hero style)
-const FeaturedPost = ({ post }: { post: BlogPost }) => {
+const FeaturedPost = ({ post }: { post: BlogPost | null }) => {
+  if (!post) return null;
   return (
     <div className="relative w-full h-[500px] rounded-xl overflow-hidden shadow-lg group">
       <div 
@@ -473,111 +474,136 @@ const Blog = () => {
       {/* Hero section */}
       <div className="bg-black text-white py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <h1 className="font-serif font-bold text-5xl md:text-6xl lg:text-7xl mb-10 leading-tight tracking-tight">
-              Inspiration at<br />your fingertips
-            </h1>
+          <div className="flex flex-col items-start">
+            <div className="max-w-5xl">
+              <h1 className="font-serif font-bold text-5xl md:text-6xl lg:text-7xl mb-10 leading-tight tracking-tight">
+                Inspiration at<br />your fingertips
+              </h1>
+            </div>
             
-            {/* Category tabs */}
-            <div className="mt-8">
-              <Tabs defaultValue="all-topics" className="w-full">
-                <TabsList className="bg-transparent border-b border-gray-800 w-full justify-start gap-2 md:gap-4 overflow-x-auto">
-                  <TabsTrigger 
-                    value="all-topics" 
-                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-white data-[state=active]:bg-transparent px-1 py-2 text-sm md:text-base"
-                    onClick={() => handleCategorySelect(null)}
-                  >
-                    All topics
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="leadership" 
-                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-white data-[state=active]:bg-transparent px-1 py-2 text-sm md:text-base"
-                    onClick={() => handleCategorySelect("Leadership")}
-                  >
-                    Leadership
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="happiness" 
-                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-white data-[state=active]:bg-transparent px-1 py-2 text-sm md:text-base"
-                    onClick={() => handleCategorySelect("Happiness")}
-                  >
-                    Happiness
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="health" 
-                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-white data-[state=active]:bg-transparent px-1 py-2 text-sm md:text-base"
-                    onClick={() => handleCategorySelect("Health")}
-                  >
-                    Health
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="business" 
-                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-white data-[state=active]:bg-transparent px-1 py-2 text-sm md:text-base"
-                    onClick={() => handleCategorySelect("Business")}
-                  >
-                    Business
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="mindset" 
-                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-white data-[state=active]:bg-transparent px-1 py-2 text-sm md:text-base"
-                    onClick={() => handleCategorySelect("Mindset")}
-                  >
-                    Mindset
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="relationships" 
-                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-white data-[state=active]:bg-transparent px-1 py-2 text-sm md:text-base"
-                    onClick={() => handleCategorySelect("Relationships")}
-                  >
-                    Relationships
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="wealth" 
-                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-white data-[state=active]:bg-transparent px-1 py-2 text-sm md:text-base"
-                    onClick={() => handleCategorySelect("Wealth")}
-                  >
-                    Wealth
-                  </TabsTrigger>
-                </TabsList>
-              </Tabs>
+            {/* Category tabs - Right aligned */}
+            <div className="flex w-full justify-end mb-6">
+              <div className="flex flex-wrap gap-2 max-w-xl justify-end">
+                <Button
+                  variant={!selectedCategory ? "secondary" : "outline"}
+                  onClick={() => setSelectedCategory(null)}
+                  className={`rounded-full text-sm py-1 h-auto ${!selectedCategory ? 'bg-white text-black hover:bg-white/90' : 'text-white border-gray-700 hover:bg-white/10'}`}
+                >
+                  All topics
+                </Button>
+                <Button
+                  variant={selectedCategory === "Leadership" ? "secondary" : "outline"}
+                  onClick={() => setSelectedCategory("Leadership")}
+                  className={`rounded-full text-sm py-1 h-auto ${selectedCategory === "Leadership" ? 'bg-white text-black hover:bg-white/90' : 'text-white border-gray-700 hover:bg-white/10'}`}
+                >
+                  Leadership
+                </Button>
+                <Button
+                  variant={selectedCategory === "Happiness" ? "secondary" : "outline"}
+                  onClick={() => setSelectedCategory("Happiness")}
+                  className={`rounded-full text-sm py-1 h-auto ${selectedCategory === "Happiness" ? 'bg-white text-black hover:bg-white/90' : 'text-white border-gray-700 hover:bg-white/10'}`}
+                >
+                  Happiness
+                </Button>
+                <Button
+                  variant={selectedCategory === "Health" ? "secondary" : "outline"}
+                  onClick={() => setSelectedCategory("Health")}
+                  className={`rounded-full text-sm py-1 h-auto ${selectedCategory === "Health" ? 'bg-white text-black hover:bg-white/90' : 'text-white border-gray-700 hover:bg-white/10'}`}
+                >
+                  Health
+                </Button>
+                <Button
+                  variant={selectedCategory === "Business" ? "secondary" : "outline"}
+                  onClick={() => setSelectedCategory("Business")}
+                  className={`rounded-full text-sm py-1 h-auto ${selectedCategory === "Business" ? 'bg-white text-black hover:bg-white/90' : 'text-white border-gray-700 hover:bg-white/10'}`}
+                >
+                  Business
+                </Button>
+                <Button
+                  variant={selectedCategory === "Mindset" ? "secondary" : "outline"}
+                  onClick={() => setSelectedCategory("Mindset")}
+                  className={`rounded-full text-sm py-1 h-auto ${selectedCategory === "Mindset" ? 'bg-white text-black hover:bg-white/90' : 'text-white border-gray-700 hover:bg-white/10'}`}
+                >
+                  Mindset
+                </Button>
+                <Button
+                  variant={selectedCategory === "Relationships" ? "secondary" : "outline"}
+                  onClick={() => setSelectedCategory("Relationships")}
+                  className={`rounded-full text-sm py-1 h-auto ${selectedCategory === "Relationships" ? 'bg-white text-black hover:bg-white/90' : 'text-white border-gray-700 hover:bg-white/10'}`}
+                >
+                  Relationships
+                </Button>
+                <Button
+                  variant={selectedCategory === "Wealth" ? "secondary" : "outline"}
+                  onClick={() => setSelectedCategory("Wealth")}
+                  className={`rounded-full text-sm py-1 h-auto ${selectedCategory === "Wealth" ? 'bg-white text-black hover:bg-white/90' : 'text-white border-gray-700 hover:bg-white/10'}`}
+                >
+                  Wealth
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </div>
       
-      {/* Featured post */}
-      <section className="container mx-auto px-4 py-12 md:py-16">
+      {/* Featured post and article previews */}
+      <section className="container mx-auto px-4 py-8">
         {isLoading ? (
-          <div className="w-full h-[500px] bg-gray-200 rounded-xl animate-pulse"></div>
-        ) : featuredPost ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2">
-              <FeaturedPost post={featuredPost} />
-            </div>
+            <div className="md:col-span-2 h-[500px] bg-gray-200 rounded-xl animate-pulse"></div>
             <div className="space-y-6">
-              {/* Health Section - First Article */}
-              {blogData.blog.filter(post => post.category === "Health").slice(0, 3).map((post, index) => (
-                <article key={post.id} className="group">
-                  <div className="mb-2">
-                    <span className="text-xs uppercase tracking-wider text-gray-500">HEALTH</span>
-                  </div>
-                  <h3 className="font-medium text-lg group-hover:text-magenta mb-1 line-clamp-2">
-                    <Link href={`/blog/${post.slug}`}>
-                      {post.title}
-                    </Link>
-                  </h3>
-                  <p className="text-sm text-gray-600 line-clamp-2 mb-2">{post.excerpt}</p>
-                  <div className="flex items-center text-xs text-gray-500">
-                    <span className="flex items-center">
-                      <Clock className="h-3 w-3 mr-1" />
-                      {post.readTime}
-                    </span>
-                  </div>
-                </article>
+              {[...Array(3)].map((_, index) => (
+                <div key={index} className="h-32 bg-gray-200 rounded-lg animate-pulse"></div>
               ))}
             </div>
           </div>
-        ) : null}
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Main featured post - always show the first one from selected category or the original featured post */}
+            <div className="md:col-span-2">
+              {selectedCategory ? (
+                blogData.blog.filter(post => post.category === selectedCategory)[0] ? (
+                  <FeaturedPost post={blogData.blog.filter(post => post.category === selectedCategory)[0]} />
+                ) : featuredPost ? (
+                  <FeaturedPost post={featuredPost} />
+                ) : null
+              ) : featuredPost ? (
+                <FeaturedPost post={featuredPost} />
+              ) : null}
+            </div>
+            
+            {/* Side articles - filter by selected category or show Health if none selected */}
+            <div className="space-y-6">
+              {blogData.blog
+                .filter(post => {
+                  if (selectedCategory) {
+                    return post.category === selectedCategory;
+                  }
+                  return post.category === "Health";
+                })
+                .slice(0, 3)
+                .map((post, index) => (
+                  <article key={post.id} className="group">
+                    <div className="mb-1">
+                      <span className="text-xs uppercase tracking-wider text-gray-500">{post.category}</span>
+                    </div>
+                    <h3 className="font-medium text-lg group-hover:text-magenta mb-1 line-clamp-2">
+                      <Link href={`/blog/${post.slug}`}>
+                        {post.title}
+                      </Link>
+                    </h3>
+                    <p className="text-sm text-gray-600 line-clamp-2 mb-2">{post.excerpt}</p>
+                    <div className="flex items-center text-xs text-gray-500">
+                      <span className="flex items-center">
+                        <Clock className="h-3 w-3 mr-1" />
+                        {post.readTime}
+                      </span>
+                    </div>
+                  </article>
+                ))}
+            </div>
+          </div>
+        )}
       </section>
       
       {/* Relationships Articles */}

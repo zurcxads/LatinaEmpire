@@ -1,6 +1,51 @@
 {
   "blog": [
     {
+      "id": "30",
+      "slug": "power-of-passive-income",
+      "title": "The power of passive income",
+      "excerpt": "Ready for a truth most people won't tell you? No matter the state of the economy, current politics or world events, there's one thing that can provide stability.",
+      "content": "Ready for a truth most people won't tell you? No matter the state of the economy, current politics or world events, there's one thing that can provide stability in an unstable world: passive income. Passive income is money earned with minimal active effort, continuing to flow whether you're working, sleeping, or on vacation.\n\nHere's why passive income is so powerful:\n\n1. **Financial Freedom**: Passive income breaks the time-for-money trade that limits traditional careers. When your income isn't directly tied to your time, you gain the freedom to choose how you spend your days.\n\n2. **Recession-Proof Security**: While no investment is completely risk-free, a diversified portfolio of passive income streams creates resilience against economic downturns. When one stream slows, others can compensate.\n\n3. **Compound Growth**: Many passive income vehicles benefit from compound growth, where earnings generate more earnings over time, creating an accelerating curve of wealth accumulation.\n\n4. **Location Independence**: Passive income doesn't require you to be physically present in any specific location, enabling the flexibility to live and travel wherever you choose.\n\n5. **Reduced Stress**: Knowing you have money coming in regardless of your daily activities provides psychological security that reduces financial stress and anxiety.\n\nBuilding meaningful passive income takes time and usually requires upfront investment of either money, effort, or both. However, the long-term benefits make it one of the smartest financial strategies for building true wealth and security in an uncertain world.",
+      "author": "Carlos Rodriguez",
+      "authorTitle": "Financial Independence Coach",
+      "date": "2023-05-15",
+      "readTime": "7 min read",
+      "category": "Health",
+      "tags": ["wealth", "financial freedom", "passive income"],
+      "image": "https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      "featured": false
+    },
+    {
+      "id": "31",
+      "slug": "sleep-supplements",
+      "title": "Your guide to sleep supplements",
+      "excerpt": "Sleep is as essential for the human body as food and exercise. When you sleep, nerve cells in your brain communicate and reorganize to support healthy brain function.",
+      "content": "In our hyper-connected, always-on world, quality sleep has become increasingly elusive. While building good sleep habits should always be the foundation of healthy rest, supplements can sometimes provide that extra support needed for a good night's sleep.\n\nHere's a science-backed guide to the most effective sleep supplements:\n\n1. **Melatonin**: Perhaps the best-known sleep supplement, melatonin is a hormone that your body naturally produces to regulate your sleep-wake cycle. Research suggests it's particularly effective for jet lag and shifting sleep schedules. Start with a low dose (0.5-1mg) and increase only if needed.\n\n2. **Magnesium**: This essential mineral helps regulate neurotransmitters involved in sleep. Magnesium glycinate or threonate forms are typically best for sleep support, as they're well-absorbed and less likely to cause digestive issues.\n\n3. **L-theanine**: Found naturally in tea leaves, L-theanine promotes relaxation without drowsiness by increasing alpha brain waves. It pairs well with low-dose melatonin for sleep onset issues.\n\n4. **Glycine**: This amino acid has been shown to lower core body temperature, which signals to your body that it's time to sleep. Studies suggest 3g before bed may improve sleep quality.\n\n5. **Valerian Root**: One of the most studied herbal sleep aids, valerian appears to work by interacting with GABA receptors in the brain. Effects are typically gentle and build over time.\n\n6. **CBD**: Emerging research suggests CBD may help with sleep by addressing underlying anxiety. However, quality and dosage vary widely among products.\n\nRemember that supplements should complement, not replace, good sleep hygiene practices like consistent bedtimes, limiting screen time before bed, keeping your bedroom cool and dark, and avoiding caffeine and alcohol close to bedtime.",
+      "author": "Dr. Sofia Martinez",
+      "authorTitle": "Sleep Specialist",
+      "date": "2023-06-22",
+      "readTime": "8 min read",
+      "category": "Health",
+      "tags": ["sleep", "wellness", "health tips"],
+      "image": "https://images.unsplash.com/photo-1505253668822-42074d58a7c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+      "featured": false
+    },
+    {
+      "id": "32",
+      "slug": "dealing-with-work-stress",
+      "title": "How to deal with work stress",
+      "excerpt": "Work stress: We've all felt it, especially in today's environment. Working from home may be convenient, but it can blur the boundaries between personal and professional life.",
+      "content": "Work stress has become a modern epidemic, with far-reaching consequences for both mental and physical health. The cost of workplace stress in the US alone is estimated at over $300 billion annually in absenteeism, turnover, diminished productivity, and medical, legal, and insurance costs.\n\nHere are evidence-based strategies to effectively manage work stress:\n\n1. **Set Clear Boundaries**: One of the biggest sources of stress in the modern workplace is the expectation of 24/7 availability. Establish clear working hours and stick to them. Turn off notifications during non-work hours and communicate your boundaries respectfully but firmly.\n\n2. **Practice Strategic Breaks**: Research shows that taking regular short breaks throughout the workday—especially using techniques like the Pomodoro Method (25 minutes of work followed by a 5-minute break)—can significantly reduce stress and improve productivity.\n\n3. **Utilize the Two-Minute Rule**: If a task will take less than two minutes to complete, do it immediately rather than adding it to your to-do list. This prevents small tasks from accumulating and creating outsized psychological burden.\n\n4. **Implement Stress-Reduction Techniques**: Brief mindfulness practices (even 1-3 minutes) during the workday can reduce cortisol levels. Try box breathing: inhale for 4 counts, hold for 4, exhale for 4, hold for 4, and repeat.\n\n5. **Address Ergonomics**: Physical discomfort amplifies psychological stress. Ensure your workspace promotes good posture, with your screen at eye level and your feet flat on the floor. Even small improvements can have a significant impact.\n\n6. **Reframe Your Relationship with Stress**: Research by Stanford psychologist Kelly McGonigal suggests that viewing stress as enhancing rather than debilitating can transform its impact on your body. Ask yourself, 'How is this stress helping me rise to this challenge?'\n\n7. **Create Transition Rituals**: If you work from home, create clear rituals that separate work time from personal time. This might be a short walk, a cup of tea, or changing clothes—anything that signals to your brain that you're switching contexts.\n\nRemember that chronic stress is not just a mental issue but a physical one with real health consequences. Taking steps to manage work stress isn't a luxury—it's essential preventative healthcare.",
+      "author": "Elena Patel",
+      "authorTitle": "Workplace Wellness Consultant",
+      "date": "2023-04-30",
+      "readTime": "10 min read",
+      "category": "Health",
+      "tags": ["stress management", "workplace wellness", "mental health"],
+      "image": "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      "featured": false
+    },
+    {
       "id": "20",
       "slug": "why-is-love-blind",
       "title": "Why is love blind?",
