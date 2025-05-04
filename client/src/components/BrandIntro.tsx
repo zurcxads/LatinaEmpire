@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Users, Crown, Calendar, Star, Target, HeartHandshake, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import JoinModal from "./JoinModal";
+import { getImageSrc } from "@/lib/image-utils";
 
 interface ValueProps {
   icon: JSX.Element;
@@ -102,7 +103,12 @@ const BrandIntro = () => {
       {/* Tony Robbins style image and text split section */}
       <section className="bg-white">
         <div className="grid grid-cols-1 lg:grid-cols-2">
-          <div className="h-[400px] lg:h-auto bg-[url('https://images.unsplash.com/photo-1573164713988-8665321e3075?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80')] bg-center bg-cover bg-no-repeat"></div>
+          <div className="h-[400px] lg:h-auto" style={{ 
+            backgroundImage: `url(${getImageSrc('https://images.unsplash.com/photo-1573164713988-8665321e3075', true)})`, 
+            backgroundPosition: 'center', 
+            backgroundSize: 'cover', 
+            backgroundRepeat: 'no-repeat' 
+          }}></div>
 
           <div className="flex items-center justify-center p-10 lg:p-16 xl:p-20">
             <div className="max-w-xl">

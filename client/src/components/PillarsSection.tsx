@@ -9,6 +9,7 @@ import {
   DrawerClose,
 } from "@/components/ui/drawer";
 import { cn } from "@/lib/utils";
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
 interface PillarCategoryProps {
   label: string;
@@ -40,14 +41,15 @@ const PillarCategory = ({ label, isActive, isHovered, onClick, onMouseEnter, onM
   </button>
 );
 
+// Using the same placeholder image for all categories
 const images = {
-  mindset: "https://images.unsplash.com/photo-1507237998044-b8be61cd5886?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80",
-  wealth: "https://plus.unsplash.com/premium_photo-1677094310896-ff906d6abf43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-  health: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1999&q=80",
-  relationships: "https://images.unsplash.com/photo-1535637603896-07c179d71f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-  business: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2032&q=80",
-  leadership: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-  happiness: "https://images.unsplash.com/photo-1602631985686-1bb0e6a8696e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+  mindset: getImageSrc("", true),
+  wealth: getImageSrc("", true),
+  health: getImageSrc("", true),
+  relationships: getImageSrc("", true),
+  business: getImageSrc("", true),
+  leadership: getImageSrc("", true),
+  happiness: getImageSrc("", true)
 };
 
 const PillarsSection = () => {

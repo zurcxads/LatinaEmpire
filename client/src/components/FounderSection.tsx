@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
 const FounderSection = () => {
   return (
@@ -37,13 +38,10 @@ const FounderSection = () => {
           <div className="relative">
             <div className="rounded-2xl overflow-hidden shadow-xl">
               <img 
-                src="https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src={getImageSrc("https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", true)}
                 alt="Perla Tamez Casasnovas, Founder of Latina Empire" 
                 className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.classList.add("hidden");
-                  e.currentTarget.parentElement?.classList.add("placeholder-image");
-                }}
+                onError={createImageErrorHandler()}
               />
             </div>
           </div>

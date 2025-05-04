@@ -14,9 +14,10 @@ const EventCard = ({ event, onOpen }: { event: Event; onOpen?: () => void }) => 
     <div className="bg-white border border-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all group h-full flex flex-col">
       <div className="relative h-64 overflow-hidden">
         <img 
-          src={event.image} 
+          src={getImageSrc(event.image, true)} 
           alt={event.name} 
           className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+          onError={createImageErrorHandler()}
         />
         <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1">
           <MapPin className="h-3 w-3 text-magenta" />
