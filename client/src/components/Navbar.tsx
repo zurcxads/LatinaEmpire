@@ -223,7 +223,7 @@ const Navbar = () => {
                   
                   {/* Join Button */}
                   <Button 
-                    className="bg-white text-black hover:bg-white/90 text-xs px-4 h-7 flex items-center ml-4 shadow-sm hover:shadow-md transition-all"
+                    className="primary-button text-xs ml-4 h-7 px-4 py-0"
                     onClick={() => setIsModalOpen(true)}
                   >
                     Join
@@ -274,7 +274,7 @@ const Navbar = () => {
                       Contact
                     </button>
                     <Button 
-                      className="bg-white text-black hover:bg-white/90 text-xs mt-2 px-4 h-7 flex items-center justify-center shadow-sm hover:shadow-md transition-all w-full"
+                      className="primary-button text-xs mt-2 px-4 h-7 py-0 justify-center w-full"
                       onClick={() => setIsModalOpen(true)}
                     >
                       Join

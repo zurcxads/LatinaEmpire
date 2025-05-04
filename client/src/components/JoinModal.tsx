@@ -156,7 +156,7 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                 We're excited to have you join the Latina Empire Elite Program. Check your email for next steps and welcome information.
               </p>
               <Button 
-                className="bg-black hover:bg-gray-900 text-white font-semibold py-3 px-6 rounded-lg"
+                className="accent-button py-2 px-6 justify-center"
                 onClick={() => onOpenChange(false)}
               >
                 Close
@@ -263,7 +263,7 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                 <DialogFooter className="pt-4">
                   <Button 
                     type="submit" 
-                    className="w-full bg-black hover:bg-gray-900 text-white font-semibold py-3 px-6 rounded-lg" 
+                    className="w-full accent-button py-3 px-6 justify-center" 
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (

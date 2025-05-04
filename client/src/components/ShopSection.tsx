@@ -110,7 +110,7 @@ const ShopSection = () => {
                       </div>
                       <h3 className="text-xl font-semibold mb-2 text-white">{product.name}</h3>
                       <p className="text-gray-400 mb-4">${product.price}</p>
-                      <Button className="w-full bg-magenta hover:bg-magenta/90">Add to cart</Button>
+                      <Button className="w-full accent-button justify-center">Add to cart</Button>
                     </CardContent>
                   </Card>
                 </CarouselItem>
