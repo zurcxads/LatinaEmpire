@@ -9,9 +9,7 @@ const FounderSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
           {/* Left Column - Text */}
           <div className="flex flex-col">
-            <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-3 block">
-              VISIONARY
-            </span>
+
             <h2 className="font-serif font-bold text-3xl md:text-4xl lg:text-5xl mb-6 tracking-tight">
               The Force Behind Latina Empire
             </h2>
@@ -25,7 +23,7 @@ const FounderSection = () => {
             <div>
               <Button 
                 asChild
-                className="bg-magenta hover:bg-magenta/90 text-white rounded-full px-6 py-3 h-auto font-medium"
+                className="secondary-button px-6 py-3"
               >
                 <Link href="/about-founder">
                   Meet Perla
