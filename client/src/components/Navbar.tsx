@@ -136,46 +136,38 @@ const Navbar = () => {
               {/* Top row with main navigation links */}
               <div className="flex items-center justify-between px-4 py-2 relative">
                 {/* Main nav buttons */}
-                <div className="flex items-center space-x-1">
-                  <Link href="/" className="px-4 py-1 text-sm transition-all text-white hover:text-white/80">
-                    Home
-                  </Link>
-                  
-                  <button 
-                    onClick={() => toggleMenu('about')}
-                    className={`px-4 py-1 text-sm transition-all relative ${
-                      activeMenu === 'about' 
-                        ? 'text-black bg-white rounded-md' 
-                        : 'text-white hover:text-white/80'
-                    }`}
-                  >
-                    About
-                  </button>
-                </div>
+                <button 
+                  onClick={() => toggleMenu('about')}
+                  className={`px-4 py-1 text-sm transition-all relative ${
+                    activeMenu === 'about' 
+                      ? 'text-black bg-white rounded-md' 
+                      : 'text-white hover:text-white/80'
+                  }`}
+                >
+                  About
+                </button>
                 
-                <div className="flex items-center space-x-1">
-                  <button 
-                    onClick={() => toggleMenu('explore')}
-                    className={`px-4 py-1 text-sm transition-all ${
-                      activeMenu === 'explore'
-                        ? 'text-black bg-white rounded-md'
-                        : 'text-white hover:text-white/80'
-                    }`}
-                  >
-                    Explore
-                  </button>
-                  
-                  <button 
-                    onClick={() => toggleMenu('contact')}
-                    className={`px-4 py-1 text-sm transition-all ${
-                      activeMenu === 'contact' 
-                        ? 'text-black bg-white rounded-md' 
-                        : 'text-white hover:text-white/80'
-                    }`}
-                  >
-                    Contact
-                  </button>
-                </div>
+                <button 
+                  onClick={() => toggleMenu('explore')}
+                  className={`px-4 py-1 text-sm transition-all ${
+                    activeMenu === 'explore'
+                      ? 'text-black bg-white rounded-md'
+                      : 'text-white hover:text-white/80'
+                  }`}
+                >
+                  Explore
+                </button>
+                
+                <button 
+                  onClick={() => toggleMenu('contact')}
+                  className={`px-4 py-1 text-sm transition-all ${
+                    activeMenu === 'contact' 
+                      ? 'text-black bg-white rounded-md' 
+                      : 'text-white hover:text-white/80'
+                  }`}
+                >
+                  Contact
+                </button>
               </div>
               
               {/* Continuously scrolling marquee tagline */}
