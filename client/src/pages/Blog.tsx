@@ -559,7 +559,7 @@ const Blog = () => {
               {blogData.blog.filter(post => post.category === "Health").slice(0, 3).map((post, index) => (
                 <article key={post.id} className="group">
                   <div className="mb-2">
-                    <span className="text-xs uppercase tracking-wider text-gray-500">Health</span>
+                    <span className="text-xs uppercase tracking-wider text-gray-500">HEALTH</span>
                   </div>
                   <h3 className="font-medium text-lg group-hover:text-magenta mb-1 line-clamp-2">
                     <Link href={`/blog/${post.slug}`}>
@@ -578,6 +578,34 @@ const Blog = () => {
             </div>
           </div>
         ) : null}
+      </section>
+      
+      {/* Relationships Articles */}
+      <section className="container mx-auto px-4 py-12 pb-20 border-b border-gray-200">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {blogData.blog.filter(post => post.category === "Relationships").slice(0, 3).map((post, index) => (
+            <article key={post.id} className="group">
+              <div className="aspect-[4/3] overflow-hidden rounded-lg mb-4">
+                <img 
+                  src={post.image} 
+                  alt={post.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="uppercase text-xs tracking-wider text-gray-500 mb-2">
+                RELATIONSHIPS
+              </div>
+              <h3 className="font-medium text-xl mb-2 group-hover:text-magenta transition-colors">
+                <Link href={`/blog/${post.slug}`}>
+                  {post.title}
+                </Link>
+              </h3>
+              <p className="text-sm text-gray-600 line-clamp-3">
+                {post.excerpt}
+              </p>
+            </article>
+          ))}
+        </div>
       </section>
       
       {/* Main content */}

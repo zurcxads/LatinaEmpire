@@ -1,6 +1,51 @@
 {
   "blog": [
     {
+      "id": "20",
+      "slug": "why-is-love-blind",
+      "title": "Why is love blind?",
+      "excerpt": "Love: It's one of the few things in life that can create intense pleasure or intense pain in our lives. It's the one force that has the power to heal and hurt in equal measure.",
+      "content": "Love: It's one of the few things in life that can create intense pleasure or intense pain in our lives. It's the one force that has the power to heal and hurt in equal measure. We often say love is blind because it can lead us to overlook flaws or red flags in a partner that might seem obvious to others. This phenomenon has been studied extensively by psychologists who point to various mechanisms at play:\n\n1. **The Brain Chemistry Factor**: When we fall in love, our brains release a cocktail of chemicals including dopamine, oxytocin, and serotonin. This chemical reaction creates feelings of pleasure and attachment that can literally cloud our judgment.\n\n2. **Psychological Projection**: We tend to project our ideal traits onto those we're attracted to, seeing what we want to see rather than what's actually there.\n\n3. **Confirmation Bias**: Once we've decided we like someone, we tend to focus on information that confirms our positive view while ignoring contradictory evidence.\n\n4. **The Halo Effect**: When we find one aspect of a person attractive, we tend to assume other positive traits about them as well.\n\nUnderstanding the mechanisms behind love's 'blindness' doesn't mean we should become cynical about romance. Rather, it can help us approach relationships with greater self-awareness and balance between heart and mind. The goal isn't to eliminate love's magic but to ensure our relationships are built on authentic connection rather than illusion.",
+      "author": "Dr. Maya Santiago",
+      "authorTitle": "Relationship Psychologist",
+      "date": "2023-02-10",
+      "readTime": "7 min read",
+      "category": "Relationships",
+      "tags": ["love", "psychology", "emotional intelligence"],
+      "image": "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+      "featured": false
+    },
+    {
+      "id": "21",
+      "slug": "how-to-rekindle-relationship",
+      "title": "How to rekindle a relationship",
+      "excerpt": "Have you ever started or stoked a fire? If so, you know that the smallest spark can ignite passion and warmth that can transform the atmosphere.",
+      "content": "Have you ever started or stoked a fire? If so, you know that the smallest spark can ignite passion and warmth that can transform the atmosphere. Relationships work in a similar way—sometimes they need deliberate rekindling to bring back their original warmth and light.\n\nIf your relationship has cooled over time, these proven strategies can help reignite the connection:\n\n1. **Rediscover Curiosity**: Remember how fascinating your partner seemed when you first met? Adopt that same curiosity again. Ask thoughtful questions about their thoughts, dreams, and experiences—even (especially) if you think you know all the answers.\n\n2. **Create New Experiences Together**: Novel experiences trigger the brain's reward system, creating the same neurochemical cocktail we experience during early romance. Try a new hobby, travel somewhere unfamiliar, or take a class together.\n\n3. **Prioritize Physical Touch**: Physical intimacy exists on a spectrum that includes everyday affection. Hold hands, hug, sit close to each other, and make eye contact. These small gestures build connection and release oxytocin, the bonding hormone.\n\n4. **Express Appreciation Daily**: Gratitude is a relationship superpower. Make it a habit to verbalize at least one thing you appreciate about your partner every day, no matter how small.\n\n5. **Revisit Your Origin Story**: Reminisce about how you met, your early dates, and what attracted you to each other. Remembering these moments can reignite those early feelings.\n\nRekindling a relationship isn't about manufacturing artificial passion—it's about removing the barriers that have dampened your natural connection. With intention and consistency, you can bring back the warmth and light that drew you together in the first place.",
+      "author": "Isabella Martinez",
+      "authorTitle": "Relationship Coach",
+      "date": "2023-04-18",
+      "readTime": "8 min read",
+      "category": "Relationships",
+      "tags": ["relationships", "love", "communication"],
+      "image": "https://images.unsplash.com/photo-1532377416656-e35d0e511c8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+      "featured": false
+    },
+    {
+      "id": "22",
+      "slug": "healthy-expectations-relationship",
+      "title": "Healthy expectations in a relationship",
+      "excerpt": "Pointless arguing in a relationship is what people do it but most of us don't understand it and are perplexed by it. Everyone knows a couple who seems to argue constantly over nothing.",
+      "content": "One of the most challenging aspects of relationships is developing healthy expectations. Expectations that are too high can set partners up for constant disappointment, while expectations that are too low can lead to settling for unfulfilling relationships. Finding the middle ground is essential for relationship satisfaction and longevity.\n\nHere's how to develop healthy relationship expectations:\n\n1. **Differentiate Between Needs and Wants**: Needs are non-negotiable elements required for your wellbeing (respect, emotional safety, trust). Wants are preferences that would be nice to have but aren't essential. Being clear about this distinction helps you communicate more effectively with your partner.\n\n2. **Avoid Mind-Reading Expectations**: One of the most damaging expectations is assuming your partner should know what you want without you having to express it. Clear, compassionate communication is the foundation of healthy expectations.\n\n3. **Accept That Perfect Harmony Is a Myth**: Even the healthiest relationships include disagreement and conflict. Expecting constant harmony sets an impossible standard that no relationship can meet.\n\n4. **Expect Growth, Not Perfection**: Healthy relationships involve mutual growth and learning. Expect that both you and your partner will make mistakes but are committed to learning from them.\n\n5. **Check for Fairness**: Are your expectations something you're also willing to provide? Reciprocity is key to relationship health.\n\n6. **Revisit and Revise**: Expectations aren't set in stone. As individuals and relationships evolve, expectations need to be revisited and adjusted.\n\nRemember that healthy expectations aren't about lowering your standards—they're about ensuring your standards are realistic, communicated clearly, and conducive to mutual growth and happiness.",
+      "author": "Carlos Mendez",
+      "authorTitle": "Family Therapist",
+      "date": "2023-03-05",
+      "readTime": "9 min read",
+      "category": "Relationships",
+      "tags": ["relationships", "communication", "emotional intelligence"],
+      "image": "https://images.unsplash.com/photo-1612093126412-5b27e6d6e31e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1954&q=80",
+      "featured": false
+    },
+    {
       "id": "1",
       "slug": "empowering-latina-leadership",
       "title": "5 Strategies for Latina Professionals to Overcome Imposter Syndrome",
