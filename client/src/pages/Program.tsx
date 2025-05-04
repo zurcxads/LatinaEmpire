@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 import {
   Brain,
   CreditCard,
@@ -30,9 +31,10 @@ const Testimonial = ({ name, title, quote, image }: TestimonialProps) => {
       <div className="flex items-start mb-4">
         <div className="relative w-16 h-16 mr-4 flex-shrink-0">
           <img
-            src={image}
+            src={getImageSrc(image, true)}
             alt={name}
             className="rounded-full object-cover w-full h-full"
+            onError={createImageErrorHandler()}
           />
           <div className="absolute -bottom-1 -right-1 bg-magenta rounded-full p-1">
             <Star className="w-3 h-3 text-white" fill="white" />

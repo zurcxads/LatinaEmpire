@@ -4,6 +4,7 @@ import { Calendar, MapPin, Clock, Users, ArrowLeft, ArrowRight, Ticket, Loader2,
 import Navbar from "@/components/Navbar";
 import { eventsService } from "@/lib/eventsService";
 import { useEffect, useRef } from "react";
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 import { useQuery } from "@tanstack/react-query";
 
 const EventDetail = () => {
@@ -290,13 +291,10 @@ const EventDetail = () => {
                           <div className="w-10 h-10 rounded-full overflow-hidden mr-3 bg-gray-800">
                             {event.hostImage ? (
                               <img 
-                                src={event.hostImage} 
+                                src={getImageSrc(event.hostImage, true)} 
                                 alt={event.host} 
                                 className="w-full h-full object-cover"
-                                onError={(e) => {
-                                  e.currentTarget.classList.add("hidden");
-                                  e.currentTarget.parentElement?.classList.add("placeholder-image");
-                                }}
+                                onError={createImageErrorHandler()}
                               />
                             ) : (
                               <div className="placeholder-image w-full h-full rounded-full"></div>
