@@ -75,7 +75,7 @@ const Testimonial = () => {
 
   return (
     <section 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative h-screen flex items-center justify-center overflow-hidden"
       style={{
         background: "linear-gradient(135deg, #9b4f96 0%, #f2709c 100%)" // Purple to pinkish gradient as seen in the image
       }}
@@ -93,21 +93,20 @@ const Testimonial = () => {
       </div>
 
       {/* Content container */}
-      <div className="container mx-auto px-4 md:px-6 relative z-10 py-20 flex flex-col items-center justify-center">
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-between py-10 md:py-16">
         {/* Quote */}
-        <div className="max-w-4xl mx-auto text-center mb-12 md:mb-16">
-          <p className="text-white text-2xl md:text-4xl lg:text-5xl font-bold leading-tight mb-8">
-            "{activeTestimonial.quote}"
-          </p>
+        <div className="flex-grow flex items-center justify-center px-4 md:px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-white text-2xl md:text-4xl lg:text-5xl font-bold leading-tight">
+              "{activeTestimonial.quote}"
+            </p>
+          </div>
         </div>
 
         {/* Profile selector */}
-        <div className={cn(
-          "flex gap-4 md:gap-12 justify-center items-center mt-auto",
-          isMobile ? "flex-row" : "flex-row"
-        )}>
+        <div className="flex justify-center items-end gap-3 md:gap-8 w-full max-w-3xl mx-auto px-4 md:px-6 pb-8 md:pb-12">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="flex flex-col items-center">
+            <div key={index} className="flex flex-col items-center flex-1 max-w-[100px]">
               <button
                 onClick={() => handleProfileClick(index)}
                 className={cn(
@@ -116,7 +115,7 @@ const Testimonial = () => {
                 )}
               >
                 <div className={cn(
-                  "w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden border-2",
+                  "w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden border-2 mx-auto",
                   index === activeIndex ? "border-white" : "border-transparent group-hover:border-white/50"
                 )}>
                   <img 
@@ -127,13 +126,18 @@ const Testimonial = () => {
                 </div>
               </button>
               
-              {/* Name and title - only visible for active testimonial */}
+              {/* Name and title - always visible but highlighted when active */}
               <div className={cn(
-                "text-center mt-2 transition-opacity duration-300",
-                index === activeIndex ? "opacity-100" : "opacity-0 md:opacity-70"
+                "text-center mt-2 transition-all duration-300 w-full",
+                index === activeIndex 
+                  ? "opacity-100" 
+                  : "opacity-70 hover:opacity-90"
               )}>
-                <p className="text-white font-medium text-sm md:text-base">{testimonial.name}</p>
-                <p className="text-white/80 text-xs md:text-sm">{testimonial.title}</p>
+                <p className={cn(
+                  "text-white font-medium text-xs md:text-base truncate",
+                  index === activeIndex ? "font-bold" : ""
+                )}>{testimonial.name}</p>
+                <p className="text-white/80 text-xs truncate">{testimonial.title}</p>
               </div>
             </div>
           ))}
