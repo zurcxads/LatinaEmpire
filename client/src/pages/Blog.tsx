@@ -608,22 +608,57 @@ const Blog = () => {
         </div>
       </section>
       
-      {/* CTA section */}
-      <section className="bg-gray-100 py-16">
+      {/* CTA card section */}
+      <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4">
-              Ready to Join the Latina Empire Community?
-            </h2>
-            <p className="text-lg text-gray-700 mb-8">
-              Connect with like-minded Latina professionals and access exclusive resources and events.
-            </p>
-            <Button 
-              onClick={() => setLocation("/join")}
-              className="bg-magenta hover:bg-magenta/90 text-white px-8 py-6 h-auto rounded-full text-lg shadow-[0_0_20px_rgba(242,56,137,0.4)]"
-            >
-              Join Latina Empire
-            </Button>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Event Card */}
+            <div className="rounded-xl overflow-hidden bg-black/10 relative group hover:shadow-xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-900/80 to-indigo-900/70 z-10" />
+              <img 
+                src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                alt="Audience at an event" 
+                className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="relative z-20 p-8 md:p-12">
+                <h2 className="text-white text-3xl md:text-4xl font-bold mb-4">
+                  Change your story
+                </h2>
+                <p className="text-white/90 mb-8 max-w-sm">
+                  Master Tony's proven strategies to create unstoppable momentum and change the trajectory of your life.
+                </p>
+                <Button 
+                  onClick={() => setLocation("/events")}
+                  className="bg-white text-black hover:bg-opacity-90 font-medium px-5 py-2 rounded-full"
+                >
+                  View upcoming events
+                </Button>
+              </div>
+            </div>
+            
+            {/* Programs Card */}
+            <div className="rounded-xl overflow-hidden bg-black/10 relative group hover:shadow-xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-r from-teal-800/60 to-emerald-800/60 z-10" />
+              <img 
+                src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                alt="Group of diverse professionals" 
+                className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="relative z-20 p-8 md:p-12">
+                <h2 className="text-white text-3xl md:text-4xl font-bold mb-4">
+                  Become the best version of yourself
+                </h2>
+                <p className="text-white/90 mb-8 max-w-sm">
+                  Connect with like-minded individuals and start living the life of your dreams.
+                </p>
+                <Button 
+                  onClick={() => setLocation("/programs")}
+                  className="bg-white text-black hover:bg-opacity-90 font-medium px-5 py-2 rounded-full"
+                >
+                  View all programs
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
