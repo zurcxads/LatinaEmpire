@@ -181,8 +181,7 @@ const Navbar = () => {
               <div className="flex items-center justify-between px-4 py-2 relative">
                 {/* Logo */}
                 <Link href="/" className="text-white font-bold mr-4 text-shadow-md">
-                  <span className="hidden md:inline tracking-wider">LATINA EMPIRE</span>
-                  <span className="md:hidden">LE</span>
+                  <span className="tracking-wider text-sm md:text-base">LATINA EMPIRE</span>
                 </Link>
                 
                 <div className="flex items-center ml-auto">
@@ -232,41 +231,55 @@ const Navbar = () => {
                   
                   {/* Mobile menu toggle */}
                   <button 
-                    className="md:hidden ml-3 text-white p-1"
+                    className="md:hidden ml-3 text-white p-1 rounded-md hover:bg-white/10 transition-colors"
                     onClick={toggleMobileMenu}
                   >
-                    {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                    {mobileMenuOpen ? <X size={20} className="text-shadow-sm" /> : <Menu size={20} className="text-shadow-sm" />}
                   </button>
                 </div>
               </div>
               
               {/* Mobile navigation menu */}
               {mobileMenuOpen && (
-                <div className="md:hidden bg-black/15 backdrop-blur-sm text-white p-3">
-                  <button 
-                    onClick={() => toggleMenu('about')}
-                    className={`block w-full text-left px-4 py-2 text-sm text-shadow-sm ${
-                      activeMenu === 'about' ? 'bg-white/10 font-medium' : ''
-                    }`}
-                  >
-                    About
-                  </button>
-                  <button 
-                    onClick={() => toggleMenu('explore')}
-                    className={`block w-full text-left px-4 py-2 text-sm text-shadow-sm ${
-                      activeMenu === 'explore' ? 'bg-white/10 font-medium' : ''
-                    }`}
-                  >
-                    Explore
-                  </button>
-                  <button 
-                    onClick={() => toggleMenu('contact')}
-                    className={`block w-full text-left px-4 py-2 text-sm text-shadow-sm ${
-                      activeMenu === 'contact' ? 'bg-white/10 font-medium' : ''
-                    }`}
-                  >
-                    Contact
-                  </button>
+                <div className="md:hidden bg-black/15 backdrop-blur-sm text-white p-4 border-t border-white/10">
+                  <div className="flex flex-col space-y-2">
+                    <button 
+                      onClick={() => toggleMenu('about')}
+                      className={`px-4 py-2 text-sm text-shadow-sm transition-all rounded-md ${
+                        activeMenu === 'about' 
+                          ? 'text-black bg-white font-medium shadow-lg' 
+                          : 'text-white hover:bg-white/10'
+                      }`}
+                    >
+                      About
+                    </button>
+                    <button 
+                      onClick={() => toggleMenu('explore')}
+                      className={`px-4 py-2 text-sm text-shadow-sm transition-all rounded-md ${
+                        activeMenu === 'explore' 
+                          ? 'text-black bg-white font-medium shadow-lg' 
+                          : 'text-white hover:bg-white/10'
+                      }`}
+                    >
+                      Explore
+                    </button>
+                    <button 
+                      onClick={() => toggleMenu('contact')}
+                      className={`px-4 py-2 text-sm text-shadow-sm transition-all rounded-md ${
+                        activeMenu === 'contact' 
+                          ? 'text-black bg-white font-medium shadow-lg' 
+                          : 'text-white hover:bg-white/10'
+                      }`}
+                    >
+                      Contact
+                    </button>
+                    <Button 
+                      className="bg-white text-black hover:bg-white/90 text-xs mt-2 px-4 py-1 h-auto shadow-sm hover:shadow-md transition-all w-full"
+                      onClick={() => setIsModalOpen(true)}
+                    >
+                      Join
+                    </Button>
+                  </div>
                 </div>
               )}
               
