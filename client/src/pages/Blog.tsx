@@ -37,44 +37,57 @@ import {
 // Featured post section (hero style)
 const FeaturedPost = ({ post }: { post: BlogPost }) => {
   return (
-    <div className="relative w-full h-[500px] rounded-xl overflow-hidden">
+    <div className="relative w-full h-[500px] rounded-xl overflow-hidden shadow-lg group">
       <div 
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
         style={{ backgroundImage: `url(${post.image})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-black/10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
       
       <div className="absolute bottom-0 left-0 w-full p-6 md:p-10 z-10">
-        <div className="flex items-center mb-4 space-x-3">
-          <Badge className="bg-magenta hover:bg-magenta/90">{post.category}</Badge>
-          <span className="text-white/70 text-sm flex items-center">
-            <Calendar className="h-4 w-4 mr-1" />
-            {new Date(post.date).toLocaleDateString('en-US', { 
-              month: 'long', 
-              day: 'numeric', 
-              year: 'numeric' 
-            })}
-          </span>
-          <span className="text-white/70 text-sm flex items-center">
-            <Clock className="h-4 w-4 mr-1" />
-            {post.readTime}
-          </span>
+        <div className="mb-3">
+          <span className="uppercase tracking-wider text-sm text-white/70">{post.category}</span>
         </div>
         
-        <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+        <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight group-hover:text-magenta transition-colors">
           {post.title}
-        </h1>
+        </h2>
         
-        <p className="text-white/80 text-lg max-w-3xl mb-6">
-          {post.excerpt}
+        <p className="text-white/80 text-base md:text-lg max-w-3xl mb-6">
+          {post.excerpt.length > 140 
+            ? post.excerpt.slice(0, 140) + '...' 
+            : post.excerpt}
         </p>
         
-        <div className="flex items-center">
-          <Link href={`/blog/${post.slug}`} className="text-white group flex items-center font-medium">
-            Read Article
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3 text-white/70 text-sm">
+            <span className="flex items-center">
+              <Calendar className="h-4 w-4 mr-1" />
+              {new Date(post.date).toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric' 
+              })}
+            </span>
+            <span className="flex items-center">
+              <Clock className="h-4 w-4 mr-1" />
+              {post.readTime}
+            </span>
+          </div>
+          
+          <Link 
+            href={`/blog/${post.slug}`} 
+            className="text-white border border-white/30 hover:border-magenta hover:bg-magenta hover:text-white rounded-full px-4 py-2 text-sm transition-colors flex items-center gap-1.5"
+          >
+            Read More
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
+      </div>
+      
+      <div className="absolute top-6 left-6 z-10">
+        <span className="inline-flex h-2 w-2 rounded-full bg-magenta mr-2"></span>
+        <span className="text-white text-xs font-medium uppercase tracking-wider">Featured</span>
       </div>
     </div>
   );
@@ -457,26 +470,113 @@ const Blog = () => {
   
   return (
     <div className="flex flex-col">
-      {/* Page header */}
-      <div className="bg-gray-900 text-white py-16 md:py-20">
+      {/* Hero section */}
+      <div className="bg-black text-white py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl mb-4">
-              Latina Empire Blog
+          <div className="max-w-5xl mx-auto">
+            <h1 className="font-serif font-bold text-5xl md:text-6xl lg:text-7xl mb-10 leading-tight tracking-tight">
+              Inspiration at<br />your fingertips
             </h1>
-            <p className="text-xl text-white/80">
-              Insights, strategies and inspiration for ambitious Latina professionals
-            </p>
+            
+            {/* Category tabs */}
+            <div className="mt-8">
+              <Tabs defaultValue="all-topics" className="w-full">
+                <TabsList className="bg-transparent border-b border-gray-800 w-full justify-start gap-2 md:gap-4 overflow-x-auto">
+                  <TabsTrigger 
+                    value="all-topics" 
+                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-white data-[state=active]:bg-transparent px-1 py-2 text-sm md:text-base"
+                    onClick={() => handleCategorySelect(null)}
+                  >
+                    All topics
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="leadership" 
+                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-white data-[state=active]:bg-transparent px-1 py-2 text-sm md:text-base"
+                    onClick={() => handleCategorySelect("Leadership")}
+                  >
+                    Leadership
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="happiness" 
+                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-white data-[state=active]:bg-transparent px-1 py-2 text-sm md:text-base"
+                    onClick={() => handleCategorySelect("Happiness")}
+                  >
+                    Happiness
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="health" 
+                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-white data-[state=active]:bg-transparent px-1 py-2 text-sm md:text-base"
+                    onClick={() => handleCategorySelect("Health")}
+                  >
+                    Health
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="business" 
+                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-white data-[state=active]:bg-transparent px-1 py-2 text-sm md:text-base"
+                    onClick={() => handleCategorySelect("Business")}
+                  >
+                    Business
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="mindset" 
+                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-white data-[state=active]:bg-transparent px-1 py-2 text-sm md:text-base"
+                    onClick={() => handleCategorySelect("Mindset")}
+                  >
+                    Mindset
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="relationships" 
+                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-white data-[state=active]:bg-transparent px-1 py-2 text-sm md:text-base"
+                    onClick={() => handleCategorySelect("Relationships")}
+                  >
+                    Relationships
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="wealth" 
+                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-white data-[state=active]:bg-transparent px-1 py-2 text-sm md:text-base"
+                    onClick={() => handleCategorySelect("Wealth")}
+                  >
+                    Wealth
+                  </TabsTrigger>
+                </TabsList>
+              </Tabs>
+            </div>
           </div>
         </div>
       </div>
       
       {/* Featured post */}
-      <section className="container mx-auto px-4 -mt-10 md:-mt-16 mb-16 relative z-10">
+      <section className="container mx-auto px-4 py-12 md:py-16">
         {isLoading ? (
           <div className="w-full h-[500px] bg-gray-200 rounded-xl animate-pulse"></div>
         ) : featuredPost ? (
-          <FeaturedPost post={featuredPost} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="md:col-span-2">
+              <FeaturedPost post={featuredPost} />
+            </div>
+            <div className="space-y-6">
+              {/* Health Section - First Article */}
+              {blogData.blog.filter(post => post.category === "Health").slice(0, 3).map((post, index) => (
+                <article key={post.id} className="group">
+                  <div className="mb-2">
+                    <span className="text-xs uppercase tracking-wider text-gray-500">Health</span>
+                  </div>
+                  <h3 className="font-medium text-lg group-hover:text-magenta mb-1 line-clamp-2">
+                    <Link href={`/blog/${post.slug}`}>
+                      {post.title}
+                    </Link>
+                  </h3>
+                  <p className="text-sm text-gray-600 line-clamp-2 mb-2">{post.excerpt}</p>
+                  <div className="flex items-center text-xs text-gray-500">
+                    <span className="flex items-center">
+                      <Clock className="h-3 w-3 mr-1" />
+                      {post.readTime}
+                    </span>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
         ) : null}
       </section>
       
