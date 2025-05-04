@@ -24,12 +24,14 @@ const FinalCTA = () => {
               Join a global sisterhood of driven Latinas committed to building legacy, wealth, and purpose.
             </p>
             
-            <Button 
-              onClick={() => setIsModalOpen(true)}
-              className="accent-button text-xl uppercase tracking-wide py-3 px-8"
-            >
-              Join the Movement Now
-            </Button>
+            <div className="flex justify-center">
+              <Button 
+                onClick={() => setIsModalOpen(true)}
+                className="primary-button text-xl uppercase tracking-wide py-3 px-8"
+              >
+                Join the Movement Now
+              </Button>
+            </div>
           </div>
         </div>
       </section>

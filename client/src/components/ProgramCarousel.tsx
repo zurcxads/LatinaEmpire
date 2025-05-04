@@ -105,19 +105,18 @@ const ProgramCarousel = () => {
   return (
     <section className="bg-black py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex justify-between items-center mb-8">
-          <div>
+        <div className="flex justify-between items-end mb-8">
+          <div className="flex items-end gap-4">
             <h2 className="text-white font-serif font-bold text-3xl md:text-4xl">
               Events that liberate
             </h2>
-          </div>
-          
-          <div className="flex items-center gap-3">
-            <Link href="/events" className="text-white/80 hover:text-white text-sm mr-4">
+            <Link href="/events" className="text-white/80 hover:text-white text-sm mb-1">
               Discover events
               <ChevronRight className="inline-block ml-1 h-4 w-4" />
             </Link>
-            
+          </div>
+          
+          <div className="flex items-center gap-3">
             {/* Navigation buttons */}
             <button 
               onClick={scrollPrev}

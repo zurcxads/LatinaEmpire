@@ -53,8 +53,8 @@ const ShopSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="flex items-center gap-2 justify-center mb-4">
-            <span className="uppercase tracking-widest text-sm">SHOP</span>
             <Circle className="w-2 h-2 fill-magenta text-magenta" />
+            <span className="uppercase tracking-widest text-sm">SHOP</span>
           </div>
 
           <h2 className="text-5xl md:text-6xl font-serif mb-6">
@@ -110,7 +110,7 @@ const ShopSection = () => {
                       </div>
                       <h3 className="text-xl font-semibold mb-2 text-white">{product.name}</h3>
                       <p className="text-gray-400 mb-4">${product.price}</p>
-                      <Button className="w-full accent-button justify-center">Add to cart</Button>
+                      <Button className="w-full primary-button justify-center">Add to cart</Button>
                     </CardContent>
                   </Card>
                 </CarouselItem>

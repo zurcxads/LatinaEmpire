@@ -29,12 +29,14 @@ const QuizSection = () => {
               to be with Latina Empire's scientifically proven system.
             </p>
             
-            <Button 
-              onClick={() => setIsStarted(true)}
-              className="primary-button py-3 px-8 text-lg"
-            >
-              Start now
-            </Button>
+            <div className="flex justify-center">
+              <Button 
+                onClick={() => setIsStarted(true)}
+                className="primary-button py-3 px-8 text-lg"
+              >
+                Start now
+              </Button>
+            </div>
           </div>
         ) : (
           <div className="max-w-3xl mx-auto">
