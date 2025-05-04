@@ -7,6 +7,19 @@ import { useEffect, useRef } from "react";
 import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 import { useQuery } from "@tanstack/react-query";
 
+// Helper component to ensure all images use our placeholder image utility
+const EventImage = ({ src, alt, className, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => {
+  return (
+    <img 
+      src={getImageSrc(src as string, true)}
+      alt={alt || "Event image"}
+      className={className || ""}
+      onError={createImageErrorHandler()}
+      {...props}
+    />
+  );
+};
+
 const EventDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const [, setLocation] = useLocation();
@@ -130,7 +143,7 @@ const EventDetail = () => {
           <div 
             className="w-full h-[550px] bg-center bg-cover bg-no-repeat relative"
             style={{ 
-              backgroundImage: `url('${event.bannerImage || event.image}')` 
+              backgroundImage: `url('${getImageSrc(event.bannerImage || event.image, true)}')` 
             }}
             onError={(e) => {
               const section = e.currentTarget as HTMLElement;
