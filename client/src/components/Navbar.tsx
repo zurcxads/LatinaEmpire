@@ -146,10 +146,14 @@ const Navbar = () => {
     const menu = menuKey === 'about' ? menuStructure.about : menuStructure.explore;
     
     return (
-      <div className="grid grid-cols-2 gap-0.5">
+      <div className="grid grid-cols-2 gap-0">
         {menu.items.map((item, idx) => (
-          <Link key={idx} href={item.href} className="p-3 hover:bg-white/10 transition-colors">
-            <h3 className="text-sm font-medium text-center">{item.label}</h3>
+          <Link 
+            key={idx} 
+            href={item.href} 
+            className="p-6 hover:bg-white/10 transition-colors border-b border-r border-white/10"
+          >
+            <h3 className="text-base font-medium text-center text-shadow-sm">{item.label}</h3>
           </Link>
         ))}
       </div>
@@ -238,7 +242,7 @@ const Navbar = () => {
               
               {/* Mobile navigation menu */}
               {mobileMenuOpen && (
-                <div className="md:hidden bg-black/90 text-white p-3">
+                <div className="md:hidden bg-black/15 backdrop-blur-sm text-white p-3">
                   <button 
                     onClick={() => toggleMenu('about')}
                     className={`block w-full text-left px-4 py-2 text-sm text-shadow-sm ${
@@ -279,7 +283,7 @@ const Navbar = () => {
           
           {/* Dropdown menus */}
           {activeMenu && (
-            <div className="bg-black/80 text-white relative z-10">
+            <div className="bg-black/15 backdrop-blur-sm text-white relative z-10">
               {getMenuContent(activeMenu)}
             </div>
           )}
