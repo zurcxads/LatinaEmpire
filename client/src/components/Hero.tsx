@@ -11,7 +11,7 @@ const Hero = () => {
     <>
       <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
 
-      <section className="pt-20 min-h-[calc(100vh-5rem)] flex flex-col justify-end relative overflow-hidden bg-black text-white">
+      <section className="pt-28 min-h-screen flex flex-col justify-end relative overflow-hidden bg-black text-white">
         <div className="container mx-auto px-4 relative z-10 flex flex-col h-full">
           <div className="flex flex-col lg:flex-row items-end justify-between gap-8 min-h-[calc(100vh-5rem)]">
             {/* Main Hero Content - Left Side */}
