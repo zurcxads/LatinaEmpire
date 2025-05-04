@@ -4,6 +4,7 @@ import { ArrowRight, ArrowDown } from "lucide-react";
 import JoinModal from "@/components/JoinModal";
 import ImpactCarousel from "@/components/ImpactCarousel";
 import { useState } from "react";
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
 const AboutFounder = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,9 +21,10 @@ const AboutFounder = () => {
           {/* Background Image with Overlay - Bottom Fade Only */}
           <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10"></div>
           <img 
-            src="https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg" 
+            src={getImageSrc("https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg", true)} 
             alt="Perla Tamez Casasnovas" 
             className="w-full h-full object-cover"
+            onError={createImageErrorHandler()}
           />
         </div>
         
@@ -69,12 +71,13 @@ const AboutFounder = () => {
             <div className="relative">
               <div className="rounded-2xl overflow-hidden shadow-xl">
                 <img 
-                  src="https://images.pexels.com/photos/6963944/pexels-photo-6963944.jpeg" 
+                  src={getImageSrc("https://images.pexels.com/photos/6963944/pexels-photo-6963944.jpeg", true)} 
                   alt="Perla's childhood in Hidalgo, Texas" 
                   className="w-full h-full object-cover"
+                  onError={createImageErrorHandler()}
                 />
               </div>
-              <div className="absolute -bottom-5 -right-5 w-32 h-32 bg-magenta/10 rounded-full hidden md:block"></div>
+
             </div>
             <div>
               <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6 tracking-tight">
@@ -115,9 +118,10 @@ const AboutFounder = () => {
             <div className="relative order-first md:order-last">
               <div className="rounded-2xl overflow-hidden shadow-xl">
                 <img 
-                  src="https://images.pexels.com/photos/6893988/pexels-photo-6893988.jpeg" 
+                  src={getImageSrc("https://images.pexels.com/photos/6893988/pexels-photo-6893988.jpeg", true)} 
                   alt="Perla speaking at a leadership conference" 
                   className="w-full h-full object-cover"
+                  onError={createImageErrorHandler()}
                 />
               </div>
 
@@ -133,9 +137,10 @@ const AboutFounder = () => {
             <div className="relative">
               <div className="rounded-2xl overflow-hidden shadow-xl">
                 <img 
-                  src="https://images.pexels.com/photos/7713516/pexels-photo-7713516.jpeg" 
+                  src={getImageSrc("https://images.pexels.com/photos/7713516/pexels-photo-7713516.jpeg", true)} 
                   alt="Perla mentoring Latina professionals" 
                   className="w-full h-full object-cover"
+                  onError={createImageErrorHandler()}
                 />
               </div>
             </div>
@@ -165,9 +170,10 @@ const AboutFounder = () => {
           {/* Fade effect at the bottom */}
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-20"></div>
           <img 
-            src="https://images.pexels.com/photos/7433922/pexels-photo-7433922.jpeg" 
+            src={getImageSrc("https://images.pexels.com/photos/7433922/pexels-photo-7433922.jpeg", true)} 
             alt="Background" 
             className="w-full h-full object-cover"
+            onError={createImageErrorHandler()}
           />
         </div>
 
@@ -180,9 +186,10 @@ const AboutFounder = () => {
               <div className="flex items-center justify-center">
                 <div className="h-10 w-10 rounded-full bg-magenta flex-shrink-0 mr-3 overflow-hidden">
                   <img 
-                    src="https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg" 
+                    src={getImageSrc("https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg", true)} 
                     alt="Perla Tamez Casasnovas" 
                     className="h-full w-full object-cover"
+                    onError={createImageErrorHandler()}
                   />
                 </div>
                 <span className="text-white font-medium">Perla Tamez Casasnovas</span>
