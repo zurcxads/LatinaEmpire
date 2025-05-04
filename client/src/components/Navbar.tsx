@@ -180,7 +180,7 @@ const Navbar = () => {
               {/* Top row with logo and navigation links */}
               <div className="flex items-center justify-between px-4 py-2 relative">
                 {/* Logo */}
-                <Link href="/" className="text-white font-bold mr-4 text-shadow-md">
+                <Link href="/" className="text-white font-bold mr-4 text-shadow-md flex items-center">
                   <span className="tracking-wider text-sm md:text-base">LATINA EMPIRE</span>
                 </Link>
                 
@@ -189,7 +189,7 @@ const Navbar = () => {
                   <div className="hidden md:flex items-center space-x-2">
                     <button 
                       onClick={() => toggleMenu('about')}
-                      className={`px-4 py-1 text-sm transition-all relative ${
+                      className={`px-4 h-7 text-sm transition-all relative flex items-center ${
                         activeMenu === 'about' 
                           ? 'text-black bg-white rounded-md shadow-lg' 
                           : 'text-white hover:text-white/80 text-shadow-sm'
@@ -200,7 +200,7 @@ const Navbar = () => {
                     
                     <button 
                       onClick={() => toggleMenu('explore')}
-                      className={`px-4 py-1 text-sm transition-all ${
+                      className={`px-4 h-7 text-sm transition-all flex items-center ${
                         activeMenu === 'explore'
                           ? 'text-black bg-white rounded-md shadow-lg'
                           : 'text-white hover:text-white/80 text-shadow-sm'
@@ -211,7 +211,7 @@ const Navbar = () => {
                     
                     <button 
                       onClick={() => toggleMenu('contact')}
-                      className={`px-4 py-1 text-sm transition-all ${
+                      className={`px-4 h-7 text-sm transition-all flex items-center ${
                         activeMenu === 'contact' 
                           ? 'text-black bg-white rounded-md shadow-lg' 
                           : 'text-white hover:text-white/80 text-shadow-sm'
@@ -223,7 +223,7 @@ const Navbar = () => {
                   
                   {/* Join Button */}
                   <Button 
-                    className="bg-white text-black hover:bg-white/90 text-xs px-4 py-1 h-auto ml-4 shadow-sm hover:shadow-md transition-all"
+                    className="bg-white text-black hover:bg-white/90 text-xs px-4 h-7 flex items-center ml-4 shadow-sm hover:shadow-md transition-all"
                     onClick={() => setIsModalOpen(true)}
                   >
                     Join
@@ -231,10 +231,10 @@ const Navbar = () => {
                   
                   {/* Mobile menu toggle */}
                   <button 
-                    className="md:hidden ml-3 text-white p-1 rounded-md hover:bg-white/10 transition-colors"
+                    className="md:hidden ml-3 text-white p-1 rounded-md hover:bg-white/10 transition-colors h-7 w-7 flex items-center justify-center"
                     onClick={toggleMobileMenu}
                   >
-                    {mobileMenuOpen ? <X size={20} className="text-shadow-sm" /> : <Menu size={20} className="text-shadow-sm" />}
+                    {mobileMenuOpen ? <X size={18} className="text-shadow-sm" /> : <Menu size={18} className="text-shadow-sm" />}
                   </button>
                 </div>
               </div>
@@ -274,7 +274,7 @@ const Navbar = () => {
                       Contact
                     </button>
                     <Button 
-                      className="bg-white text-black hover:bg-white/90 text-xs mt-2 px-4 py-1 h-auto shadow-sm hover:shadow-md transition-all w-full"
+                      className="bg-white text-black hover:bg-white/90 text-xs mt-2 px-4 h-7 flex items-center justify-center shadow-sm hover:shadow-md transition-all w-full"
                       onClick={() => setIsModalOpen(true)}
                     >
                       Join
