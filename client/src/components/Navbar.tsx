@@ -2,9 +2,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
-import { X, Instagram, Phone, Mail, ArrowRight, Home } from "lucide-react";
+import { X, Instagram, Phone, Mail, ArrowRight } from "lucide-react";
 import JoinModal from "./JoinModal";
-import logoSrc from "@/assets/logo.svg";
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -136,51 +135,39 @@ const Navbar = () => {
             <div className="flex flex-col">
               {/* Top row with main navigation links */}
               <div className="flex items-center justify-between px-4 py-2 relative">
-                {/* Logo and Home button */}
-                <div className="flex items-center">
-                  <Link href="/" className="flex items-center mr-2">
-                    <img src={logoSrc} alt="Latina Empire" className="h-7 w-auto" />
-                  </Link>
-                  <Link href="/" className="text-white hover:text-white/80 p-1 rounded-full hover:bg-white/10 transition-colors">
-                    <Home className="h-4 w-4" />
-                  </Link>
-                </div>
-
                 {/* Main nav buttons */}
-                <div className="flex items-center space-x-1">
-                  <button 
-                    onClick={() => toggleMenu('about')}
-                    className={`px-4 py-1 text-sm transition-all relative ${
-                      activeMenu === 'about' 
-                        ? 'text-black bg-white rounded-md' 
-                        : 'text-white hover:text-white/80'
-                    }`}
-                  >
-                    About
-                  </button>
-                  
-                  <button 
-                    onClick={() => toggleMenu('explore')}
-                    className={`px-4 py-1 text-sm transition-all ${
-                      activeMenu === 'explore'
-                        ? 'text-black bg-white rounded-md'
-                        : 'text-white hover:text-white/80'
-                    }`}
-                  >
-                    Explore
-                  </button>
-                  
-                  <button 
-                    onClick={() => toggleMenu('contact')}
-                    className={`px-4 py-1 text-sm transition-all ${
-                      activeMenu === 'contact' 
-                        ? 'text-black bg-white rounded-md' 
-                        : 'text-white hover:text-white/80'
-                    }`}
-                  >
-                    Contact
-                  </button>
-                </div>
+                <button 
+                  onClick={() => toggleMenu('about')}
+                  className={`px-4 py-1 text-sm transition-all relative ${
+                    activeMenu === 'about' 
+                      ? 'text-black bg-white rounded-md' 
+                      : 'text-white hover:text-white/80'
+                  }`}
+                >
+                  About
+                </button>
+                
+                <button 
+                  onClick={() => toggleMenu('explore')}
+                  className={`px-4 py-1 text-sm transition-all ${
+                    activeMenu === 'explore'
+                      ? 'text-black bg-white rounded-md'
+                      : 'text-white hover:text-white/80'
+                  }`}
+                >
+                  Explore
+                </button>
+                
+                <button 
+                  onClick={() => toggleMenu('contact')}
+                  className={`px-4 py-1 text-sm transition-all ${
+                    activeMenu === 'contact' 
+                      ? 'text-black bg-white rounded-md' 
+                      : 'text-white hover:text-white/80'
+                  }`}
+                >
+                  Contact
+                </button>
               </div>
               
               {/* Continuously scrolling marquee tagline */}
