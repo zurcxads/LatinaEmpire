@@ -8,7 +8,8 @@ import {
   Facebook,
   Twitter,
   Linkedin,
-  Share2
+  Share2,
+  ArrowRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -19,6 +20,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 // Related articles component
 const RelatedArticles = ({ posts, currentPostId }: { posts: BlogPost[], currentPostId: string }) => {
@@ -30,29 +33,39 @@ const RelatedArticles = ({ posts, currentPostId }: { posts: BlogPost[], currentP
   if (relatedPosts.length === 0) return null;
   
   return (
-    <div className="mt-16">
+    <div className="mt-16 mb-20">
       <h3 className="font-serif font-bold text-2xl mb-6">Related Articles</h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {relatedPosts.map(post => (
           <div key={post.id} className="group">
-            <div className="relative h-48 mb-4 overflow-hidden rounded-lg">
+            <div className="relative h-56 mb-4 overflow-hidden rounded-xl">
               <img 
                 src={post.image} 
                 alt={post.title} 
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 p-4">
+                <Badge className="bg-magenta hover:bg-magenta/90 text-xs">{post.category}</Badge>
+              </div>
             </div>
             <h4 className="font-serif font-bold text-lg mb-2 group-hover:text-magenta transition-colors">
               <Link href={`/blog/${post.slug}`}>
                 {post.title}
               </Link>
             </h4>
-            <div className="text-sm text-gray-500 mb-2">
-              {new Date(post.date).toLocaleDateString('en-US', { 
-                month: 'long', 
-                day: 'numeric', 
-                year: 'numeric' 
-              })}
+            <div className="flex items-center space-x-3 text-xs text-gray-500 mb-2">
+              <span className="flex items-center">
+                <Calendar className="h-3 w-3 mr-1" />
+                {new Date(post.date).toLocaleDateString('en-US', { 
+                  month: 'long', 
+                  day: 'numeric'
+                })}
+              </span>
+              <span className="flex items-center">
+                <Clock className="h-3 w-3 mr-1" />
+                {post.readTime}
+              </span>
             </div>
             <p className="text-gray-600 text-sm line-clamp-2">{post.excerpt}</p>
           </div>
@@ -167,7 +180,7 @@ const SocialShare = ({ post }: { post: BlogPost }) => {
 // Author bio
 const AuthorBio = ({ post }: { post: BlogPost }) => {
   return (
-    <div className="bg-gray-100 p-6 rounded-xl my-12">
+    <div className="bg-gray-100 p-8 rounded-2xl my-12">
       <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
         <div className="flex flex-col">
           <h4 className="font-serif font-bold text-xl mb-2">About the Author</h4>
@@ -183,7 +196,7 @@ const AuthorBio = ({ post }: { post: BlogPost }) => {
 // Newsletter CTA
 const NewsletterCTA = () => {
   return (
-    <div className="bg-magenta/10 p-8 rounded-xl my-12 text-center">
+    <div className="bg-gradient-to-r from-magenta/20 to-magenta/5 p-10 rounded-2xl my-16 text-center">
       <h4 className="font-serif font-bold text-2xl mb-3">
         Enjoy this article?
       </h4>
@@ -196,8 +209,9 @@ const NewsletterCTA = () => {
           placeholder="Your email address" 
           className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-magenta/50"
         />
-        <Button className="bg-magenta hover:bg-magenta/90 whitespace-nowrap px-6 rounded-full">
+        <Button className="primary-button whitespace-nowrap px-6 rounded-full bg-magenta hover:bg-magenta/90 text-white">
           Subscribe
+          <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </div>
     </div>
@@ -211,13 +225,13 @@ const formatContent = (content: string) => {
     // Check if paragraph is a header (starts with # or ##)
     if (paragraph.startsWith('# ')) {
       return (
-        <h2 key={index} className="font-serif font-bold text-2xl mt-8 mb-4">
+        <h2 key={index} className="font-serif font-bold text-2xl mt-10 mb-4">
           {paragraph.substring(2)}
         </h2>
       );
     } else if (paragraph.startsWith('## ')) {
       return (
-        <h3 key={index} className="font-serif font-bold text-xl mt-6 mb-3">
+        <h3 key={index} className="font-serif font-bold text-xl mt-8 mb-3">
           {paragraph.substring(3)}
         </h3>
       );
@@ -226,13 +240,13 @@ const formatContent = (content: string) => {
       const boldPart = paragraph.substring(2, paragraph.indexOf('**:') + 2);
       const restPart = paragraph.substring(paragraph.indexOf('**:') + 3);
       return (
-        <p key={index} className="mb-4 text-gray-800 leading-relaxed">
+        <p key={index} className="mb-5 text-gray-800 leading-relaxed">
           <strong>{boldPart.replace('**:', '')}</strong>: {restPart}
         </p>
       );
     } else {
       return (
-        <p key={index} className="mb-4 text-gray-800 leading-relaxed">
+        <p key={index} className="mb-5 text-gray-800 leading-relaxed text-lg">
           {paragraph}
         </p>
       );
@@ -285,16 +299,22 @@ const BlogDetail = () => {
   
   if (isLoading) {
     return (
-      <div className="container mx-auto px-4 py-20">
-        <div className="max-w-4xl mx-auto">
-          <div className="w-full h-12 bg-gray-200 animate-pulse mb-4"></div>
-          <div className="w-3/4 h-8 bg-gray-200 animate-pulse mb-8"></div>
-          <div className="w-full h-80 bg-gray-200 animate-pulse mb-6"></div>
-          <div className="space-y-4">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="w-full h-6 bg-gray-200 animate-pulse"></div>
-            ))}
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <div className="container mx-auto px-4 py-32">
+          <div className="max-w-4xl mx-auto">
+            <div className="w-full h-12 bg-gray-200 animate-pulse mb-4"></div>
+            <div className="w-3/4 h-8 bg-gray-200 animate-pulse mb-8"></div>
+            <div className="w-full h-96 bg-gray-200 animate-pulse mb-6 rounded-xl"></div>
+            <div className="space-y-4 pt-10">
+              {[...Array(8)].map((_, i) => (
+                <div key={i} className="w-full h-6 bg-gray-200 animate-pulse"></div>
+              ))}
+            </div>
           </div>
+        </div>
+        <div className="mt-auto">
+          <Footer />
         </div>
       </div>
     );
@@ -303,9 +323,11 @@ const BlogDetail = () => {
   if (!post) return null;
   
   return (
-    <div className="flex flex-col">
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      
       {/* Article header */}
-      <div className="bg-gray-900 text-white py-20">
+      <div className="bg-black text-white pt-28 pb-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <Button
@@ -333,7 +355,7 @@ const BlogDetail = () => {
               </span>
             </div>
             
-            <h1 className="font-serif font-bold text-3xl md:text-4xl lg:text-5xl mb-6 leading-tight">
+            <h1 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight">
               {post.title}
             </h1>
             
@@ -345,10 +367,10 @@ const BlogDetail = () => {
       </div>
       
       {/* Main content */}
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           {/* Cover image */}
-          <div className="mb-10 relative h-96 rounded-xl overflow-hidden">
+          <div className="mb-10 relative h-[32rem] rounded-2xl overflow-hidden">
             <img 
               src={post.image} 
               alt={post.title} 
@@ -357,18 +379,18 @@ const BlogDetail = () => {
           </div>
           
           {/* Article content */}
-          <article className="prose max-w-none">
+          <article className="prose prose-lg max-w-none">
             {formatContent(post.content)}
             
             {/* Tags */}
-            <div className="flex flex-wrap gap-2 mt-8">
+            <div className="flex flex-wrap gap-2 mt-12">
               {post.tags.map(tag => (
                 <Link 
                   key={tag} 
                   href={`/blog?tag=${tag}`}
                 >
-                  <Badge variant="outline" className="cursor-pointer hover:bg-gray-100">
-                    <span className="text-gray-600">#</span> {tag}
+                  <Badge variant="outline" className="cursor-pointer hover:bg-gray-100 px-4 py-1.5">
+                    <span className="text-magenta">#</span> {tag}
                   </Badge>
                 </Link>
               ))}
@@ -384,6 +406,10 @@ const BlogDetail = () => {
           {/* Related articles */}
           <RelatedArticles posts={relatedPosts} currentPostId={post.id} />
         </div>
+      </div>
+      
+      <div className="mt-auto">
+        <Footer />
       </div>
     </div>
   );
