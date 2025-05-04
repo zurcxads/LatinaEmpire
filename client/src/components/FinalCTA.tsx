@@ -26,7 +26,7 @@ const FinalCTA = () => {
             
             <Button 
               onClick={() => setIsModalOpen(true)}
-              className="primary-button text-xl uppercase tracking-wide"
+              className="accent-button text-xl uppercase tracking-wide py-3 px-8"
             >
               Join the Movement Now
             </Button>

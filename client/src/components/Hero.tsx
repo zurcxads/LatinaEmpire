@@ -26,7 +26,7 @@ const Hero = () => {
 
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-white hover:bg-gray-100 text-black font-semibold text-lg py-6 px-10 rounded-full transition-all shadow-xl w-fit"
+                className="primary-button text-lg py-3 px-8"
               >
                 Join Now
                 <ArrowRight className="ml-2 h-5 w-5" />

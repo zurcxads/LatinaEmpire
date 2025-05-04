@@ -145,15 +145,19 @@
 
 /* Consistent button styles */
 .primary-button {
-  @apply bg-magenta text-white hover:bg-magenta/90 font-semibold px-8 py-1.5 rounded-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg disabled:opacity-50 disabled:hover:scale-100;
+  @apply bg-gray-100 hover:bg-gray-200 text-black font-medium px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-1.5 disabled:opacity-50 disabled:hover:bg-gray-100;
 }
 
 .secondary-button {
-  @apply bg-white text-black hover:bg-gray-100 font-semibold px-8 py-1.5 rounded-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg disabled:opacity-50 disabled:hover:scale-100;
+  @apply bg-white text-black hover:bg-gray-100 font-medium px-6 py-2 rounded-full border-2 border-black transition-all duration-300 flex items-center gap-1.5 hover:bg-black hover:text-white disabled:opacity-50 disabled:hover:bg-white disabled:hover:text-black;
+}
+
+.accent-button {
+  @apply bg-black text-white hover:bg-gray-800 font-medium px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-1.5 disabled:opacity-50 disabled:hover:bg-black;
 }
 
 .outline-button {
-  @apply border-2 border-magenta text-magenta hover:bg-magenta/10 font-semibold px-8 py-1.5 rounded-full transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:hover:scale-100;
+  @apply border-2 border-gray-200 bg-transparent text-white hover:bg-white/10 font-medium px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-1.5 disabled:opacity-50 disabled:hover:bg-transparent;
 }
 
 /* Card styles */

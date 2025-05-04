@@ -79,10 +79,7 @@ const PodcastSection = () => {
               Practical insights and inspiring stories to fuel your personal and professional growth.
             </p>
           </div>
-          <Button 
-            variant="outline" 
-            className="font-sans font-semibold border-2 border-black text-black px-5 py-2 rounded-full hover:bg-black hover:text-white transition-all"
-          >
+          <Button className="secondary-button">
             View All Episodes
           </Button>
         </div>
