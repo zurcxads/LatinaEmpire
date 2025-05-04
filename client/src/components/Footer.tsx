@@ -11,6 +11,7 @@ import {
   FaLinkedinIn,
   FaTwitter 
 } from "react-icons/fa";
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -30,7 +31,12 @@ const Footer = () => {
         <div className="container mx-auto px-4 md:px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
             <div className="md:col-span-3">
-              <img src="/logo-white.png" alt="Latina Empire" className="h-8 mb-6" />
+              <img 
+                src={getImageSrc("/logo-white.png", true)} 
+                alt="Latina Empire" 
+                className="h-8 mb-6"
+                onError={createImageErrorHandler()}
+              />
               <div className="flex space-x-4 mb-6">
                 <a href="#" className="text-white/70 hover:text-white transition-all">
                   <FaInstagram className="h-5 w-5" />

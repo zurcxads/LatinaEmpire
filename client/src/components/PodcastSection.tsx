@@ -39,9 +39,10 @@ const PodcastEpisodeCard = ({ episode }: { episode: PodcastEpisode }) => {
     <div className="bg-white rounded-lg overflow-hidden shadow-lg group hover:shadow-xl transition-all">
       <div className="relative h-48 overflow-hidden">
         <img 
-          src={episode.image} 
+          src={getImageSrc(episode.image, true)} 
           alt={episode.title} 
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          onError={createImageErrorHandler()}
         />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
           <button className="h-16 w-16 rounded-full bg-white/20 flex items-center justify-center border-2 border-white backdrop-blur-sm">

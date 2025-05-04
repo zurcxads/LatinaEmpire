@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
 const QuizSection = () => {
   const [isStarted, setIsStarted] = useState(false);
@@ -11,9 +12,10 @@ const QuizSection = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/60 z-10"></div>
         <img 
-          src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80"
+          src={getImageSrc("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4", true)}
           alt="Motivational background" 
           className="w-full h-full object-cover"
+          onError={createImageErrorHandler()}
         />
       </div>
       
