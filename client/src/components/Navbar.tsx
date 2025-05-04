@@ -5,6 +5,7 @@ import { Link, useLocation } from "wouter";
 import { X, Instagram, Phone, Mail, ArrowRight, Menu } from "lucide-react";
 import JoinModal from "./JoinModal";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);

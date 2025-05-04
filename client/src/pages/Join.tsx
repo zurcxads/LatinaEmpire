@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
 import SuccessConfetti from "@/components/SuccessConfetti";
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
 const BenefitCard = ({ 
   icon, 
@@ -183,9 +184,10 @@ const Join = () => {
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-4">
                 <img 
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80" 
+                  src={getImageSrc("https://images.unsplash.com/photo-1494790108377-be9c29b29330", true)} 
                   alt="Testimonial author" 
                   className="w-12 h-12 rounded-full object-cover mr-4"
+                  onError={createImageErrorHandler()}
                 />
                 <div>
                   <h4 className="font-serif font-bold">Maria G.</h4>
@@ -200,9 +202,10 @@ const Join = () => {
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-4">
                 <img 
-                  src="https://images.unsplash.com/photo-1573497161161-c3e73707e25c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80" 
+                  src={getImageSrc("https://images.unsplash.com/photo-1573497161161-c3e73707e25c", true)} 
                   alt="Testimonial author" 
                   className="w-12 h-12 rounded-full object-cover mr-4"
+                  onError={createImageErrorHandler()}
                 />
                 <div>
                   <h4 className="font-serif font-bold">Sofia R.</h4>
@@ -217,9 +220,10 @@ const Join = () => {
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-4">
                 <img 
-                  src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80" 
+                  src={getImageSrc("https://images.unsplash.com/photo-1544005313-94ddf0286df2", true)} 
                   alt="Testimonial author" 
                   className="w-12 h-12 rounded-full object-cover mr-4"
+                  onError={createImageErrorHandler()}
                 />
                 <div>
                   <h4 className="font-serif font-bold">Carmen T.</h4>
