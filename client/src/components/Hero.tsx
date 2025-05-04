@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import JoinModal from "./JoinModal";
 import NextEventBanner from "./NextEventBanner";
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
 const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -46,13 +47,10 @@ const Hero = () => {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black z-10" />
           <img 
-            src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            src={getImageSrc("https://images.unsplash.com/photo-1531058020387-3be344556be6", true)}
             alt="Conference stage with audience" 
             className="w-full h-full object-cover"
-            onError={(e) => {
-              e.currentTarget.classList.add("hidden");
-              e.currentTarget.parentElement?.classList.add("hero-placeholder");
-            }}
+            onError={createImageErrorHandler()}
           />
         </div>
       </section>

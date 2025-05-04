@@ -6,6 +6,7 @@ import { ArrowRight, Circle } from "lucide-react";
 import { useState } from "react";
 import JoinModal from "./JoinModal";
 import { Link } from "wouter";
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
 const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

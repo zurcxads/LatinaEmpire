@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
 interface CarouselImage {
   src: string;
@@ -43,9 +44,10 @@ const ImpactCarousel = () => {
               }`}
             >
               <img 
-                src={image.src} 
+                src={getImageSrc(image.src, true)} 
                 alt={image.alt} 
                 className="w-full h-full object-cover rounded-xl"
+                onError={createImageErrorHandler()}
               />
             </div>
           ))}

@@ -275,9 +275,10 @@ const AboutFounder = () => {
             <div className="relative rounded-xl overflow-hidden h-[350px] shadow-lg">
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10"></div>
               <img 
-                src="https://images.pexels.com/photos/6325907/pexels-photo-6325907.jpeg" 
+                src={getImageSrc("https://images.pexels.com/photos/6325907/pexels-photo-6325907.jpeg", true)} 
                 alt="A Framework for Success" 
                 className="w-full h-full object-cover"
+                onError={createImageErrorHandler()}
               />
               <div className="absolute inset-0 p-6 flex flex-col justify-end z-20">
                 <h3 className="text-white text-2xl md:text-3xl font-serif mb-2">
@@ -301,9 +302,10 @@ const AboutFounder = () => {
             <div className="relative rounded-xl overflow-hidden h-[350px] shadow-lg">
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10"></div>
               <img 
-                src="https://images.pexels.com/photos/8192042/pexels-photo-8192042.jpeg" 
+                src={getImageSrc("https://images.pexels.com/photos/8192042/pexels-photo-8192042.jpeg", true)} 
                 alt="Real Community Impact" 
                 className="w-full h-full object-cover"
+                onError={createImageErrorHandler()}
               />
               <div className="absolute inset-0 p-6 flex flex-col justify-end z-20">
                 <h3 className="text-white text-2xl md:text-3xl font-serif mb-2">
