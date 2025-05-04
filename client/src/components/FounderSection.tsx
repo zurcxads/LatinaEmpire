@@ -48,9 +48,6 @@ const FounderSection = () => {
                 }}
               />
             </div>
-            
-            {/* Decorative element */}
-            <div className="absolute -bottom-5 -left-5 w-32 h-32 bg-magenta/10 rounded-full hidden md:block"></div>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { Link } from 'wouter';
 import { Circle, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
-import { Carousel, CarouselContent, CarouselItem, useCarousel } from './ui/carousel';
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi, useCarousel } from './ui/carousel';
 
 const ShopSection = () => {
   const products = [
@@ -32,11 +32,11 @@ const ShopSection = () => {
 
   // State to track the current slide
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [carouselApi, setCarouselApi] = useState<ReturnType<typeof useCarousel>>();
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
 
   // Update current slide when carousel changes
   useEffect(() => {
-    if (!carouselApi?.carousel) return;
+    if (!carouselApi) return;
 
     const onChange = () => {
       setCurrentSlide(carouselApi.selectedScrollSnap() || 0);
