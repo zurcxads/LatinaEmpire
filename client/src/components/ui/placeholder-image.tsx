@@ -1,5 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
+import placeholderImagePath from "../../assets/placeholder-image.png";
 
 interface PlaceholderImageProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Width of the placeholder image */
@@ -10,10 +11,12 @@ interface PlaceholderImageProps extends React.HTMLAttributes<HTMLDivElement> {
   isHero?: boolean;
   /** Alternative text for accessibility */
   alt?: string;
-  /** Optional image URL to use instead of gradient (falls back to gradient if image fails) */
+  /** Optional image URL to use instead of default placeholder */
   src?: string;
   /** Whether to round the image as a circle */
   isCircle?: boolean;
+  /** Whether to force using the placeholder image */
+  forcePlaceholder?: boolean;
 }
 
 const PlaceholderImage = ({
@@ -24,14 +27,12 @@ const PlaceholderImage = ({
   alt = "Placeholder image",
   src,
   isCircle = false,
+  forcePlaceholder = false,
   ...props
 }: PlaceholderImageProps) => {
-  const [imgError, setImgError] = React.useState(!src);
-
-  const handleError = () => {
-    setImgError(true);
-  };
-
+  // Always use the placeholder image when requested
+  const imageSrc = forcePlaceholder ? placeholderImagePath : (src || placeholderImagePath);
+  
   return (
     <div
       className={cn(
@@ -46,17 +47,20 @@ const PlaceholderImage = ({
       }}
       {...props}
     >
-      {src && !imgError ? (
-        <img
-          src={src}
-          alt={alt}
-          className={cn(
-            "w-full h-full object-cover",
-            isCircle ? "rounded-full" : "rounded-[16px]"
-          )}
-          onError={handleError}
-        />
-      ) : null}
+      <img
+        src={imageSrc}
+        alt={alt}
+        className={cn(
+          "w-full h-full object-cover",
+          isCircle ? "rounded-full" : "rounded-[16px]"
+        )}
+        onError={(e) => {
+          // If the original image fails, use the placeholder
+          if (src && src !== placeholderImagePath) {
+            e.currentTarget.src = placeholderImagePath;
+          }
+        }}
+      />
     </div>
   );
 };

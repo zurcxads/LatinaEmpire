@@ -7,6 +7,7 @@ import { eventsService } from "@/lib/eventsService";
 import { Event } from "@/lib/types";
 import JoinModal from "./JoinModal";
 import useEmblaCarousel from "embla-carousel-react";
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
 const EventCard = ({ event, onOpen }: { event: Event; onOpen?: () => void }) => {
   return (
