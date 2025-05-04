@@ -135,26 +135,24 @@ const Navbar = () => {
             <div className="flex flex-col">
               {/* Top row with main navigation links */}
               <div className="flex items-center justify-between px-4 py-2 relative">
-                {/* Left nav button */}
-                <button 
-                  onClick={() => toggleMenu('about')}
-                  className={`px-4 py-1 text-sm transition-all relative ${
-                    activeMenu === 'about' 
-                      ? 'text-black bg-white rounded-md' 
-                      : 'text-white hover:text-white/80'
-                  }`}
-                >
-                  About
-                </button>
+                {/* Main nav buttons */}
+                <div className="flex items-center space-x-1">
+                  <Link href="/" className="px-4 py-1 text-sm transition-all text-white hover:text-white/80">
+                    Home
+                  </Link>
+                  
+                  <button 
+                    onClick={() => toggleMenu('about')}
+                    className={`px-4 py-1 text-sm transition-all relative ${
+                      activeMenu === 'about' 
+                        ? 'text-black bg-white rounded-md' 
+                        : 'text-white hover:text-white/80'
+                    }`}
+                  >
+                    About
+                  </button>
+                </div>
                 
-                {/* Center logo that links to home */}
-                <Link href="/" className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20 hover:bg-white/20 transition-colors">
-                    <span className="text-white font-serif text-xs font-semibold tracking-tight">LE</span>
-                  </div>
-                </Link>
-                
-                {/* Right nav buttons */}
                 <div className="flex items-center space-x-1">
                   <button 
                     onClick={() => toggleMenu('explore')}
