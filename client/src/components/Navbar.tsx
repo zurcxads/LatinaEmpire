@@ -153,7 +153,7 @@ const Navbar = () => {
             href={item.href} 
             className="p-6 hover:bg-white/10 transition-colors border-b border-r border-white/10"
           >
-            <h3 className="text-base font-medium text-center text-shadow-sm">{item.label}</h3>
+            <h3 className="text-sm font-medium text-center text-shadow-sm">{item.label}</h3>
           </Link>
         ))}
       </div>
