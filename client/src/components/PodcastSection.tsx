@@ -54,7 +54,7 @@ const PodcastEpisodeCard = ({ episode }: { episode: PodcastEpisode }) => {
       <div className="p-6">
         <h3 className="font-serif font-bold text-xl mb-4 line-clamp-2">{episode.title}</h3>
         <Button 
-          className="w-full bg-black text-white hover:bg-gray-800 rounded-full"
+          className="w-full accent-button justify-center"
         >
           Listen Now
         </Button>

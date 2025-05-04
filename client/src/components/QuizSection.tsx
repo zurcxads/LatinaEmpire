@@ -31,7 +31,7 @@ const QuizSection = () => {
             
             <Button 
               onClick={() => setIsStarted(true)}
-              className="bg-white text-black hover:bg-white/90 rounded-full px-8 py-6 h-auto text-lg font-medium"
+              className="primary-button py-3 px-8 text-lg"
             >
               Start now
             </Button>

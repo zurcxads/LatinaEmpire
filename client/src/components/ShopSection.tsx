@@ -69,11 +69,11 @@ const ShopSection = () => {
 
         <div className="flex items-center gap-4 md:gap-6 mb-12 justify-between flex-wrap">
           <div className="flex items-center gap-2 md:gap-4 flex-wrap">
-            <Button variant="link" className="text-white hover:text-magenta px-2 md:px-4">All</Button>
-            <Button variant="link" className="text-gray-400 hover:text-white px-2 md:px-4">Books</Button>
-            <Button variant="link" className="text-gray-400 hover:text-white px-2 md:px-4">Digital</Button>
-            <Button variant="link" className="text-gray-400 hover:text-white px-2 md:px-4">Journals</Button>
-            <Button variant="link" className="text-gray-400 hover:text-white px-2 md:px-4">Supplements</Button>
+            <Button variant="link" className="text-white hover:text-gray-200 px-2 md:px-4 font-medium">All</Button>
+            <Button variant="link" className="text-gray-400 hover:text-white px-2 md:px-4 font-medium">Books</Button>
+            <Button variant="link" className="text-gray-400 hover:text-white px-2 md:px-4 font-medium">Digital</Button>
+            <Button variant="link" className="text-gray-400 hover:text-white px-2 md:px-4 font-medium">Journals</Button>
+            <Button variant="link" className="text-gray-400 hover:text-white px-2 md:px-4 font-medium">Supplements</Button>
           </div>
           
           <Link href="/shop" className="text-magenta hover:text-magenta/80 flex items-center gap-1 transition-colors duration-200 font-medium">

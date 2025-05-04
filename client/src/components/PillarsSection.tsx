@@ -143,7 +143,7 @@ const PillarsSection = () => {
             </div>
 
             {/* Explore button */}
-            <button className="bg-gray-100 hover:bg-gray-200 text-black py-2 px-6 rounded-full text-sm font-medium flex items-center mt-4">
+            <button className="primary-button mt-4">
               Explore <ChevronRight className="ml-1 w-4 h-4" />
             </button>
           </div>

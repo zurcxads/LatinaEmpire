@@ -40,17 +40,14 @@ const EventCard = ({ event, onOpen }: { event: Event; onOpen?: () => void }) => 
         </p>
         <div className="mt-auto flex gap-3 flex-wrap">
           <Link href={`/events/${event.slug}`}>
-            <Button 
-              variant="outline" 
-              className="font-sans border-white border-2 text-black hover:bg-gray-100 transition-all rounded-full"
-            >
+            <Button className="primary-button">
               Learn More
             </Button>
           </Link>
           {onOpen && (
             <Button 
               onClick={onOpen}
-              className="font-sans bg-black text-white hover:bg-gray-800 transition-all rounded-full"
+              className="accent-button"
             >
               Register Now
             </Button>
@@ -109,12 +106,9 @@ const EventsPreview = () => {
                 </p>
               </div>
               <Link href="/events">
-                <Button 
-                  variant="outline" 
-                  className="font-sans font-semibold border-2 border-black text-black px-5 py-2 rounded-full hover:bg-black hover:text-white transition-all inline-flex items-center"
-                >
+                <Button className="secondary-button">
                   View All Events
-                  <ArrowRight className="h-4 w-4 ml-2" />
+                  <ArrowRight className="h-4 w-4 ml-1" />
                 </Button>
               </Link>
             </div>
