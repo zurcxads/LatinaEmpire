@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { X } from "lucide-react";
+import { X, ChevronRight } from "lucide-react";
 import {
   Drawer,
   DrawerContent,
@@ -13,29 +13,46 @@ import { cn } from "@/lib/utils";
 interface PillarCategoryProps {
   label: string;
   isActive: boolean;
+  isHovered: boolean;
   onClick: () => void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 }
 
-const PillarCategory = ({ label, isActive, onClick }: PillarCategoryProps) => (
+const PillarCategory = ({ label, isActive, isHovered, onClick, onMouseEnter, onMouseLeave }: PillarCategoryProps) => (
   <button
     onClick={onClick}
+    onMouseEnter={onMouseEnter}
+    onMouseLeave={onMouseLeave}
     className={cn(
-      "group text-left font-serif font-bold text-4xl md:text-6xl lg:text-7xl transition-all duration-300 block mb-4 hover:opacity-90",
-      isActive ? "text-black" : "text-black"
+      "group text-left font-serif text-4xl md:text-5xl lg:text-6xl transition-all duration-300 block mb-3 hover:opacity-90 relative",
+      isActive || isHovered ? "text-black font-bold" : "text-gray-500 font-normal"
     )}
   >
     <span className="relative">
       {label}
-      <span className={cn(
-        "absolute bottom-2 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full",
-        isActive ? "w-full" : "w-0"
-      )}></span>
+      {isActive || isHovered ? (
+        <span className="inline-block ml-2">
+          <ChevronRight className="w-5 h-5 inline align-middle" />
+        </span>
+      ) : null}
     </span>
   </button>
 );
 
+const images = {
+  mindset: "https://images.unsplash.com/photo-1507237998044-b8be61cd5886?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80",
+  wealth: "https://plus.unsplash.com/premium_photo-1677094310896-ff906d6abf43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+  health: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1999&q=80",
+  relationships: "https://images.unsplash.com/photo-1535637603896-07c179d71f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+  business: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2032&q=80",
+  leadership: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+  happiness: "https://images.unsplash.com/photo-1602631985686-1bb0e6a8696e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+};
+
 const PillarsSection = () => {
   const [openPillar, setOpenPillar] = useState<string | null>(null);
+  const [hoveredPillar, setHoveredPillar] = useState<string | null>(null);
 
   const handleOpenChange = (open: boolean) => {
     if (!open) setOpenPillar(null);
@@ -45,105 +62,123 @@ const PillarsSection = () => {
     setOpenPillar(pillar);
   };
 
+  const handlePillarHover = (pillar: string) => {
+    setHoveredPillar(pillar);
+  };
+
+  const currentImage = hoveredPillar 
+    ? images[hoveredPillar as keyof typeof images] 
+    : "https://images.unsplash.com/photo-1575408264798-b50b252663e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80";
+
   return (
     <section className="py-20 md:py-24 bg-white">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-          {/* Left column: Image */}
-          <div className="flex items-center justify-center">
-            <div className="relative h-[350px] w-[350px]">
-              <div className="rounded-2xl overflow-hidden shadow-xl h-full">
-                <img 
-                  src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                  alt="Live event with audience" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Right column: Text */}
-          <div className="flex flex-col justify-center items-center h-full text-center">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
+          {/* Left column: Text */}
+          <div className="flex-1 flex flex-col items-start">
             <div className="flex items-center gap-2 mb-6">
+              <div className="w-2 h-2 rounded-full bg-black"></div>
               <span className="font-sans uppercase tracking-wider text-gray-600 font-semibold text-sm">
-                OUR MISSION
+                PILLARS FOR AN EXTRAORDINARY LIFE
               </span>
-              <div className="w-2 h-2 rounded-full bg-magenta animate-pulse shadow-[0_0_8px_4px_rgba(236,72,153,0.3)]"></div>
             </div>
 
-            <div className="mb-8">
+            <div className="mb-8 text-left">
               <PillarCategory 
-                label="Heart" 
-                isActive={openPillar === 'heart'} 
-                onClick={() => handlePillarClick('heart')} 
+                label="Mindset" 
+                isActive={openPillar === 'mindset'} 
+                isHovered={hoveredPillar === 'mindset'}
+                onClick={() => handlePillarClick('mindset')}
+                onMouseEnter={() => handlePillarHover('mindset')}
+                onMouseLeave={() => setHoveredPillar(null)}
               />
               <PillarCategory 
-                label="Mind" 
-                isActive={openPillar === 'mind'} 
-                onClick={() => handlePillarClick('mind')} 
+                label="Wealth" 
+                isActive={openPillar === 'wealth'} 
+                isHovered={hoveredPillar === 'wealth'}
+                onClick={() => handlePillarClick('wealth')}
+                onMouseEnter={() => handlePillarHover('wealth')}
+                onMouseLeave={() => setHoveredPillar(null)}
               />
               <PillarCategory 
-                label="Money" 
-                isActive={openPillar === 'money'} 
-                onClick={() => handlePillarClick('money')} 
+                label="Health" 
+                isActive={openPillar === 'health'} 
+                isHovered={hoveredPillar === 'health'}
+                onClick={() => handlePillarClick('health')}
+                onMouseEnter={() => handlePillarHover('health')}
+                onMouseLeave={() => setHoveredPillar(null)}
+              />
+              <PillarCategory 
+                label="Relationships" 
+                isActive={openPillar === 'relationships'} 
+                isHovered={hoveredPillar === 'relationships'}
+                onClick={() => handlePillarClick('relationships')}
+                onMouseEnter={() => handlePillarHover('relationships')}
+                onMouseLeave={() => setHoveredPillar(null)}
+              />
+              <PillarCategory 
+                label="Business" 
+                isActive={openPillar === 'business'} 
+                isHovered={hoveredPillar === 'business'}
+                onClick={() => handlePillarClick('business')}
+                onMouseEnter={() => handlePillarHover('business')}
+                onMouseLeave={() => setHoveredPillar(null)}
+              />
+              <PillarCategory 
+                label="Leadership" 
+                isActive={openPillar === 'leadership'} 
+                isHovered={hoveredPillar === 'leadership'}
+                onClick={() => handlePillarClick('leadership')}
+                onMouseEnter={() => handlePillarHover('leadership')}
+                onMouseLeave={() => setHoveredPillar(null)}
+              />
+              <PillarCategory 
+                label="Happiness" 
+                isActive={openPillar === 'happiness'} 
+                isHovered={hoveredPillar === 'happiness'}
+                onClick={() => handlePillarClick('happiness')}
+                onMouseEnter={() => handlePillarHover('happiness')}
+                onMouseLeave={() => setHoveredPillar(null)}
+              />
+            </div>
+
+            {/* Explore button */}
+            <button className="bg-gray-100 hover:bg-gray-200 text-black py-2 px-6 rounded-full text-sm font-medium flex items-center mt-4">
+              Explore <ChevronRight className="ml-1 w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Right column: Image */}
+          <div className="flex-1">
+            <div className="relative h-[450px] rounded-lg overflow-hidden">
+              <img 
+                src={currentImage}
+                alt="Lifestyle image" 
+                className="w-full h-full object-cover transition-opacity duration-300 ease-in-out"
               />
             </div>
           </div>
-
-          
         </div>
       </div>
 
-      {/* Heart Drawer */}
-      <Drawer open={openPillar === 'heart'} onOpenChange={handleOpenChange}>
-        <DrawerContent className="bg-black/95 text-white">
-          <DrawerHeader>
-            <div className="flex justify-between items-center">
-              <DrawerTitle className="font-serif text-3xl">Heart</DrawerTitle>
-              <DrawerClose className="rounded-full h-8 w-8 flex items-center justify-center bg-white/10">
-                <X className="h-4 w-4" />
-              </DrawerClose>
-            </div>
-            <DrawerDescription className="text-white/70 text-lg max-w-2xl mx-auto mt-4 text-center">
-              Explore all content related to Heart — coming soon.
-            </DrawerDescription>
-          </DrawerHeader>
-        </DrawerContent>
-      </Drawer>
-
-      {/* Mind Drawer */}
-      <Drawer open={openPillar === 'mind'} onOpenChange={handleOpenChange}>
-        <DrawerContent className="bg-black/95 text-white">
-          <DrawerHeader>
-            <div className="flex justify-between items-center">
-              <DrawerTitle className="font-serif text-3xl">Mind</DrawerTitle>
-              <DrawerClose className="rounded-full h-8 w-8 flex items-center justify-center bg-white/10">
-                <X className="h-4 w-4" />
-              </DrawerClose>
-            </div>
-            <DrawerDescription className="text-white/70 text-lg max-w-2xl mx-auto mt-4 text-center">
-              Explore all content related to Mind — coming soon.
-            </DrawerDescription>
-          </DrawerHeader>
-        </DrawerContent>
-      </Drawer>
-
-      {/* Money Drawer */}
-      <Drawer open={openPillar === 'money'} onOpenChange={handleOpenChange}>
-        <DrawerContent className="bg-black/95 text-white">
-          <DrawerHeader>
-            <div className="flex justify-between items-center">
-              <DrawerTitle className="font-serif text-3xl">Money</DrawerTitle>
-              <DrawerClose className="rounded-full h-8 w-8 flex items-center justify-center bg-white/10">
-                <X className="h-4 w-4" />
-              </DrawerClose>
-            </div>
-            <DrawerDescription className="text-white/70 text-lg max-w-2xl mx-auto mt-4 text-center">
-              Explore all content related to Money — coming soon.
-            </DrawerDescription>
-          </DrawerHeader>
-        </DrawerContent>
-      </Drawer>
+      {/* Drawers for each pillar */}
+      {Object.keys(images).map(pillar => (
+        <Drawer key={pillar} open={openPillar === pillar} onOpenChange={handleOpenChange}>
+          <DrawerContent className="bg-black/95 text-white">
+            <DrawerHeader>
+              <div className="flex justify-between items-center">
+                <DrawerTitle className="font-serif text-3xl capitalize">{pillar}</DrawerTitle>
+                <DrawerClose className="rounded-full h-8 w-8 flex items-center justify-center bg-white/10">
+                  <X className="h-4 w-4" />
+                </DrawerClose>
+              </div>
+              <DrawerDescription className="text-white/70 text-lg max-w-2xl mx-auto mt-4 text-center">
+                Explore all content related to {pillar} — coming soon.
+              </DrawerDescription>
+            </DrawerHeader>
+          </DrawerContent>
+        </Drawer>
+      ))}
     </section>
   );
 };
