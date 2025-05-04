@@ -474,69 +474,70 @@ const Blog = () => {
       {/* Hero section */}
       <div className="bg-black text-white py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col items-start">
-            <div className="max-w-5xl">
-              <h1 className="font-serif font-bold text-5xl md:text-6xl lg:text-7xl mb-10 leading-tight tracking-tight">
+          <div className="flex flex-col min-h-[220px]">
+            {/* Centered heading at top */}
+            <div className="text-center mx-auto mb-auto">
+              <h1 className="font-serif font-bold text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight tracking-tight">
                 Inspiration at<br />your fingertips
               </h1>
             </div>
             
-            {/* Category tabs - Right aligned */}
-            <div className="flex w-full justify-end mb-6">
-              <div className="flex flex-wrap gap-2 max-w-xl justify-end">
+            {/* Category tabs - Centered at bottom */}
+            <div className="mt-8 w-full">
+              <div className="flex flex-wrap gap-2 justify-center">
                 <Button
                   variant={!selectedCategory ? "secondary" : "outline"}
                   onClick={() => setSelectedCategory(null)}
-                  className={`rounded-full text-sm py-1 h-auto ${!selectedCategory ? 'bg-white text-black hover:bg-white/90' : 'text-white border-gray-700 hover:bg-white/10'}`}
+                  className={`rounded-full text-sm py-1 px-4 h-auto ${!selectedCategory ? 'bg-white text-black hover:bg-white/90' : 'bg-black border-gray-500 text-gray-200 hover:bg-white/20'}`}
                 >
                   All topics
                 </Button>
                 <Button
                   variant={selectedCategory === "Leadership" ? "secondary" : "outline"}
                   onClick={() => setSelectedCategory("Leadership")}
-                  className={`rounded-full text-sm py-1 h-auto ${selectedCategory === "Leadership" ? 'bg-white text-black hover:bg-white/90' : 'text-white border-gray-700 hover:bg-white/10'}`}
+                  className={`rounded-full text-sm py-1 px-4 h-auto ${selectedCategory === "Leadership" ? 'bg-white text-black hover:bg-white/90' : 'bg-black border-gray-500 text-gray-200 hover:bg-white/20'}`}
                 >
                   Leadership
                 </Button>
                 <Button
                   variant={selectedCategory === "Happiness" ? "secondary" : "outline"}
                   onClick={() => setSelectedCategory("Happiness")}
-                  className={`rounded-full text-sm py-1 h-auto ${selectedCategory === "Happiness" ? 'bg-white text-black hover:bg-white/90' : 'text-white border-gray-700 hover:bg-white/10'}`}
+                  className={`rounded-full text-sm py-1 px-4 h-auto ${selectedCategory === "Happiness" ? 'bg-white text-black hover:bg-white/90' : 'bg-black border-gray-500 text-gray-200 hover:bg-white/20'}`}
                 >
                   Happiness
                 </Button>
                 <Button
                   variant={selectedCategory === "Health" ? "secondary" : "outline"}
                   onClick={() => setSelectedCategory("Health")}
-                  className={`rounded-full text-sm py-1 h-auto ${selectedCategory === "Health" ? 'bg-white text-black hover:bg-white/90' : 'text-white border-gray-700 hover:bg-white/10'}`}
+                  className={`rounded-full text-sm py-1 px-4 h-auto ${selectedCategory === "Health" ? 'bg-white text-black hover:bg-white/90' : 'bg-black border-gray-500 text-gray-200 hover:bg-white/20'}`}
                 >
                   Health
                 </Button>
                 <Button
                   variant={selectedCategory === "Business" ? "secondary" : "outline"}
                   onClick={() => setSelectedCategory("Business")}
-                  className={`rounded-full text-sm py-1 h-auto ${selectedCategory === "Business" ? 'bg-white text-black hover:bg-white/90' : 'text-white border-gray-700 hover:bg-white/10'}`}
+                  className={`rounded-full text-sm py-1 px-4 h-auto ${selectedCategory === "Business" ? 'bg-white text-black hover:bg-white/90' : 'bg-black border-gray-500 text-gray-200 hover:bg-white/20'}`}
                 >
                   Business
                 </Button>
                 <Button
                   variant={selectedCategory === "Mindset" ? "secondary" : "outline"}
                   onClick={() => setSelectedCategory("Mindset")}
-                  className={`rounded-full text-sm py-1 h-auto ${selectedCategory === "Mindset" ? 'bg-white text-black hover:bg-white/90' : 'text-white border-gray-700 hover:bg-white/10'}`}
+                  className={`rounded-full text-sm py-1 px-4 h-auto ${selectedCategory === "Mindset" ? 'bg-white text-black hover:bg-white/90' : 'bg-black border-gray-500 text-gray-200 hover:bg-white/20'}`}
                 >
                   Mindset
                 </Button>
                 <Button
                   variant={selectedCategory === "Relationships" ? "secondary" : "outline"}
                   onClick={() => setSelectedCategory("Relationships")}
-                  className={`rounded-full text-sm py-1 h-auto ${selectedCategory === "Relationships" ? 'bg-white text-black hover:bg-white/90' : 'text-white border-gray-700 hover:bg-white/10'}`}
+                  className={`rounded-full text-sm py-1 px-4 h-auto ${selectedCategory === "Relationships" ? 'bg-white text-black hover:bg-white/90' : 'bg-black border-gray-500 text-gray-200 hover:bg-white/20'}`}
                 >
                   Relationships
                 </Button>
                 <Button
                   variant={selectedCategory === "Wealth" ? "secondary" : "outline"}
                   onClick={() => setSelectedCategory("Wealth")}
-                  className={`rounded-full text-sm py-1 h-auto ${selectedCategory === "Wealth" ? 'bg-white text-black hover:bg-white/90' : 'text-white border-gray-700 hover:bg-white/10'}`}
+                  className={`rounded-full text-sm py-1 px-4 h-auto ${selectedCategory === "Wealth" ? 'bg-white text-black hover:bg-white/90' : 'bg-black border-gray-500 text-gray-200 hover:bg-white/20'}`}
                 >
                   Wealth
                 </Button>
