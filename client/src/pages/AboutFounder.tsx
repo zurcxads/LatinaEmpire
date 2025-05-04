@@ -120,7 +120,7 @@ const AboutFounder = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-5 -left-5 w-32 h-32 bg-magenta/10 rounded-full hidden md:block"></div>
+
             </div>
           </div>
         </div>
@@ -138,7 +138,6 @@ const AboutFounder = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-5 -right-5 w-32 h-32 bg-magenta/10 rounded-full hidden md:block"></div>
             </div>
             <div>
               <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6 tracking-tight">
