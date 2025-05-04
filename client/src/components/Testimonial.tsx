@@ -1,5 +1,10 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { cn } from "@/lib/utils";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 
 type TestimonialType = {
   quote: string;
@@ -43,6 +48,8 @@ const testimonials: TestimonialType[] = [
 const Testimonial = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [carouselApi, setCarouselApi] = useState<any>();
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Check if the device is mobile
   useEffect(() => {
@@ -58,18 +65,63 @@ const Testimonial = () => {
     };
   }, []);
 
-  // Auto-rotate testimonials
+  // Setup carousel API and auto-rotation
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 6000); // Change testimonial every 6 seconds
+    if (!carouselApi) return;
     
-    return () => clearInterval(interval);
-  }, []);
+    // Handle carousel changes
+    const handleSelect = () => {
+      setActiveIndex(carouselApi.selectedScrollSnap());
+    };
+    
+    carouselApi.on("select", handleSelect);
+    
+    // Start auto-rotation timer
+    const startAutoRotation = () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+      
+      intervalRef.current = setInterval(() => {
+        const nextIndex = (activeIndex + 1) % testimonials.length;
+        setActiveIndex(nextIndex);
+        carouselApi.scrollTo(nextIndex);
+      }, 6000);
+    };
+    
+    startAutoRotation();
+    
+    return () => {
+      carouselApi.off("select", handleSelect);
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [carouselApi, activeIndex]);
+
+  // When active index changes programmatically, scroll carousel
+  useEffect(() => {
+    if (carouselApi) {
+      carouselApi.scrollTo(activeIndex);
+    }
+  }, [activeIndex, carouselApi]);
 
   const handleProfileClick = useCallback((index: number) => {
     setActiveIndex(index);
-  }, []);
+    if (carouselApi) {
+      carouselApi.scrollTo(index);
+    }
+    
+    // Reset auto-rotation timer when manually clicking
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = setInterval(() => {
+        const nextIndex = (index + 1) % testimonials.length;
+        setActiveIndex(nextIndex);
+        carouselApi?.scrollTo(nextIndex);
+      }, 6000);
+    }
+  }, [carouselApi]);
 
   const activeTestimonial = testimonials[activeIndex];
 
@@ -93,9 +145,9 @@ const Testimonial = () => {
       </div>
 
       {/* Content container */}
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-between py-10 md:py-16">
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center py-10 md:py-16">
         {/* Quote */}
-        <div className="flex-grow flex items-center justify-center px-4 md:px-6">
+        <div className="flex-grow flex items-center justify-center px-4 md:px-6 mb-8">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-white text-2xl md:text-4xl lg:text-5xl font-bold leading-tight">
               "{activeTestimonial.quote}"
@@ -103,44 +155,67 @@ const Testimonial = () => {
           </div>
         </div>
 
-        {/* Profile selector */}
-        <div className="flex justify-center items-end gap-3 md:gap-8 w-full max-w-3xl mx-auto px-4 md:px-6 pb-8 md:pb-12">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="flex flex-col items-center flex-1 max-w-[100px]">
-              <button
-                onClick={() => handleProfileClick(index)}
-                className={cn(
-                  "group transition-all duration-300 relative",
-                  index === activeIndex ? "scale-110" : "opacity-70 hover:opacity-100"
-                )}
-              >
-                <div className={cn(
-                  "w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden border-2 mx-auto",
-                  index === activeIndex ? "border-white" : "border-transparent group-hover:border-white/50"
-                )}>
-                  <img 
-                    src={testimonial.image} 
-                    alt={testimonial.name} 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </button>
-              
-              {/* Name and title - always visible but highlighted when active */}
-              <div className={cn(
-                "text-center mt-2 transition-all duration-300 w-full",
-                index === activeIndex 
-                  ? "opacity-100" 
-                  : "opacity-70 hover:opacity-90"
-              )}>
-                <p className={cn(
-                  "text-white font-medium text-xs md:text-base truncate",
-                  index === activeIndex ? "font-bold" : ""
-                )}>{testimonial.name}</p>
-                <p className="text-white/80 text-xs truncate">{testimonial.title}</p>
-              </div>
-            </div>
-          ))}
+        {/* Profile selector carousel */}
+        <div className="w-full max-w-3xl mx-auto px-4 md:px-6 pb-8 md:pb-12">
+          <Carousel
+            opts={{
+              align: "center",
+              loop: true,
+              skipSnaps: true,
+              containScroll: "trimSnaps"
+            }}
+            className="w-full"
+            setApi={setCarouselApi}
+            onSelect={() => {
+              if (carouselApi) {
+                setActiveIndex(carouselApi.selectedScrollSnap());
+              }
+            }}
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem 
+                  key={index} 
+                  className="pl-2 md:pl-4 basis-1/3 md:basis-1/5"
+                >
+                  <div className="flex flex-col items-center">
+                    <button
+                      onClick={() => handleProfileClick(index)}
+                      className={cn(
+                        "group transition-all duration-300 relative",
+                        index === activeIndex ? "scale-110" : "opacity-70 hover:opacity-100"
+                      )}
+                    >
+                      <div className={cn(
+                        "w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden border-2 mx-auto",
+                        index === activeIndex ? "border-white" : "border-transparent group-hover:border-white/50"
+                      )}>
+                        <img 
+                          src={testimonial.image} 
+                          alt={testimonial.name} 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </button>
+                    
+                    {/* Name and title - always visible but highlighted when active */}
+                    <div className={cn(
+                      "text-center mt-2 transition-all duration-300 w-full",
+                      index === activeIndex 
+                        ? "opacity-100" 
+                        : "opacity-70 hover:opacity-90"
+                    )}>
+                      <p className={cn(
+                        "text-white font-medium text-xs md:text-base truncate",
+                        index === activeIndex ? "font-bold" : ""
+                      )}>{testimonial.name}</p>
+                      <p className="text-white/80 text-xs truncate">{testimonial.title}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </div>
       </div>
     </section>
