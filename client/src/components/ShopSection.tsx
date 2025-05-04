@@ -1,10 +1,10 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { Circle, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel';
+import { Carousel, CarouselContent, CarouselItem, useCarousel } from './ui/carousel';
 
 const ShopSection = () => {
   const products = [
@@ -30,6 +30,24 @@ const ShopSection = () => {
     }
   ];
 
+  // State to track the current slide
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [carouselApi, setCarouselApi] = useState<ReturnType<typeof useCarousel>>();
+
+  // Update current slide when carousel changes
+  useEffect(() => {
+    if (!carouselApi?.carousel) return;
+
+    const onChange = () => {
+      setCurrentSlide(carouselApi.selectedScrollSnap() || 0);
+    };
+
+    carouselApi.on("select", onChange);
+    return () => {
+      carouselApi.off("select", onChange);
+    };
+  }, [carouselApi]);
+
   return (
     <section className="py-24 bg-[#000000] text-white">
       <div className="container mx-auto px-4">
@@ -49,12 +67,19 @@ const ShopSection = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-6 mb-12 justify-center">
-          <Button variant="link" className="text-white hover:text-magenta">All</Button>
-          <Button variant="link" className="text-gray-400 hover:text-white">Books</Button>
-          <Button variant="link" className="text-gray-400 hover:text-white">Digital</Button>
-          <Button variant="link" className="text-gray-400 hover:text-white">Journals</Button>
-          <Button variant="link" className="text-gray-400 hover:text-white">Supplements</Button>
+        <div className="flex items-center gap-4 md:gap-6 mb-12 justify-between flex-wrap">
+          <div className="flex items-center gap-2 md:gap-4 flex-wrap">
+            <Button variant="link" className="text-white hover:text-magenta px-2 md:px-4">All</Button>
+            <Button variant="link" className="text-gray-400 hover:text-white px-2 md:px-4">Books</Button>
+            <Button variant="link" className="text-gray-400 hover:text-white px-2 md:px-4">Digital</Button>
+            <Button variant="link" className="text-gray-400 hover:text-white px-2 md:px-4">Journals</Button>
+            <Button variant="link" className="text-gray-400 hover:text-white px-2 md:px-4">Supplements</Button>
+          </div>
+          
+          <Link href="/shop" className="text-magenta hover:text-magenta/80 flex items-center gap-1 transition-colors duration-200 font-medium">
+            Shop All
+            <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
 
         <div className="relative">
@@ -64,6 +89,7 @@ const ShopSection = () => {
               loop: true,
             }}
             className="w-full"
+            setApi={setCarouselApi}
           >
             <CarouselContent className="-ml-4">
               {products.map((product, index) => (
@@ -82,7 +108,7 @@ const ShopSection = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       </div>
-                      <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
+                      <h3 className="text-xl font-semibold mb-2 text-white">{product.name}</h3>
                       <p className="text-gray-400 mb-4">${product.price}</p>
                       <Button className="w-full bg-magenta hover:bg-magenta/90">Add to cart</Button>
                     </CardContent>
@@ -90,18 +116,23 @@ const ShopSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute -left-12 text-white border-white/20" />
-            <CarouselNext className="absolute -right-12 text-white border-white/20" />
           </Carousel>
-        </div>
-
-        <div className="text-center mt-12">
-          <Link href="/shop">
-            <Button className="bg-magenta hover:bg-magenta/90 group">
-              Shop All
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </Link>
+          
+          {/* Carousel Progress Indicator */}
+          <div className="flex justify-center mt-6 gap-2">
+            {products.map((_, index) => (
+              <button
+                key={index}
+                className={`h-1.5 rounded-full transition-all ${
+                  index === currentSlide % products.length 
+                    ? "w-6 bg-magenta" 
+                    : "w-3 bg-gray-600 hover:bg-gray-500"
+                }`}
+                onClick={() => carouselApi?.scrollTo(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
