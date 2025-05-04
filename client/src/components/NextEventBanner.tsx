@@ -2,9 +2,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { eventsService } from "@/lib/eventsService";
 import { Button } from "@/components/ui/button";
-import { Play, ArrowRight, Circle } from "lucide-react";
+import { ArrowRight, Circle } from "lucide-react";
 import { useState } from "react";
 import JoinModal from "./JoinModal";
+import { Link } from "wouter";
 
 const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,15 +38,24 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20" />
           <div className="absolute inset-0 p-4 flex flex-col justify-end">
+            <div className="mb-1 text-xs font-medium text-white/80">
+              {new Date(nextEvent.date).toLocaleDateString('en-US', {
+                weekday: 'short',
+                month: 'short', 
+                day: 'numeric'
+              })}
+              {nextEvent.startTime && ` • ${nextEvent.startTime}`}
+            </div>
             <h3 className="text-lg font-bold text-white mb-2">{nextEvent.name}</h3>
             <Button 
-              onClick={() => setIsModalOpen(true)}
-              variant="outline"
+              asChild
               size="sm"
-              className="w-fit bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white hover:text-black rounded-full"
+              className="outline-button w-fit px-4 py-1"
             >
-              Watch
-              <Play className="ml-2 h-4 w-4" />
+              <Link href={`/events/${nextEvent.slug}`}>
+                Details
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>
