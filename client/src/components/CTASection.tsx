@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import JoinModal from "./JoinModal";
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
 const CTASection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,9 +51,10 @@ const CTASection = () => {
             <div className="lg:col-span-2">
               <div className="rounded-lg overflow-hidden border-8 border-white/10 shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                  src={getImageSrc("https://images.unsplash.com/photo-1551836022-deb4988cc6c0", true)} 
                   alt="Free Masterclass" 
                   className="w-full h-full object-cover"
+                  onError={createImageErrorHandler()}
                 />
               </div>
             </div>

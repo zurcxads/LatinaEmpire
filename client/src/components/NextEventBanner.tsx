@@ -33,9 +33,10 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
         
         <div className="relative rounded-lg overflow-hidden">
           <img 
-            src={nextEvent.bannerImage || nextEvent.image} 
+            src={getImageSrc(nextEvent.bannerImage || nextEvent.image, true)} 
             alt={nextEvent.name}
             className="w-full aspect-video object-cover"
+            onError={createImageErrorHandler()}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20" />
           <div className="absolute inset-0 p-4 flex flex-col justify-end">

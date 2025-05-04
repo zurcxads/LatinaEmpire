@@ -5,6 +5,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
 type TestimonialType = {
   quote: string;
