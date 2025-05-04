@@ -269,7 +269,7 @@ const Navbar = () => {
               {/* Continuously scrolling marquee tagline */}
               <div className="whitespace-nowrap overflow-hidden px-4 pb-1.5" ref={marqueeRef}>
                 <div className="inline-block animate-marquee">
-                  <p className="text-white/70 text-[10px] tracking-wider uppercase">
+                  <p className="text-white/80 text-[11px] tracking-widest uppercase">
                     {taglines} {taglines}
                   </p>
                 </div>
