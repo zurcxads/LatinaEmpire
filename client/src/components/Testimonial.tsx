@@ -144,76 +144,79 @@ const Testimonial = () => {
         </div>
       </div>
 
-      {/* Content container */}
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
-        {/* Quote */}
-        <div className="w-full max-w-4xl mx-auto text-center px-4 md:px-6 mb-12">
-          <p className="text-white text-2xl md:text-4xl lg:text-5xl font-bold leading-tight">
-            "{activeTestimonial.quote}"
-          </p>
-        </div>
+      {/* Content container - different positions on mobile/desktop */}
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-end md:items-end md:justify-end">
+        {/* Quote and profile container */}
+        <div className="w-full md:max-w-2xl md:mr-16 md:mb-16 lg:mr-24 lg:mb-20">
+          {/* Quote */}
+          <div className="w-full text-center md:text-left px-4 md:px-0 mb-8 md:mb-10">
+            <p className="text-white text-2xl md:text-4xl lg:text-5xl font-bold leading-tight">
+              "{activeTestimonial.quote}"
+            </p>
+          </div>
 
-        {/* Profile selector carousel */}
-        <div className="w-full max-w-3xl mx-auto px-4 md:px-6 mb-12 md:mb-16">
-          <Carousel
-            opts={{
-              align: "center",
-              loop: true,
-              skipSnaps: true,
-              containScroll: "trimSnaps"
-            }}
-            className="w-full"
-            setApi={setCarouselApi}
-            onSelect={() => {
-              if (carouselApi) {
-                setActiveIndex(carouselApi.selectedScrollSnap());
-              }
-            }}
-          >
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {testimonials.map((testimonial, index) => (
-                <CarouselItem 
-                  key={index} 
-                  className="pl-2 md:pl-4 basis-1/3 md:basis-1/5 py-4"
-                >
-                  <div className="flex flex-col items-center">
-                    <button
-                      onClick={() => handleProfileClick(index)}
-                      className={cn(
-                        "group transition-all duration-300 relative",
-                        index === activeIndex ? "scale-110" : "opacity-70 hover:opacity-100"
-                      )}
-                    >
+          {/* Profile selector carousel */}
+          <div className="w-full px-4 md:px-0 mb-12">
+            <Carousel
+              opts={{
+                align: "center",
+                loop: true,
+                skipSnaps: true,
+                containScroll: "trimSnaps"
+              }}
+              className="w-full"
+              setApi={setCarouselApi}
+              onSelect={() => {
+                if (carouselApi) {
+                  setActiveIndex(carouselApi.selectedScrollSnap());
+                }
+              }}
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {testimonials.map((testimonial, index) => (
+                  <CarouselItem 
+                    key={index} 
+                    className="pl-2 md:pl-4 basis-1/3 md:basis-1/5 py-4"
+                  >
+                    <div className="flex flex-col items-center">
+                      <button
+                        onClick={() => handleProfileClick(index)}
+                        className={cn(
+                          "group transition-all duration-300 relative",
+                          index === activeIndex ? "scale-110" : "opacity-70 hover:opacity-100"
+                        )}
+                      >
+                        <div className={cn(
+                          "w-14 h-14 md:w-20 md:h-20 rounded-full overflow-hidden border-2 mx-auto",
+                          index === activeIndex ? "border-white" : "border-transparent group-hover:border-white/50"
+                        )}>
+                          <img 
+                            src={testimonial.image} 
+                            alt={testimonial.name} 
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </button>
+                      
+                      {/* Name and title - always visible but highlighted when active */}
                       <div className={cn(
-                        "w-14 h-14 md:w-20 md:h-20 rounded-full overflow-hidden border-2 mx-auto",
-                        index === activeIndex ? "border-white" : "border-transparent group-hover:border-white/50"
+                        "text-center mt-3 transition-all duration-300 w-full",
+                        index === activeIndex 
+                          ? "opacity-100" 
+                          : "opacity-70 hover:opacity-90"
                       )}>
-                        <img 
-                          src={testimonial.image} 
-                          alt={testimonial.name} 
-                          className="w-full h-full object-cover"
-                        />
+                        <p className={cn(
+                          "text-white font-medium text-xs md:text-base truncate",
+                          index === activeIndex ? "font-bold" : ""
+                        )}>{testimonial.name}</p>
+                        <p className="text-white/80 text-xs truncate">{testimonial.title}</p>
                       </div>
-                    </button>
-                    
-                    {/* Name and title - always visible but highlighted when active */}
-                    <div className={cn(
-                      "text-center mt-3 transition-all duration-300 w-full",
-                      index === activeIndex 
-                        ? "opacity-100" 
-                        : "opacity-70 hover:opacity-90"
-                    )}>
-                      <p className={cn(
-                        "text-white font-medium text-xs md:text-base truncate",
-                        index === activeIndex ? "font-bold" : ""
-                      )}>{testimonial.name}</p>
-                      <p className="text-white/80 text-xs truncate">{testimonial.title}</p>
                     </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
         </div>
       </div>
     </section>
