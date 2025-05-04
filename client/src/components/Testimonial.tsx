@@ -145,18 +145,16 @@ const Testimonial = () => {
       </div>
 
       {/* Content container */}
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center py-10 md:py-16">
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
         {/* Quote */}
-        <div className="flex-grow flex items-center justify-center px-4 md:px-6 mb-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-white text-2xl md:text-4xl lg:text-5xl font-bold leading-tight">
-              "{activeTestimonial.quote}"
-            </p>
-          </div>
+        <div className="w-full max-w-4xl mx-auto text-center px-4 md:px-6 mb-12">
+          <p className="text-white text-2xl md:text-4xl lg:text-5xl font-bold leading-tight">
+            "{activeTestimonial.quote}"
+          </p>
         </div>
 
         {/* Profile selector carousel */}
-        <div className="w-full max-w-3xl mx-auto px-4 md:px-6 pb-8 md:pb-12">
+        <div className="w-full max-w-3xl mx-auto px-4 md:px-6 mb-12 md:mb-16">
           <Carousel
             opts={{
               align: "center",
@@ -176,7 +174,7 @@ const Testimonial = () => {
               {testimonials.map((testimonial, index) => (
                 <CarouselItem 
                   key={index} 
-                  className="pl-2 md:pl-4 basis-1/3 md:basis-1/5"
+                  className="pl-2 md:pl-4 basis-1/3 md:basis-1/5 py-4"
                 >
                   <div className="flex flex-col items-center">
                     <button
@@ -187,7 +185,7 @@ const Testimonial = () => {
                       )}
                     >
                       <div className={cn(
-                        "w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden border-2 mx-auto",
+                        "w-14 h-14 md:w-20 md:h-20 rounded-full overflow-hidden border-2 mx-auto",
                         index === activeIndex ? "border-white" : "border-transparent group-hover:border-white/50"
                       )}>
                         <img 
@@ -200,7 +198,7 @@ const Testimonial = () => {
                     
                     {/* Name and title - always visible but highlighted when active */}
                     <div className={cn(
-                      "text-center mt-2 transition-all duration-300 w-full",
+                      "text-center mt-3 transition-all duration-300 w-full",
                       index === activeIndex 
                         ? "opacity-100" 
                         : "opacity-70 hover:opacity-90"
