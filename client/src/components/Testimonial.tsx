@@ -138,9 +138,10 @@ const Testimonial = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-40" />
         <div className="absolute inset-0">
           <img 
-            src={activeTestimonial.backgroundImage || activeTestimonial.image} 
+            src={getImageSrc(activeTestimonial.backgroundImage || activeTestimonial.image, true)} 
             alt=""
             className="w-full h-full object-cover object-center opacity-40"
+            onError={createImageErrorHandler()}
           />
         </div>
       </div>
@@ -192,9 +193,10 @@ const Testimonial = () => {
                           index === activeIndex ? "border-white" : "border-transparent group-hover:border-white/50"
                         )}>
                           <img 
-                            src={testimonial.image} 
+                            src={getImageSrc(testimonial.image, true)} 
                             alt={testimonial.name} 
                             className="w-full h-full object-cover"
+                            onError={createImageErrorHandler()}
                           />
                         </div>
                       </button>

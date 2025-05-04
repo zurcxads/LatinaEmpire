@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { eventsService } from "@/lib/eventsService";
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
 // Mock Tony Robbins event cards to match the screenshot example
 const TONY_ROBBINS_EVENTS = [
@@ -57,9 +58,10 @@ const EventCard = ({ event }: { event: any }) => (
       
       {/* Background image */}
       <img 
-        src={event.image} 
+        src={getImageSrc(event.image, true)} 
         alt={event.name}
         className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+        onError={createImageErrorHandler()}
       />
       
       {/* Content overlay */}

@@ -1,5 +1,6 @@
 import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
 type PodcastEpisode = {
   id: string;

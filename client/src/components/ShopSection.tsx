@@ -5,6 +5,7 @@ import { Circle, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi, useCarousel } from './ui/carousel';
+import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
 const ShopSection = () => {
   const products = [
@@ -98,13 +99,10 @@ const ShopSection = () => {
                     <CardContent className="p-6 flex flex-col h-full">
                       <div className="relative mb-4 rounded-lg overflow-hidden aspect-square">
                         <img 
-                          src={product.image} 
+                          src={getImageSrc(product.image, true)} 
                           alt={product.name} 
                           className="w-full h-full object-cover"
-                          onError={(e) => {
-                            e.currentTarget.classList.add("hidden");
-                            e.currentTarget.parentElement?.classList.add("placeholder-image");
-                          }}
+                          onError={createImageErrorHandler()}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       </div>
