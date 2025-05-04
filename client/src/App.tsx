@@ -21,6 +21,8 @@ import NotFound from "@/pages/not-found";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
+import ScrollTopButton from "@/components/ScrollTopButton";
 
 function Router() {
   return (
@@ -44,6 +46,7 @@ function Router() {
         </Switch>
       </main>
       <Footer />
+      <ScrollTopButton position="bottom-right" size="md" showAfter={300} />
     </div>
   );
 }
@@ -53,6 +56,7 @@ export default function App() {
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
+          <ScrollToTop />
           <Router />
           <Toaster />
         </TooltipProvider>
