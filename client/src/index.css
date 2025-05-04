@@ -115,6 +115,20 @@
   filter: brightness(1.1) contrast(1.1) saturate(1.2);
 }
 
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
 /* Hero section specific styles */
 /* Global component styles */
 .section-heading {
