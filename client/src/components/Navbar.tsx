@@ -39,104 +39,158 @@ const Navbar = () => {
     };
   }, [isOpen]);
 
+  // Keep the same navigation links
   const navLinks = [
-    { href: "/", label: "HOME" },
-    { href: "/program", label: "PROGRAM" },
-    { href: "/events", label: "EVENTS" },
-    { href: "/blog", label: "BLOG" },
-    { href: "/ambassadors", label: "AMBASSADORS" },
-    { href: "/about-founder", label: "OUR FOUNDER" },
+    { href: "/about-founder", label: "About" },
+    { href: "/program", label: "Program" },
+    { href: "/events", label: "Events" },
+    { href: "/blog", label: "Work" },
+    { href: "/contact", label: "Contact" },
   ];
+
+  // Adding tagline text similar to the image
+  const tagline = "EMPOWERING LATINA LEADERS SPECIALIZED IN PROFESSIONAL GROWTH & SUCCESS";
 
   return (
     <>
       <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
       
       <header 
-        className={`fixed w-full z-50 transition-all duration-300 ${
-          scrolled ? "bg-white shadow-md" : "bg-transparent"
-        } ${isOpen ? "bg-white" : ""}`}
+        className={`fixed w-full z-50 transition-all duration-300
+          ${scrolled ? "bg-white/95 backdrop-blur-sm" : "bg-black/20 backdrop-blur-sm"}
+          ${isOpen ? "bg-white" : ""}`}
       >
-        <nav className="container mx-auto px-4 lg:px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex-shrink-0">
-              <span className={`font-serif font-bold text-2xl md:text-3xl ${
-                scrolled || isOpen ? "text-black" : "text-white"
-              }`}>
-                Latina Empire
-              </span>
-            </Link>
-
-            <div className="flex items-center gap-2 lg:hidden">
-              <Button 
-                onClick={() => setIsModalOpen(true)}
-                className={`rounded-full px-6 py-1.5 font-medium h-auto text-sm ${
-                  scrolled 
-                    ? 'bg-black text-white hover:bg-gray-800' 
-                    : 'bg-white text-black hover:bg-gray-200'
-                }`}
-              >
-                START NOW
-              </Button>
-              <button 
-                type="button" 
-                onClick={toggleMenu}
-                className={`focus:outline-none ${
-                  scrolled || isOpen ? 'text-black' : 'text-white'
-                }`}
-                aria-label={isOpen ? "Close menu" : "Open menu"}
-              >
-                {isOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
-              </button>
-            </div>
-
-            <div className="hidden lg:flex items-center space-x-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`font-sans font-medium hover:text-magenta transition-all ${
-                    (link.href === '/' ? location === '/' : location.startsWith(link.href))
-                      ? 'text-magenta'
-                      : scrolled ? 'text-black' : 'text-white'
-                  }`}
+        {/* Main navigation */}
+        <nav className="mx-auto px-8 lg:px-16 py-6">
+          <div className="flex flex-col items-center">
+            {/* Top row with main navigation links */}
+            <div className="w-full flex items-center justify-between mb-4">
+              {/* Mobile menu button */}
+              <div className="lg:hidden flex items-center">
+                <button 
+                  type="button" 
+                  onClick={toggleMenu}
+                  className="focus:outline-none text-white"
+                  aria-label={isOpen ? "Close menu" : "Open menu"}
                 >
-                  {link.label}
+                  {isOpen ? (
+                    <X className="h-6 w-6" />
+                  ) : (
+                    <Menu className="h-6 w-6" />
+                  )}
+                </button>
+              </div>
+              
+              {/* Desktop navigation */}
+              <div className="hidden lg:flex items-center justify-center flex-1 space-x-16">
+                {navLinks.map((link, index) => {
+                  // Render the first three links on the left side
+                  if (index <= 2) {
+                    return (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className={`font-sans text-base hover:opacity-70 transition-all ${
+                          (link.href === '/' ? location === '/' : location.startsWith(link.href))
+                            ? 'text-white font-medium'
+                            : 'text-white'
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
+              
+              {/* Logo or Brand (centered on desktop) */}
+              <div className="hidden lg:block">
+                <Link href="/" className="flex-shrink-0">
+                  <span className="text-white font-medium text-xl">
+                    Latina Empire
+                  </span>
                 </Link>
-              ))}
-              <Button 
-                onClick={() => setIsModalOpen(true)}
-                className={`rounded-full px-8 py-1.5 font-medium h-auto ${
-                  scrolled 
-                    ? 'bg-black text-white hover:bg-gray-800' 
-                    : 'bg-white text-black hover:bg-gray-200'
-                }`}
-              >
-                JOIN NOW
-              </Button>
+              </div>
+              
+              {/* Mobile brand - centered */}
+              <div className="lg:hidden flex-1 text-center">
+                <Link href="/" className="inline-block">
+                  <span className="text-white font-medium text-xl">
+                    Latina Empire
+                  </span>
+                </Link>
+              </div>
+              
+              {/* Right side navigation links */}
+              <div className="hidden lg:flex items-center justify-center flex-1 space-x-16">
+                {navLinks.map((link, index) => {
+                  // Render the last two links on the right side
+                  if (index > 2) {
+                    return (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className={`font-sans text-base hover:opacity-70 transition-all ${
+                          (link.href === '/' ? location === '/' : location.startsWith(link.href))
+                            ? 'text-white font-medium'
+                            : 'text-white'
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
+              
+              {/* Join button on mobile */}
+              <div className="lg:hidden">
+                <Button 
+                  onClick={() => setIsModalOpen(true)}
+                  className="bg-transparent hover:bg-white/10 text-white font-medium border border-white/30 rounded-none px-4 py-1 h-auto text-sm"
+                >
+                  JOIN
+                </Button>
+              </div>
+            </div>
+            
+            {/* Bottom row with tagline */}
+            <div className="w-full max-w-4xl mx-auto">
+              <div className="flex justify-center">
+                <p className="text-white/80 text-xs tracking-wider text-center uppercase">
+                  {tagline}
+                </p>
+              </div>
             </div>
           </div>
 
+          {/* Mobile menu dropdown */}
           {isOpen && (
-            <div className="lg:hidden fixed top-[64px] left-0 right-0 bottom-0 bg-white shadow-xl border-t overflow-y-auto z-50">
-              <div className="container mx-auto px-4 py-6 space-y-6">
+            <div className="lg:hidden fixed top-[100px] left-0 right-0 bottom-0 bg-black/95 overflow-y-auto z-50">
+              <div className="container mx-auto px-4 py-10 space-y-8">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`block py-2 font-sans font-medium text-black hover:text-magenta ${
+                    className={`block py-3 text-center font-sans font-medium text-white text-lg hover:text-gray-300 ${
                       (link.href === '/' ? location === '/' : location.startsWith(link.href))
-                        ? 'text-magenta'
+                        ? 'text-white underline underline-offset-4'
                         : ''
                     }`}
                   >
                     {link.label}
                   </Link>
                 ))}
+                <div className="pt-4 text-center">
+                  <Button 
+                    onClick={() => setIsModalOpen(true)}
+                    className="bg-white text-black hover:bg-gray-200 font-medium rounded-none px-8 py-2 h-auto"
+                  >
+                    JOIN NOW
+                  </Button>
+                </div>
               </div>
             </div>
           )}
