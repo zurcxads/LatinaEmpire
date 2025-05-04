@@ -181,57 +181,59 @@ const Navbar = () => {
                   <span className="md:hidden">LE</span>
                 </Link>
                 
-                {/* Navigation links - desktop */}
-                <div className="hidden md:flex items-center space-x-2 ml-0">
-                  <button 
-                    onClick={() => toggleMenu('about')}
-                    className={`px-4 py-1 text-sm transition-all relative ${
-                      activeMenu === 'about' 
-                        ? 'text-black bg-white rounded-md shadow-lg' 
-                        : 'text-white hover:text-white/80 text-shadow-sm'
-                    }`}
-                  >
-                    About
-                  </button>
+                <div className="flex items-center ml-auto">
+                  {/* Navigation links - desktop */}
+                  <div className="hidden md:flex items-center space-x-2">
+                    <button 
+                      onClick={() => toggleMenu('about')}
+                      className={`px-4 py-1 text-sm transition-all relative ${
+                        activeMenu === 'about' 
+                          ? 'text-black bg-white rounded-md shadow-lg' 
+                          : 'text-white hover:text-white/80 text-shadow-sm'
+                      }`}
+                    >
+                      About
+                    </button>
+                    
+                    <button 
+                      onClick={() => toggleMenu('explore')}
+                      className={`px-4 py-1 text-sm transition-all ${
+                        activeMenu === 'explore'
+                          ? 'text-black bg-white rounded-md shadow-lg'
+                          : 'text-white hover:text-white/80 text-shadow-sm'
+                      }`}
+                    >
+                      Explore
+                    </button>
+                    
+                    <button 
+                      onClick={() => toggleMenu('contact')}
+                      className={`px-4 py-1 text-sm transition-all ${
+                        activeMenu === 'contact' 
+                          ? 'text-black bg-white rounded-md shadow-lg' 
+                          : 'text-white hover:text-white/80 text-shadow-sm'
+                      }`}
+                    >
+                      Contact
+                    </button>
+                  </div>
                   
-                  <button 
-                    onClick={() => toggleMenu('explore')}
-                    className={`px-4 py-1 text-sm transition-all ${
-                      activeMenu === 'explore'
-                        ? 'text-black bg-white rounded-md shadow-lg'
-                        : 'text-white hover:text-white/80 text-shadow-sm'
-                    }`}
+                  {/* Join Button */}
+                  <Button 
+                    className="bg-white text-black hover:bg-white/90 text-xs px-4 py-1 h-auto ml-4 shadow-sm hover:shadow-md transition-all"
+                    onClick={() => setIsModalOpen(true)}
                   >
-                    Explore
-                  </button>
+                    Join
+                  </Button>
                   
+                  {/* Mobile menu toggle */}
                   <button 
-                    onClick={() => toggleMenu('contact')}
-                    className={`px-4 py-1 text-sm transition-all ${
-                      activeMenu === 'contact' 
-                        ? 'text-black bg-white rounded-md shadow-lg' 
-                        : 'text-white hover:text-white/80 text-shadow-sm'
-                    }`}
+                    className="md:hidden ml-3 text-white p-1"
+                    onClick={toggleMobileMenu}
                   >
-                    Contact
+                    {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
                   </button>
                 </div>
-                
-                {/* Join Button */}
-                <Button 
-                  className="bg-white text-black hover:bg-white/90 text-xs px-4 py-1 h-auto md:ml-auto shadow-sm hover:shadow-md transition-all"
-                  onClick={() => setIsModalOpen(true)}
-                >
-                  Join
-                </Button>
-                
-                {/* Mobile menu toggle */}
-                <button 
-                  className="md:hidden ml-3 text-white p-1"
-                  onClick={toggleMobileMenu}
-                >
-                  {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-                </button>
               </div>
               
               {/* Mobile navigation menu */}
