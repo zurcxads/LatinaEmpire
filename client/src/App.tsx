@@ -24,12 +24,10 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollTopButton from "@/components/ScrollTopButton";
 
-import FloatingLogo from "@/components/FloatingLogo";
-
 function Router() {
   return (
     <div className="min-h-screen flex flex-col">
-      <FloatingLogo />
+      <Navbar />
       <main className="flex-grow">
         <Switch>
           <Route path="/" component={Home} />
@@ -48,7 +46,6 @@ function Router() {
         </Switch>
       </main>
       <Footer />
-      <Navbar />
       <ScrollTopButton position="bottom-right" size="md" showAfter={300} />
     </div>
   );
