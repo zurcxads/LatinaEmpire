@@ -16,7 +16,7 @@ import {
   Loader2
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import { useQuery } from "@tanstack/react-query";
 import { ambassadorsService } from "@/lib/ambassadorsService";
 import { Ambassador } from "@/lib/types";
@@ -166,7 +166,6 @@ const AmbassadorDetail = () => {
             <h2 className="font-serif text-xl text-gray-900">Loading ambassador profile...</h2>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
@@ -194,7 +193,6 @@ const AmbassadorDetail = () => {
             </Link>
           </div>
         </section>
-        <Footer />
       </div>
     );
   }
@@ -393,7 +391,7 @@ const AmbassadorDetail = () => {
         </div>
       </section>
 
-      <Footer />
+
     </div>
   );
 };

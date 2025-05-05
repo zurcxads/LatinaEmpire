@@ -312,9 +312,7 @@ const BlogDetail = () => {
             </div>
           </div>
         </div>
-        <div className="mt-auto">
-          <Footer />
-        </div>
+
       </div>
     );
   }
@@ -407,9 +405,7 @@ const BlogDetail = () => {
         </div>
       </div>
       
-      <div className="mt-auto">
-        <Footer />
-      </div>
+
     </div>
   );
 };
