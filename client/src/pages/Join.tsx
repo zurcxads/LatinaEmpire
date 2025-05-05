@@ -229,22 +229,91 @@ const Join = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gray-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl mb-6">
-              Join the Latina Empire Movement
-            </h1>
-            <p className="font-sans text-lg md:text-xl text-gray-700 mb-10">
-              Access our free community and step into your power with Latinas around the world.
-            </p>
-            <Button 
-              className="bg-magenta text-white px-8 py-6 h-auto rounded text-lg hover:bg-opacity-90 shadow-md"
-              onClick={() => document.getElementById('join-form')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Join Now
-            </Button>
+      <section className="pt-20 min-h-[calc(100vh-5rem)] flex flex-col justify-end relative overflow-hidden bg-black text-white">
+        <div className="container mx-auto px-4 relative z-10 flex flex-col h-full">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 min-h-[calc(100vh-8rem)]">
+            {/* Main Hero Content */}
+            <div className="flex-1 flex flex-col justify-center lg:max-w-2xl py-12">
+              <h1 className="hero-heading text-white mb-6 md:mb-8">
+                Join the Latina Empire Movement
+              </h1>
+              
+              <p className="font-sans text-base md:text-lg lg:text-xl text-white/90 mb-8 md:mb-10 max-w-xl">
+                Access our exclusive community and step into your power with Latinas around the world.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button 
+                  className="primary-button text-lg py-3 px-8"
+                  onClick={() => document.getElementById('join-form')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Join For Free
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                
+                <Button 
+                  className="outline-button text-lg py-3 px-8"
+                  onClick={() => document.getElementById('membership-tiers')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  View Membership Tiers
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </div>
+            </div>
+            
+            {/* Stats box */}
+            <div className="lg:w-[400px] mb-12 mt-8 lg:mt-0">
+              <div className="relative bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 p-8">
+                <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-magenta/20 blur-3xl"></div>
+                
+                <h3 className="font-serif text-2xl mb-6">Join Our Global Community</h3>
+                
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-magenta/20 rounded-lg flex items-center justify-center">
+                      <Users className="w-6 h-6 text-magenta" />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-serif font-bold">10,000+</div>
+                      <div className="text-sm text-white/70">Active Members</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-magenta/20 rounded-lg flex items-center justify-center">
+                      <Calendar className="w-6 h-6 text-magenta" />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-serif font-bold">2-3</div>
+                      <div className="text-sm text-white/70">Events Monthly</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-magenta/20 rounded-lg flex items-center justify-center">
+                      <Star className="w-6 h-6 text-magenta" />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-serif font-bold">Premium</div>
+                      <div className="text-sm text-white/70">Resources & Support</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+        
+        {/* Background with gradient overlay */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-magenta/30 to-transparent mix-blend-overlay z-10" />
+          <img 
+            src={getImageSrc("https://images.unsplash.com/photo-1573164574572-cb89e39749b4?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", true)}
+            alt="Latina women in professional setting" 
+            className="w-full h-full object-cover"
+            onError={createImageErrorHandler()}
+          />
         </div>
       </section>
       
@@ -356,7 +425,7 @@ const Join = () => {
       </section>
       
       {/* Membership Tiers Section */}
-      <section className="py-24 bg-black text-white relative overflow-hidden">
+      <section id="membership-tiers" className="py-24 bg-black text-white relative overflow-hidden">
         {/* Gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-magenta/20 to-black z-0"></div>
         <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-magenta/10 blur-3xl"></div>
