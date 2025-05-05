@@ -21,12 +21,18 @@ const BenefitCard = ({
   description: string 
 }) => {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-all">
-      <div className="w-12 h-12 bg-magenta/10 rounded-full flex items-center justify-center mb-4">
-        {icon}
+    <div className="group relative bg-white rounded-xl shadow-sm p-6 hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden h-full">
+      {/* Gradient highlight on hover */}
+      <div className="absolute -top-1 left-0 right-0 h-1 bg-gradient-to-r from-magenta to-magenta/50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+      
+      <div className="flex flex-col h-full">
+        <div className="w-14 h-14 bg-gradient-to-br from-magenta to-magenta/70 rounded-xl flex items-center justify-center shadow-md mb-5">
+          {icon && <div className="text-white">{icon}</div>}
+        </div>
+        
+        <h3 className="font-serif font-bold text-xl mb-3 group-hover:text-magenta transition-colors duration-300">{title}</h3>
+        <p className="text-gray-600 leading-relaxed">{description}</p>
       </div>
-      <h3 className="font-serif font-bold text-xl mb-2">{title}</h3>
-      <p className="text-gray-700">{description}</p>
     </div>
   );
 };
@@ -318,107 +324,160 @@ const Join = () => {
       </section>
       
       {/* Benefits Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4">
-              What's Included in Your Free Membership
+      <section className="py-24 bg-gray-50 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-2/3 h-40 bg-gradient-to-l from-magenta/5 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-24 bg-gradient-to-r from-magenta/5 to-transparent"></div>
+        <div className="absolute top-40 right-20 opacity-30 blur-xl">
+          <div className="w-64 h-64 rounded-full bg-magenta/10"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <span className="inline-block px-4 py-1 rounded-full bg-magenta/10 text-magenta font-medium text-sm mb-4">
+              FREE COMMUNITY
+            </span>
+            <h2 className="section-heading mb-6">
+              What's Included in Your Membership
             </h2>
-            <p className="font-sans text-gray-700">
-              Join thousands of Latinas who are growing, connecting, and rising together.
+            <p className="section-subheading max-w-2xl mx-auto text-gray-600">
+              Join thousands of Latinas who are growing, connecting, and rising together in our supportive community.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             <BenefitCard 
-              icon={<Users className="h-6 w-6 text-magenta" />}
+              icon={<Users className="h-7 w-7" />}
               title="Private Community Access"
               description="Connect with like-minded Latinas in our exclusive online community for support, networking, and inspiration."
             />
             
             <BenefitCard 
-              icon={<Zap className="h-6 w-6 text-magenta" />}
+              icon={<Zap className="h-7 w-7" />}
               title="Weekly Empowerment Content"
               description="Receive weekly emails with personal development resources, success stories, and actionable tips."
             />
             
             <BenefitCard 
-              icon={<Calendar className="h-6 w-6 text-magenta" />}
+              icon={<Calendar className="h-7 w-7" />}
               title="Virtual Events Access"
               description="Join our regular virtual workshops, panels, and networking sessions with successful Latina leaders."
             />
             
             <BenefitCard 
-              icon={<Star className="h-6 w-6 text-magenta" />}
+              icon={<Star className="h-7 w-7" />}
               title="Early Event Invites"
               description="Get first access to tickets for our in-person experiences and retreats before they sell out."
             />
+          </div>
+          
+          <div className="mt-16 text-center">
+            <Button 
+              className="bg-magenta hover:bg-magenta/90 text-white font-medium px-8 py-4 rounded-full shadow-lg shadow-magenta/10"
+              onClick={() => document.getElementById('join-form')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Join Our Community
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
           </div>
         </div>
       </section>
       
       {/* Testimonials */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4">
+      <section className="py-24 bg-white relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-40 left-0 w-full h-[500px] bg-gradient-to-r from-magenta/5 via-black/0 to-magenta/5 transform -skew-y-6 z-0"></div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <span className="inline-block px-4 py-1 rounded-full bg-magenta/10 text-magenta font-medium text-sm mb-4">
+              TESTIMONIALS
+            </span>
+            <h2 className="section-heading mb-6">
               What Our Community Members Say
             </h2>
+            <p className="section-subheading max-w-2xl mx-auto text-gray-600">
+              Hear directly from Latinas who have transformed their lives as part of our community.
+            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="flex items-center mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 relative">
+              {/* Quote marks */}
+              <div className="absolute top-4 right-6 text-6xl text-magenta/10 font-serif">"</div>
+              
+              <div className="flex items-center mb-6">
                 <img 
                   src={getImageSrc("https://images.unsplash.com/photo-1494790108377-be9c29b29330", true)} 
                   alt="Testimonial author" 
-                  className="w-12 h-12 rounded-full object-cover mr-4"
+                  className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-magenta/20"
                   onError={createImageErrorHandler()}
                 />
                 <div>
-                  <h4 className="font-serif font-bold">Maria G.</h4>
+                  <h4 className="font-serif font-bold text-lg">Maria G.</h4>
                   <p className="text-gray-600 text-sm">Community Member</p>
                 </div>
               </div>
-              <p className="italic text-gray-700">
+              <p className="italic text-gray-700 text-lg mb-4 relative z-10">
                 "Joining the Latina Empire community has connected me with incredible women who understand my journey. The resources and support have been invaluable for my personal growth."
               </p>
+              <div className="flex">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star key={star} className="h-4 w-4 text-yellow-500 fill-current" />
+                ))}
+              </div>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="flex items-center mb-4">
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 relative md:mt-8">
+              {/* Quote marks */}
+              <div className="absolute top-4 right-6 text-6xl text-magenta/10 font-serif">"</div>
+              
+              <div className="flex items-center mb-6">
                 <img 
                   src={getImageSrc("https://images.unsplash.com/photo-1573497161161-c3e73707e25c", true)} 
                   alt="Testimonial author" 
-                  className="w-12 h-12 rounded-full object-cover mr-4"
+                  className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-magenta/20"
                   onError={createImageErrorHandler()}
                 />
                 <div>
-                  <h4 className="font-serif font-bold">Sofia R.</h4>
+                  <h4 className="font-serif font-bold text-lg">Sofia R.</h4>
                   <p className="text-gray-600 text-sm">Community Member</p>
                 </div>
               </div>
-              <p className="italic text-gray-700">
+              <p className="italic text-gray-700 text-lg mb-4 relative z-10">
                 "The weekly content and virtual workshops have given me practical tools to advance my career while embracing my Latina identity. It's the supportive community I've been looking for."
               </p>
+              <div className="flex">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star key={star} className="h-4 w-4 text-yellow-500 fill-current" />
+                ))}
+              </div>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="flex items-center mb-4">
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 relative">
+              {/* Quote marks */}
+              <div className="absolute top-4 right-6 text-6xl text-magenta/10 font-serif">"</div>
+              
+              <div className="flex items-center mb-6">
                 <img 
                   src={getImageSrc("https://images.unsplash.com/photo-1544005313-94ddf0286df2", true)} 
                   alt="Testimonial author" 
-                  className="w-12 h-12 rounded-full object-cover mr-4"
+                  className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-magenta/20"
                   onError={createImageErrorHandler()}
                 />
                 <div>
-                  <h4 className="font-serif font-bold">Carmen T.</h4>
+                  <h4 className="font-serif font-bold text-lg">Carmen T.</h4>
                   <p className="text-gray-600 text-sm">Community Member</p>
                 </div>
               </div>
-              <p className="italic text-gray-700">
+              <p className="italic text-gray-700 text-lg mb-4 relative z-10">
                 "Finding this community has been transformational. The connections I've made and the inspiration I've found have helped me launch my business with confidence."
               </p>
+              <div className="flex">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star key={star} className="h-4 w-4 text-yellow-500 fill-current" />
+                ))}
+              </div>
             </div>
           </div>
         </div>
