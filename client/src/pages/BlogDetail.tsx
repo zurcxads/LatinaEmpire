@@ -21,7 +21,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
 // Related articles component
 const RelatedArticles = ({ posts, currentPostId }: { posts: BlogPost[], currentPostId: string }) => {
