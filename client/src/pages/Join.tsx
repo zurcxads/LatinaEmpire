@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Users, Zap, Calendar, Star, ArrowRight, Check, AlertCircle, Loader } from "lucide-react";
+import { 
+  Users, Zap, Calendar, Star, ArrowRight, Check, AlertCircle, 
+  Loader, Shield, Key, Crown, Lock, CreditCard
+} from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
@@ -24,6 +27,97 @@ const BenefitCard = ({
       </div>
       <h3 className="font-serif font-bold text-xl mb-2">{title}</h3>
       <p className="text-gray-700">{description}</p>
+    </div>
+  );
+};
+
+interface MembershipTierProps {
+  title: string;
+  price: string;
+  description: string;
+  features: string[];
+  icon: React.ReactNode;
+  isPopular?: boolean;
+  ctaText: string;
+  ctaAction: () => void;
+}
+
+const MembershipTier = ({ 
+  title, 
+  price, 
+  description, 
+  features, 
+  icon, 
+  isPopular = false,
+  ctaText,
+  ctaAction
+}: MembershipTierProps) => {
+  return (
+    <div className={`rounded-xl overflow-hidden transition-all duration-300 relative ${
+      isPopular ? 'transform hover:-translate-y-2 shadow-xl' : 'hover:shadow-lg'
+    }`}>
+      {/* Popular badge */}
+      {isPopular && (
+        <div className="absolute top-0 right-0 bg-magenta text-white text-xs px-3 py-1 uppercase font-semibold tracking-wider z-10">
+          Popular
+        </div>
+      )}
+      
+      {/* Card Content */}
+      <div className={`h-full flex flex-col ${
+        isPopular 
+          ? 'bg-gradient-to-br from-gray-900 to-black text-white border-2 border-magenta' 
+          : 'bg-white border border-gray-200'
+      }`}>
+        {/* Card Header */}
+        <div className="p-6 border-b border-gray-200/20">
+          <div className="flex items-center mb-4">
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center mr-3 ${
+              isPopular ? 'bg-magenta/30' : 'bg-magenta/10'
+            }`}>
+              {icon}
+            </div>
+            <h3 className="font-serif font-bold text-2xl">{title}</h3>
+          </div>
+          <div className="mb-4">
+            <span className="font-serif font-bold text-3xl">{price}</span>
+            {price !== 'Free' && <span className="text-sm opacity-70 ml-1">/month</span>}
+          </div>
+          <p className={`${isPopular ? 'text-gray-300' : 'text-gray-600'} mb-4`}>
+            {description}
+          </p>
+        </div>
+        
+        {/* Features */}
+        <div className="p-6 flex-grow">
+          <ul className="space-y-3">
+            {features.map((feature, index) => (
+              <li key={index} className="flex items-start">
+                <Check className={`h-5 w-5 mr-2 mt-0.5 flex-shrink-0 ${
+                  isPopular ? 'text-magenta' : 'text-magenta'
+                }`} />
+                <span className={isPopular ? 'text-gray-200' : 'text-gray-700'}>
+                  {feature}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        {/* CTA Button */}
+        <div className="p-6 pt-2">
+          <Button 
+            onClick={ctaAction}
+            className={`w-full py-6 h-auto text-md font-medium ${
+              isPopular 
+                ? 'bg-magenta hover:bg-magenta/90 text-white shadow-lg shadow-magenta/20' 
+                : 'bg-black text-white hover:bg-gray-800'
+            }`}
+          >
+            {ctaText}
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };
@@ -104,6 +198,29 @@ const Join = () => {
   const handleTryAgain = () => {
     setIsSubmitted(false);
     setEmailError(null);
+  };
+  
+  // CTA handlers for membership tiers
+  const handleScrollToJoinForm = () => {
+    document.getElementById('join-form')?.scrollIntoView({ behavior: 'smooth' });
+  };
+  
+  const handleVIPJoin = () => {
+    toast({
+      title: "VIP Membership",
+      description: "You'll be redirected to our payment page to complete your subscription.",
+    });
+    // In a real implementation, this would redirect to a payment page
+    // window.location.href = "/payment/vip-membership";
+  };
+  
+  const handlePremiumJoin = () => {
+    toast({
+      title: "Premium Membership",
+      description: "You'll be redirected to our payment page to complete your subscription.",
+    });
+    // In a real implementation, this would redirect to a payment page
+    // window.location.href = "/payment/premium-membership";
   };
 
   return (
@@ -233,6 +350,156 @@ const Join = () => {
               <p className="italic text-gray-700">
                 "Finding this community has been transformational. The connections I've made and the inspiration I've found have helped me launch my business with confidence."
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Membership Tiers Section */}
+      <section className="py-24 bg-black text-white relative overflow-hidden">
+        {/* Gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-magenta/20 to-black z-0"></div>
+        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-magenta/10 blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-magenta/10 blur-3xl"></div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <span className="inline-block px-4 py-1 rounded-full bg-magenta/20 text-magenta font-medium text-sm mb-4">
+              EXCLUSIVE ACCESS
+            </span>
+            <h2 className="font-serif font-bold text-4xl md:text-5xl mb-6">
+              Choose Your Membership Level
+            </h2>
+            <p className="font-sans text-lg text-white/80 max-w-2xl mx-auto">
+              Get access to exclusive resources, mentorship, and community support with our premium membership tiers designed for committed members.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Free Tier */}
+            <MembershipTier
+              title="Free"
+              price="Free"
+              description="Start your journey with our supportive community"
+              icon={<Users className="h-5 w-5 text-magenta" />}
+              features={[
+                "Community forum access",
+                "Weekly newsletters",
+                "Virtual event invitations",
+                "Resource library access"
+              ]}
+              ctaText="Join Now"
+              ctaAction={handleScrollToJoinForm}
+            />
+            
+            {/* VIP Tier */}
+            <MembershipTier
+              title="VIP Access"
+              price="$29"
+              description="Enhanced resources and priority support"
+              icon={<Shield className="h-5 w-5 text-magenta" />}
+              isPopular={true}
+              features={[
+                "All Free tier benefits",
+                "Exclusive VIP workshops",
+                "Priority event registration",
+                "1 monthly group coaching call",
+                "Premium resource library",
+                "Member directory access"
+              ]}
+              ctaText="Become a VIP Member"
+              ctaAction={handleVIPJoin}
+            />
+            
+            {/* Premium Tier */}
+            <MembershipTier
+              title="Premium"
+              price="$99"
+              description="Full suite of premium benefits and personal guidance"
+              icon={<Crown className="h-5 w-5 text-magenta" />}
+              features={[
+                "All VIP tier benefits",
+                "1:1 monthly coaching session",
+                "Personalized success roadmap",
+                "Early access to all new content",
+                "Exclusive mastermind group",
+                "VIP event discounts",
+                "Featured member profile"
+              ]}
+              ctaText="Go Premium"
+              ctaAction={handlePremiumJoin}
+            />
+          </div>
+        </div>
+      </section>
+      
+      {/* Secure Portal Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="flex flex-col md:flex-row gap-10 items-center">
+              <div className="md:w-1/2">
+                <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-4 block">
+                  PRIVATE MEMBERS PORTAL
+                </span>
+                <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6">
+                  A Secure Space for Your Growth Journey
+                </h2>
+                <p className="text-gray-700 mb-6">
+                  Our exclusive members portal provides a secure environment where you can access your personal development resources, connect with other members, and track your growth journey.
+                </p>
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-start">
+                    <div className="w-6 h-6 rounded-full bg-magenta/10 flex items-center justify-center mr-3 flex-shrink-0">
+                      <Lock className="h-3 w-3 text-magenta" />
+                    </div>
+                    <span className="text-gray-700">Secure, members-only access to exclusive content</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="w-6 h-6 rounded-full bg-magenta/10 flex items-center justify-center mr-3 flex-shrink-0">
+                      <Key className="h-3 w-3 text-magenta" />
+                    </div>
+                    <span className="text-gray-700">Personalized dashboard to track your progress</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="w-6 h-6 rounded-full bg-magenta/10 flex items-center justify-center mr-3 flex-shrink-0">
+                      <CreditCard className="h-3 w-3 text-magenta" />
+                    </div>
+                    <span className="text-gray-700">Manage your subscription and benefits in one place</span>
+                  </li>
+                </ul>
+                <Button
+                  className="bg-magenta text-white px-6 py-2 rounded hover:bg-magenta/90"
+                  onClick={handleScrollToJoinForm}
+                >
+                  Start Your Journey
+                </Button>
+              </div>
+              <div className="md:w-1/2 relative">
+                <div className="absolute inset-0 bg-gradient-to-tl from-magenta/20 to-transparent -m-4 rounded-3xl blur-xl"></div>
+                <div className="relative bg-gray-100 rounded-xl p-6 border border-gray-200 shadow-lg">
+                  <div className="w-full h-10 flex items-center justify-between border-b border-gray-200 pb-3 mb-4">
+                    <div className="flex">
+                      <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                      <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    </div>
+                    <div className="w-48 h-4 bg-gray-200 rounded"></div>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <div className="w-32 h-6 bg-magenta/20 rounded"></div>
+                      <div className="w-20 h-6 bg-gray-200 rounded"></div>
+                    </div>
+                    <div className="w-full h-32 bg-gray-200 rounded-lg"></div>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="h-20 bg-gray-200 rounded-lg"></div>
+                      <div className="h-20 bg-gray-200 rounded-lg"></div>
+                    </div>
+                    <div className="w-full h-12 bg-magenta/20 rounded-lg"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
