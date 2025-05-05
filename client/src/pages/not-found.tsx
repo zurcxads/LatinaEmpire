@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Home } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 
 export default function NotFound() {
   return (
@@ -25,7 +25,7 @@ export default function NotFound() {
         </div>
       </div>
       
-      <Footer />
+
     </div>
   );
 }

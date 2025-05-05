@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MapPin, Star, Search, Loader2, ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import { useQuery } from "@tanstack/react-query";
 import { ambassadorsService } from "@/lib/ambassadorsService";
 import { Ambassador } from "@/lib/types";
@@ -175,7 +175,7 @@ const Ambassadors = () => {
         </div>
       </section>
       
-      <Footer />
+
     </div>
   );
 };

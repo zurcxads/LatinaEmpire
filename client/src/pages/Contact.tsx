@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, Instagram, MapPin, AlertCircle, Loader } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import { useToast } from "@/hooks/use-toast";
 import SuccessConfetti from "@/components/SuccessConfetti";
 
@@ -378,7 +378,7 @@ const Contact = () => {
         </div>
       </section>
       
-      <Footer />
+
     </div>
   );
 };
