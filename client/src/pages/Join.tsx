@@ -6,7 +6,7 @@ import {
   Loader, Shield, Key, Crown, Lock, CreditCard
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import { useToast } from "@/hooks/use-toast";
 import SuccessConfetti from "@/components/SuccessConfetti";
 import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
@@ -774,7 +774,7 @@ const Join = () => {
         </div>
       </section>
       
-      <Footer />
+
     </div>
   );
 };

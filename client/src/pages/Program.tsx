@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 import {
   Brain,
@@ -728,7 +728,7 @@ const Program = () => {
         </div>
       )}
 
-      <Footer />
+
     </div>
   );
 };
