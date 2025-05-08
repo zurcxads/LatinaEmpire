@@ -134,7 +134,7 @@ const AmbassadorDetailSkeleton = () => (
   </Fragment>
 );
 
-const AmbassadorDetail = () => {
+const LeaderDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const [, setLocation] = useLocation();
   
@@ -368,23 +368,23 @@ const AmbassadorDetail = () => {
         </div>
       </section>
 
-      {/* Other Ambassadors */}
+      {/* Other Leaders */}
       <section className="py-20 bg-white border-t border-gray-200">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
             <div className="inline-flex items-center bg-gray-100 px-4 py-1.5 rounded-full mb-6">
               <span className="text-sm uppercase tracking-wider font-medium text-gray-900">Explore The Network</span>
             </div>
-            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6 text-gray-900">Meet More Ambassadors</h2>
+            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6 text-gray-900">Meet More Leaders</h2>
             <p className="font-sans text-gray-700 mb-8 max-w-2xl mx-auto">
               Discover other powerful Latinas who are leading the Empire movement across the globe.
             </p>
           </div>
           
           <div className="flex justify-center">
-            <Link href="/ambassadors">
+            <Link href="/leaders">
               <Button className="bg-magenta text-white hover:bg-magenta/90 px-8 py-6 h-auto rounded-full text-lg shadow-md">
-                View All Ambassadors
+                View All Leaders
               </Button>
             </Link>
           </div>
@@ -396,4 +396,4 @@ const AmbassadorDetail = () => {
   );
 };
 
-export default AmbassadorDetail;
+export default LeaderDetail;

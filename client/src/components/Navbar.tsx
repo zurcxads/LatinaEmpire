@@ -79,24 +79,33 @@ const Navbar = () => {
     "TRANSFORM YOUR LIFE AND LEGACY WITH OUR COMMUNITY OF AMBITIOUS LATINAS • "
   ].join(' ');
 
-  // Menu structure reorganized
+  // Menu structure reorganized with three main tabs
   const menuStructure = {
-    about: {
-      title: "About",
+    empower: {
+      title: "Empower",
       items: [
         { label: "Our Founder", href: "/about-founder" },
-        { label: "Leadership Program", href: "/program" },
-        { label: "Ambassadors", href: "/ambassadors" },
-        { label: "Join the Movement", href: "/join" }
+        { label: "Leadership Program", href: "/programs" },
+        { label: "Leaders Network", href: "/leaders" },
+        { label: "Membership", href: "/membership" }
       ]
     },
-    explore: {
-      title: "Explore",
+    learn: {
+      title: "Learn & Grow",
       items: [
         { label: "Events", href: "/events" },
+        { label: "Events Calendar", href: "/events-calendar" },
         { label: "Blog & Resources", href: "/blog" },
-        { label: "Leadership Summit", href: "/events/latina-leadership-summit-2023" },
-        { label: "Entrepreneurship Intensive", href: "/events/entrepreneurship-intensive-2023" }
+        { label: "Manahood Program", href: "/manahood" }
+      ]
+    },
+    give: {
+      title: "Give & Get",
+      items: [
+        { label: "Shop Merch", href: "/shop" },
+        { label: "Donate", href: "/donate" },
+        { label: "Join the Movement", href: "/join" },
+        { label: "Contact Us", href: "/contact" }
       ]
     },
     contact: {
@@ -144,7 +153,16 @@ const Navbar = () => {
       return menuStructure.contact.content;
     }
     
-    const menu = menuKey === 'about' ? menuStructure.about : menuStructure.explore;
+    let menu;
+    if (menuKey === 'empower') {
+      menu = menuStructure.empower;
+    } else if (menuKey === 'learn') {
+      menu = menuStructure.learn;
+    } else if (menuKey === 'give') {
+      menu = menuStructure.give;
+    } else {
+      menu = menuStructure.empower; // default fallback
+    }
     
     return (
       <div className="grid grid-cols-2 gap-0">
@@ -189,36 +207,36 @@ const Navbar = () => {
                   {/* Navigation links - desktop */}
                   <div className="hidden md:flex items-center space-x-2">
                     <button 
-                      onClick={() => toggleMenu('about')}
+                      onClick={() => toggleMenu('empower')}
                       className={`px-4 h-7 text-sm transition-all relative flex items-center ${
-                        activeMenu === 'about' 
+                        activeMenu === 'empower' 
                           ? 'text-black bg-white rounded-md shadow-lg' 
                           : 'text-white hover:text-white/80 text-shadow-sm'
                       }`}
                     >
-                      About
+                      Empower
                     </button>
                     
                     <button 
-                      onClick={() => toggleMenu('explore')}
+                      onClick={() => toggleMenu('learn')}
                       className={`px-4 h-7 text-sm transition-all flex items-center ${
-                        activeMenu === 'explore'
+                        activeMenu === 'learn'
                           ? 'text-black bg-white rounded-md shadow-lg'
                           : 'text-white hover:text-white/80 text-shadow-sm'
                       }`}
                     >
-                      Explore
+                      Learn & Grow
                     </button>
                     
                     <button 
-                      onClick={() => toggleMenu('contact')}
+                      onClick={() => toggleMenu('give')}
                       className={`px-4 h-7 text-sm transition-all flex items-center ${
-                        activeMenu === 'contact' 
+                        activeMenu === 'give' 
                           ? 'text-black bg-white rounded-md shadow-lg' 
                           : 'text-white hover:text-white/80 text-shadow-sm'
                       }`}
                     >
-                      Contact
+                      Give & Get
                     </button>
                   </div>
                   

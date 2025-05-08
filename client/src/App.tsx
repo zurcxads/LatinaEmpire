@@ -9,15 +9,19 @@ import Home from "@/pages/Home";
 import Events from "@/pages/Events";
 import EventDetail from "@/pages/EventDetail";
 import EventCalendar from "@/pages/EventCalendar";
-import Program from "@/pages/Program";
-import Ambassadors from "@/pages/Ambassadors";
-import AmbassadorDetail from "@/pages/AmbassadorDetail";
+import Programs from "@/pages/Programs";
+import Leaders from "@/pages/Leaders";
+import LeaderDetail from "@/pages/LeaderDetail";
 import Contact from "@/pages/Contact";
 import Join from "@/pages/Join";
 import AboutFounder from "@/pages/AboutFounder";
 import Blog from "@/pages/Blog";
 import BlogDetail from "@/pages/BlogDetail";
 import Manahood from "@/pages/Manahood";
+import ManahoodStart from "@/pages/ManahoodStart";
+import Shop from "@/pages/Shop";
+import Membership from "@/pages/Membership";
+import Donate from "@/pages/Donate";
 import NotFound from "@/pages/not-found";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import Navbar from "@/components/Navbar";
@@ -35,15 +39,19 @@ function Router() {
           <Route path="/events" component={Events} />
           <Route path="/events/:slug" component={EventDetail} />
           <Route path="/events-calendar" component={EventCalendar} />
-          <Route path="/program" component={Program} />
-          <Route path="/ambassadors" component={Ambassadors} />
-          <Route path="/ambassadors/:slug" component={AmbassadorDetail} />
+          <Route path="/programs" component={Programs} />
+          <Route path="/leaders" component={Leaders} />
+          <Route path="/leaders/:slug" component={LeaderDetail} />
           <Route path="/blog" component={Blog} />
           <Route path="/blog/:slug" component={BlogDetail} />
           <Route path="/contact" component={Contact} />
           <Route path="/join" component={Join} />
           <Route path="/about-founder" component={AboutFounder} />
           <Route path="/manahood" component={Manahood} />
+          <Route path="/manahood/start" component={ManahoodStart} />
+          <Route path="/shop" component={Shop} />
+          <Route path="/membership" component={Membership} />
+          <Route path="/donate" component={Donate} />
           <Route component={NotFound} />
         </Switch>
       </main>
