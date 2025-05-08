@@ -10,7 +10,7 @@ const FinalCTA = () => {
     <>
       <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
       
-      <section className="py-32 bg-black relative overflow-hidden">
+      <section className="section-spacing-large bg-black relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#D81B60]/20 to-black/95 z-0"></div>
         <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-[#D81B60]/20 blur-3xl"></div>
         <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-[#D81B60]/10 blur-3xl"></div>

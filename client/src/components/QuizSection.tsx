@@ -7,7 +7,7 @@ const QuizSection = () => {
   const [isStarted, setIsStarted] = useState(false);
   
   return (
-    <section className="py-16 md:py-24 text-white relative overflow-hidden">
+    <section className="section-spacing text-white relative overflow-hidden">
       {/* Background image and overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/60 z-10"></div>

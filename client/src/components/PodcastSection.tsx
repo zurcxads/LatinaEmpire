@@ -67,7 +67,7 @@ const PodcastEpisodeCard = ({ episode }: { episode: PodcastEpisode }) => {
 
 const PodcastSection = () => {
   return (
-    <section className="py-24 bg-white">
+    <section className="section-spacing bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-12">
           <div className="max-w-2xl mb-6 md:mb-0">

@@ -50,7 +50,7 @@ const ShopSection = () => {
   }, [carouselApi]);
 
   return (
-    <section className="py-24 bg-[#000000] text-white">
+    <section className="section-spacing bg-[#000000] text-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="flex items-center gap-2 justify-center mb-4">
