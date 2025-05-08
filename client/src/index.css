@@ -226,7 +226,7 @@
 }
 
 .cta-button-large {
-  @apply bg-black text-white hover:bg-gray-800 transition-colors px-10 py-4 rounded-full font-medium text-lg inline-flex items-center shadow-lg;
+  @apply transition-colors px-10 py-4 rounded-full font-medium text-lg inline-flex items-center shadow-lg;
 }
 
 /* Card styles */

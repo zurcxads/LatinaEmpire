@@ -27,7 +27,7 @@ const FinalCTA = () => {
             <div className="flex justify-center">
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-white text-black hover:bg-gray-100 text-xl uppercase tracking-wide py-3 px-10 rounded-full font-medium shadow-lg"
+                className="cta-button-large bg-white text-black hover:bg-gray-100 text-xl uppercase tracking-wide px-10"
               >
                 Join the Movement Now
               </Button>
