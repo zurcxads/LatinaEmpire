@@ -99,9 +99,10 @@ const EventCardSkeleton = () => (
     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10"></div>
     
     <div className="absolute inset-0 z-20 flex flex-col">
-      {/* Tag skeleton - top left */}
-      <div className="absolute top-8 left-8">
+      {/* Tags skeleton - top left */}
+      <div className="absolute top-8 left-8 flex gap-2">
         <div className="h-5 w-28 bg-white/20 rounded-full"></div>
+        <div className="h-5 w-20 bg-magenta/60 rounded-full"></div>
       </div>
       
       {/* Content skeleton - bottom left */}
@@ -112,8 +113,19 @@ const EventCardSkeleton = () => (
           <div className="h-10 bg-white/30 rounded mb-6 w-1/3"></div>
           
           {/* Description skeleton */}
-          <div className="h-5 bg-white/20 rounded mb-2 w-full max-w-md"></div>
-          <div className="h-5 bg-white/20 rounded w-2/3 max-w-md"></div>
+          <div className="h-5 bg-white/20 rounded mb-4 w-full max-w-md"></div>
+          
+          {/* Event metadata skeleton */}
+          <div className="flex gap-4 flex-wrap">
+            <div className="flex items-center gap-1">
+              <div className="h-4 w-4 rounded-full bg-magenta"></div>
+              <div className="h-4 w-16 bg-white/30 rounded"></div>
+            </div>
+            <div className="flex items-center gap-1">
+              <div className="h-4 w-4 rounded-full bg-magenta"></div>
+              <div className="h-4 w-20 bg-white/30 rounded"></div>
+            </div>
+          </div>
         </div>
       </div>
       
@@ -179,53 +191,80 @@ const Events = () => {
           
           {isLoadingUpcoming ? (
             // Loading state
-            <div className="space-y-16">
-              {/* Featured event skeleton */}
-              <div className="relative aspect-[21/9] rounded-xl overflow-hidden animate-pulse bg-gray-800 shadow-lg mb-16">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
-                <div className="absolute inset-0 z-20 flex flex-col">
-                  {/* Tag skeleton - top left */}
-                  <div className="absolute top-10 left-10 md:top-14 md:left-14 lg:top-20 lg:left-20">
-                    <div className="h-5 w-36 bg-white/20 rounded-full"></div>
-                  </div>
-                  
-                  {/* Content skeleton - bottom left */}
-                  <div className="absolute bottom-20 left-10 right-0 md:left-14 lg:left-20 p-0">
-                    {/* Title skeleton */}
-                    <div className="h-14 bg-white/30 rounded mb-3 w-3/4 max-w-xl"></div>
-                    <div className="h-14 bg-white/30 rounded mb-8 w-1/2 max-w-md"></div>
+            <div className="space-y-20">
+              {/* Section Headers Skeleton */}
+              <div className="mb-16">
+                {/* Section Title Skeleton */}
+                <div className="h-10 bg-gray-200 rounded w-64 mb-10 pb-4 border-b border-gray-200"></div>
+
+                {/* Featured event skeleton */}
+                <div className="relative aspect-[21/9] rounded-xl overflow-hidden animate-pulse bg-gray-800 shadow-lg mb-16">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
+                  <div className="absolute inset-0 z-20 flex flex-col">
+                    {/* Tags skeleton - top left */}
+                    <div className="absolute top-8 left-8 flex gap-2">
+                      <div className="h-5 w-32 bg-white/20 rounded-full"></div>
+                      <div className="h-5 w-28 bg-magenta/60 rounded-full"></div>
+                    </div>
                     
-                    {/* Description skeleton */}
-                    <div className="h-8 bg-white/20 rounded mb-2 w-full max-w-2xl"></div>
-                    <div className="h-8 bg-white/20 rounded mb-12 w-4/5 max-w-2xl"></div>
-                    
-                    {/* Event details skeleton */}
-                    <div className="flex gap-8">
-                      <div className="w-24">
-                        <div className="h-3 bg-white/30 rounded mb-2 w-full"></div>
-                        <div className="h-5 bg-white/40 rounded w-full"></div>
-                      </div>
-                      <div className="w-24">
-                        <div className="h-3 bg-white/30 rounded mb-2 w-full"></div>
-                        <div className="h-5 bg-white/40 rounded w-full"></div>
-                      </div>
-                      <div className="w-24">
-                        <div className="h-3 bg-white/30 rounded mb-2 w-full"></div>
-                        <div className="h-5 bg-white/40 rounded w-full"></div>
+                    {/* Content skeleton - bottom left */}
+                    <div className="absolute bottom-8 left-8 right-8">
+                      <div className="pr-32">
+                        {/* Title skeleton */}
+                        <div className="h-12 bg-white/30 rounded mb-3 w-2/3"></div>
+                        <div className="h-12 bg-white/30 rounded mb-6 w-1/2"></div>
+                        
+                        {/* Description skeleton */}
+                        <div className="h-6 bg-white/20 rounded mb-2 w-full max-w-md"></div>
+                        <div className="h-6 bg-white/20 rounded mb-8 w-4/5 max-w-md"></div>
+                        
+                        {/* Event metadata skeleton */}
+                        <div className="flex gap-4 flex-wrap">
+                          <div className="flex items-center gap-2">
+                            <div className="h-5 w-5 rounded-full bg-magenta"></div>
+                            <div className="h-5 w-20 bg-white/30 rounded"></div>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <div className="h-5 w-5 rounded-full bg-magenta"></div>
+                            <div className="h-5 w-24 bg-white/30 rounded"></div>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <div className="h-5 w-5 rounded-full bg-magenta"></div>
+                            <div className="h-5 w-32 bg-white/30 rounded"></div>
+                          </div>
+                        </div>
                       </div>
                     </div>
+                    
+                    {/* Logo skeleton - bottom right */}
+                    <div className="absolute bottom-8 right-8 h-20 w-28 bg-black rounded"></div>
                   </div>
-                  
-                  {/* Logo skeleton - top right */}
-                  <div className="absolute top-10 right-10 md:top-14 md:right-14 lg:top-20 lg:right-20 h-24 w-36 bg-black rounded"></div>
+                </div>
+                
+                {/* Regular events skeleton - Row 1 */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+                  {[...Array(2)].map((_, index) => (
+                    <EventCardSkeleton key={`sig-${index}`} />
+                  ))}
                 </div>
               </div>
               
-              {/* Regular events skeleton */}
-              <div>
+              {/* Academy Tracks Section Skeleton */}
+              <div className="mb-16">
+                <div className="h-10 bg-gray-200 rounded w-56 mb-10 pb-4 border-b border-gray-200"></div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
                   {[...Array(2)].map((_, index) => (
-                    <EventCardSkeleton key={index} />
+                    <EventCardSkeleton key={`track-${index}`} />
+                  ))}
+                </div>
+              </div>
+              
+              {/* Virtual Events Section Skeleton */}
+              <div className="mb-16">
+                <div className="h-10 bg-gray-200 rounded w-48 mb-10 pb-4 border-b border-gray-200"></div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+                  {[...Array(2)].map((_, index) => (
+                    <EventCardSkeleton key={`virtual-${index}`} />
                   ))}
                 </div>
               </div>
@@ -444,6 +483,8 @@ const Events = () => {
           </div>
         </div>
       </section>
+      
+      <Footer />
     </div>
   );
 };
