@@ -45,40 +45,77 @@ const LeaderCard = ({ leader }: { leader: Ambassador }) => {
 // Featured Leader Card Component
 const FeaturedLeaderCard = ({ leader }: { leader: Ambassador }) => {
   return (
-    <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+    <div className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 group">
       <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="relative h-full min-h-[300px] overflow-hidden">
+        <div className="relative h-full min-h-[400px] overflow-hidden">
+          {/* Image gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent z-10"></div>
+          
           <img 
             src={getImageSrc(leader.image, false)} 
             alt={leader.name} 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
             onError={createImageErrorHandler()}
           />
-          <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center shadow-sm">
-            <Star className="h-3 w-3 mr-1 text-magenta fill-current" />
-            <span className="text-xs font-medium text-gray-800">Featured Leader</span>
+          
+          {/* Featured badge */}
+          <div className="absolute top-6 left-6 z-20 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full flex items-center shadow-md">
+            <Star className="h-4 w-4 mr-2 text-magenta fill-current" />
+            <span className="text-sm font-medium text-gray-800">Featured Leader</span>
+          </div>
+          
+          {/* Quote overlay on mobile */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 z-20 md:hidden">
+            <p className="text-white/90 text-lg italic mb-3 font-medium">"{leader.quote}"</p>
+            <div className="flex items-center">
+              <div className="h-10 w-10 rounded-full bg-white/20 backdrop-blur-sm flex-shrink-0 mr-3 overflow-hidden">
+                <img 
+                  src={getImageSrc(leader.image, false)} 
+                  alt={leader.name} 
+                  className="h-full w-full object-cover"
+                  onError={createImageErrorHandler()}
+                />
+              </div>
+              <div>
+                <p className="text-white font-bold">{leader.name}</p>
+                <p className="text-white/80 text-sm">{leader.title}</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="p-8 flex flex-col">
+        
+        <div className="p-8 md:p-10 lg:p-12 flex flex-col">
           <div className="flex-1">
-            <div className="inline-flex items-center bg-magenta/10 px-3 py-1 rounded-full mb-4">
+            <div className="inline-flex items-center bg-magenta/10 px-4 py-1.5 rounded-full mb-6">
               <span className="text-xs uppercase tracking-wider font-medium text-magenta">Monthly Spotlight</span>
             </div>
-            <h3 className="font-serif font-bold text-2xl mb-2 text-gray-900">{leader.name}</h3>
-            <p className="text-gray-600 mb-2">{leader.title}</p>
-            <div className="flex items-center text-sm text-gray-600 mb-4">
-              <MapPin className="h-3 w-3 mr-1 text-magenta" />
-              <span>{leader.location}, {leader.country}</span>
+            
+            <h3 className="font-serif font-bold text-2xl md:text-3xl mb-3 text-gray-900">{leader.name}</h3>
+            <p className="text-gray-600 mb-3 text-lg">{leader.title}</p>
+            
+            <div className="flex items-center text-sm text-gray-600 mb-6 border-b border-gray-100 pb-6">
+              <MapPin className="h-4 w-4 mr-2 text-magenta" />
+              <span className="text-base">{leader.location}, {leader.country}</span>
             </div>
-            <p className="text-gray-700 mb-6 italic">"{leader.quote}"</p>
-            <p className="text-gray-700 mb-6">
+            
+            <div className="hidden md:block mb-6">
+              <p className="text-gray-700 text-lg italic mb-6 relative">
+                <span className="text-magenta text-4xl absolute -top-4 -left-2 opacity-20 font-serif">"</span>
+                {leader.quote}
+                <span className="text-magenta text-4xl absolute -bottom-8 -right-2 opacity-20 font-serif">"</span>
+              </p>
+            </div>
+            
+            <p className="text-gray-700 text-base md:text-lg mb-8 leading-relaxed line-clamp-4">
               {leader.shortBio}
             </p>
           </div>
+          
           <Link href={`/leaders/${leader.slug}`}>
-            <Button className="w-full bg-white border border-magenta hover:bg-magenta hover:text-white text-magenta transition-all flex items-center justify-center">
-              View Full Profile
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <Button className="w-full bg-white border-2 border-magenta hover:bg-magenta hover:text-white text-magenta transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center py-3 rounded-full text-base md:text-lg group">
+              <span>View Full Profile</span>
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
           </Link>
         </div>
@@ -145,26 +182,42 @@ const Leaders = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-24 bg-gradient-to-b from-gray-900 to-black text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#f23889,_transparent)] opacity-10"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_#140a1f,_transparent)] opacity-40"></div>
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-black text-white">
+        {/* Empty space for nav bar */}
+        <div className="h-16 w-full absolute top-0 left-0 z-20"></div>
         
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black z-10"></div>
+          {/* Radial gradients for depth */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#f23889,_transparent)] opacity-20 z-20"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_#140a1f,_transparent)] opacity-40 z-30"></div>
+          {/* Fade effect at the bottom */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-40"></div>
+          <img 
+            src={getImageSrc("https://images.pexels.com/photos/7712474/pexels-photo-7712474.jpeg", true)} 
+            alt="Latina leaders network" 
+            className="w-full h-full object-cover"
+            onError={createImageErrorHandler()}
+          />
+        </div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-50 pt-20">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm mb-8">
               <span className="text-sm uppercase tracking-wider font-medium text-white">Global Impact</span>
             </div>
-            <h1 className="font-serif font-bold text-4xl md:text-6xl mb-6 tracking-tight">
-              The Global Leaders Network
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6">
+              Extraordinary lives answer to a higher calling
             </h1>
-            <p className="font-sans text-lg md:text-xl text-white/80 mb-10 max-w-3xl mx-auto leading-relaxed">
+            <p className="font-sans text-lg md:text-xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed">
               Meet the women leading the Latina Empire movement in cities around the world.
             </p>
             <div className="flex flex-wrap justify-center gap-5">
-              <Button className="bg-magenta hover:bg-magenta/90 text-white px-8 py-6 h-auto rounded-lg text-lg shadow-lg transition-all">
+              <Button className="bg-magenta hover:bg-magenta/90 text-white px-8 py-6 h-auto rounded-full text-lg shadow-xl transition-all duration-300 hover:shadow-magenta hover:scale-102">
                 Join The Network
               </Button>
-              <Button className="bg-transparent text-white border border-white/30 hover:bg-white/10 px-8 py-6 h-auto rounded-lg text-lg transition-all">
+              <Button className="bg-transparent text-white border border-white/30 hover:bg-white/10 px-8 py-6 h-auto rounded-full text-lg transition-all duration-300 backdrop-blur-sm hover:border-white/80">
                 Learn More
               </Button>
             </div>
@@ -173,37 +226,49 @@ const Leaders = () => {
       </section>
       
       {/* Map Placeholder */}
-      <section className="py-12 bg-gray-50 border-y border-gray-200">
+      <section className="py-16 md:py-20 bg-gray-50 border-y border-gray-100">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-5xl mx-auto relative overflow-hidden rounded-xl bg-gray-100 h-[300px] flex items-center justify-center border border-gray-200">
-            <Globe className="h-12 w-12 text-gray-300 absolute opacity-10" />
-            <div className="text-center z-10 px-4">
-              <h3 className="font-serif font-bold text-xl mb-3 text-gray-800">Global Leaders Map</h3>
-              <p className="text-gray-600 mb-6 max-w-md mx-auto">
-                Map coming soon — explore our growing network of leaders by scrolling below
+          <div className="max-w-5xl mx-auto relative overflow-hidden rounded-2xl bg-white h-[350px] flex items-center justify-center shadow-xl">
+            {/* Background gradient effect */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#f9f9f9,_#ffffff)] opacity-90"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(135deg,_rgba(216,27,96,0.03),_rgba(216,27,96,0.07),_transparent)] opacity-80"></div>
+            
+            {/* Decorative elements */}
+            <Globe className="h-32 w-32 text-gray-100 absolute opacity-20" />
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-magenta/30 to-transparent"></div>
+            
+            <div className="text-center z-10 px-4 max-w-2xl">
+              <span className="inline-flex items-center bg-magenta/10 px-3 py-1 rounded-full backdrop-blur-sm mb-4">
+                <span className="text-xs uppercase tracking-wider font-medium text-magenta">Coming Soon</span>
+              </span>
+              <h3 className="font-serif font-bold text-2xl md:text-3xl mb-4 text-gray-800">Global Leaders Map</h3>
+              <p className="text-gray-600 mb-8 max-w-md mx-auto text-lg">
+                Explore our growing network of Latina Empire leaders across the globe
               </p>
               <Button 
                 variant="outline" 
-                className="bg-white/80 backdrop-blur-sm border border-gray-300 text-gray-700 hover:bg-gray-100"
+                className="bg-white shadow-md backdrop-blur-sm border border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-magenta/30 transition-all duration-300 rounded-full px-6"
               >
+                <Globe className="mr-2 h-4 w-4 text-magenta" />
                 View All Locations
               </Button>
             </div>
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#f8f8f8,_#f5f5f5)] opacity-60"></div>
-            <div className="absolute inset-0 bg-[linear-gradient(45deg,_#f0f0f0,_transparent)] opacity-70"></div>
           </div>
         </div>
       </section>
       
       {/* Featured Leader Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-6xl mx-auto">
-            <div className="max-w-4xl mx-auto text-center mb-12">
-              <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6">
+            <div className="max-w-4xl mx-auto text-center mb-16">
+              <span className="inline-flex items-center bg-magenta/10 px-3 py-1 rounded-full backdrop-blur-sm mb-4">
+                <span className="text-xs uppercase tracking-wider font-medium text-magenta">Monthly Spotlight</span>
+              </span>
+              <h2 className="font-serif font-bold text-3xl md:text-5xl mb-6 tracking-tight">
                 Featured Leader
               </h2>
-              <p className="text-gray-700 text-lg">
+              <p className="text-gray-700 text-lg md:text-xl max-w-3xl mx-auto">
                 Each month we highlight a leader making exceptional impact in their community
               </p>
             </div>
@@ -211,18 +276,25 @@ const Leaders = () => {
             {isLoading ? (
               <FeaturedLeaderSkeleton />
             ) : isError ? (
-              <div className="text-center py-12 border border-gray-200 rounded-xl p-8 bg-gray-50">
-                <h3 className="font-serif font-semibold text-xl mb-2 text-gray-800">Unable to Load Featured Leader</h3>
-                <p className="text-gray-600 mb-4">
+              <div className="text-center py-16 border border-gray-200 rounded-2xl p-8 bg-gray-50/50 shadow-md">
+                <h3 className="font-serif font-semibold text-2xl mb-4 text-gray-800">Unable to Load Featured Leader</h3>
+                <p className="text-gray-600 mb-6 text-lg">
                   We're having trouble loading our featured leader. Please refresh the page.
                 </p>
+                <Button 
+                  onClick={() => window.location.reload()}
+                  className="bg-white text-black hover:bg-gray-100 border border-gray-300 shadow-md rounded-full px-6 py-2.5 transition-all duration-300"
+                >
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Refresh Page
+                </Button>
               </div>
             ) : featuredLeader ? (
               <FeaturedLeaderCard leader={featuredLeader} />
             ) : (
-              <div className="text-center py-12 border border-gray-200 rounded-xl p-8 bg-gray-50">
-                <h3 className="font-serif font-semibold text-xl mb-2 text-gray-800">No Featured Leader Yet</h3>
-                <p className="text-gray-600">
+              <div className="text-center py-16 border border-gray-200 rounded-2xl p-8 bg-gray-50/50 shadow-md">
+                <h3 className="font-serif font-semibold text-2xl mb-4 text-gray-800">No Featured Leader Yet</h3>
+                <p className="text-gray-600 text-lg">
                   Check back soon for our featured leader of the month!
                 </p>
               </div>
