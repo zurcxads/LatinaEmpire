@@ -3,8 +3,9 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import JoinModal from "./JoinModal";
 import NextEventBanner from "./NextEventBanner";
-import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
+import { getImageSrc, createImageErrorHandler, getPlaceholderImage } from "@/lib/image-utils";
 import { useScroll } from "@/hooks/use-scroll";
+import { PlaceholderImage } from "@/components/ui/placeholder-image";
 
 const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -67,9 +68,14 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Background subtle pattern */}
+        {/* Background with placeholder image */}
         <div className="absolute inset-0 z-0 bg-black">
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.4),transparent_80%)]"></div>
+          <img 
+            src={getPlaceholderImage()} 
+            alt="Background design" 
+            className="absolute inset-0 w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-black/80"></div>
         </div>
       </section>
     </>
