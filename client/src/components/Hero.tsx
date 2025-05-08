@@ -22,9 +22,15 @@ const Hero = () => {
       <section className="pt-24 md:pt-32 min-h-[calc(100vh-5rem)] flex flex-col justify-center relative overflow-hidden bg-black text-white">
         <div className="container mx-auto px-4 py-12 md:py-16 relative z-10">
           {/* Floating Container with rounded edges */}
-          <div className="bg-gradient-to-br from-rose-500 to-pink-700 rounded-2xl shadow-2xl overflow-hidden relative">
-            {/* Subtle texture overlay */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.2),transparent_70%)] mix-blend-overlay"></div>
+          <div className="rounded-2xl shadow-2xl overflow-hidden relative">
+            {/* Placeholder image background */}
+            <img 
+              src={getPlaceholderImage()} 
+              alt="Background design" 
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            {/* Semi-transparent overlay for readability */}
+            <div className="absolute inset-0 bg-black/30"></div>
             
             {/* Content Container */}
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8 p-8 md:p-12 lg:p-16">
