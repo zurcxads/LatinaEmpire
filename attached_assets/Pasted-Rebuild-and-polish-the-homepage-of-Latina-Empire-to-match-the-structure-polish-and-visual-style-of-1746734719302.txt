@@ -1,0 +1,167 @@
+Rebuild and polish the homepage of Latina Empire to match the structure, polish, and visual style of TonyRobbins.com. Follow the exact sequence and design system detailed below. Keep styling consistent with the rest of the site and ensure full responsiveness across all screen sizes.
+
+🌟 OVERALL STYLING GUIDELINES
+Use rounded corners (rounded-2xl or larger) for hero and section containers.
+
+Use floating visual blocks with subtle shadow (shadow-2xl, ring-1 ring-white/10).
+
+Alternate black and white backgrounds for contrast.
+
+Use padded section wrappers (px-4 sm:px-6 lg:px-12).
+
+Typography: Large, bold serif headlines (text-4xl lg:text-5xl), sans-serif body (text-base lg:text-lg).
+
+Buttons: Rounded-full pill buttons, hover transitions, use brand pink (#d81b60).
+
+Smooth scroll anchors, no horizontal scroll.
+
+🔥 SECTION STRUCTURE
+1. Hero Section
+Component: Hero.tsx
+
+Background: High-res background with gradient overlay
+
+Floating layout: Rounded container on dark backdrop
+
+Title: “Elevate Your Leadership, Expand Your Legacy”
+
+Subtitle: “Join the global movement empowering ambitious Latina professionals.”
+
+Buttons:
+
+“Join Now” (primary, magenta)
+
+“Explore Programs” (secondary, outline white)
+
+2. Programs Preview (like Tony’s events slider)
+Component: ProgramCarousel.tsx
+
+Title: “Discover Our Signature Programs”
+
+Description: “In-person and virtual experiences to grow your leadership.”
+
+Carousel-style slider with:
+
+Image
+
+Title
+
+Category tag (e.g., Leadership Academy, Wellness, Wealth)
+
+Button: “Learn More” → links to individual program
+
+Auto-scroll + left/right navigation
+
+3. Three Pillars Section (replaces Four Pillars)
+Component: PillarsSection.tsx
+
+Title: “Heart · Mind · Money”
+
+Description: “Our holistic leadership model centers personal growth, clarity, and generational wealth.”
+
+Design:
+
+Vertical word list (like Tony’s “Mindset · Wealth · Health”) or tab layout
+
+Each pillar links to a filtered content/tag page (optional future)
+
+Use gradient background with left-aligned text, right-aligned image or icon
+
+4. Founder Preview (Keep)
+Component: FounderSection.tsx
+
+Title: “Meet Our Founder”
+
+Subtitle: “The visionary behind Latina Empire”
+
+Quote and short story excerpt
+
+Button: “Read Her Story” → /about-founder
+
+Layout: Left image, right text
+
+5. Media Highlights (New Media Section)
+Component: MediaSection.tsx
+
+Title: “In the Media”
+
+Subtitle: “Explore how Latina Empire is shaping culture and leadership.”
+
+3 Cards:
+
+YouTube (Watch)
+
+Forbes Article (Read)
+
+Podcast/Interview (Listen)
+
+Each card should follow consistent style:
+
+Gradient thumbnail
+
+Label badge (black pill: “YouTube”, “Forbes” etc.)
+
+Title
+
+CTA Button (white pill w/ icon OR black pill — make uniform)
+
+Button: “Explore Blog & Media”
+
+6. Membership Promo
+Component: CTASection.tsx
+
+Title: “A Network Like No Other”
+
+Subtitle: “Join thousands of Latina professionals creating legacy, impact, and abundance.”
+
+Button: “Become a Member” (magenta, full-width on mobile)
+
+7. Events Preview
+Component: EventsPreview.tsx
+
+Title: “Upcoming Events”
+
+Layout: Scrollable 3-card slider
+
+Card Content:
+
+Image
+
+Title (e.g., Latina Wellness Retreat)
+
+Location/date
+
+CTA: “View Event” or “Learn More”
+
+Button: “Explore All Events”
+
+8. Impact Carousel (Optional – can move to programs page)
+Component: ImpactCarousel.tsx
+
+Testimonials, stats, or quotes
+
+Floating card layout on dark section
+
+Keep it compact or remove if feels redundant
+
+9. Final CTA Section
+Component: FinalCTA.tsx
+
+Background: Full-width image or magenta gradient
+
+Title: “Ready to Begin Your Transformation?”
+
+Buttons:
+
+“Join Now” (Primary)
+
+“Contact Us” (Secondary)
+
+📱 MOBILE & RESPONSIVENESS CHECKLIST
+Hero section spacing should account for navbar height
+
+All cards should stack vertically on max-width: 640px
+
+Make carousels swipeable
+
+Avoid horizontal scroll at all breakpoints
