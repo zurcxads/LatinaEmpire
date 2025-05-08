@@ -114,24 +114,25 @@ const PillarsSection = () => {
           
           {/* Right column: Image Panel - with transitions when hovering */}
           <div className="order-1 md:order-2">
-            <div className="rounded-xl overflow-hidden shadow-md">
-              <div className="relative w-full aspect-square md:aspect-auto md:h-full">
+            <div className="rounded-xl overflow-hidden shadow-md h-72 md:h-96 lg:h-[450px]">
+              <div className="relative w-full h-full">
                 {/* Default gradient background visible at all times */}
-                <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-400/90 via-fuchsia-500/80 to-blue-400/70 z-0"></div>
-                
-                {/* Images that fade in/out based on hover */}
+                {/* Images that fade in/out based on hover - placed first so they're under the gradient */}
                 {LATINA_EMPIRE_PILLARS.map(pillar => (
                   <img
                     key={pillar.id}
-                    src={getImageSrc(pillar.image, true)}
+                    src={getImageSrc(pillar.image, true)} 
                     alt={`${pillar.name} pillar visualization`}
                     className={cn(
                       "absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out",
-                      hoveredPillar === pillar.id ? "opacity-60 z-10" : "opacity-0 z-0"
+                      hoveredPillar === pillar.id ? "opacity-100 z-10" : "opacity-0 z-0"
                     )}
                     onError={createImageErrorHandler()}
                   />
                 ))}
+                
+                {/* Gradient overlay on top of images */}
+                <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-400/60 via-fuchsia-500/50 to-blue-400/50 z-20 pointer-events-none"></div>
               </div>
             </div>
           </div>
