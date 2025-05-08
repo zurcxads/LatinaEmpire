@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { ExternalLink, PlayCircle, Newspaper, Headphones } from "lucide-react";
+import { ExternalLink, PlayCircle, Newspaper, Headphones, ArrowRight } from "lucide-react";
 
 // Define media item types for different categories
 type MediaItem = {
@@ -104,34 +104,37 @@ const MediaItemCard = ({ item }: { item: MediaItem }) => {
 
 const MediaSection = () => {
   return (
-    <section className="section-spacing bg-gray-50">
+    <section className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="mb-10">
-          <div className="flex mb-2">
-            <span className="inline-block h-3 w-3 rounded-full bg-black"></span>
+        {/* Flexbox header with title on left, button on right */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 text-left">
+          <div>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold mb-4">In the Media</h2>
+            <p className="text-lg text-gray-600 max-w-3xl">
+              Explore how Latina Empire is shaping culture and leadership in publications, podcasts, and videos around the world.
+            </p>
           </div>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold mb-4">In the Media</h2>
-          <p className="text-lg text-gray-600 max-w-3xl">
-            Explore how Latina Empire is shaping culture and leadership in publications, podcasts, and videos around the world.
-          </p>
+          
+          {/* Ghost-style button moved to the top right */}
+          <div className="mt-6 md:mt-0">
+            <Button 
+              asChild
+              variant="outline"
+              className="rounded-full border border-gray-300 text-gray-700 hover:border-black hover:text-black px-6 py-2 h-auto"
+            >
+              <Link href="/blog">
+                Explore All Media
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        {/* Media item cards - maintaining the same grid layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {mediaItems.map(item => (
             <MediaItemCard key={item.id} item={item} />
           ))}
-        </div>
-
-        <div className="flex justify-center">
-          <Button 
-            asChild
-            className="bg-magenta hover:bg-magenta/90 text-white rounded-full px-8 py-6 h-auto"
-          >
-            <Link href="/media">
-              Explore Blog & Media
-              <ExternalLink className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
         </div>
       </div>
     </section>
