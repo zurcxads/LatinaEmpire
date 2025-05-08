@@ -17,9 +17,8 @@ const FinalCTA = () => {
       <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
       
       <section className="py-20 md:py-28 px-6 md:px-12 bg-gradient-to-br from-magenta/40 to-magenta/10 relative overflow-hidden rounded-t-3xl mt-16">
+        {/* Single gradient overlay for background */}
         <div className="absolute inset-0 bg-gradient-to-br from-magenta/30 to-magenta/5 z-0 backdrop-blur-sm"></div>
-        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-magenta/20 blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-magenta/10 blur-3xl"></div>
         
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center">
