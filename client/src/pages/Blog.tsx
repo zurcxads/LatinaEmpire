@@ -294,8 +294,185 @@ const Blog = () => {
         </div>
       </section>
       
+      {/* Category Filter Bar - MOVED ABOVE CONTENT SECTIONS */}
+      <section className="py-16 bg-gray-50/80 border-y border-gray-100">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <span className="inline-flex items-center bg-magenta/10 px-3 py-1 rounded-full backdrop-blur-sm mb-4">
+                <span className="text-xs uppercase tracking-wider font-medium text-magenta">Explore Topics</span>
+              </span>
+              <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4 tracking-tight">
+                Find What Interests You
+              </h2>
+              <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+                Explore our content by category or search for specific topics that resonate with your journey.
+              </p>
+            </div>
+            
+            <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+              <Button className="bg-magenta text-white rounded-full hover:bg-magenta/90 shadow-md hover:shadow-lg transition-all">
+                Featured Articles
+              </Button>
+              
+              {blogData.categories.map((category, index) => (
+                <Button 
+                  key={index}
+                  variant="outline" 
+                  className="rounded-full border-gray-300 hover:border-magenta hover:text-magenta transition-all bg-white/90"
+                >
+                  {category}
+                </Button>
+              ))}
+              
+              {blogData.popularTags.slice(0, 5).map((tag, index) => (
+                <Button 
+                  key={index}
+                  variant="ghost" 
+                  className="rounded-full hover:bg-magenta/10 hover:text-magenta"
+                >
+                  #{tag}
+                </Button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* YouTube Video Section - NEW SECTION */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <span className="inline-flex items-center bg-magenta/10 px-3 py-1 rounded-full backdrop-blur-sm mb-4">
+                <span className="text-xs uppercase tracking-wider font-medium text-magenta">Video Content</span>
+              </span>
+              <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4 tracking-tight">
+                Watch Latina Empire on YouTube
+              </h2>
+              <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+                See behind-the-scenes moments, interviews, and video insights from our community.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Video Card 1 */}
+              <div className="group rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white border border-gray-100">
+                <div className="aspect-video relative overflow-hidden">
+                  {/* Thumbnail with play button overlay */}
+                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                    <div className="w-16 h-16 bg-magenta/90 rounded-full flex items-center justify-center">
+                      <div className="ml-1 w-0 h-0 border-t-[8px] border-t-transparent border-l-[16px] border-l-white border-b-[8px] border-b-transparent"></div>
+                    </div>
+                  </div>
+                  <img 
+                    src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" 
+                    alt="Latina Empire Leadership Summit" 
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://images.pexels.com/photos/7742774/pexels-photo-7742774.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+                    }}
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-serif font-bold text-xl mb-4 line-clamp-2 leading-tight">
+                    Leadership Summit 2023: Building Your Empire From Scratch
+                  </h3>
+                  <a 
+                    href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center bg-white text-magenta border border-magenta hover:bg-magenta hover:text-white transition-colors px-5 py-2 rounded-full text-sm font-medium"
+                  >
+                    Watch on YouTube
+                  </a>
+                </div>
+              </div>
+              
+              {/* Video Card 2 */}
+              <div className="group rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white border border-gray-100">
+                <div className="aspect-video relative overflow-hidden">
+                  {/* Thumbnail with play button overlay */}
+                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                    <div className="w-16 h-16 bg-magenta/90 rounded-full flex items-center justify-center">
+                      <div className="ml-1 w-0 h-0 border-t-[8px] border-t-transparent border-l-[16px] border-l-white border-b-[8px] border-b-transparent"></div>
+                    </div>
+                  </div>
+                  <img 
+                    src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" 
+                    alt="Latina Empire Financial Masterclass" 
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://images.pexels.com/photos/7709020/pexels-photo-7709020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+                    }}
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-serif font-bold text-xl mb-4 line-clamp-2 leading-tight">
+                    Financial Masterclass: Investing Strategies for Latina Entrepreneurs
+                  </h3>
+                  <a 
+                    href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center bg-white text-magenta border border-magenta hover:bg-magenta hover:text-white transition-colors px-5 py-2 rounded-full text-sm font-medium"
+                  >
+                    Watch on YouTube
+                  </a>
+                </div>
+              </div>
+              
+              {/* Video Card 3 */}
+              <div className="group rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white border border-gray-100">
+                <div className="aspect-video relative overflow-hidden">
+                  {/* Thumbnail with play button overlay */}
+                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                    <div className="w-16 h-16 bg-magenta/90 rounded-full flex items-center justify-center">
+                      <div className="ml-1 w-0 h-0 border-t-[8px] border-t-transparent border-l-[16px] border-l-white border-b-[8px] border-b-transparent"></div>
+                    </div>
+                  </div>
+                  <img 
+                    src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" 
+                    alt="Latina Empire Interviews" 
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://images.pexels.com/photos/3184302/pexels-photo-3184302.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+                    }}
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-serif font-bold text-xl mb-4 line-clamp-2 leading-tight">
+                    Interview Series: Conversations with Successful Latina Leaders
+                  </h3>
+                  <a 
+                    href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center bg-white text-magenta border border-magenta hover:bg-magenta hover:text-white transition-colors px-5 py-2 rounded-full text-sm font-medium"
+                  >
+                    Watch on YouTube
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div className="text-center mt-12">
+              <a 
+                href="https://www.youtube.com/channel/UC-lHJZR3Gqxm24_Vd_AJ5Yw" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-magenta hover:bg-magenta/90 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 shadow-md hover:shadow-lg"
+              >
+                View YouTube Channel
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       {/* Trending Now Section */}
-      <section className="py-12 bg-white">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <SectionHeader 
             icon={<Flame className="h-6 w-6" />}
@@ -387,51 +564,6 @@ const Blog = () => {
               ))}
             </div>
           )}
-        </div>
-      </section>
-      
-      {/* Category Filter Bar */}
-      <section className="py-20 bg-gray-50/80 border-y border-gray-100">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <span className="inline-flex items-center bg-magenta/10 px-3 py-1 rounded-full backdrop-blur-sm mb-4">
-                <span className="text-xs uppercase tracking-wider font-medium text-magenta">Explore Topics</span>
-              </span>
-              <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4 tracking-tight">
-                Find What Interests You
-              </h2>
-              <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                Explore our content by category or search for specific topics that resonate with your journey.
-              </p>
-            </div>
-            
-            <div className="flex flex-wrap justify-center gap-3 md:gap-4">
-              <Button className="bg-magenta text-white rounded-full hover:bg-magenta/90 shadow-md hover:shadow-lg transition-all">
-                Featured Articles
-              </Button>
-              
-              {blogData.categories.map((category, index) => (
-                <Button 
-                  key={index}
-                  variant="outline" 
-                  className="rounded-full border-gray-300 hover:border-magenta hover:text-magenta transition-all bg-white/90"
-                >
-                  {category}
-                </Button>
-              ))}
-              
-              {blogData.popularTags.slice(0, 5).map((tag, index) => (
-                <Button 
-                  key={index}
-                  variant="ghost" 
-                  className="rounded-full hover:bg-magenta/10 hover:text-magenta"
-                >
-                  #{tag}
-                </Button>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
