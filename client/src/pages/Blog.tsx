@@ -568,7 +568,7 @@ const Blog = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 md:py-32 overflow-hidden bg-black text-white">
+      <section className="relative section-spacing overflow-hidden bg-black text-white">
         {/* Background elements */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-black/80 z-10"></div>

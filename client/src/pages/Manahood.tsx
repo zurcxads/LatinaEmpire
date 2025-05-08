@@ -257,7 +257,7 @@ const Manahood = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-black text-white">
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-black text-white hero-navbar-spacing">
         {/* Empty space for nav bar */}
         <div className="h-16 w-full absolute top-0 left-0 z-20"></div>
         
@@ -311,7 +311,7 @@ const Manahood = () => {
       </section>
       
       {/* What Is Manahood? */}
-      <section className="py-20 md:py-28 bg-white/80 relative overflow-hidden">
+      <section className="section-spacing bg-white/80 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute right-0 top-1/4 w-96 h-96 bg-[radial-gradient(circle,rgba(245,228,240,1),transparent_70%)] rounded-full -z-0 opacity-70"></div>
         <div className="absolute left-0 bottom-1/3 w-80 h-80 bg-[radial-gradient(circle,rgba(240,240,250,1),transparent_70%)] rounded-full -z-0 opacity-50"></div>
@@ -346,7 +346,7 @@ const Manahood = () => {
       </section>
 
       {/* Find a Chapter */}
-      <section id="find-chapter" className="py-20 md:py-28 bg-gray-50 border-y border-gray-100">
+      <section id="find-chapter" className="section-spacing bg-gray-50 border-y border-gray-100">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
             <span className="inline-flex items-center bg-magenta/10 px-3 py-1 rounded-full backdrop-blur-sm mb-4">
@@ -477,7 +477,7 @@ const Manahood = () => {
       </section>
 
       {/* Meet the Leaders */}
-      <section className="py-20 md:py-28 bg-white border-t border-gray-100 relative overflow-hidden">
+      <section className="section-spacing bg-white border-t border-gray-100 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-[radial-gradient(circle,rgba(245,220,240,1),transparent_70%)] rounded-full -z-0 opacity-30"></div>
       
@@ -545,7 +545,7 @@ const Manahood = () => {
       </section>
 
       {/* Start a Manahood */}
-      <section className="py-24 md:py-32 bg-black text-white relative overflow-hidden">
+      <section className="section-spacing py-8 md:py-12 bg-black text-white relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-black/80 z-10"></div>
@@ -594,7 +594,7 @@ const Manahood = () => {
       </section>
 
       {/* Upcoming Manahood Events */}
-      <section className="py-20 md:py-28 bg-gray-50">
+      <section className="section-spacing bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
             <span className="inline-flex items-center bg-magenta/10 px-3 py-1 rounded-full backdrop-blur-sm mb-4">
