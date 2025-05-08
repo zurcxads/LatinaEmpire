@@ -166,7 +166,7 @@ const Navbar = () => {
     }
   };
 
-  // Generate mega menu content
+  // Generate mega menu content with enhanced styling
   const getMenuContent = (menuKey: string) => {
     if (menuKey === 'contact') {
       return menuStructure.contact.content;
@@ -184,29 +184,67 @@ const Navbar = () => {
     }
     
     return (
-      <div className="p-6 animate-fadeIn">
+      <div className="p-8 animate-fadeIn">
         {/* Menu Header with Title and Description */}
-        <div className="mb-6 border-b border-white/10 pb-4">
-          <h2 className="text-xl font-serif font-medium mb-1">{menu.title}</h2>
-          <p className="text-sm text-white/70">{menu.description}</p>
+        <div className="mb-8 pb-4 flex items-start justify-between">
+          <div>
+            <h2 className="text-2xl font-serif font-semibold mb-2">{menu.title}</h2>
+            <p className="text-sm text-white/70 max-w-md">{menu.description}</p>
+          </div>
+          
+          {/* Featured CTA based on section */}
+          <div className="hidden md:block">
+            <Link
+              href={menuKey === 'empower' ? '/leaders' : 
+                    menuKey === 'learn' ? '/programs' : '/shop'}
+              onClick={() => setActiveMenu(null)}
+            >
+              <Button 
+                className="bg-magenta hover:bg-magenta/90 text-white px-5 py-2 rounded-md text-sm shadow-md"
+              >
+                {menuKey === 'empower' ? 'Meet Our Leaders' : 
+                 menuKey === 'learn' ? 'Browse Programs' : 'Shop Now'}
+              </Button>
+            </Link>
+          </div>
         </div>
         
-        {/* Menu Items in Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2">
+        {/* Menu Items in Columns with Visual Enhancement */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-1.5">
           {menu.sections[0].items.map((item, idx) => (
             <Link 
               key={idx} 
               href={item.href}
-              className="group flex items-center py-2 px-3 hover:bg-white/10 rounded-md transition-all duration-200"
+              className="group flex items-center py-3 px-4 hover:bg-white/10 rounded-md transition-all duration-200 border border-transparent hover:border-white/10"
             >
               <div className="flex-1">
                 <h3 className="text-sm font-medium text-white group-hover:text-magenta transition-colors duration-200">
                   {item.label}
                 </h3>
               </div>
-              <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-200" />
+              <div className="flex items-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                <span className="mr-1 text-xs text-magenta font-medium">Explore</span>
+                <ArrowRight className="h-3.5 w-3.5 text-magenta" />
+              </div>
             </Link>
           ))}
+        </div>
+        
+        {/* Bottom Promotional Banner */}
+        <div className="mt-8 pt-6 border-t border-white/10 flex justify-between items-center">
+          <p className="text-xs text-white/60">
+            {menuKey === 'empower' ? 'Join our global leaders network of Latina professionals' : 
+             menuKey === 'learn' ? 'Access world-class programs designed for Latina success' : 
+             'Make an impact through our marketplace and donation programs'}
+          </p>
+          
+          <Button
+            onClick={() => setIsModalOpen(true)}
+            variant="link"
+            className="text-white text-xs hover:text-magenta"
+          >
+            Join Now <ArrowRight className="ml-1 h-3 w-3" />
+          </Button>
         </div>
       </div>
     );
@@ -241,44 +279,56 @@ const Navbar = () => {
                   <div className="hidden md:flex items-center space-x-3">
                     <button 
                       onClick={() => toggleMenu('empower')}
-                      className={`px-4 h-8 text-sm transition-all duration-200 relative flex items-center ${
+                      className={`px-4 h-8 text-sm transition-all duration-200 relative flex items-center gap-1.5 ${
                         activeMenu === 'empower' 
                           ? 'text-black bg-white rounded-md shadow-lg' 
                           : 'text-white hover:text-white/90 hover:bg-white/10 rounded-md text-shadow-sm'
                       }`}
                     >
-                      Empower
+                      <span>Empower</span>
+                      {activeMenu === 'empower' ? 
+                        <ChevronUp className="h-3 w-3" /> : 
+                        <ChevronDown className="h-3 w-3 opacity-70" />
+                      }
                     </button>
                     
                     <button 
                       onClick={() => toggleMenu('learn')}
-                      className={`px-4 h-8 text-sm transition-all duration-200 flex items-center ${
+                      className={`px-4 h-8 text-sm transition-all duration-200 flex items-center gap-1.5 ${
                         activeMenu === 'learn'
                           ? 'text-black bg-white rounded-md shadow-lg'
                           : 'text-white hover:text-white/90 hover:bg-white/10 rounded-md text-shadow-sm'
                       }`}
                     >
-                      Learn & Grow
+                      <span>Learn & Grow</span>
+                      {activeMenu === 'learn' ? 
+                        <ChevronUp className="h-3 w-3" /> : 
+                        <ChevronDown className="h-3 w-3 opacity-70" />
+                      }
                     </button>
                     
                     <button 
                       onClick={() => toggleMenu('give')}
-                      className={`px-4 h-8 text-sm transition-all duration-200 flex items-center ${
+                      className={`px-4 h-8 text-sm transition-all duration-200 flex items-center gap-1.5 ${
                         activeMenu === 'give' 
                           ? 'text-black bg-white rounded-md shadow-lg' 
                           : 'text-white hover:text-white/90 hover:bg-white/10 rounded-md text-shadow-sm'
                       }`}
                     >
-                      Give & Get
+                      <span>Give & Get</span>
+                      {activeMenu === 'give' ? 
+                        <ChevronUp className="h-3 w-3" /> : 
+                        <ChevronDown className="h-3 w-3 opacity-70" />
+                      }
                     </button>
                   </div>
                   
-                  {/* Join Button */}
+                  {/* Join Button - Sticky CTA */}
                   <Button 
-                    className="primary-button text-xs ml-4 h-7 px-4 py-0"
+                    className="bg-magenta text-white hover:bg-magenta/90 text-xs ml-4 h-8 px-5 py-0 rounded-full shadow-md font-medium transition-all duration-300"
                     onClick={() => setIsModalOpen(true)}
                   >
-                    Join
+                    Join Now
                   </Button>
                   
                   {/* Mobile menu toggle */}
@@ -305,7 +355,7 @@ const Navbar = () => {
                       >
                         <span className="font-medium">{menuStructure.empower.title}</span>
                         <div className="flex items-center">
-                          <span className="text-xs mr-2 opacity-70">{menuStructure.empower.description}</span>
+                          <span className="text-xs mr-2 opacity-70 hidden sm:inline">{menuStructure.empower.description}</span>
                           {activeMenu === 'empower' ? 
                             <ChevronUp className="h-4 w-4" /> : 
                             <ChevronDown className="h-4 w-4" />
@@ -342,7 +392,7 @@ const Navbar = () => {
                       >
                         <span className="font-medium">{menuStructure.learn.title}</span>
                         <div className="flex items-center">
-                          <span className="text-xs mr-2 opacity-70">{menuStructure.learn.description}</span>
+                          <span className="text-xs mr-2 opacity-70 hidden sm:inline">{menuStructure.learn.description}</span>
                           {activeMenu === 'learn' ? 
                             <ChevronUp className="h-4 w-4" /> : 
                             <ChevronDown className="h-4 w-4" />
@@ -379,7 +429,7 @@ const Navbar = () => {
                       >
                         <span className="font-medium">{menuStructure.give.title}</span>
                         <div className="flex items-center">
-                          <span className="text-xs mr-2 opacity-70">{menuStructure.give.description}</span>
+                          <span className="text-xs mr-2 opacity-70 hidden sm:inline">{menuStructure.give.description}</span>
                           {activeMenu === 'give' ? 
                             <ChevronUp className="h-4 w-4" /> : 
                             <ChevronDown className="h-4 w-4" />
