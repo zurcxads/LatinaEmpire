@@ -21,6 +21,8 @@ const Navbar = () => {
   useEffect(() => {
     setActiveMenu(null);
     setMobileMenuOpen(false);
+    // Clean up body classes when navigating away
+    document.body.classList.remove('overflow-hidden');
   }, [location]);
 
   // Handle scroll and resize events
@@ -54,6 +56,14 @@ const Navbar = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [activeMenu]);
+  
+  // Component cleanup
+  useEffect(() => {
+    return () => {
+      // Clean up any body classes when component unmounts
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, []);
 
   // Toggle menu function
   const toggleMenu = (menu: string | null) => {
@@ -350,7 +360,7 @@ const Navbar = () => {
               
               {/* Mobile navigation menu with accordions */}
               {mobileMenuOpen && (
-                <div className="md:hidden bg-black/50 backdrop-blur-md text-white p-4 border-t border-white/10 animate-fadeIn">
+                <div className="md:hidden bg-black/80 backdrop-blur-md text-white p-4 border-t border-white/10 animate-fadeIn relative z-50">
                   <div className="flex flex-col space-y-3">
                     {/* Empower Accordion */}
                     <div className="rounded-lg overflow-hidden">
@@ -371,8 +381,8 @@ const Navbar = () => {
                       </button>
                       
                       {activeMenu === 'empower' && (
-                        <div className="bg-black/30 rounded-b-lg animate-slideDown">
-                          <div className="p-3 grid gap-1">
+                        <div className="bg-black/30 rounded-b-lg overflow-hidden">
+                          <div className="p-3 grid gap-1 animate-fadeIn">
                             {menuStructure.empower.sections[0].items.map((item, idx) => (
                               <Link 
                                 key={idx} 
@@ -408,8 +418,8 @@ const Navbar = () => {
                       </button>
                       
                       {activeMenu === 'learn' && (
-                        <div className="bg-black/30 rounded-b-lg animate-slideDown">
-                          <div className="p-3 grid gap-1">
+                        <div className="bg-black/30 rounded-b-lg overflow-hidden">
+                          <div className="p-3 grid gap-1 animate-fadeIn">
                             {menuStructure.learn.sections[0].items.map((item, idx) => (
                               <Link 
                                 key={idx} 
@@ -445,8 +455,8 @@ const Navbar = () => {
                       </button>
                       
                       {activeMenu === 'give' && (
-                        <div className="bg-black/30 rounded-b-lg animate-slideDown">
-                          <div className="p-3 grid gap-1">
+                        <div className="bg-black/30 rounded-b-lg overflow-hidden">
+                          <div className="p-3 grid gap-1 animate-fadeIn">
                             {menuStructure.give.sections[0].items.map((item, idx) => (
                               <Link 
                                 key={idx} 
