@@ -4,54 +4,72 @@ import { ArrowRight } from "lucide-react";
 import JoinModal from "./JoinModal";
 import NextEventBanner from "./NextEventBanner";
 import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
+import { useScroll } from "@/hooks/use-scroll";
 
 const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { scrollToElement } = useScroll();
+
+  const handleExploreClick = () => {
+    scrollToElement("programs-section");
+  };
 
   return (
     <>
       <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
 
-      <section className="pt-20 hero-navbar-spacing min-h-[calc(100vh-5rem)] flex flex-col justify-end relative overflow-hidden bg-black text-white">
-        <div className="container mx-auto px-4 relative z-10 flex flex-col h-full">
-          <div className="flex flex-col lg:flex-row items-end justify-between gap-8 min-h-[calc(100vh-5rem)]">
-            {/* Main Hero Content - Left Side */}
-            <div className="flex-1 flex flex-col justify-center lg:max-w-2xl py-12">
-              <h1 className="hero-heading text-white mb-6 md:mb-8">
-                Transform Your Life & Legacy
-              </h1>
+      <section className="pt-24 md:pt-32 min-h-[calc(100vh-5rem)] flex flex-col justify-center relative overflow-hidden bg-black text-white">
+        <div className="container mx-auto px-4 py-12 md:py-16 relative z-10">
+          {/* Floating Container with rounded edges */}
+          <div className="bg-gradient-to-br from-rose-500 to-pink-700 rounded-2xl shadow-2xl overflow-hidden relative">
+            {/* Subtle texture overlay */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.2),transparent_70%)] mix-blend-overlay"></div>
+            
+            {/* Content Container */}
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 p-8 md:p-12 lg:p-16">
+              {/* Main Hero Content - Left Side */}
+              <div className="flex-1 flex flex-col justify-center lg:max-w-2xl animate-fade-in">
+                <h1 className="hero-heading text-white mb-6 md:mb-8 tracking-tight">
+                  Elevate Your Leadership, Expand Your Legacy
+                </h1>
 
-              <p className="font-sans text-base md:text-lg lg:text-xl text-white/90 mb-8 md:mb-10 max-w-xl">
-                Join thousands of Latina leaders creating generational wealth and impact.
-              </p>
+                <p className="font-sans text-base md:text-lg lg:text-xl text-white/90 mb-8 md:mb-10 max-w-xl">
+                  Join the global movement empowering ambitious Latina professionals.
+                </p>
 
-              <Button 
-                onClick={() => setIsModalOpen(true)}
-                className="primary-button text-lg py-3 px-8"
-              >
-                Join Now
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </div>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button 
+                    onClick={() => setIsModalOpen(true)}
+                    className="bg-white hover:bg-white/90 text-rose-600 font-medium rounded-full text-lg py-3 px-8"
+                  >
+                    Join Now
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
 
-            {/* Next Event Preview - Right Side */}
-            <div className="lg:w-[400px] mb-8">
-              <div className="relative bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden">
-                <NextEventBanner compact={true} />
+                  <Button 
+                    onClick={handleExploreClick}
+                    variant="outline" 
+                    className="border-2 border-white bg-transparent text-white hover:bg-white/10 font-medium rounded-full text-lg py-3 px-8"
+                  >
+                    Explore Programs
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </div>
+              </div>
+
+              {/* Next Event Preview - Right Side */}
+              <div className="lg:w-[400px]">
+                <div className="relative bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+                  <NextEventBanner compact={true} />
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black z-10" />
-          <img 
-            src={getImageSrc("https://images.unsplash.com/photo-1531058020387-3be344556be6", true)}
-            alt="Conference stage with audience" 
-            className="w-full h-full object-cover"
-            onError={createImageErrorHandler()}
-          />
+        {/* Background subtle pattern */}
+        <div className="absolute inset-0 z-0 bg-black">
+          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.4),transparent_80%)]"></div>
         </div>
       </section>
     </>

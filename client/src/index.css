@@ -172,6 +172,22 @@
   @apply pt-16 md:pt-20;
 }
 
+/* Fade-in animation for hero elements */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
 /* Consistent button styles */
 .primary-button {
   @apply bg-gray-100 hover:bg-gray-200 text-black font-medium px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-1.5 disabled:opacity-50 disabled:hover:bg-gray-100;
