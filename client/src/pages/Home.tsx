@@ -12,31 +12,32 @@ import FinalCTA from "@/components/FinalCTA";
 const Home = () => {
   return (
     <div className="flex flex-col">
-      {/* SECTION 1: Hero Banner - Full-screen flagship program promo */}
+      {/* SECTION 1: Hero Banner */}
       <Hero />
 
-
-
-      {/* SECTION 3: Event/Program Carousel - Horizontal slider */}
+      {/* SECTION 2: Event/Program Carousel */}
       <ProgramCarousel />
 
-      {/* SECTION 4: Life Mastery Quiz */}
+      {/* SECTION 3: Life Mastery Quiz */}
       <QuizSection />
 
-      {/* SECTION 5: Pillars Section */}
+      {/* SECTION 4: Three Pillars Section */}
       <PillarsSection />
 
-      {/* SECTION 6: Testimonials */}
+      {/* SECTION 5: Testimonials */}
       <Testimonial />
 
-      {/* SECTION 7: Meet Our Founder */}
+      {/* SECTION 6: Meet Our Founder */}
       <FounderSection />
 
-      {/* SECTION 8: Shop Preview */}
+      {/* SECTION 7: Shop Preview */}
       <ShopSection />
 
-      {/* SECTION 9: Media Section */}
+      {/* SECTION 8: Media Section */}
       <MediaSection />
+
+      {/* SECTION 9: Elite Program Overview */}
+      <BrandIntro />
 
       {/* SECTION 10: Final CTA Section */}
       <FinalCTA />
