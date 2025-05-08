@@ -23,7 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+// Footer is already included in App.tsx
 import { Link } from "wouter";
 
 import { useToast } from "@/hooks/use-toast";
@@ -466,7 +466,7 @@ const Contact = () => {
         </div>
       </section>
       
-      <Footer />
+      {/* Footer is rendered in App.tsx */}
     </div>
   );
 };

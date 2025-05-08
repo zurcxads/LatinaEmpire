@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { products, getProductsByCategory, getBestsellerProducts } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+// Footer is already included in App.tsx
 import { Button } from "@/components/ui/button";
 import { 
   ShoppingBag,
@@ -155,7 +155,7 @@ const Shop = () => {
         </div>
       </section>
       
-      <Footer />
+      {/* Footer is rendered in App.tsx */}
     </div>
   );
 };

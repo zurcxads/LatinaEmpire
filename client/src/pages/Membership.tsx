@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+// Footer is already included in App.tsx
 import { 
   Users, Calendar, BookOpen, Zap, Globe, Star, 
   Check, ArrowRight, Circle, Crown, 
@@ -531,7 +531,7 @@ const Membership = () => {
         </div>
       </section>
       
-      <Footer />
+      {/* Footer is rendered in App.tsx */}
     </div>
   );
 };

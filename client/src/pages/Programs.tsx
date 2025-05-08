@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+// Footer is already included in App.tsx
 import { Button } from "@/components/ui/button";
 import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 import { 
@@ -293,7 +293,7 @@ const Programs = () => {
         </div>
       </section>
       
-      <Footer />
+      {/* Footer is rendered in App.tsx */}
     </div>
   );
 };

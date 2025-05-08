@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+// Footer is already included in App.tsx
 import { 
   Heart, 
   GraduationCap, 
@@ -432,7 +432,7 @@ const Donate = () => {
         </div>
       </section>
       
-      <Footer />
+      {/* Footer is rendered in App.tsx */}
     </div>
   );
 };

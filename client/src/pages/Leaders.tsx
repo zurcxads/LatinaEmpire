@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MapPin, Star, Globe, ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+// Footer is already included in App.tsx
 import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
 import { useQuery } from "@tanstack/react-query";
@@ -457,7 +457,7 @@ const Leaders = () => {
         </div>
       </section>
       
-      <Footer />
+      {/* Footer is rendered in App.tsx */}
     </div>
   );
 };

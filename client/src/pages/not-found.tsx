@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Home, BookOpen, Calendar, Mail } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+// Footer is already included in App.tsx
 
 export default function NotFound() {
   return (
@@ -50,7 +50,7 @@ export default function NotFound() {
         </div>
       </div>
       
-      <Footer />
+      {/* Footer is rendered in App.tsx */}
     </div>
   );
 }
