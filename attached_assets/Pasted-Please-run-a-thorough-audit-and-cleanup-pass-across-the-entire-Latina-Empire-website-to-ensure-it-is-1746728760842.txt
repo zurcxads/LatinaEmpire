@@ -1,0 +1,90 @@
+Please run a thorough audit and cleanup pass across the entire Latina Empire website to ensure it is fully functional, clean, visually consistent, and free from bugs or broken layouts.
+
+Follow this audit checklist and apply necessary fixes:
+
+🖼 UI/UX & Layout Audit
+Global Consistency
+
+Ensure all pages follow the same design system as /about-founder and the homepage.
+
+Typography: large serif headings, clean sans-serif body
+
+Buttons: pill-shaped, bold font, hover glow
+
+Images: blurred gradient overlays, rounded corners
+
+Section spacing: consistent top/bottom padding across pages
+
+Hero Sections
+
+Every page with a hero section should use the same format:
+
+Full-width block
+
+Background gradient or image overlay
+
+Large headline
+
+Subheading
+
+CTA (optional)
+
+Check that hero sections never overlap the navbar, even when scrolling.
+
+Navigation Bar
+
+Ensure the navbar is always visible, sticky if needed, and not being cut off or covered by content.
+
+Test scroll behavior across all screen sizes (mobile, tablet, desktop).
+
+Dropdowns open and close cleanly on hover/click.
+
+No overlapping elements when opened.
+
+Footer
+
+Check that each page has only one footer instance.
+
+Footer links are accurate and match the final sitemap structure.
+
+Spacing between last page section and footer is consistent.
+
+🔗 Functionality & Routing Audit
+404 / Not Found
+
+Confirm a working, styled 404 page is in place.
+
+Check for any broken routes or links that lead to a blank page.
+
+Test all dynamic routes (/leaders/:slug, /blog/:slug, /events/:slug) to confirm proper rendering or fallbacks.
+
+Missing Pages
+
+Confirm all required pages from the final sitemap exist:
+
+/, /about-founder, /leaders, /manahood, /manahood/start
+
+/programs, /events, /events-calendar, /blog
+
+/membership, /shop, /donate, /contact, /join
+
+Button Links
+
+Ensure all CTA buttons are connected to the correct routes or modals.
+
+Buttons on /join, /membership, /manahood, etc. must go to /join or correct forms.
+
+Forms
+
+Validate that placeholder forms are styled correctly, responsive, and not broken
+
+Confirm form submit buttons are functioning (even if not integrated yet)
+
+📱 Responsiveness
+Check all pages on mobile, tablet, and desktop widths
+
+No horizontal scroll or overflow issues
+
+Cards, grids, and carousels collapse cleanly
+
+Dropdowns and modals are touch-friendly
