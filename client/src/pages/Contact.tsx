@@ -2,8 +2,29 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, Instagram, MapPin, AlertCircle, Loader } from "lucide-react";
+import { 
+  Mail, 
+  Phone, 
+  Users, 
+  Building, 
+  Newspaper, 
+  UserPlus, 
+  Globe,
+  Handshake,
+  AlertCircle, 
+  Loader, 
+  ArrowRight 
+} from "lucide-react";
+import { 
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { Link } from "wouter";
 
 import { useToast } from "@/hooks/use-toast";
 import SuccessConfetti from "@/components/SuccessConfetti";
@@ -11,20 +32,70 @@ import SuccessConfetti from "@/components/SuccessConfetti";
 interface FormData {
   name: string;
   email: string;
+  subject: string;
   message: string;
 }
 
 interface FormErrors {
   name?: string;
   email?: string;
+  subject?: string;
   message?: string;
 }
+
+// Contact card component
+const ContactCard = ({ 
+  icon, 
+  title, 
+  email, 
+  description, 
+  buttonText, 
+  buttonHref 
+}: { 
+  icon: React.ReactNode;
+  title: string;
+  email?: string;
+  description: string;
+  buttonText?: string;
+  buttonHref?: string;
+}) => {
+  return (
+    <div className="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all p-6 flex flex-col h-full">
+      <div className="w-12 h-12 bg-magenta/10 rounded-full flex items-center justify-center text-magenta mb-4">
+        {icon}
+      </div>
+      
+      <h3 className="font-bold text-xl mb-2">{title}</h3>
+      
+      {email && (
+        <a 
+          href={`mailto:${email}`} 
+          className="text-magenta hover:underline mb-2 inline-block"
+        >
+          {email}
+        </a>
+      )}
+      
+      <p className="text-gray-600 text-sm mb-4 flex-grow">{description}</p>
+      
+      {buttonText && buttonHref && (
+        <Link href={buttonHref}>
+          <Button className="mt-auto text-sm w-full justify-between bg-white text-magenta border border-magenta hover:bg-magenta/5 group">
+            {buttonText}
+            <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
+          </Button>
+        </Link>
+      )}
+    </div>
+  );
+};
 
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
+    subject: "",
     message: ""
   });
   const [formErrors, setFormErrors] = useState<FormErrors>({});
@@ -48,6 +119,21 @@ const Contact = () => {
     }
   };
 
+  const handleSelectChange = (value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      subject: value
+    }));
+    
+    // Clear error
+    if (formErrors.subject) {
+      setFormErrors(prev => ({
+        ...prev,
+        subject: undefined
+      }));
+    }
+  };
+
   const validateForm = (): boolean => {
     const errors: FormErrors = {};
     let isValid = true;
@@ -64,6 +150,12 @@ const Contact = () => {
       isValid = false;
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)) {
       errors.email = "Invalid email address";
+      isValid = false;
+    }
+    
+    // Validate subject
+    if (!formData.subject) {
+      errors.subject = "Please select a subject";
       isValid = false;
     }
     
@@ -97,8 +189,6 @@ const Contact = () => {
     
     try {
       // This is where you would normally connect to a backend API
-      // Example: await fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) });
-      
       // For now, we'll simulate API call
       console.log("Form submitted:", formData);
       
@@ -114,11 +204,10 @@ const Contact = () => {
       setFormData({
         name: "",
         email: "",
+        subject: "",
         message: ""
       });
       
-      // Log for future implementation
-      console.log("Ready to integrate with Formspree or custom API at: '/api/contact'");
     } catch (error) {
       console.error("Error submitting form:", error);
       setIsSubmitting(false);
@@ -142,107 +231,190 @@ const Contact = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gray-50">
+      <section className="pt-32 pb-16 bg-gradient-to-b from-black via-black/90 to-magenta/30 text-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-serif font-bold text-4xl md:text-5xl mb-6">We'd Love to Hear From You</h1>
-            <p className="font-sans text-lg text-gray-700 mb-4">
-              Whether you're press, media, partnership, or just curious — reach out.
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="font-serif font-bold text-5xl md:text-6xl mb-6">
+              Let's Build Together
+            </h1>
+            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+              Get in touch with Latina Empire's global leadership team for media, partnership, or team opportunities.
             </p>
           </div>
         </div>
       </section>
       
-      {/* Contact Form and Info */}
+      {/* Contact Options */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-            {/* Contact Form */}
-            <div className="lg:col-span-3">
-              {isSubmitted ? (
-                <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <h3 className="font-serif font-bold text-2xl mb-2">Thank You!</h3>
-                  <p className="text-gray-700 mb-4">
-                    We've received your message and will get back to you as soon as possible.
-                  </p>
-                  <Button 
-                    variant="outline" 
-                    onClick={sendAnotherMessage}
-                    className="mt-2"
-                  >
-                    Send Another Message
-                  </Button>
+          <h2 className="text-3xl font-serif font-bold mb-12 text-center">How Can We Help You?</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <ContactCard
+              icon={<Mail className="h-6 w-6" />}
+              title="General Inquiries"
+              email="contact@latinaempire.com"
+              description="Have a question about our organization? We'd love to hear from you and will respond promptly."
+            />
+            
+            <ContactCard
+              icon={<Handshake className="h-6 w-6" />}
+              title="Partnerships & Sponsors"
+              email="sponsor@latinaempire.com"
+              description="Interested in partnering with Latina Empire? Let's create impact together."
+            />
+            
+            <ContactCard
+              icon={<Newspaper className="h-6 w-6" />}
+              title="Press & Media"
+              email="media@latinaempire.com"
+              description="For media inquiries, expert commentary, and interview requests."
+            />
+            
+            <ContactCard
+              icon={<UserPlus className="h-6 w-6" />}
+              title="Join Our Team"
+              description="Become part of our global network of leaders driving impactful change."
+              buttonText="Apply to be a Leader"
+              buttonHref="/leaders"
+            />
+            
+            <ContactCard
+              icon={<Globe className="h-6 w-6" />}
+              title="Start a Chapter"
+              description="Launch a local Manahood chapter and create a community in your area."
+              buttonText="Start a Manahood"
+              buttonHref="/manahood/start"
+            />
+            
+            <ContactCard
+              icon={<Building className="h-6 w-6" />}
+              title="Corporate Engagements"
+              email="corporate@latinaempire.com"
+              description="Book a workshop or speaker for your organization or corporate event."
+            />
+          </div>
+        </div>
+      </section>
+      
+      {/* Contact Form */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-2xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-serif font-bold mb-4">Send Us a Message</h2>
+              <p className="text-gray-600">
+                Fill out the form below and we'll get back to you as soon as possible.
+              </p>
+            </div>
+            
+            {isSubmitted ? (
+              <div className="bg-white border border-green-200 rounded-xl shadow-sm p-8 text-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
                 </div>
-              ) : (
+                <h3 className="text-2xl font-bold mb-2">Thank You!</h3>
+                <p className="text-gray-700 mb-6">
+                  We've received your message and will get back to you as soon as possible.
+                </p>
+                <Button 
+                  onClick={sendAnotherMessage}
+                  className="bg-magenta hover:bg-magenta/90 text-white"
+                >
+                  Send Another Message
+                </Button>
+              </div>
+            ) : (
+              <div className="bg-white rounded-xl shadow-sm p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                      Your Name <span className="text-red-500">*</span>
-                    </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      placeholder="Enter your full name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className={`w-full p-3 border ${formErrors.name ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-magenta'} rounded-md`}
-                      aria-invalid={!!formErrors.name}
-                      aria-describedby={formErrors.name ? "name-error" : undefined}
-                    />
-                    {formErrors.name && (
-                      <div id="name-error" className="mt-1 text-sm text-red-600 flex items-center">
-                        <AlertCircle className="h-4 w-4 mr-1" />
-                        {formErrors.name}
-                      </div>
-                    )}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                        Name <span className="text-red-500">*</span>
+                      </label>
+                      <Input
+                        id="name"
+                        name="name"
+                        type="text"
+                        placeholder="Your name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className={`rounded-lg border ${formErrors.name ? 'border-red-500' : 'border-gray-300'}`}
+                      />
+                      {formErrors.name && (
+                        <div className="mt-1 text-sm text-red-600 flex items-center">
+                          <AlertCircle className="h-4 w-4 mr-1" />
+                          {formErrors.name}
+                        </div>
+                      )}
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                        Email <span className="text-red-500">*</span>
+                      </label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="Your email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className={`rounded-lg border ${formErrors.email ? 'border-red-500' : 'border-gray-300'}`}
+                      />
+                      {formErrors.email && (
+                        <div className="mt-1 text-sm text-red-600 flex items-center">
+                          <AlertCircle className="h-4 w-4 mr-1" />
+                          {formErrors.email}
+                        </div>
+                      )}
+                    </div>
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                      Email Address <span className="text-red-500">*</span>
+                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                      Subject <span className="text-red-500">*</span>
                     </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="your@email.com"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className={`w-full p-3 border ${formErrors.email ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-magenta'} rounded-md`}
-                      aria-invalid={!!formErrors.email}
-                      aria-describedby={formErrors.email ? "email-error" : undefined}
-                    />
-                    {formErrors.email && (
-                      <div id="email-error" className="mt-1 text-sm text-red-600 flex items-center">
+                    <Select onValueChange={handleSelectChange} value={formData.subject}>
+                      <SelectTrigger 
+                        className={`w-full rounded-lg border ${formErrors.subject ? 'border-red-500' : 'border-gray-300'}`}
+                      >
+                        <SelectValue placeholder="Select a subject" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="general">General Inquiry</SelectItem>
+                        <SelectItem value="partnership">Partnership Opportunity</SelectItem>
+                        <SelectItem value="media">Press & Media</SelectItem>
+                        <SelectItem value="careers">Join Our Team</SelectItem>
+                        <SelectItem value="chapter">Start a Chapter</SelectItem>
+                        <SelectItem value="corporate">Corporate Engagement</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    {formErrors.subject && (
+                      <div className="mt-1 text-sm text-red-600 flex items-center">
                         <AlertCircle className="h-4 w-4 mr-1" />
-                        {formErrors.email}
+                        {formErrors.subject}
                       </div>
                     )}
                   </div>
                   
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                      Your Message <span className="text-red-500">*</span>
+                      Message <span className="text-red-500">*</span>
                     </label>
                     <Textarea
                       id="message"
                       name="message"
                       placeholder="How can we help you?"
-                      rows={6}
+                      rows={5}
                       value={formData.message}
                       onChange={handleChange}
-                      className={`w-full p-3 border ${formErrors.message ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-magenta'} rounded-md`}
-                      aria-invalid={!!formErrors.message}
-                      aria-describedby={formErrors.message ? "message-error" : undefined}
+                      className={`rounded-lg border ${formErrors.message ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     {formErrors.message && (
-                      <div id="message-error" className="mt-1 text-sm text-red-600 flex items-center">
+                      <div className="mt-1 text-sm text-red-600 flex items-center">
                         <AlertCircle className="h-4 w-4 mr-1" />
                         {formErrors.message}
                       </div>
@@ -251,7 +423,7 @@ const Contact = () => {
                   
                   <Button
                     type="submit"
-                    className="w-full bg-magenta text-white hover:bg-opacity-90 py-3 flex items-center justify-center"
+                    className="w-full bg-magenta hover:bg-magenta/90 text-white rounded-lg py-6 flex items-center justify-center"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
@@ -268,117 +440,33 @@ const Contact = () => {
                     All fields marked with <span className="text-red-500">*</span> are required
                   </p>
                 </form>
-              )}
-            </div>
-            
-            {/* Contact Info */}
-            <div className="lg:col-span-2">
-              <div className="bg-gray-50 rounded-lg p-8">
-                <h2 className="font-serif font-bold text-2xl mb-6">Get In Touch</h2>
-                
-                <div className="space-y-6">
-                  <div className="flex items-start">
-                    <div className="mt-1 mr-4">
-                      <div className="w-10 h-10 bg-magenta/10 rounded-full flex items-center justify-center">
-                        <Mail className="h-5 w-5 text-magenta" />
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="font-sans font-semibold mb-1">Email Us</h3>
-                      <a 
-                        href="mailto:hello@latinaempire.com" 
-                        className="text-magenta hover:underline"
-                      >
-                        hello@latinaempire.com
-                      </a>
-                      <p className="text-sm text-gray-600 mt-1">
-                        We'll respond within 48 hours
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="mt-1 mr-4">
-                      <div className="w-10 h-10 bg-magenta/10 rounded-full flex items-center justify-center">
-                        <Instagram className="h-5 w-5 text-magenta" />
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="font-sans font-semibold mb-1">Follow Us</h3>
-                      <a 
-                        href="https://instagram.com/latinaempire" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-magenta hover:underline"
-                      >
-                        @latinaempire
-                      </a>
-                      <p className="text-sm text-gray-600 mt-1">
-                        DM us for quick responses
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="mt-1 mr-4">
-                      <div className="w-10 h-10 bg-magenta/10 rounded-full flex items-center justify-center">
-                        <Phone className="h-5 w-5 text-magenta" />
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="font-sans font-semibold mb-1">Call Us</h3>
-                      <a 
-                        href="tel:+1234567890" 
-                        className="text-magenta hover:underline"
-                      >
-                        (123) 456-7890
-                      </a>
-                      <p className="text-sm text-gray-600 mt-1">
-                        Mon-Fri, 9am-5pm EST
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="mt-8 pt-8 border-t border-gray-200">
-                  <h3 className="font-serif font-semibold text-lg mb-3">Media Inquiries</h3>
-                  <p className="text-gray-700 mb-4">
-                    For press and media inquiries, please contact our media relations team.
-                  </p>
-                  <a 
-                    href="mailto:press@latinaempire.com" 
-                    className="text-magenta hover:underline font-medium"
-                  >
-                    press@latinaempire.com
-                  </a>
-                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
       
-      {/* Location Map (Optional) */}
-      <section className="py-16 bg-gray-50">
+      {/* Final CTA Section */}
+      <section className="py-20 bg-black text-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="font-serif font-bold text-3xl mb-4">Visit Us</h2>
-            <p className="font-sans text-gray-700">
-              Our headquarters is located in Miami, with regional offices across the United States and Latin America.
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl font-serif font-bold mb-6">
+              Want to learn more before reaching out?
+            </h2>
+            <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+              Discover the story behind Latina Empire and meet the visionary founder who started it all.
             </p>
-          </div>
-          
-          <div className="h-96 bg-gray-200 rounded-lg flex items-center justify-center">
-            <div className="text-center">
-              <MapPin className="h-12 w-12 text-magenta mx-auto mb-3" />
-              <p className="font-sans font-semibold mb-1">Miami Headquarters</p>
-              <p className="font-sans text-gray-600">123 Ocean Drive, Miami, FL 33139</p>
-            </div>
+            <Link href="/about-founder">
+              <Button className="bg-magenta hover:bg-magenta/90 text-white rounded-full text-lg py-6 px-10">
+                Explore Our Story
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
       
-
+      <Footer />
     </div>
   );
 };
