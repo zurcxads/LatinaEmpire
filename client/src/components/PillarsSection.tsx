@@ -29,7 +29,7 @@ const LATINA_EMPIRE_PILLARS = [
   }
 ];
 
-// Default background image with gradient
+// Default background image - gradient similar to the reference
 const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1557682250-f8ba6a8f9696?q=80&w=2129';
 
 // Pillar word component
@@ -45,29 +45,20 @@ interface PillarWordProps {
 }
 
 const PillarWord = ({ pillar, isHovered, onMouseEnter, onMouseLeave }: PillarWordProps) => (
-  <div className="flex items-center group relative mb-4" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+  <div 
+    className="relative" 
+    onMouseEnter={onMouseEnter} 
+    onMouseLeave={onMouseLeave}
+  >
     <h3 
       className={cn(
-        "font-serif font-bold text-5xl md:text-6xl lg:text-7xl transition-all duration-300 cursor-pointer",
-        isHovered ? "text-black" : "text-gray-800/90"
+        "font-sans font-bold text-5xl md:text-6xl lg:text-7xl transition-all duration-300 cursor-pointer",
+        isHovered ? "text-gray-900" : "text-gray-800"
       )}
+      style={{ lineHeight: '1.1' }}
     >
       {pillar.name}
     </h3>
-    
-    {/* Explore button that appears on hover */}
-    <div 
-      className={cn(
-        "ml-6 transition-all duration-300 overflow-hidden",
-        isHovered ? "max-w-[200px] opacity-100" : "max-w-0 opacity-0"
-      )}
-    >
-      <Link href={pillar.link}>
-        <button className="rounded-full border border-black px-4 py-2 text-sm hover:bg-black hover:text-white transition flex items-center">
-          Explore <ArrowRight className="ml-2 h-3 w-3" />
-        </button>
-      </Link>
-    </div>
   </div>
 );
 
@@ -82,19 +73,19 @@ const PillarsSection = () => {
   return (
     <section className="bg-white py-24 border-t border-gray-100">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
           {/* Left column: Pillar Titles */}
           <div className="order-2 md:order-1 flex flex-col justify-center">
-            {/* Section label with dot */}
-            <div className="flex items-center gap-2 mb-10">
-              <div className="w-2 h-2 rounded-full bg-black"></div>
-              <span className="font-sans uppercase tracking-wider text-gray-600 font-semibold text-sm">
-                ● LATINA EMPIRE METHODOLOGY
+            {/* Section label with pulsing magenta dot */}
+            <div className="flex items-center gap-2 mb-12">
+              <div className="w-1.5 h-1.5 rounded-full bg-fuchsia-500 animate-pulse mr-1"></div>
+              <span className="font-sans uppercase tracking-wider text-gray-600 font-semibold text-xs">
+                LATINA EMPIRE METHODOLOGY
               </span>
             </div>
             
-            {/* Pillar words stacked */}
-            <div className="mb-8">
+            {/* Pillar words stacked with larger spacing */}
+            <div className="mb-8 flex flex-col gap-2 md:gap-3">
               {LATINA_EMPIRE_PILLARS.map(pillar => (
                 <PillarWord 
                   key={pillar.id}
@@ -107,37 +98,12 @@ const PillarsSection = () => {
             </div>
           </div>
           
-          {/* Right column: Image Panel */}
+          {/* Right column: Image Panel - matching the reference exactly */}
           <div className="order-1 md:order-2">
-            <div className="aspect-[4/3] md:h-full rounded-xl overflow-hidden shadow-lg">
-              <div className="relative w-full h-full">
-                {/* Default blurred gradient background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-yellow-500/20 backdrop-blur-md transition-opacity duration-500 ease-in-out z-0"></div>
-                
-                {/* Images that fade in/out based on hover */}
-                {LATINA_EMPIRE_PILLARS.map(pillar => (
-                  <img
-                    key={pillar.id}
-                    src={getImageSrc(pillar.image, true)}
-                    alt={`${pillar.name} pillar visualization`}
-                    className={cn(
-                      "absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out",
-                      hoveredPillar === pillar.id ? "opacity-100 z-10" : "opacity-0 z-0"
-                    )}
-                    onError={createImageErrorHandler()}
-                  />
-                ))}
-                
-                {/* Default image shown when nothing is hovered */}
-                <img
-                  src={getImageSrc(DEFAULT_IMAGE, true)}
-                  alt="Latina Empire Methodology"
-                  className={cn(
-                    "absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out",
-                    hoveredPillar === null ? "opacity-100 z-10" : "opacity-0 z-0"
-                  )}
-                  onError={createImageErrorHandler()}
-                />
+            <div className="rounded-xl overflow-hidden shadow-md">
+              {/* Simplified gradient panel exactly like the reference image */}
+              <div className="relative w-full aspect-square md:aspect-auto md:h-full">
+                <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-400/90 via-fuchsia-500/80 to-blue-400/70 transition-opacity duration-500 ease-in-out"></div>
               </div>
             </div>
           </div>
