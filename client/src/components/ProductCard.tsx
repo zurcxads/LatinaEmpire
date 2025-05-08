@@ -16,7 +16,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
   
   return (
     <div 
-      className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full"
+      className="card-base card-hover flex flex-col h-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -25,7 +25,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <img 
           src={product.image} 
           alt={product.name} 
-          className={`w-full h-full object-cover transition-transform duration-700 ${isHovered ? 'scale-105' : 'scale-100'}`}
+          className={`card-image ${isHovered ? 'scale-105' : 'scale-100'}`}
         />
         
         {/* Badge indicators */}

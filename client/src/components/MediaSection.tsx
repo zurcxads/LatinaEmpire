@@ -44,23 +44,22 @@ const MediaItemCard = ({ item }: { item: MediaItem }) => {
   const actionText = item.type === 'video' ? 'Watch' : 'Read';
   
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-lg group hover:shadow-xl transition-all">
+    <div className="card-base card-hover group">
       <div className="relative h-48 overflow-hidden">
         <img 
           src={getImageSrc(item.image, true)} 
           alt={item.title} 
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="card-image"
           onError={createImageErrorHandler()}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-70 transition-opacity">
-        </div>
+        <div className="card-text-overlay opacity-60 group-hover:opacity-70 transition-opacity"></div>
         <div className="absolute bottom-4 left-4">
           <div className="inline-block bg-black/70 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
             {item.source}
           </div>
         </div>
       </div>
-      <div className="p-6">
+      <div className="card-content">
         <h3 className="font-serif font-bold text-xl mb-4 line-clamp-2">{item.title}</h3>
         
         {isExternal ? (

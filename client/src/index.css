@@ -85,6 +85,22 @@
     .mobile-full-width {
       @apply w-full;
     }
+    
+    .mobile-center {
+      @apply text-center flex flex-col items-center justify-center;
+    }
+    
+    .mobile-text-left {
+      @apply text-left;
+    }
+    
+    .mobile-no-padding {
+      @apply px-0 py-0;
+    }
+    
+    .mobile-card-spacing {
+      @apply gap-y-6 gap-x-4;
+    }
   }
 
   html, body {
@@ -196,6 +212,26 @@
 /* Card styles */
 .content-card {
   @apply bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl;
+}
+
+.card-base {
+  @apply bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300;
+}
+
+.card-hover {
+  @apply hover:shadow-lg hover:-translate-y-1 cursor-pointer;
+}
+
+.card-image {
+  @apply w-full h-full object-cover transition-transform duration-500 group-hover:scale-105;
+}
+
+.card-text-overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent;
+}
+
+.card-content {
+  @apply p-6;
 }
 
 /* Gradient overlays */
