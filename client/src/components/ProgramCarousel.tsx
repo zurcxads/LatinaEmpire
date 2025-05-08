@@ -105,7 +105,7 @@ const ProgramCarousel = () => {
   const events = TONY_ROBBINS_EVENTS;
 
   return (
-    <section className="bg-black py-16 md:py-24">
+    <section className="bg-black section-spacing">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-end mb-8">
           <div className="flex items-end gap-4">

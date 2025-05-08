@@ -228,7 +228,7 @@ const AboutFounder = () => {
       </section>
 
       {/* The Spark / Rise to Entrepreneurship */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="section-spacing bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -268,7 +268,7 @@ const AboutFounder = () => {
       </section>
 
       {/* Dual Cards CTA Section */}
-      <section className="py-16 md:py-20 bg-black">
+      <section className="section-spacing bg-black">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {/* Card 1 - Framework for Success */}

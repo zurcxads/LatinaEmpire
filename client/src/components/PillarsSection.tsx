@@ -73,7 +73,7 @@ const PillarsSection = () => {
     : "https://images.unsplash.com/photo-1575408264798-b50b252663e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80";
 
   return (
-    <section className="py-20 md:py-24 bg-white">
+    <section className="section-spacing bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
           {/* Left column: Text */}
