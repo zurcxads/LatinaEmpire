@@ -23,12 +23,11 @@ const Hero = () => {
         {/* Hero container - full width, rounded corners like Tony's site */}
         <div className="mx-4 my-4 rounded-3xl overflow-hidden">
           {/* Content container with fixed height and absolute positioning for content */}
-          <div className="relative w-full min-h-[700px] h-[90vh] overflow-hidden">
+          <div className="relative w-full min-h-[700px] h-[90vh] pt-20 overflow-hidden">
             {/* Main content area - absolutely positioned directly at bottom left with minimal margin */}
             <div className="absolute bottom-12 left-8 md:left-16 z-10 max-w-4xl">
-              <h1 className="text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 leading-[0.9] tracking-tighter">
+              <h1 className="text-white text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-bold mb-4 leading-[0.95] tracking-tighter mt-20">
                 <span className="sm:hidden block">
-                  Elevate<br/>
                   Your<br/>
                   Leadership,<br/>
                   Expand<br/>
@@ -36,7 +35,6 @@ const Hero = () => {
                   Legacy
                 </span>
                 <span className="hidden sm:block">
-                  Elevate<br />
                   Your<br />
                   Leadership,<br />
                   Expand<br />
