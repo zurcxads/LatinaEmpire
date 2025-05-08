@@ -54,7 +54,7 @@ const AboutFounder = () => {
       </section>
 
       {/* Inspirational Quote Section */}
-      <section className="py-20 md:py-24 bg-white">
+      <section className="section-spacing bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center">
             <p className="font-serif text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight text-gray-900">
@@ -65,7 +65,7 @@ const AboutFounder = () => {
       </section>
 
       {/* Early Life Section */}
-      <section className="py-16 md:py-20 bg-white" id="early-life">
+      <section className="section-spacing bg-white" id="early-life">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <div className="relative">
@@ -98,7 +98,7 @@ const AboutFounder = () => {
       </section>
       
       {/* Guiding Principles Section */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="section-spacing bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <div>
@@ -131,7 +131,7 @@ const AboutFounder = () => {
       </section>
       
       {/* Life Dedication Section */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="section-spacing bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <div className="relative">
@@ -163,7 +163,7 @@ const AboutFounder = () => {
       </section>
 
       {/* Quote Section */}
-      <section className="relative py-24 overflow-hidden bg-black">
+      <section className="relative section-spacing overflow-hidden bg-black">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-black/80 z-10"></div>
@@ -200,7 +200,7 @@ const AboutFounder = () => {
       </section>
       
       {/* Impact Carousel Section */}
-      <section className="py-16 md:py-20 bg-black">
+      <section className="section-spacing bg-black">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <p className="font-serif text-2xl md:text-2xl lg:text-3xl text-white leading-tight">
