@@ -46,7 +46,7 @@ interface PillarWordProps {
 
 const PillarWord = ({ pillar, isHovered, onMouseEnter, onMouseLeave }: PillarWordProps) => (
   <div 
-    className="relative" 
+    className="flex items-center group relative" 
     onMouseEnter={onMouseEnter} 
     onMouseLeave={onMouseLeave}
   >
@@ -59,6 +59,20 @@ const PillarWord = ({ pillar, isHovered, onMouseEnter, onMouseLeave }: PillarWor
     >
       {pillar.name}
     </h3>
+    
+    {/* Explore button that appears on hover */}
+    <div 
+      className={cn(
+        "ml-6 transition-all duration-300 overflow-hidden",
+        isHovered ? "max-w-[200px] opacity-100" : "max-w-0 opacity-0"
+      )}
+    >
+      <Link href={pillar.link}>
+        <button className="rounded-full border border-black px-4 py-2 text-sm hover:bg-black hover:text-white transition flex items-center">
+          Explore <ArrowRight className="ml-2 h-3 w-3" />
+        </button>
+      </Link>
+    </div>
   </div>
 );
 
@@ -98,12 +112,26 @@ const PillarsSection = () => {
             </div>
           </div>
           
-          {/* Right column: Image Panel - matching the reference exactly */}
+          {/* Right column: Image Panel - with transitions when hovering */}
           <div className="order-1 md:order-2">
             <div className="rounded-xl overflow-hidden shadow-md">
-              {/* Simplified gradient panel exactly like the reference image */}
               <div className="relative w-full aspect-square md:aspect-auto md:h-full">
-                <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-400/90 via-fuchsia-500/80 to-blue-400/70 transition-opacity duration-500 ease-in-out"></div>
+                {/* Default gradient background visible at all times */}
+                <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-400/90 via-fuchsia-500/80 to-blue-400/70 z-0"></div>
+                
+                {/* Images that fade in/out based on hover */}
+                {LATINA_EMPIRE_PILLARS.map(pillar => (
+                  <img
+                    key={pillar.id}
+                    src={getImageSrc(pillar.image, true)}
+                    alt={`${pillar.name} pillar visualization`}
+                    className={cn(
+                      "absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out",
+                      hoveredPillar === pillar.id ? "opacity-60 z-10" : "opacity-0 z-0"
+                    )}
+                    onError={createImageErrorHandler()}
+                  />
+                ))}
               </div>
             </div>
           </div>
