@@ -150,7 +150,7 @@ const Events = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       {/* Hero Section */}
-      <section className="pt-28 pb-16 bg-black text-white">
+      <section className="hero-navbar-spacing pt-10 pb-16 bg-black text-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
             <div className="lg:max-w-2xl mb-0">
@@ -176,7 +176,7 @@ const Events = () => {
       </section>
 
       {/* Intro Text Area */}
-      <section className="pt-16 pb-8 bg-white">
+      <section className="pt-16 pb-8 bg-white spacing-compact">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-xl text-gray-700 leading-relaxed">
@@ -187,7 +187,7 @@ const Events = () => {
       </section>
           
       {/* Events Section */}
-      <section className="py-12 bg-white">
+      <section className="section-spacing bg-white">
         <div className="container mx-auto px-4 md:px-6">
           
           {isLoadingUpcoming ? (
