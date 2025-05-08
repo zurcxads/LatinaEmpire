@@ -140,7 +140,7 @@ const Testimonial = () => {
           <img 
             src={getImageSrc(activeTestimonial.backgroundImage || activeTestimonial.image, true)} 
             alt=""
-            className="w-full h-full object-cover object-center opacity-40"
+            className="card-image object-center opacity-40"
             onError={createImageErrorHandler()}
           />
         </div>
@@ -195,7 +195,7 @@ const Testimonial = () => {
                           <img 
                             src={getImageSrc(testimonial.image, true)} 
                             alt={testimonial.name} 
-                            className="w-full h-full object-cover"
+                            className="card-image" 
                             onError={createImageErrorHandler()}
                           />
                         </div>

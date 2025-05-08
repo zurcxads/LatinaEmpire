@@ -24,7 +24,7 @@ const FounderSection = () => {
             <div>
               <Button 
                 asChild
-                className="bg-black text-white hover:bg-gray-800 transition-colors px-8 py-3 rounded-full font-medium inline-flex items-center"
+                className="cta-button bg-black text-white hover:bg-gray-800 transition-colors"
               >
                 <Link href="/about-founder">
                   Meet Perla
@@ -40,7 +40,7 @@ const FounderSection = () => {
               <img 
                 src={getImageSrc("https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", true)}
                 alt="Perla Tamez Casasnovas, Founder of Latina Empire" 
-                className="w-full h-full object-cover"
+                className="card-image"
                 onError={createImageErrorHandler()}
               />
             </div>
