@@ -225,6 +225,10 @@
   @apply bg-black text-white hover:bg-gray-800 transition-colors px-8 py-3 rounded-full font-medium inline-flex items-center;
 }
 
+.cta-button-large {
+  @apply bg-black text-white hover:bg-gray-800 transition-colors px-10 py-4 rounded-full font-medium text-lg inline-flex items-center shadow-lg;
+}
+
 /* Card styles */
 .content-card {
   @apply bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl;
@@ -253,6 +257,10 @@
 /* Gradient overlays */
 .overlay-gradient {
   @apply absolute inset-0 bg-gradient-to-br from-black/80 to-transparent;
+}
+
+.hero-gradient-overlay {
+  @apply absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black;
 }
 
 /* Hero specific styles that extend the global styles */

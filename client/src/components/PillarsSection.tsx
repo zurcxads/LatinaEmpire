@@ -156,7 +156,7 @@ const PillarsSection = () => {
               <img 
                 src={currentImage}
                 alt="Lifestyle image" 
-                className="w-full h-full object-cover transition-opacity duration-300 ease-in-out"
+                className="card-image transition-opacity duration-300 ease-in-out"
               />
             </div>
           </div>
