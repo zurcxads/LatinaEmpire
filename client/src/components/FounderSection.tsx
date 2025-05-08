@@ -24,7 +24,7 @@ const FounderSection = () => {
             <div>
               <Button 
                 asChild
-                className="secondary-button px-6 py-3"
+                className="bg-black text-white hover:bg-gray-800 transition-colors px-8 py-3 rounded-full font-medium inline-flex items-center"
               >
                 <Link href="/about-founder">
                   Meet Perla
