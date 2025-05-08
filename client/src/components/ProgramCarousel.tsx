@@ -157,15 +157,7 @@ const ProgramCarousel = () => {
           </div>
         </div>
         
-        {/* Pagination dots like in reference */}
-        <div className="flex justify-center mt-6 gap-1">
-          {[0, 1, 2, 3].map((index) => (
-            <div 
-              key={index} 
-              className={`w-1.5 h-1.5 rounded-full ${index === 0 ? 'bg-white' : 'bg-white/30'}`}
-            />
-          ))}
-        </div>
+{/* Pagination dots removed as requested */}
       </div>
     </section>
   );

@@ -16,16 +16,16 @@ const FinalCTA = () => {
     <>
       <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
       
-      <section className="py-20 md:py-28 px-6 md:px-12 bg-gradient-to-br from-magenta/40 to-magenta/10 relative overflow-hidden rounded-t-3xl mt-16">
-        {/* Single gradient overlay for background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-magenta/30 to-magenta/5 z-0 backdrop-blur-sm"></div>
+      <section className="py-20 md:py-28 px-6 md:px-12 bg-gradient-to-br from-magenta/60 to-magenta/20 relative overflow-hidden rounded-t-3xl mt-16">
+        {/* Darker gradient overlay for better text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/50 to-black/30 z-0 backdrop-blur-sm"></div>
         
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl mb-6 text-black leading-tight tracking-tight">
+            <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl mb-6 text-white leading-tight tracking-tight">
               Ready to Transform Your Life & Legacy?
             </h2>
-            <p className="font-sans text-lg md:text-xl text-gray-800 mb-10 max-w-3xl mx-auto leading-relaxed">
+            <p className="font-sans text-lg md:text-xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed">
               Join thousands of ambitious Latinas taking the next step toward leadership, clarity, and generational impact.
             </p>
             

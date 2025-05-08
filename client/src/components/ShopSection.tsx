@@ -118,21 +118,7 @@ const ShopSection = () => {
             </CarouselContent>
           </Carousel>
           
-          {/* Carousel Progress Indicator */}
-          <div className="flex justify-center mt-6 gap-2">
-            {products.map((_, index) => (
-              <button
-                key={index}
-                className={`h-1.5 rounded-full transition-all ${
-                  index === currentSlide % products.length 
-                    ? "w-6 bg-magenta" 
-                    : "w-3 bg-gray-600 hover:bg-gray-500"
-                }`}
-                onClick={() => carouselApi?.scrollTo(index)}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+{/* Carousel dots removed as requested */}
         </div>
       </div>
     </section>
