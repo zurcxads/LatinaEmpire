@@ -89,9 +89,7 @@ const Navbar = () => {
           items: [
             { label: "Our Story", href: "/about-founder" },
             { label: "Global Leaders Network", href: "/leaders" },
-            { label: "Become a Leader", href: "/programs/certification" },
-            { label: "Manahood Chapters", href: "/manahood" },
-            { label: "Start a Chapter", href: "/manahood/start" }
+            { label: "Manahood Chapters", href: "/manahood" }
           ]
         }
       ]
