@@ -90,7 +90,7 @@ const BrandIntro = () => {
           <div className="text-center">
             <Button 
               onClick={() => setIsModalOpen(true)}
-              className="accent-button text-lg px-8 py-3 font-semibold shadow-md"
+              className="bg-magenta text-white hover:bg-magenta/90 rounded-full text-lg px-8 py-3 font-medium shadow-lg"
               size="lg"
             >
               Begin Your Transformation

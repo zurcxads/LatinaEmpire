@@ -35,10 +35,10 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
           <img 
             src={getImageSrc(nextEvent.bannerImage || nextEvent.image, true)} 
             alt={nextEvent.name}
-            className="w-full aspect-video object-cover"
+            className="card-image aspect-video"
             onError={createImageErrorHandler()}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20" />
+          <div className="card-text-overlay" />
           <div className="absolute inset-0 p-4 flex flex-col justify-end">
             <div className="mb-1 text-xs font-medium text-white/80">
               {new Date(nextEvent.date).toLocaleDateString('en-US', {
@@ -52,7 +52,7 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
             <Button 
               asChild
               size="sm"
-              className="outline-button w-fit"
+              className="border-2 border-white text-white bg-transparent hover:bg-white/10 rounded-full py-1 px-3 font-medium w-fit"
             >
               <Link href={`/events/${nextEvent.slug}`}>
                 Details
@@ -77,7 +77,7 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
                 <img 
                   src={getImageSrc(nextEvent.bannerImage || nextEvent.image, true)} 
                   alt={nextEvent.name} 
-                  className="w-full h-full object-cover"
+                  className="card-image"
                   onError={createImageErrorHandler()}
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent md:bg-gradient-to-l" />
@@ -114,7 +114,7 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
                 <div className="flex flex-wrap gap-3">
                   <Button 
                     asChild
-                    className="primary-button"
+                    className="bg-white text-black hover:bg-gray-100 rounded-full py-3 px-6 font-medium shadow-lg"
                   >
                     <Link href={`/events/${nextEvent.slug}`}>
                       Event Details
@@ -124,7 +124,7 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
                   
                   <Button 
                     onClick={() => setIsModalOpen(true)}
-                    className="outline-button"
+                    className="border-2 border-white text-white bg-transparent hover:bg-white/10 rounded-full py-3 px-6 font-medium"
                   >
                     Join Waitlist
                   </Button>

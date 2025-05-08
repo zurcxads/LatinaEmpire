@@ -27,7 +27,7 @@ const Hero = () => {
 
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className="primary-button text-lg py-3 px-8"
+                className="bg-white text-black hover:bg-gray-100 rounded-full font-medium text-lg py-3 px-8 shadow-lg"
               >
                 Join Now
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -45,11 +45,11 @@ const Hero = () => {
 
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black z-10" />
+          <div className="hero-gradient-overlay z-10" />
           <img 
             src={getImageSrc("https://images.unsplash.com/photo-1531058020387-3be344556be6", true)}
             alt="Conference stage with audience" 
-            className="w-full h-full object-cover"
+            className="card-image"
             onError={createImageErrorHandler()}
           />
         </div>
