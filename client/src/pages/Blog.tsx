@@ -366,7 +366,7 @@ const Blog = () => {
                     </div>
                   </div>
                   <img 
-                    src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" 
+                    src="https://images.pexels.com/photos/7742774/pexels-photo-7742774.jpeg" 
                     alt="Latina Empire Leadership Summit" 
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                     onError={(e) => {
@@ -379,7 +379,7 @@ const Blog = () => {
                     Leadership Summit 2023: Building Your Empire From Scratch
                   </h3>
                   <a 
-                    href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
+                    href="#" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center bg-white text-magenta border border-magenta hover:bg-magenta hover:text-white transition-colors px-5 py-2 rounded-full text-sm font-medium"
@@ -399,7 +399,7 @@ const Blog = () => {
                     </div>
                   </div>
                   <img 
-                    src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" 
+                    src="https://images.pexels.com/photos/7709020/pexels-photo-7709020.jpeg" 
                     alt="Latina Empire Financial Masterclass" 
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                     onError={(e) => {
@@ -412,7 +412,7 @@ const Blog = () => {
                     Financial Masterclass: Investing Strategies for Latina Entrepreneurs
                   </h3>
                   <a 
-                    href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
+                    href="#" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center bg-white text-magenta border border-magenta hover:bg-magenta hover:text-white transition-colors px-5 py-2 rounded-full text-sm font-medium"
@@ -432,7 +432,7 @@ const Blog = () => {
                     </div>
                   </div>
                   <img 
-                    src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" 
+                    src="https://images.pexels.com/photos/3184302/pexels-photo-3184302.jpeg" 
                     alt="Latina Empire Interviews" 
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                     onError={(e) => {
@@ -445,7 +445,7 @@ const Blog = () => {
                     Interview Series: Conversations with Successful Latina Leaders
                   </h3>
                   <a 
-                    href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
+                    href="#" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center bg-white text-magenta border border-magenta hover:bg-magenta hover:text-white transition-colors px-5 py-2 rounded-full text-sm font-medium"
@@ -458,7 +458,7 @@ const Blog = () => {
             
             <div className="text-center mt-12">
               <a 
-                href="https://www.youtube.com/channel/UC-lHJZR3Gqxm24_Vd_AJ5Yw" 
+                href="#" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-magenta hover:bg-magenta/90 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 shadow-md hover:shadow-lg"
