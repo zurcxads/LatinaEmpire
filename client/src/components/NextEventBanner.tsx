@@ -22,13 +22,13 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
 
   // Return the styled version for both desktop and mobile
   return (
-    <div className="w-full overflow-hidden rounded-md bg-black/90">
+    <div className="w-full overflow-hidden rounded-md bg-gradient-to-br from-magenta/20 to-black/80 shadow-lg border border-white/10">
       <div className="relative">
         {/* Event image with dark overlay */}
         <img 
           src={getImageSrc(nextEvent.bannerImage || nextEvent.image, true)} 
           alt={nextEvent.name}
-          className="w-full aspect-video object-cover"
+          className="w-full aspect-video object-cover opacity-80"
           onError={createImageErrorHandler()}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40"></div>
@@ -39,10 +39,10 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
           <div>
             {/* Desktop event info */}
             <div className="hidden lg:block">
-              <h3 className="text-white text-lg font-bold leading-tight mb-2">{nextEvent.name}</h3>
+              <h3 className="text-white text-lg font-bold leading-tight mb-2">{nextEvent.name.replace("Latina Empire", "")}</h3>
               
               {/* Event Date and Location - desktop only */}
-              <div className="text-white/80 text-xs flex items-center mb-1">
+              <div className="text-white/90 text-xs flex items-center mb-1">
                 <span className="truncate">{new Date(nextEvent.date).toLocaleDateString('en-US', {
                   weekday: 'short',
                   month: 'short', 
@@ -53,16 +53,16 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
                 }
               </div>
               
-              <div className="text-white/80 text-xs">
+              <div className="text-white/90 text-xs">
                 <span className="truncate">{nextEvent.location}</span>
               </div>
             </div>
             
             {/* Mobile event info (simpler) */}
             <div className="block lg:hidden">
-              <h3 className="text-white text-base font-bold leading-tight mb-1">{nextEvent.name}</h3>
+              <h3 className="text-white text-base font-bold leading-tight mb-1">{nextEvent.name.replace("Latina Empire", "")}</h3>
               
-              <div className="text-white/80 text-xs mb-1">
+              <div className="text-white/90 text-xs mb-1">
                 {new Date(nextEvent.date).toLocaleDateString('en-US', {
                   month: 'short', 
                   day: 'numeric'
@@ -84,11 +84,6 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
                 Learn More
               </Link>
             </Button>
-            
-            {/* RPM-like label in bottom right (mimicking Tony design) */}
-            <div className="text-white text-sm font-bold hidden lg:block">
-              {nextEvent.name.split(' ')[0]}
-            </div>
           </div>
         </div>
       </div>

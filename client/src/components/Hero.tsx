@@ -66,11 +66,12 @@ const Hero = () => {
               </div>
             </div>
             
-            {/* Next Event sidebar - visible only on desktop in the hero */}
-            <div className="absolute right-10 bottom-16 w-[300px] hidden lg:block">
+            {/* Next Event sidebar - visible only on desktop in the hero, aligned with buttons */}
+            <div className="absolute right-10 bottom-12 w-[300px] hidden lg:block">
               <div className="relative">
-                <div className="absolute top-0 right-0 z-10 py-1 px-3 bg-black/40 text-white text-xs uppercase tracking-wider font-semibold">
-                  NEXT EVENT
+                <div className="flex items-center absolute -top-8 left-0 z-10 py-1">
+                  <div className="h-2 w-2 rounded-full bg-magenta mr-2 animate-pulse"></div>
+                  <span className="text-sm font-medium uppercase tracking-wider text-white">Next Event</span>
                 </div>
                 <NextEventBanner compact={true} />
               </div>
@@ -96,7 +97,7 @@ const Hero = () => {
       <div className="lg:hidden bg-black px-4 pb-8">
         <div className="mb-2 py-2 flex items-center">
           <div className="h-2 w-2 rounded-full bg-magenta mr-2 animate-pulse"></div>
-          <span className="text-sm font-semibold tracking-widest uppercase text-white">Next Event</span>
+          <span className="text-sm font-medium uppercase tracking-wider text-white">Next Event</span>
         </div>
         <NextEventBanner compact={true} />
       </div>
