@@ -401,49 +401,132 @@ const Membership = () => {
       </section>
       
       {/* Testimonials Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-24 bg-white relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-1/3 right-0 w-64 h-64 bg-magenta/5 rounded-full translate-x-1/3"></div>
+        <div className="absolute bottom-1/3 left-0 w-96 h-96 bg-magenta/5 rounded-full -translate-x-1/3"></div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-4xl font-serif font-bold mb-4">Member Success Stories</h2>
-            <p className="text-xl text-gray-600">
+            <div className="inline-flex items-center bg-magenta/10 px-3 py-1 rounded-full backdrop-blur-sm mb-4">
+              <span className="text-xs uppercase tracking-wider font-medium text-magenta">Real Results</span>
+            </div>
+            <h2 className="font-serif text-3xl md:text-5xl font-bold mb-5 tracking-tight">
+              Member Success Stories
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
               Hear from women who have transformed their lives through our community.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <MemberTestimonial 
-              quote="Since joining the Latina Empire, I've connected with mentors who helped me launch my business with confidence. The resources and community support have been invaluable."
-              name="Maria Rodriguez"
-              role="Business Owner, VIP Member"
-              image="/assets/placeholder-image.png"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+            {/* Enhanced testimonial cards */}
+            <div className="bg-white rounded-2xl shadow-xl p-8 relative border border-gray-100">
+              <div className="absolute -top-5 -left-5 w-12 h-12 bg-gradient-to-br from-magenta to-magenta/70 rounded-full flex items-center justify-center text-white font-serif text-2xl shadow-lg">
+                "
+              </div>
+              
+              <div className="pt-4">
+                <p className="text-gray-700 italic mb-8 text-lg leading-relaxed">
+                  "Since joining the Latina Empire, I've connected with mentors who helped me launch my business with confidence. The resources and community support have been invaluable."
+                </p>
+                
+                <div className="flex items-center mt-4 border-t border-gray-100 pt-4">
+                  <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-magenta/20">
+                    <img 
+                      src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=150"
+                      alt="Maria Rodriguez" 
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.currentTarget.src = "/assets/placeholder-image.png";
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900">Maria Rodriguez</h4>
+                    <p className="text-magenta text-sm">Business Owner, VIP Member</p>
+                  </div>
+                </div>
+              </div>
+            </div>
             
-            <MemberTestimonial 
-              quote="The Premium membership has paid for itself many times over. The connections I've made and the skills I've developed through the workshops have directly contributed to my career advancement."
-              name="Isabella Martinez"
-              role="Marketing Director, Premium Member"
-              image="/assets/placeholder-image.png"
-            />
+            <div className="bg-white rounded-2xl shadow-xl p-8 relative border border-gray-100">
+              <div className="absolute -top-5 -left-5 w-12 h-12 bg-gradient-to-br from-magenta to-magenta/70 rounded-full flex items-center justify-center text-white font-serif text-2xl shadow-lg">
+                "
+              </div>
+              
+              <div className="pt-4">
+                <p className="text-gray-700 italic mb-8 text-lg leading-relaxed">
+                  "The Premium membership has paid for itself many times over. The connections I've made and the skills I've developed through the workshops have directly contributed to my career advancement."
+                </p>
+                
+                <div className="flex items-center mt-4 border-t border-gray-100 pt-4">
+                  <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-magenta/20">
+                    <img 
+                      src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150"
+                      alt="Isabella Martinez" 
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.currentTarget.src = "/assets/placeholder-image.png";
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900">Isabella Martinez</h4>
+                    <p className="text-magenta text-sm">Marketing Director, Premium Member</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
       
       {/* Final CTA Section */}
-      <section className="py-20 bg-black text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-8">
-              Claim Your Seat at the Table
+      <section className="relative py-32 overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 z-0">
+          {/* Background gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black z-10"></div>
+          
+          {/* Radial gradient for visual interest */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#f23889,_transparent)] opacity-10 z-20 pointer-events-none"></div>
+          
+          {/* Background image */}
+          <img 
+            src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg"
+            alt="Latina Leaders Collaborating"
+            className="w-full h-full object-cover absolute inset-0"
+            onError={(e) => {
+              e.currentTarget.src = "https://images.pexels.com/photos/3184299/pexels-photo-3184299.jpeg";
+            }}
+          />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-30">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="font-serif text-4xl md:text-6xl font-bold mb-8 text-white leading-tight tracking-tight">
+              Claim Your Seat <br/>at the Table
             </h2>
-            <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+            
+            <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">
               Join a community of powerful Latina leaders who are changing the world through leadership, innovation, and connection.
             </p>
-            <Link href="/join">
-              <Button className="bg-magenta hover:bg-magenta/90 text-white rounded-full text-lg py-6 px-10">
-                Join Latina Empire
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link href="/join">
+                <Button className="bg-white text-black hover:bg-white/90 hover:text-magenta rounded-full px-10 py-6 h-auto text-lg font-medium transition-all shadow-xl hover:shadow-white/30">
+                  Join Latina Empire
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              
+              <Link href="/contact">
+                <Button variant="outline" className="bg-transparent text-white border-2 border-white/50 hover:border-white rounded-full px-10 py-6 h-auto text-lg transition-all">
+                  Contact Us
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
