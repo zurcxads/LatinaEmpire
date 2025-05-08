@@ -89,7 +89,7 @@ const Leaders = () => {
             <div className="inline-flex items-center bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm mb-8">
               <span className="text-sm uppercase tracking-wider font-medium text-white">Global Network</span>
             </div>
-            <h1 className="font-serif font-bold text-4xl md:text-5xl mb-6 text-white">Meet Our Ambassadors</h1>
+            <h1 className="font-serif font-bold text-4xl md:text-5xl mb-6 text-white">Meet Our Community Leaders</h1>
             <p className="font-sans text-lg text-white/80 mb-8 max-w-2xl mx-auto">
               Powerful Latinas leading the Empire movement across the globe, creating impact and transforming communities.
             </p>
@@ -105,14 +105,14 @@ const Leaders = () => {
         </div>
       </section>
       
-      {/* Ambassadors Grid */}
+      {/* Leaders Grid */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="font-serif font-bold text-2xl text-black mb-4">Our Global Community</h2>
             <div className="w-20 h-1 bg-magenta mx-auto mb-4"></div>
             <p className="text-black/70">
-              Discover our network of ambassadors leading the Latina Empire movement across the globe
+              Discover our network of community leaders driving the Latina Empire movement across the globe
             </p>
           </div>
           
@@ -157,16 +157,16 @@ const Leaders = () => {
         </div>
       </section>
       
-      {/* Join as Ambassador CTA */}
+      {/* Join as Leader CTA */}
       <section className="py-20 bg-center bg-cover bg-black" style={{ backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("/images/ambassador-cta-bg.jpg")' }}>
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm mb-6">
               <span className="text-sm uppercase tracking-wider font-medium text-white">Join Our Movement</span>
             </div>
-            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6 text-white">Become a Latina Empire Ambassador</h2>
+            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6 text-white">Become a Latina Empire Leader</h2>
             <p className="font-sans text-white/80 mb-8 max-w-2xl mx-auto">
-              Are you passionate about empowering Latinas in your community? Join our global network of ambassadors and lead the movement in your region.
+              Are you passionate about empowering Latinas in your community? Join our global network of leaders and drive the movement in your region.
             </p>
             <Button className="bg-magenta hover:bg-magenta/90 text-white px-8 py-6 h-auto rounded-full text-lg shadow-[0_0_20px_rgba(242,56,137,0.4)]">
               Apply Now
@@ -180,4 +180,4 @@ const Leaders = () => {
   );
 };
 
-export default Ambassadors;
+export default Leaders;
