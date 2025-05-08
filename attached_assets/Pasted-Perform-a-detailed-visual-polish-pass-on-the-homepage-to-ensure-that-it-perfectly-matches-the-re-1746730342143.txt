@@ -1,0 +1,97 @@
+Perform a detailed visual polish pass on the homepage (/) to ensure that it perfectly matches the refined aesthetic and structural system now used across the rest of the site. This page sets the tone for the brand, so polish with care — maintaining existing visual impact while correcting layout, alignment, responsiveness, and spacing inconsistencies.
+
+🔒 DO NOT ALTER:
+✅ Hero Section (Hero.tsx)
+
+Keep layout, background, typography, button styles, and scroll behavior intact.
+
+✅ Testimonials Section (Testimonial.tsx)
+
+Do not change layout, quote formatting, or imagery. This section is finalized.
+
+🔄 REPLACE: PodcastSection.tsx → MediaSection.tsx
+Create a new MediaSection to reflect the expanded blog/media presence on the site:
+
+Title: Latina Empire In the Media
+Description:
+“Watch and read features about Latina Empire — from interviews and video reels to press stories that inspire.”
+
+Display format:
+
+3 content blocks (YouTube videos, blog features, press links)
+
+Each block includes:
+
+Thumbnail or placeholder
+
+Title (max 2 lines, serif heading)
+
+Source (e.g., YouTube, Forbes, Interview)
+
+CTA: “Watch” or “Read” → external or internal route
+
+CTA Button below:
+“Explore Blog & Media” → /blog
+
+✨ GLOBAL POLISH & REFINEMENT
+🧱 Section Structure + Spacing
+Apply consistent section-spacing utility to all sections
+
+Ensure consistent top and bottom padding across all layout blocks
+
+Confirm spacing above and below CTA blocks, including FinalCTA.tsx
+
+🧭 Navbar + Hero
+Ensure .hero-navbar-spacing is applied to prevent overlap
+
+Confirm hero text stays vertically centered across all screen sizes
+
+🎯 Buttons + CTAs
+Confirm all buttons use the correct rounded-full format, hover styles, and color scheme
+
+Verify all CTA buttons are functioning and routed properly (e.g., shop, join, events, programs)
+
+Fix or replace any remaining placeholder buttons
+
+📱 Mobile + Responsiveness
+Test entire homepage on small screens (≤ 640px):
+
+No horizontal scroll
+
+Cards (programs, shop, media, events) collapse to single-column stacks
+
+Padding/margins adapt to mobile without crowding or overlap
+
+Ensure carousels are touch-friendly and don’t break layout
+
+Make sure button groups (like in CTASection or FinalCTA) wrap cleanly on mobile
+
+🧩 General Layout Consistency
+Ensure all cards (Programs, Shop, Impact, Events) use the same:
+
+Border radius
+
+Drop shadow
+
+Hover effect
+
+Font sizing and hierarchy
+
+Check carousel arrows, icons, and spacing are visually aligned
+
+🖼 Visual Quality
+Confirm all background gradients or image overlays maintain legibility and contrast
+
+Use soft radial blur or brand-accented overlays to match /about-founder and /donate
+
+✅ Final Checklist:
+No layout overlaps or hero bleed issues
+
+Buttons behave identically across sections
+
+Spacing feels consistent with /programs, /leaders, /blog
+
+Media section cleanly replaces podcast block
+
+Mobile layout is tested and fully optimized
+
