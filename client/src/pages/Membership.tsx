@@ -146,24 +146,42 @@ const Membership = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-black to-magenta/50 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="flex items-center gap-2 justify-center mb-4">
-              <Circle className="w-2 h-2 fill-magenta text-magenta" />
-              <span className="uppercase tracking-widest text-sm">EXCLUSIVE ACCESS</span>
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-black text-white">
+        {/* Empty space for nav bar */}
+        <div className="h-16 w-full absolute top-0 left-0 z-20"></div>
+        
+        {/* Container with padding for rounded corners - Similar to about-founder */}
+        <div className="absolute inset-x-8 top-24 bottom-8 rounded-3xl overflow-hidden z-0">
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent z-10"></div>
+          <img 
+            src="https://images.pexels.com/photos/3184423/pexels-photo-3184423.jpeg"
+            alt="Latina Leaders in Conference"
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.currentTarget.src = "https://images.pexels.com/photos/7096497/pexels-photo-7096497.jpeg";
+            }}
+          />
+        </div>
+        
+        {/* Radial gradients for depth and visual interest */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#f23889,_transparent)] opacity-20 z-20 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_#140a1f,_transparent)] opacity-40 z-30 pointer-events-none"></div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-50 pt-20 md:pt-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm mb-8">
+              <span className="text-sm uppercase tracking-wider font-medium text-white">Premium Access</span>
             </div>
-            
-            <h1 className="text-5xl md:text-6xl font-serif mb-6">
-              Join the Movement
+            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight mb-6">
+              Join the Latina Empire
             </h1>
-            
-            <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-              Access exclusive resources, mentorship, and a global community of empowered Latinas.
+            <p className="font-sans text-lg md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed">
+              Choose your path. Unlock your access. Build your legacy.
             </p>
-            
             <Link href="/join">
-              <Button className="bg-magenta hover:bg-magenta/90 text-white rounded-full text-lg py-6 px-10">
+              <Button className="bg-white text-black hover:bg-white/90 hover:text-magenta rounded-full px-10 py-6 h-auto text-lg transition-all shadow-xl hover:shadow-magenta hover:scale-102">
                 Become a Member
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -173,102 +191,211 @@ const Membership = () => {
       </section>
       
       {/* Why Join Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-24 bg-white relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-magenta/5 rounded-full -translate-y-1/2 translate-x-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-magenta/5 rounded-full translate-y-1/2 -translate-x-1/3"></div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-4xl font-serif font-bold mb-4">Why Join?</h2>
-            <p className="text-xl text-gray-600">
+            <div className="inline-flex items-center bg-magenta/10 px-3 py-1 rounded-full backdrop-blur-sm mb-4">
+              <span className="text-xs uppercase tracking-wider font-medium text-magenta">Your Membership Benefits</span>
+            </div>
+            <h2 className="font-serif text-3xl md:text-5xl font-bold mb-5 tracking-tight">
+              Why Join Latina Empire?
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
               Become part of a powerful network designed to help Latina leaders thrive personally and professionally.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <BenefitCard 
-              icon={<Calendar className="h-6 w-6" />}
-              title="Monthly Calls"
-              description="Connect with mentors and peers through structured group calls for guidance and support."
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+            {/* Enhanced BenefitCard component */}
+            <div className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 p-6 hover:border-magenta/20 hover:-translate-y-1">
+              <div className="w-14 h-14 bg-gradient-to-br from-magenta to-magenta/70 rounded-xl flex items-center justify-center shadow-md mb-5">
+                <Calendar className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="font-serif font-bold text-xl mb-3 group-hover:text-magenta transition-colors">
+                Exclusive Workshops
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Access to training and development programs others pay thousands for. Learn from industry experts.
+              </p>
+            </div>
             
-            <BenefitCard 
-              icon={<Video className="h-6 w-6" />}
-              title="Exclusive Workshops"
-              description="Access workshops and training sessions only available to members."
-            />
+            <div className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 p-6 hover:border-magenta/20 hover:-translate-y-1">
+              <div className="w-14 h-14 bg-gradient-to-br from-magenta to-magenta/70 rounded-xl flex items-center justify-center shadow-md mb-5">
+                <Video className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="font-serif font-bold text-xl mb-3 group-hover:text-magenta transition-colors">
+                Community Calls
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Connect with mentors and peers through structured group calls for guidance, support and network expansion.
+              </p>
+            </div>
             
-            <BenefitCard 
-              icon={<BookOpen className="h-6 w-6" />}
-              title="Digital Library"
-              description="Unlimited access to templates, masterclasses, and educational resources."
-            />
+            <div className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 p-6 hover:border-magenta/20 hover:-translate-y-1">
+              <div className="w-14 h-14 bg-gradient-to-br from-magenta to-magenta/70 rounded-xl flex items-center justify-center shadow-md mb-5">
+                <BookOpen className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="font-serif font-bold text-xl mb-3 group-hover:text-magenta transition-colors">
+                Digital Vault
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Unlimited access to templates, masterclasses, replays, and educational resources for your success.
+              </p>
+            </div>
             
-            <BenefitCard 
-              icon={<Globe className="h-6 w-6" />}
-              title="Global Sisterhood"
-              description="Join a community-led accountability network that spans across countries."
-            />
+            <div className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 p-6 hover:border-magenta/20 hover:-translate-y-1">
+              <div className="w-14 h-14 bg-gradient-to-br from-magenta to-magenta/70 rounded-xl flex items-center justify-center shadow-md mb-5">
+                <Crown className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="font-serif font-bold text-xl mb-3 group-hover:text-magenta transition-colors">
+                VIP Benefits
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Event discounts, exclusive merchandise, priority access to new programs, and private community spaces.
+              </p>
+            </div>
           </div>
         </div>
       </section>
       
       {/* Membership Tiers */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+      <section className="py-24 bg-gray-50 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-magenta/10 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-magenta/10 to-transparent rounded-full blur-3xl"></div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-4xl font-serif font-bold mb-4">Membership Tiers</h2>
-            <p className="text-xl text-gray-600">
-              Choose the level of access and support that fits your journey.
+            <div className="inline-flex items-center bg-magenta/10 px-3 py-1 rounded-full backdrop-blur-sm mb-4">
+              <span className="text-xs uppercase tracking-wider font-medium text-magenta">Select Your Plan</span>
+            </div>
+            <h2 className="font-serif text-3xl md:text-5xl font-bold mb-5 tracking-tight">
+              Membership Tiers
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Choose the level of access and support that fits your journey and ambitions.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <MembershipTier 
-              title="Free Access"
-              price="$0"
-              billingPeriod="month"
-              description="Perfect for those just beginning their journey"
-              features={[
-                "Access to blog content",
-                "Podcast episodes",
-                "Basic community forum access",
-                "Monthly newsletter"
-              ]}
-              ctaText="Join Free"
-              ctaHref="/join?plan=free"
-            />
+            {/* Free Tier */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:border-gray-300 flex flex-col h-full">
+              <div className="p-8 bg-gray-50 border-b border-gray-100">
+                <h3 className="font-serif font-bold text-2xl mb-3">Free Access</h3>
+                <div className="flex items-baseline mb-2">
+                  <span className="text-3xl font-bold">$0</span>
+                  <span className="text-sm text-gray-500 ml-1">/month</span>
+                </div>
+                <p className="text-gray-600 text-sm">
+                  Perfect for those just beginning their journey
+                </p>
+              </div>
+              
+              <div className="p-8 flex-grow flex flex-col">
+                <ul className="space-y-4 mb-8 flex-grow">
+                  {[
+                    "Access to blog content",
+                    "Podcast episodes",
+                    "Basic community forum access",
+                    "Monthly newsletter"
+                  ].map((feature, index) => (
+                    <li key={index} className="flex items-start">
+                      <Check className="h-5 w-5 mr-2 text-green-600 flex-shrink-0" />
+                      <span className="text-gray-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <Link href="/join?plan=free">
+                  <Button className="w-full rounded-full bg-white border-2 border-gray-200 text-gray-800 hover:bg-gray-50 hover:border-gray-300 py-6">
+                    Join Free
+                  </Button>
+                </Link>
+              </div>
+            </div>
             
-            <MembershipTier 
-              title="VIP"
-              price="$49"
-              billingPeriod="month"
-              description="Enhanced access and resources for committed members"
-              features={[
-                "All Free features",
-                "VIP events access",
-                "Monthly group coaching calls",
-                "Member directory access",
-                "Exclusive digital resources"
-              ]}
-              isPopular={true}
-              ctaText="Join VIP"
-              ctaHref="/join?plan=vip"
-            />
+            {/* VIP Tier */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-magenta flex flex-col h-full transform hover:-translate-y-1 relative">
+              <div className="bg-magenta text-white text-xs font-bold uppercase tracking-wider py-1.5 px-4 text-center">
+                Most Popular
+              </div>
+              
+              <div className="p-8 bg-magenta/10 border-b border-magenta/20">
+                <h3 className="font-serif font-bold text-2xl mb-3">VIP Member</h3>
+                <div className="flex items-baseline mb-2">
+                  <span className="text-3xl font-bold">$49</span>
+                  <span className="text-sm text-gray-500 ml-1">/month</span>
+                </div>
+                <p className="text-gray-600 text-sm">
+                  Enhanced access and resources for committed members
+                </p>
+              </div>
+              
+              <div className="p-8 flex-grow flex flex-col">
+                <ul className="space-y-4 mb-8 flex-grow">
+                  {[
+                    "All Free features",
+                    "VIP events access",
+                    "Monthly group coaching calls",
+                    "Member directory access",
+                    "Exclusive digital resources"
+                  ].map((feature, index) => (
+                    <li key={index} className="flex items-start">
+                      <Check className="h-5 w-5 mr-2 text-magenta flex-shrink-0" />
+                      <span className="text-gray-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <Link href="/join?plan=vip">
+                  <Button className="w-full rounded-full bg-magenta hover:bg-magenta/90 text-white py-6">
+                    Join VIP
+                  </Button>
+                </Link>
+              </div>
+            </div>
             
-            <MembershipTier 
-              title="Premium"
-              price="$499"
-              billingPeriod="year"
-              description="The complete experience for serious leaders"
-              features={[
-                "All VIP features",
-                "Quarterly merchandise box",
-                "1:1 mentoring sessions",
-                "VIP event discounts",
-                "Featured member profile",
-                "Early access to new content"
-              ]}
-              ctaText="Go Premium"
-              ctaHref="/join?plan=premium"
-            />
+            {/* Premium Tier */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:border-gray-300 flex flex-col h-full">
+              <div className="p-8 bg-gray-50 border-b border-gray-100">
+                <h3 className="font-serif font-bold text-2xl mb-3">Premium Empire</h3>
+                <div className="flex items-baseline mb-2">
+                  <span className="text-3xl font-bold">$499</span>
+                  <span className="text-sm text-gray-500 ml-1">/year</span>
+                </div>
+                <p className="text-gray-600 text-sm">
+                  The complete experience for serious leaders
+                </p>
+              </div>
+              
+              <div className="p-8 flex-grow flex flex-col">
+                <ul className="space-y-4 mb-8 flex-grow">
+                  {[
+                    "All VIP features",
+                    "Quarterly merchandise box",
+                    "1:1 mentoring sessions",
+                    "VIP event discounts",
+                    "Featured member profile",
+                    "Early access to new content"
+                  ].map((feature, index) => (
+                    <li key={index} className="flex items-start">
+                      <Check className="h-5 w-5 mr-2 text-green-600 flex-shrink-0" />
+                      <span className="text-gray-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <Link href="/join?plan=premium">
+                  <Button className="w-full rounded-full bg-white border-2 border-gray-200 text-gray-800 hover:bg-gray-50 hover:border-gray-300 py-6">
+                    Go Premium
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
