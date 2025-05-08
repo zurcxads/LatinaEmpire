@@ -137,7 +137,7 @@ const EventDetail = () => {
       <Navbar />
 
       {/* Event Banner */}
-      <section className="bg-black pt-20 pb-0 relative">
+      <section className="bg-black hero-navbar-spacing pb-0 relative">
         {/* Full-width event banner with rounded corners */}
         <div className="mx-4 md:mx-12 rounded-[24px] overflow-hidden relative">
           <div 
@@ -233,7 +233,7 @@ const EventDetail = () => {
       </section>
 
       {/* Event Content - Redesigned */}
-      <section className="py-16 bg-black text-white" ref={contentRef}>
+      <section className="section-spacing bg-black text-white" ref={contentRef}>
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
@@ -354,7 +354,7 @@ const EventDetail = () => {
       </section>
 
       {/* Key Benefits Section */}
-      <section className="py-16 bg-black text-white border-t border-gray-800">
+      <section className="section-spacing bg-black text-white border-t border-gray-800">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
             <div className="flex justify-center mb-2">
@@ -458,7 +458,7 @@ const EventDetail = () => {
 
 
       {/* Leadership Carousel Section */}
-      <section className="py-16 bg-white border-t border-gray-100">
+      <section className="section-spacing bg-white border-t border-gray-100">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -556,7 +556,7 @@ const EventDetail = () => {
       </section>
       
       {/* Agenda Section */}
-      <section className="py-16 bg-white border-t border-gray-100">
+      <section className="section-spacing bg-white border-t border-gray-100">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-12">
             <div className="flex mb-2">
@@ -640,7 +640,7 @@ const EventDetail = () => {
       </section>
       
       {/* Leadership Legacy CTA */}
-      <section className="py-16 bg-black text-white">
+      <section className="section-spacing-large bg-black text-white">
         <div className="container mx-auto px-4 md:px-6 text-center max-w-4xl">
           <h2 className="font-serif font-bold text-4xl md:text-5xl leading-tight mb-4">
             Create your leadership legacy
@@ -657,7 +657,7 @@ const EventDetail = () => {
       </section>
       
       {/* 4-Grid Leadership Academy Section */}
-      <section className="py-16 bg-white">
+      <section className="section-spacing bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             {/* Top Left - Logo */}
