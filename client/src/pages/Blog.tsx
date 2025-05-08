@@ -1,67 +1,49 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { blogService, BlogPost, BlogResponse } from "@/lib/blogService";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { 
   Calendar, 
   Clock, 
-  Search, 
-  Tag,
-  ArrowRight, 
+  Flame,
+  Briefcase,
+  Brain,
+  Heart,
   ChevronRight,
-  ChevronLeft,
-  Facebook,
-  Twitter,
-  Instagram,
-  Youtube,
-  X
+  ArrowRight, 
+  Mail
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { 
-  Select, 
-  SelectContent, 
-  SelectGroup, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue
-} from "@/components/ui/select";
-import { 
-  Tabs, 
-  TabsContent, 
-  TabsList, 
-  TabsTrigger 
-} from "@/components/ui/tabs";
 
-// Featured post section (hero style)
-const FeaturedPost = ({ post }: { post: BlogPost | null }) => {
-  if (!post) return null;
+// Featured article component
+const FeaturedArticle = ({ post }: { post: BlogPost }) => {
   return (
-    <div className="relative w-full h-[500px] rounded-xl overflow-hidden shadow-lg group">
-      <div 
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-        style={{ backgroundImage: `url(${post.image})` }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+    <div className="relative rounded-xl overflow-hidden shadow-lg group mb-8">
+      <div className="aspect-[16/9] overflow-hidden">
+        <img 
+          src={post.image} 
+          alt={post.title} 
+          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+        />
+      </div>
       
-      <div className="absolute bottom-0 left-0 w-full p-6 md:p-10 z-10">
-        <div className="mb-3">
-          <span className="uppercase tracking-wider text-sm text-white/70">{post.category}</span>
-        </div>
+      <div className="p-6 bg-white">
+        <Badge className="mb-3 bg-magenta hover:bg-magenta/90">
+          {post.category}
+        </Badge>
         
-        <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight group-hover:text-magenta transition-colors">
+        <h2 className="font-sans font-bold text-2xl md:text-3xl mb-4 line-clamp-2 group-hover:text-magenta transition-colors">
           {post.title}
         </h2>
         
-        <p className="text-white/80 text-base md:text-lg max-w-3xl mb-6">
-          {post.excerpt.length > 140 
-            ? post.excerpt.slice(0, 140) + '...' 
-            : post.excerpt}
+        <p className="text-gray-600 mb-6 line-clamp-3">
+          {post.excerpt}
         </p>
         
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3 text-white/70 text-sm">
+          <div className="flex items-center space-x-4 text-sm text-gray-500">
             <span className="flex items-center">
               <Calendar className="h-4 w-4 mr-1" />
               {new Date(post.date).toLocaleDateString('en-US', { 
@@ -78,27 +60,22 @@ const FeaturedPost = ({ post }: { post: BlogPost | null }) => {
           
           <Link 
             href={`/blog/${post.slug}`} 
-            className="text-white border border-white/30 hover:border-magenta hover:bg-magenta hover:text-white rounded-full px-4 py-2 text-sm transition-colors flex items-center gap-1.5"
+            className="inline-flex items-center gap-2 bg-magenta hover:bg-magenta/90 text-white px-5 py-2 rounded-full font-medium transition-colors text-sm"
           >
             Read More
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-      </div>
-      
-      <div className="absolute top-6 left-6 z-10">
-        <span className="inline-flex h-2 w-2 rounded-full bg-magenta mr-2"></span>
-        <span className="text-white text-xs font-medium uppercase tracking-wider">Featured</span>
       </div>
     </div>
   );
 };
 
-// Regular blog post card
-const BlogPostCard = ({ post }: { post: BlogPost }) => {
+// Article card component
+const ArticleCard = ({ post }: { post: BlogPost }) => {
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow group h-full flex flex-col">
-      <div className="h-48 relative overflow-hidden">
+    <div className="group h-full flex flex-col bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+      <div className="aspect-[16/9] overflow-hidden relative">
         <img 
           src={post.image} 
           alt={post.title} 
@@ -107,33 +84,32 @@ const BlogPostCard = ({ post }: { post: BlogPost }) => {
       </div>
       
       <div className="p-6 flex flex-col flex-grow">
-        <div className="flex items-center space-x-3 mb-3">
-          <Badge className="bg-magenta hover:bg-magenta/90">{post.category}</Badge>
-          <span className="text-gray-500 text-xs">{post.readTime}</span>
-        </div>
+        <Badge className="mb-3 w-fit bg-magenta hover:bg-magenta/90">
+          {post.category}
+        </Badge>
         
-        <h3 className="font-serif font-bold text-xl mb-3 group-hover:text-magenta transition-colors">
+        <h3 className="font-sans font-bold text-xl mb-3 line-clamp-2 group-hover:text-magenta transition-colors">
           {post.title}
         </h3>
         
-        <p className="text-gray-600 text-sm mb-4 flex-grow">
-          {post.excerpt.length > 120 
-            ? post.excerpt.slice(0, 120) + '...' 
-            : post.excerpt}
+        <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">
+          {post.excerpt}
         </p>
         
-        <div className="flex items-center justify-between mt-auto">
+        <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
           <div className="text-sm text-gray-500">
             {new Date(post.date).toLocaleDateString('en-US', { 
               month: 'short', 
-              day: 'numeric', 
-              year: 'numeric' 
+              day: 'numeric'
             })}
           </div>
           
-          <Link href={`/blog/${post.slug}`} className="text-magenta hover:underline text-sm font-medium group flex items-center">
-            Read More
-            <ChevronRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          <Link 
+            href={`/blog/${post.slug}`} 
+            className="text-magenta font-medium text-sm group-hover:underline inline-flex items-center"
+          >
+            Read
+            <ChevronRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>
@@ -141,207 +117,25 @@ const BlogPostCard = ({ post }: { post: BlogPost }) => {
   );
 };
 
-// Blog list section
-const BlogList = ({ 
-  posts, 
-  isLoading 
+// Section header with icon component
+const SectionHeader = ({ 
+  icon, 
+  title 
 }: { 
-  posts: BlogPost[], 
-  isLoading: boolean 
-}) => {
-  if (isLoading) {
-    return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {[...Array(6)].map((_, i) => (
-          <div key={i} className="bg-gray-100 rounded-xl h-96 animate-pulse"></div>
-        ))}
-      </div>
-    );
-  }
-  
-  if (posts.length === 0) {
-    return (
-      <div className="text-center py-12">
-        <h3 className="text-2xl font-medium text-gray-700 mb-4">No posts found</h3>
-        <p className="text-gray-500">Try adjusting your filters or search terms</p>
-      </div>
-    );
-  }
-  
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {posts.map(post => (
-        <BlogPostCard key={post.id} post={post} />
-      ))}
-    </div>
-  );
-};
-
-// Sidebar components
-const SearchBox = ({ 
-  searchTerm, 
-  setSearchTerm, 
-  onSearch 
-}: { 
-  searchTerm: string, 
-  setSearchTerm: (term: string) => void,
-  onSearch: () => void
+  icon: React.ReactNode, 
+  title: string 
 }) => {
   return (
-    <div className="mb-8">
-      <h3 className="font-serif font-bold text-xl mb-4">Search</h3>
-      <div className="flex gap-2">
-        <Input 
-          placeholder="Search articles..." 
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && onSearch()}
-          className="flex-1"
-        />
-        <Button 
-          onClick={onSearch}
-          variant="default" 
-          size="icon"
-          className="bg-magenta hover:bg-magenta/90"
-        >
-          <Search className="h-4 w-4" />
-        </Button>
+    <div className="flex items-center gap-3 mb-6">
+      <div className="bg-magenta/10 text-magenta p-2 rounded-full">
+        {icon}
       </div>
+      <h2 className="font-serif font-bold text-2xl">{title}</h2>
     </div>
   );
 };
 
-const CategoriesList = ({ 
-  categories, 
-  selectedCategory, 
-  onSelectCategory 
-}: { 
-  categories: string[], 
-  selectedCategory: string | null,
-  onSelectCategory: (category: string | null) => void
-}) => {
-  return (
-    <div className="mb-8">
-      <h3 className="font-serif font-bold text-xl mb-4">Categories</h3>
-      <div className="space-y-2">
-        <div 
-          className={`cursor-pointer hover:text-magenta transition-colors ${!selectedCategory ? 'text-magenta font-medium' : 'text-gray-700'}`}
-          onClick={() => onSelectCategory(null)}
-        >
-          All Categories
-        </div>
-        
-        {categories.map(category => (
-          <div 
-            key={category} 
-            className={`cursor-pointer hover:text-magenta transition-colors ${selectedCategory === category ? 'text-magenta font-medium' : 'text-gray-700'}`}
-            onClick={() => onSelectCategory(category)}
-          >
-            {category}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const PopularTags = ({ 
-  tags, 
-  selectedTag, 
-  onSelectTag 
-}: { 
-  tags: string[], 
-  selectedTag: string | null,
-  onSelectTag: (tag: string | null) => void
-}) => {
-  return (
-    <div className="mb-8">
-      <h3 className="font-serif font-bold text-xl mb-4">Popular Tags</h3>
-      <div className="flex flex-wrap gap-2">
-        {tags.map(tag => (
-          <Badge 
-            key={tag} 
-            variant="outline"
-            className={`cursor-pointer ${
-              selectedTag === tag 
-                ? 'bg-magenta text-white hover:bg-magenta/90 border-magenta' 
-                : 'hover:bg-gray-100 hover:text-magenta'
-            }`}
-            onClick={() => onSelectTag(tag === selectedTag ? null : tag)}
-          >
-            {tag}
-          </Badge>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const SocialMedia = () => {
-  return (
-    <div className="mb-8">
-      <h3 className="font-serif font-bold text-xl mb-4">Follow Us</h3>
-      <div className="flex items-center space-x-2">
-        <a 
-          href="#" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="bg-black text-white hover:bg-magenta p-2 rounded-full transition-colors"
-          aria-label="Facebook"
-        >
-          <Facebook className="h-5 w-5" />
-        </a>
-        <a 
-          href="#" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="bg-black text-white hover:bg-magenta p-2 rounded-full transition-colors"
-          aria-label="Twitter"
-        >
-          <X className="h-5 w-5" />
-        </a>
-        <a 
-          href="#" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="bg-black text-white hover:bg-magenta p-2 rounded-full transition-colors"
-          aria-label="Instagram"
-        >
-          <Instagram className="h-5 w-5" />
-        </a>
-        <a 
-          href="#" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="bg-black text-white hover:bg-magenta p-2 rounded-full transition-colors"
-          aria-label="YouTube"
-        >
-          <Youtube className="h-5 w-5" />
-        </a>
-      </div>
-    </div>
-  );
-};
-
-// Newsletter sign-up
-const Newsletter = () => {
-  return (
-    <div className="bg-gray-100 p-6 rounded-xl mb-8">
-      <h3 className="font-serif font-bold text-xl mb-2">Subscribe to Our Newsletter</h3>
-      <p className="text-gray-600 text-sm mb-4">
-        Get the latest articles, resources and updates right to your inbox.
-      </p>
-      <div className="space-y-3">
-        <Input placeholder="Your Email Address" type="email" />
-        <Button className="w-full bg-magenta hover:bg-magenta/90">
-          Subscribe
-        </Button>
-      </div>
-    </div>
-  );
-};
-
-// Main blog page component
+// Main Blog component
 const Blog = () => {
   const [, setLocation] = useLocation();
   const [isLoading, setIsLoading] = useState(true);
@@ -352,15 +146,18 @@ const Blog = () => {
   });
   const [featuredPost, setFeaturedPost] = useState<BlogPost | null>(null);
   
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(9);
-  const [sortBy, setSortBy] = useState("newest");
+  const businessPosts = blogData.blog.filter(post => 
+    post.category === "Career Development" || 
+    post.category === "Professional Growth" || 
+    post.category === "Financial Wellness");
   
-  const [displayPosts, setDisplayPosts] = useState<BlogPost[]>([]);
-  const [totalPages, setTotalPages] = useState(1);
+  const mindsetPosts = blogData.blog.filter(post => 
+    post.category === "Leadership" || 
+    post.category === "Work-Life Balance");
+  
+  const communityCulturePosts = blogData.blog.filter(post => 
+    post.category === "Health" ||
+    post.category === "Relationships");
   
   // Fetch blog data
   useEffect(() => {
@@ -373,9 +170,6 @@ const Blog = () => {
         // Set featured post to the first featured post or first post if none is featured
         const featured = data.blog.find(post => post.featured) || data.blog[0];
         setFeaturedPost(featured);
-        
-        // Remove featured post from the list to avoid duplication
-        setDisplayPosts(data.blog.filter(post => post.id !== featured?.id));
       } catch (error) {
         console.error("Error fetching blog data:", error);
       } finally {
@@ -386,309 +180,168 @@ const Blog = () => {
     fetchBlogData();
   }, []);
   
-  // Filter and sort posts
-  useEffect(() => {
-    if (!blogData.blog.length) return;
-    
-    let filtered = [...blogData.blog];
-    
-    // Remove featured post to avoid duplication
-    if (featuredPost) {
-      filtered = filtered.filter(post => post.id !== featuredPost.id);
-    }
-    
-    // Apply category filter
-    if (selectedCategory) {
-      filtered = filtered.filter(post => post.category === selectedCategory);
-    }
-    
-    // Apply tag filter
-    if (selectedTag) {
-      filtered = filtered.filter(post => post.tags.includes(selectedTag));
-    }
-    
-    // Apply search filter
-    if (searchTerm) {
-      const term = searchTerm.toLowerCase();
-      filtered = filtered.filter(post => 
-        post.title.toLowerCase().includes(term) || 
-        post.excerpt.toLowerCase().includes(term) ||
-        post.content.toLowerCase().includes(term)
-      );
-    }
-    
-    // Apply sorting
-    switch (sortBy) {
-      case "newest":
-        filtered.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-        break;
-      case "oldest":
-        filtered.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-        break;
-      case "title-asc":
-        filtered.sort((a, b) => a.title.localeCompare(b.title));
-        break;
-      case "title-desc":
-        filtered.sort((a, b) => b.title.localeCompare(a.title));
-        break;
-      default:
-        break;
-    }
-    
-    // Calculate pagination
-    setTotalPages(Math.ceil(filtered.length / postsPerPage));
-    
-    // Get current posts
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    setDisplayPosts(filtered.slice(indexOfFirstPost, indexOfLastPost));
-    
-  }, [blogData.blog, featuredPost, selectedCategory, selectedTag, searchTerm, sortBy, currentPage, postsPerPage]);
-  
-  // Handle search
-  const handleSearch = () => {
-    setCurrentPage(1);
-  };
-  
-  // Handle category selection
-  const handleCategorySelect = (category: string | null) => {
-    setSelectedCategory(category);
-    setSelectedTag(null);
-    setCurrentPage(1);
-  };
-  
-  // Handle tag selection
-  const handleTagSelect = (tag: string | null) => {
-    setSelectedTag(tag);
-    setCurrentPage(1);
-  };
-  
-  // Handle pagination
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    window.scrollTo(0, 0);
-  };
-  
   return (
-    <div className="flex flex-col">
-      {/* Hero section */}
-      <div className="bg-black text-white py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col min-h-[220px]">
-            {/* Centered heading at top */}
-            <div className="text-center mx-auto mb-auto">
-              <h1 className="font-serif font-bold text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight tracking-tight">
-                Inspiration at<br />your fingertips
-              </h1>
-            </div>
-            
-            {/* Category tabs - Centered at bottom */}
-            <div className="mt-8 w-full">
-              <div className="flex flex-wrap gap-2 justify-center">
-                <Button
-                  variant={!selectedCategory ? "secondary" : "outline"}
-                  onClick={() => setSelectedCategory(null)}
-                  className={`rounded-full text-sm py-1 px-4 h-auto ${!selectedCategory ? 'bg-white text-black hover:bg-white/90' : 'bg-black border-gray-500 text-gray-200 hover:bg-white/20'}`}
-                >
-                  All topics
-                </Button>
-                <Button
-                  variant={selectedCategory === "Leadership" ? "secondary" : "outline"}
-                  onClick={() => setSelectedCategory("Leadership")}
-                  className={`rounded-full text-sm py-1 px-4 h-auto ${selectedCategory === "Leadership" ? 'bg-white text-black hover:bg-white/90' : 'bg-black border-gray-500 text-gray-200 hover:bg-white/20'}`}
-                >
-                  Leadership
-                </Button>
-                <Button
-                  variant={selectedCategory === "Happiness" ? "secondary" : "outline"}
-                  onClick={() => setSelectedCategory("Happiness")}
-                  className={`rounded-full text-sm py-1 px-4 h-auto ${selectedCategory === "Happiness" ? 'bg-white text-black hover:bg-white/90' : 'bg-black border-gray-500 text-gray-200 hover:bg-white/20'}`}
-                >
-                  Happiness
-                </Button>
-                <Button
-                  variant={selectedCategory === "Health" ? "secondary" : "outline"}
-                  onClick={() => setSelectedCategory("Health")}
-                  className={`rounded-full text-sm py-1 px-4 h-auto ${selectedCategory === "Health" ? 'bg-white text-black hover:bg-white/90' : 'bg-black border-gray-500 text-gray-200 hover:bg-white/20'}`}
-                >
-                  Health
-                </Button>
-                <Button
-                  variant={selectedCategory === "Business" ? "secondary" : "outline"}
-                  onClick={() => setSelectedCategory("Business")}
-                  className={`rounded-full text-sm py-1 px-4 h-auto ${selectedCategory === "Business" ? 'bg-white text-black hover:bg-white/90' : 'bg-black border-gray-500 text-gray-200 hover:bg-white/20'}`}
-                >
-                  Business
-                </Button>
-                <Button
-                  variant={selectedCategory === "Mindset" ? "secondary" : "outline"}
-                  onClick={() => setSelectedCategory("Mindset")}
-                  className={`rounded-full text-sm py-1 px-4 h-auto ${selectedCategory === "Mindset" ? 'bg-white text-black hover:bg-white/90' : 'bg-black border-gray-500 text-gray-200 hover:bg-white/20'}`}
-                >
-                  Mindset
-                </Button>
-                <Button
-                  variant={selectedCategory === "Relationships" ? "secondary" : "outline"}
-                  onClick={() => setSelectedCategory("Relationships")}
-                  className={`rounded-full text-sm py-1 px-4 h-auto ${selectedCategory === "Relationships" ? 'bg-white text-black hover:bg-white/90' : 'bg-black border-gray-500 text-gray-200 hover:bg-white/20'}`}
-                >
-                  Relationships
-                </Button>
-                <Button
-                  variant={selectedCategory === "Wealth" ? "secondary" : "outline"}
-                  onClick={() => setSelectedCategory("Wealth")}
-                  className={`rounded-full text-sm py-1 px-4 h-auto ${selectedCategory === "Wealth" ? 'bg-white text-black hover:bg-white/90' : 'bg-black border-gray-500 text-gray-200 hover:bg-white/20'}`}
-                >
-                  Wealth
-                </Button>
-              </div>
-            </div>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      
+      {/* Hero Section */}
+      <section className="bg-gradient-to-b from-black to-magenta/90 text-white pt-28 pb-16">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="font-sans font-bold text-5xl md:text-6xl lg:text-7xl mb-6 tracking-tight leading-tight">
+              La Voz de Latina Empire
+            </h1>
+            <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+              Insights, stories, and resources to fuel your growth in business, wealth, and purpose.
+            </p>
+            <Button className="bg-white text-black hover:bg-white/90 rounded-full px-10 py-3 h-auto text-lg transition-all shadow-xl">
+              <Mail className="mr-2 h-5 w-5" />
+              Subscribe for Updates
+            </Button>
           </div>
         </div>
-      </div>
+      </section>
       
-      {/* Featured post and article previews */}
-      <section className="container mx-auto px-4 py-8">
-        {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 h-[500px] bg-gray-200 rounded-xl animate-pulse"></div>
-            <div className="space-y-6">
+      {/* Featured Article Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          {isLoading ? (
+            <div className="max-w-4xl mx-auto">
+              <div className="w-full aspect-[16/9] bg-gray-200 rounded-xl animate-pulse mb-4"></div>
+              <div className="h-8 bg-gray-200 rounded-lg w-1/3 animate-pulse mb-4"></div>
+              <div className="h-6 bg-gray-200 rounded-lg w-full animate-pulse mb-2"></div>
+              <div className="h-6 bg-gray-200 rounded-lg w-2/3 animate-pulse mb-4"></div>
+              <div className="h-10 bg-gray-200 rounded-lg w-40 animate-pulse"></div>
+            </div>
+          ) : featuredPost ? (
+            <div className="max-w-4xl mx-auto">
+              <FeaturedArticle post={featuredPost} />
+            </div>
+          ) : null}
+        </div>
+      </section>
+      
+      {/* Trending Now Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <SectionHeader 
+            icon={<Flame className="h-6 w-6" />}
+            title="Trending Now"
+          />
+          
+          {isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[...Array(3)].map((_, index) => (
-                <div key={index} className="h-32 bg-gray-200 rounded-lg animate-pulse"></div>
+                <div key={index} className="bg-gray-200 rounded-xl h-96 animate-pulse"></div>
               ))}
             </div>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Main featured post - always show the first one from selected category or the original featured post */}
-            <div className="md:col-span-2">
-              {selectedCategory ? (
-                blogData.blog.filter(post => post.category === selectedCategory)[0] ? (
-                  <FeaturedPost post={blogData.blog.filter(post => post.category === selectedCategory)[0]} />
-                ) : featuredPost ? (
-                  <FeaturedPost post={featuredPost} />
-                ) : null
-              ) : featuredPost ? (
-                <FeaturedPost post={featuredPost} />
-              ) : null}
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {blogData.blog.slice(0, 3).map(post => (
+                <ArticleCard key={post.id} post={post} />
+              ))}
             </div>
-            
-            {/* Side articles - filter by selected category or show Health if none selected */}
-            <div className="space-y-6">
-              {blogData.blog
-                .filter(post => {
-                  if (selectedCategory) {
-                    return post.category === selectedCategory;
-                  }
-                  return post.category === "Health";
-                })
-                .slice(0, 3)
-                .map((post, index) => (
-                  <article key={post.id} className="group">
-                    <div className="mb-1">
-                      <span className="text-xs uppercase tracking-wider text-gray-500">{post.category}</span>
-                    </div>
-                    <h3 className="font-medium text-lg group-hover:text-magenta mb-1 line-clamp-2">
-                      <Link href={`/blog/${post.slug}`}>
-                        {post.title}
-                      </Link>
-                    </h3>
-                    <p className="text-sm text-gray-600 line-clamp-2 mb-2">{post.excerpt}</p>
-                    <div className="flex items-center text-xs text-gray-500">
-                      <span className="flex items-center">
-                        <Clock className="h-3 w-3 mr-1" />
-                        {post.readTime}
-                      </span>
-                    </div>
-                  </article>
-                ))}
-            </div>
-          </div>
-        )}
-      </section>
-      
-      {/* Relationships Articles */}
-      <section className="container mx-auto px-4 py-12 pb-20 border-b border-gray-200">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {blogData.blog.filter(post => post.category === "Relationships").slice(0, 3).map((post, index) => (
-            <article key={post.id} className="group">
-              <div className="aspect-[4/3] overflow-hidden rounded-lg mb-4">
-                <img 
-                  src={post.image} 
-                  alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="uppercase text-xs tracking-wider text-gray-500 mb-2">
-                RELATIONSHIPS
-              </div>
-              <h3 className="font-medium text-xl mb-2 group-hover:text-magenta transition-colors">
-                <Link href={`/blog/${post.slug}`}>
-                  {post.title}
-                </Link>
-              </h3>
-              <p className="text-sm text-gray-600 line-clamp-3">
-                {post.excerpt}
-              </p>
-            </article>
-          ))}
+          )}
         </div>
       </section>
       
-      {/* CTA card section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Event Card */}
-            <div className="rounded-xl overflow-hidden bg-black/10 relative group hover:shadow-xl transition-all duration-300">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-900/80 to-indigo-900/70 z-10" />
-              <img 
-                src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                alt="Audience at an event" 
-                className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="relative z-20 p-8 md:p-12">
-                <h2 className="text-white text-3xl md:text-4xl font-bold mb-4">
-                  Change your story
-                </h2>
-                <p className="text-white/90 mb-8 max-w-sm">
-                  Master Tony's proven strategies to create unstoppable momentum and change the trajectory of your life.
-                </p>
-                <Button 
-                  onClick={() => setLocation("/events")}
-                  className="bg-white text-black hover:bg-opacity-90 font-medium px-5 py-2 rounded-full"
-                >
-                  View upcoming events
-                </Button>
-              </div>
+      {/* Business & Wealth Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <SectionHeader 
+            icon={<Briefcase className="h-6 w-6" />}
+            title="Business & Wealth"
+          />
+          
+          {isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[...Array(3)].map((_, index) => (
+                <div key={index} className="bg-gray-200 rounded-xl h-96 animate-pulse"></div>
+              ))}
             </div>
-            
-            {/* Programs Card */}
-            <div className="rounded-xl overflow-hidden bg-black/10 relative group hover:shadow-xl transition-all duration-300">
-              <div className="absolute inset-0 bg-gradient-to-r from-teal-800/60 to-emerald-800/60 z-10" />
-              <img 
-                src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                alt="Group of diverse professionals" 
-                className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="relative z-20 p-8 md:p-12">
-                <h2 className="text-white text-3xl md:text-4xl font-bold mb-4">
-                  Become the best version of yourself
-                </h2>
-                <p className="text-white/90 mb-8 max-w-sm">
-                  Connect with like-minded individuals and start living the life of your dreams.
-                </p>
-                <Button 
-                  onClick={() => setLocation("/programs")}
-                  className="bg-white text-black hover:bg-opacity-90 font-medium px-5 py-2 rounded-full"
-                >
-                  View all programs
-                </Button>
-              </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {businessPosts.slice(0, 3).map(post => (
+                <ArticleCard key={post.id} post={post} />
+              ))}
             </div>
+          )}
+        </div>
+      </section>
+      
+      {/* Mindset & Growth Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <SectionHeader 
+            icon={<Brain className="h-6 w-6" />}
+            title="Mindset & Growth"
+          />
+          
+          {isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[...Array(3)].map((_, index) => (
+                <div key={index} className="bg-gray-200 rounded-xl h-96 animate-pulse"></div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {mindsetPosts.slice(0, 3).map(post => (
+                <ArticleCard key={post.id} post={post} />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+      
+      {/* Cultura & Community Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <SectionHeader 
+            icon={<Heart className="h-6 w-6" />}
+            title="Cultura & Community"
+          />
+          
+          {isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[...Array(3)].map((_, index) => (
+                <div key={index} className="bg-gray-200 rounded-xl h-96 animate-pulse"></div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {communityCulturePosts.slice(0, 3).map(post => (
+                <ArticleCard key={post.id} post={post} />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+      
+      {/* CTA Section */}
+      <section className="py-16 bg-black text-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="font-serif font-bold text-3xl md:text-4xl lg:text-5xl mb-8">
+              Want more stories like this?
+            </h2>
+            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+              Join our community of powerful Latina leaders and get exclusive content delivered straight to your inbox.
+            </p>
+            <Button 
+              onClick={() => {
+                // Open join modal or navigate to join page
+                setLocation("/join");
+              }}
+              className="bg-magenta hover:bg-magenta/90 text-white font-semibold text-lg py-6 px-10 rounded-lg transition-all shadow-2xl"
+            >
+              Join the Empire
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
           </div>
         </div>
       </section>
+      
+      <Footer />
     </div>
   );
 };
