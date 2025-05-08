@@ -10,13 +10,22 @@ import { useQuery } from "@tanstack/react-query";
 
 const EventCard = ({ event }: { event: Event }) => {
   // Generate a random event type for the demo
-  const eventTypes = [
-    { tag: "VIRTUAL", name: "LEADERSHIP ACADEMY" },
-    { tag: "IN-PERSON", name: "LATINA ACADEMY" },
-    { tag: "HYBRID", name: "EMPIRE ACADEMY" },
-    { tag: "VIRTUAL", name: "SUCCESS SUMMIT" }
-  ];
-  const eventType = eventTypes[Math.floor(Math.random() * eventTypes.length)];
+  // More structured event categorization based on event name and location
+  let eventType = { tag: "IN-PERSON", name: "LEADERSHIP ACADEMY" };
+  
+  if (event.name.includes("Wealth") || event.name.includes("Financial")) {
+    eventType = { tag: event.location === "Virtual Event" ? "VIRTUAL" : "IN-PERSON", name: "WEALTH ACADEMY" };
+  } else if (event.name.includes("Tech") || event.name.includes("Innovation")) {
+    eventType = { tag: event.location === "Virtual Event" ? "VIRTUAL" : "IN-PERSON", name: "TECH ACADEMY" };
+  } else if (event.name.includes("Wellness") || event.name.includes("Retreat")) {
+    eventType = { tag: "IN-PERSON", name: "WELLNESS TRACK" };
+  } else if (event.name.includes("Leadership") || event.name.includes("Conference")) {
+    eventType = { tag: "IN-PERSON", name: "SUCCESS SUMMIT" };
+  } else if (event.name.includes("Master") || event.name.includes("Workshop")) {
+    eventType = { tag: event.location === "Virtual Event" ? "VIRTUAL" : "IN-PERSON", name: "LATINA ACADEMY" };
+  } else if (event.name.includes("Entrepreneur")) {
+    eventType = { tag: event.location === "Virtual Event" ? "VIRTUAL" : "IN-PERSON", name: "EMPIRE ACADEMY" };
+  }
   
   return (
     <Link href={`/events/${event.slug}`} className="block">
@@ -35,10 +44,13 @@ const EventCard = ({ event }: { event: Event }) => {
         
         {/* Content Overlay */}
         <div className="absolute inset-0 z-20 p-8 md:p-10 flex flex-col justify-end text-white">
-          {/* Tag at top */}
-          <div className="absolute top-8 left-8">
+          {/* Top Tags */}
+          <div className="absolute top-8 left-8 flex gap-2 flex-wrap">
             <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
               <span className="text-xs uppercase tracking-wider font-medium">{eventType.tag}</span>
+            </div>
+            <div className="inline-flex items-center bg-magenta/60 px-3 py-1 rounded-full backdrop-blur-sm">
+              <span className="text-xs uppercase tracking-wider font-medium">{eventType.name}</span>
             </div>
           </div>
           
@@ -49,10 +61,22 @@ const EventCard = ({ event }: { event: Event }) => {
               {event.name.split(' ').slice(0, 4).join(' ')}
             </h3>
             
-            {/* Simple Description */}
-            <p className="text-white/90 text-base md:text-lg max-w-md mb-0 leading-relaxed">
+            {/* Simple Description - Limited to 2 lines */}
+            <p className="text-white/90 text-base md:text-lg max-w-md mb-4 leading-relaxed line-clamp-2">
               {event.shortDescription.split('.')[0]}.
             </p>
+            
+            {/* Event metadata */}
+            <div className="flex flex-wrap gap-4 items-center text-sm text-white/80">
+              <div className="flex items-center gap-1">
+                <Calendar className="h-4 w-4 text-magenta" />
+                {event.date}
+              </div>
+              <div className="flex items-center gap-1">
+                <MapPin className="h-4 w-4 text-magenta" />
+                {event.location}
+              </div>
+            </div>
           </div>
           
           {/* Brand Logo - Bottom right */}
@@ -138,8 +162,19 @@ const Events = () => {
         </div>
       </section>
 
+      {/* Intro Text Area */}
+      <section className="pt-16 pb-8 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-xl text-gray-700 leading-relaxed">
+              Discover transformational retreats, summits, and workshops led by the most powerful Latina leaders across the globe.
+            </p>
+          </div>
+        </div>
+      </section>
+          
       {/* Events Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           
           {isLoadingUpcoming ? (
@@ -233,57 +268,122 @@ const Events = () => {
               </div>
             </div>
           ) : upcomingEvents.length > 0 ? (
-            <div className="space-y-16">
-              {/* Featured Event */}
-              <Link href={`/events/${upcomingEvents[0].slug}`} className="block mb-16">
-                <div className="relative aspect-[21/9] rounded-xl overflow-hidden shadow-lg">
-                  {/* Background Image with Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10" />
-                  <img 
-                    src={upcomingEvents[0].image} 
-                    alt={upcomingEvents[0].name}
-                    className="w-full h-full object-cover"
-                  />
-                  
-                  {/* Content Overlay */}
-                  <div className="absolute inset-0 z-20 p-8 md:p-10 flex flex-col justify-end text-white">
-                    {/* Tag at top */}
-                    <div className="absolute top-8 left-8">
-                      <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
-                        <span className="text-xs uppercase tracking-wider font-medium">LEADERSHIP ACADEMY</span>
-                      </div>
-                    </div>
+            <div className="space-y-20">
+              {/* Upcoming Signature Events Section */}
+              <div className="mb-16">
+                <h2 className="text-3xl font-serif font-bold mb-10 pb-4 border-b border-gray-200">Upcoming Signature Events</h2>
+                
+                {/* Featured Event */}
+                <Link href={`/events/${upcomingEvents[0].slug}`} className="block mb-16">
+                  <div className="relative aspect-[21/9] rounded-xl overflow-hidden shadow-lg">
+                    {/* Background Image with Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10" />
+                    <img 
+                      src={upcomingEvents[0].image} 
+                      alt={upcomingEvents[0].name}
+                      className="w-full h-full object-cover"
+                    />
                     
-                    <div className="w-full pr-32">
-                      {/* Title */}
-                      <h3 className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl mb-4 leading-tight tracking-tight">
-                        Unleash your Latina <br />leadership potential
-                      </h3>
+                    {/* Content Overlay */}
+                    <div className="absolute inset-0 z-20 p-8 md:p-10 flex flex-col justify-end text-white">
+                      {/* Tag at top */}
+                      <div className="absolute top-8 left-8 flex gap-2 flex-wrap">
+                        <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
+                          <span className="text-xs uppercase tracking-wider font-medium">SIGNATURE EVENT</span>
+                        </div>
+                        <div className="inline-flex items-center bg-magenta/60 px-3 py-1 rounded-full backdrop-blur-sm">
+                          <span className="text-xs uppercase tracking-wider font-medium">SUCCESS SUMMIT</span>
+                        </div>
+                      </div>
                       
-                      {/* Description */}
-                      <p className="text-white/90 text-base md:text-lg max-w-md mb-0 leading-relaxed">
-                        Join our transformative academy where Latina professionals build the skills, network, and confidence to lead in any industry.
-                      </p>
-                    </div>
-                  
-                    {/* Brand Logo */}
-                    <div className="absolute bottom-8 right-8 bg-black text-white p-3 rounded">
-                      <div className="uppercase font-bold text-center leading-none">
-                        <div className="text-xs tracking-widest mb-1">LATINA EMPIRE</div>
-                        <div className="text-sm tracking-wider">LEADERSHIP<br/>ACADEMY</div>
+                      <div className="w-full pr-32">
+                        {/* Title */}
+                        <h3 className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl mb-4 leading-tight tracking-tight">
+                          {upcomingEvents[0].name}
+                        </h3>
+                        
+                        {/* Description */}
+                        <p className="text-white/90 text-base md:text-lg max-w-md mb-6 leading-relaxed">
+                          {upcomingEvents[0].shortDescription}
+                        </p>
+                        
+                        {/* Event metadata */}
+                        <div className="flex flex-wrap gap-6 items-center text-base text-white/80 mb-4">
+                          <div className="flex items-center gap-2">
+                            <Calendar className="h-5 w-5 text-magenta" />
+                            {upcomingEvents[0].date}
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <MapPin className="h-5 w-5 text-magenta" />
+                            {upcomingEvents[0].location}
+                          </div>
+                          {upcomingEvents[0].host && (
+                            <div className="flex items-center gap-2">
+                              <Users className="h-5 w-5 text-magenta" />
+                              Hosted by {upcomingEvents[0].host}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    
+                      {/* Brand Logo */}
+                      <div className="absolute bottom-8 right-8 bg-black text-white p-3 rounded">
+                        <div className="uppercase font-bold text-center leading-none">
+                          <div className="text-xs tracking-widest mb-1">LATINA EMPIRE</div>
+                          <div className="text-sm tracking-wider">SUCCESS<br/>SUMMIT</div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-              
-              {/* Other Events - Skip the first (featured) event */}
-              {upcomingEvents.length > 1 && (
-                <div>
+                </Link>
+                
+                {/* Additional Signature Events */}
+                {upcomingEvents.filter(event => 
+                  event.name.includes("Leadership") || 
+                  event.name.includes("Conference") || 
+                  event.name.includes("Summit")).length > 1 && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-                    {upcomingEvents.slice(1).map((event) => (
+                    {upcomingEvents.filter(event => 
+                      event.name.includes("Leadership") || 
+                      event.name.includes("Conference") || 
+                      event.name.includes("Summit"))
+                      .slice(0, 2)
+                      .map((event) => (
+                        <EventCard key={event.id} event={event} />
+                      ))
+                    }
+                  </div>
+                )}
+              </div>
+              
+              {/* Latina Academy Tracks Section */}
+              <div className="mb-16">
+                <h2 className="text-3xl font-serif font-bold mb-10 pb-4 border-b border-gray-200">Latina Academy Tracks</h2>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+                  {upcomingEvents.filter(event => 
+                    event.name.includes("Wealth") || 
+                    event.name.includes("Wellness") || 
+                    event.name.includes("Master") ||
+                    event.name.includes("Financial"))
+                    .map((event) => (
                       <EventCard key={event.id} event={event} />
-                    ))}
+                    ))
+                  }
+                </div>
+              </div>
+              
+              {/* Virtual Masterclasses Section - if there are virtual events */}
+              {upcomingEvents.filter(event => event.location === "Virtual Event").length > 0 && (
+                <div className="mb-16">
+                  <h2 className="text-3xl font-serif font-bold mb-10 pb-4 border-b border-gray-200">Virtual Masterclasses</h2>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+                    {upcomingEvents.filter(event => event.location === "Virtual Event")
+                      .map((event) => (
+                        <EventCard key={event.id} event={event} />
+                      ))
+                    }
                   </div>
                 </div>
               )}
@@ -325,6 +425,25 @@ const Events = () => {
         </div>
       </section>
 
+      {/* Final CTA Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-magenta to-purple-900 text-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="font-serif font-bold text-3xl md:text-4xl lg:text-5xl mb-8">
+              Be a Part of Our Next Movement
+            </h2>
+            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+              Join us at our upcoming events and connect with powerful Latina leaders from around the world.
+            </p>
+            <Link href="/events-calendar">
+              <Button className="bg-white hover:bg-gray-100 text-black font-semibold text-lg py-6 px-10 rounded-lg transition-all shadow-2xl">
+                View the Full Calendar
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
