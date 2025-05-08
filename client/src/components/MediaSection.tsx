@@ -67,16 +67,17 @@ const MediaItemCard = ({ item }: { item: MediaItem }) => {
             href={item.link} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center w-full rounded-full border-2 border-magenta text-magenta hover:bg-magenta hover:text-white font-medium px-6 py-3 transition-colors"
+            className="cta-button inline-flex items-center justify-center w-full rounded-full border-2 border-magenta text-magenta hover:bg-[#d81b60] hover:text-white font-medium py-3 transition-colors"
           >
             {actionText} <ExternalLink className="ml-2 h-4 w-4" />
           </a>
         ) : (
-          <Link href={item.link}>
-            <Button className="w-full accent-button justify-center">
-              {actionText} <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
+          <button 
+            onClick={() => window.location.href = item.link}
+            className="cta-button inline-flex items-center justify-center w-full rounded-full border-2 border-magenta text-magenta hover:bg-[#d81b60] hover:text-white font-medium py-3 transition-colors"
+          >
+            {actionText} <ArrowRight className="ml-2 h-4 w-4" />
+          </button>
         )}
       </div>
     </div>
@@ -99,11 +100,12 @@ const MediaSection = () => {
               Watch and read features about Latina Empire — from interviews and video reels to press stories that inspire.
             </p>
           </div>
-          <Link href="/blog">
-            <Button className="secondary-button">
-              Explore Blog & Media
-            </Button>
-          </Link>
+          <button 
+            onClick={() => window.location.href = "/blog"}
+            className="cta-button inline-flex items-center justify-center rounded-full border-2 border-magenta text-magenta hover:bg-[#d81b60] hover:text-white font-medium px-6 py-3 transition-colors"
+          >
+            Explore Blog & Media <ArrowRight className="ml-2 h-4 w-4" />
+          </button>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
