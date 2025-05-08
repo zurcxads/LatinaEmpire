@@ -1,0 +1,61 @@
+Please perform a comprehensive mobile UI/UX audit across all pages of the Latina Empire site and apply refinements to ensure a smooth, visually aligned, and elegant experience on mobile devices (especially for screens 320px–768px wide).
+
+🔍 AUDIT FOCUS AREAS (By Priority):
+1. Spacing & Section Padding
+Ensure all sections have consistent top/bottom padding (pt-16 pb-16 or similar).
+
+Prevent content from appearing squished or cramped on small screens.
+
+Adjust any broken gap-* spacing between stacked elements (especially in grids, cards, or CTA blocks).
+
+2. Text & Typography
+Scale down headings and body text responsively using text-xl, text-2xl, sm:text-3xl etc.
+
+Prevent long headlines from wrapping awkwardly (use leading-tight and tracking-normal where needed).
+
+Fix any cases of text overflow or lines being cut off in buttons/cards.
+
+3. Button Responsiveness
+Ensure pill buttons stack or scale naturally (w-full sm:w-auto) and do not overflow their containers.
+
+CTA buttons in sections like Hero, Quiz, Shop, and Footer should always be:
+
+Centered
+
+Tappable (minimum height/touch zone)
+
+Stacked vertically when in a row of two
+
+4. Image & Card Scaling
+Ensure images and cards scale smoothly without cropping or awkward aspect ratios.
+
+Audit media, product, and program cards — make sure the gradient overlays, badges, and text adapt to smaller widths.
+
+If card grids break into columns, use a 1-column or 2-column mobile layout with even spacing.
+
+5. Navigation & Menu Behavior
+Fix any mobile menu rendering issues (like double menus, scroll bleed, or hidden links).
+
+The sticky navbar should remain fully visible and layered above hero content on scroll.
+
+Confirm mobile dropdowns don’t overflow or shift other content.
+
+6. Form Fields & CTAs
+All form inputs should use w-full, be centered or padded well, and not overflow edge to edge.
+
+Check modal forms like Join Empire and Newsletter for mobile-friendly input layout.
+
+7. Rounded Container Consistency
+Ensure all floating containers (e.g., Hero, Impact, Events) maintain their rounded-xl or rounded-2xl appearance.
+
+No cropped corners or overflows.
+
+8. Mobile Animation Glitches
+Check for janky transitions, hover states that don’t translate to mobile, or stacked layers causing flickers.
+
+Disable desktop hover effects if they're visually confusing on touch.
+
+9. Scroll Behavior
+Prevent horizontal scrollbars (overflow-x-hidden) globally and on nested containers.
+
+Fix any overflow bugs caused by fixed-width containers, buttons, or images.

@@ -1,0 +1,80 @@
+Tablet & Responsive Audit & Polish Prompt
+Please run a complete audit and style optimization pass for all pages across tablet screen sizes (768px–1024px) and responsive breakpoints, including hybrid states like:
+
+iPad Mini/Pro
+
+Android tablets (Samsung, Lenovo, etc.)
+
+Small laptops (1024x768 / 1280x800)
+
+Browser windows resized between mobile and desktop
+
+🔍 RESPONSIVE AUDIT AREAS:
+1. Layout Adjustments
+Fix any awkward wrapping or crowding when content tries to stay side-by-side (like 2-column layouts).
+
+Ensure text blocks, images, and buttons align cleanly within max-w-[width] containers.
+
+Verify that no desktop 3–4 column grids are displayed on tablet — convert to 2-column layout using:
+
+tailwind
+Copy code
+grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
+2. Navbar & Header Elements
+Confirm sticky nav is:
+
+Not cutting into section content
+
+Scaling logo and nav items properly (no text overlap)
+
+Collapse behavior (hamburger menu) works smoothly between 768–1024px
+
+3. Section Spacing Consistency
+Ensure padding and margin utility classes work responsively:
+
+tailwind
+Copy code
+py-12 sm:py-16 md:py-20
+px-6 sm:px-8 md:px-12
+Prevent over-padding or under-padding on stacked sections.
+
+4. CTA Buttons & Text Wrapping
+All CTA blocks should:
+
+Center or align left based on section intent
+
+Maintain pill button shapes (rounded-full)
+
+Avoid overlapping when two CTAs sit side-by-side
+
+5. Image Containers
+Audit images to:
+
+Maintain correct aspect ratios
+
+Scale proportionally (esp. hero background images)
+
+Avoid float-offscreen or max-height clipping bugs
+
+6. Text Blocks & Typography
+Balance text sizes for legibility:
+
+tailwind
+Copy code
+text-2xl sm:text-3xl md:text-4xl
+Adjust max-width on body text to improve line length on medium screens
+
+7. Interactive Elements
+Ensure carousels, sliders, and tabs respond correctly to touch and swipe on tablets
+
+Fix any cutoff elements in horizontal scroll areas (media, testimonials, etc.)
+
+8. Forms and Modals
+Confirm input fields span usable width (60–90%)
+
+Button placement and alignment inside forms must be optimized (stack vertically if space is limited)
+
+Check modal behavior — confirm they’re centered, scrollable, and not clipped
+
+✅ GOAL:
+Deliver a clean, coherent, and touch-optimized experience across tablet devices and intermediate screens. It should visually echo the desktop design while respecting mobile-first structure.

@@ -21,12 +21,12 @@ const Hero = () => {
 
       <section className="relative w-full overflow-hidden">
         {/* Hero container - full width, rounded corners like Tony's site */}
-        <div className="mx-4 my-4 rounded-3xl overflow-hidden">
+        <div className="mx-4 my-4 rounded-2xl sm:rounded-3xl overflow-hidden">
           {/* Content container with fixed height and absolute positioning for content */}
-          <div className="relative w-full min-h-[700px] h-[90vh] pt-20 overflow-hidden">
+          <div className="relative w-full min-h-[600px] sm:min-h-[650px] md:min-h-[700px] h-[90vh] pt-16 sm:pt-20 overflow-hidden">
             {/* Main content area - absolutely positioned directly at bottom left with minimal margin */}
-            <div className="absolute bottom-12 left-8 md:left-16 z-10 max-w-4xl">
-              <h1 className="text-white text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-bold mb-4 leading-[0.95] tracking-tighter mt-20">
+            <div className="absolute bottom-8 sm:bottom-12 left-6 sm:left-8 md:left-16 z-10 max-w-full sm:max-w-4xl px-2 sm:px-0">
+              <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-4 leading-[0.95] tracking-tighter mt-12 sm:mt-16 md:mt-20">
                 <span className="sm:hidden block">
                   Your<br/>
                   Leadership,<br/>
@@ -43,15 +43,15 @@ const Hero = () => {
                 </span>
               </h1>
               
-              <p className="text-white text-lg md:text-xl mb-8 max-w-2xl">
+              <p className="text-white text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-xs sm:max-w-md md:max-w-2xl">
                 Join the global movement empowering ambitious Latina professionals.
               </p>
               
               {/* CTA buttons styled like Tony's site */}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button 
                   onClick={() => setIsModalOpen(true)}
-                  className="bg-white hover:bg-white/90 text-black font-medium rounded-full text-lg py-4 px-10"
+                  className="bg-white hover:bg-white/90 text-black font-medium rounded-full text-base sm:text-lg py-3 sm:py-4 px-6 sm:px-10 w-full sm:w-auto"
                 >
                   Join Now
                 </Button>
@@ -59,7 +59,7 @@ const Hero = () => {
                 <Button 
                   onClick={handleExploreClick}
                   variant="outline" 
-                  className="border-2 border-white bg-transparent text-white hover:bg-white/10 font-medium rounded-full text-lg py-4 px-10"
+                  className="border-2 border-white bg-transparent text-white hover:bg-white/10 font-medium rounded-full text-base sm:text-lg py-3 sm:py-4 px-6 sm:px-10 w-full sm:w-auto"
                 >
                   Explore Programs
                 </Button>

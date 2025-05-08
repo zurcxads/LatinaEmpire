@@ -59,7 +59,7 @@ interface Program {
 // Program card component matching Tony Robbins style from the reference image
 const ProgramCard = ({ program }: { program: Program }) => (
   <Link href={`/programs#${program.slug}`}>
-    <div className="relative overflow-hidden rounded-md group cursor-pointer h-full aspect-[0.8]">
+    <div className="relative overflow-hidden rounded-md group cursor-pointer h-full aspect-[0.9] sm:aspect-[0.8]">
       {/* Dark gradient overlay matching the reference */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent z-10" />
       
@@ -72,19 +72,19 @@ const ProgramCard = ({ program }: { program: Program }) => (
       />
       
       {/* Content overlay */}
-      <div className="absolute inset-x-0 bottom-0 z-20 p-6 flex flex-col items-start justify-end">
+      <div className="absolute inset-x-0 bottom-0 z-20 p-4 sm:p-5 md:p-6 flex flex-col items-start justify-end">
         {/* Program category/brand - smaller text on top */}
         <div className="text-white text-xs font-medium tracking-wider mb-1 uppercase">
           LATINA EMPIRE
         </div>
         
         {/* Program title in large uppercase text exactly like reference */}
-        <h3 className="font-serif font-bold text-2xl md:text-3xl text-white mb-1 uppercase leading-tight">
+        <h3 className="font-serif font-bold text-xl sm:text-2xl md:text-3xl text-white mb-1 uppercase leading-tight">
           {program.title}
         </h3>
         
         {/* Short description exactly like reference */}
-        <p className="text-white/90 text-sm mt-2">
+        <p className="text-white/90 text-xs sm:text-sm mt-1 sm:mt-2 line-clamp-3">
           {program.description}
         </p>
       </div>
@@ -112,22 +112,22 @@ const ProgramCarousel = () => {
   const programs = LATINA_PROGRAMS;
 
   return (
-    <section className="bg-black py-16">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="bg-black py-12 sm:py-16">
+      <div className="container mx-auto px-4 sm:px-5 md:px-6">
         {/* Section header with "discover" link exactly like the reference */}
-        <div className="flex justify-between items-end mb-8">
-          <div className="flex items-end gap-4">
-            <h2 className="text-white font-serif font-bold text-3xl md:text-4xl">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-6 sm:mb-8 gap-3 sm:gap-0">
+          <div className="flex flex-col sm:flex-row sm:items-end gap-2 sm:gap-4">
+            <h2 className="text-white font-serif font-bold text-2xl sm:text-3xl md:text-4xl">
               Empowerment Through Programs
             </h2>
-            <Link href="/programs" className="text-white/80 hover:text-white text-sm mb-1">
+            <Link href="/programs" className="text-white/80 hover:text-white text-sm mb-0 sm:mb-1">
               Discover programs
               <ChevronRight className="inline-block ml-1 h-4 w-4" />
             </Link>
           </div>
           
           {/* Navigation buttons like reference */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 mt-2 sm:mt-0">
             <button 
               onClick={scrollPrev}
               className="w-8 h-8 rounded-full bg-black border border-white/20 hover:bg-white/10 flex items-center justify-center text-white"
@@ -145,11 +145,11 @@ const ProgramCarousel = () => {
 
         {/* Programs carousel */}
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-4">
+          <div className="flex gap-3 sm:gap-4">
             {programs.map((program) => (
               <div 
                 key={program.id} 
-                className="min-w-0 flex-[0_0_85%] sm:flex-[0_0_70%] md:flex-[0_0_45%] lg:flex-[0_0_30%] xl:flex-[0_0_25%]"
+                className="min-w-0 flex-[0_0_85%] sm:flex-[0_0_60%] md:flex-[0_0_45%] lg:flex-[0_0_30%] xl:flex-[0_0_25%]"
               >
                 <ProgramCard program={program} />
               </div>
