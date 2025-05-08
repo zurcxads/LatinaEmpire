@@ -144,7 +144,7 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
     <>
       <SuccessConfetti active={showConfetti} />
       <Dialog open={open} onOpenChange={handleClose}>
-        <DialogContent className="sm:max-w-[500px] bg-white p-0 overflow-hidden rounded-lg">
+        <DialogContent className="sm:max-w-[500px] bg-white p-0 overflow-hidden rounded-3xl">
           {isSubmitted ? (
             // Success state
             <div className="py-8 px-6 text-center">
@@ -183,7 +183,7 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Enter your full name"
-                    className={`rounded-lg border-gray-300 py-3 ${formErrors.name ? 'border-red-500 ring-red-500' : 'focus:border-black focus:ring-black'}`}
+                    className={`rounded-xl border-gray-300 py-3 ${formErrors.name ? 'border-red-500 ring-red-500' : 'focus:border-black focus:ring-black'}`}
                     disabled={isSubmitting}
                   />
                   {formErrors.name && (
@@ -205,7 +205,7 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="you@example.com"
-                    className={`rounded-lg border-gray-300 py-3 ${formErrors.email ? 'border-red-500 ring-red-500' : 'focus:border-black focus:ring-black'}`}
+                    className={`rounded-xl border-gray-300 py-3 ${formErrors.email ? 'border-red-500 ring-red-500' : 'focus:border-black focus:ring-black'}`}
                     disabled={isSubmitting}
                   />
                   {formErrors.email && (
@@ -225,7 +225,7 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                     onValueChange={handleSelectChange}
                     disabled={isSubmitting}
                   >
-                    <SelectTrigger id="country" className={`rounded-lg border-gray-300 py-6 ${formErrors.country ? 'border-red-500' : 'focus:border-black focus:ring-black'}`}>
+                    <SelectTrigger id="country" className={`rounded-xl border-gray-300 py-6 ${formErrors.country ? 'border-red-500' : 'focus:border-black focus:ring-black'}`}>
                       <SelectValue placeholder="Select your country" />
                     </SelectTrigger>
                     <SelectContent>
@@ -255,7 +255,7 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                     onChange={handleInputChange}
                     placeholder="Tell us a bit about your goals and what you hope to achieve"
                     rows={3}
-                    className="rounded-lg border-gray-300 focus:border-black focus:ring-black"
+                    className="rounded-xl border-gray-300 focus:border-black focus:ring-black"
                     disabled={isSubmitting}
                   />
                 </div>
