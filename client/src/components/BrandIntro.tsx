@@ -90,8 +90,7 @@ const BrandIntro = () => {
           <div className="text-center">
             <Button 
               onClick={() => setIsModalOpen(true)}
-              className="bg-magenta text-white hover:bg-magenta/90 rounded-full text-lg px-8 py-3 font-medium shadow-lg"
-              size="lg"
+              className="cta-button-large bg-magenta text-white hover:bg-magenta/90"
             >
               Begin Your Transformation
               <ArrowRight className="ml-2 h-5 w-5" />

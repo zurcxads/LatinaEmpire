@@ -27,7 +27,7 @@ const Hero = () => {
 
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-white text-black hover:bg-gray-100 rounded-full font-medium text-lg py-3 px-8 shadow-lg"
+                className="cta-button-large bg-white text-black hover:bg-gray-100"
               >
                 Join Now
                 <ArrowRight className="ml-2 h-5 w-5" />

@@ -52,7 +52,7 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
             <Button 
               asChild
               size="sm"
-              className="border-2 border-white text-white bg-transparent hover:bg-white/10 rounded-full py-1 px-3 font-medium w-fit"
+              className="border-2 border-white text-white bg-transparent hover:bg-white/10 rounded-full py-1 px-3 font-medium w-fit shadow-md"
             >
               <Link href={`/events/${nextEvent.slug}`}>
                 Details
@@ -114,7 +114,7 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
                 <div className="flex flex-wrap gap-3">
                   <Button 
                     asChild
-                    className="bg-white text-black hover:bg-gray-100 rounded-full py-3 px-6 font-medium shadow-lg"
+                    className="cta-button bg-white text-black hover:bg-gray-100 px-6 shadow-lg"
                   >
                     <Link href={`/events/${nextEvent.slug}`}>
                       Event Details
@@ -124,7 +124,7 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
                   
                   <Button 
                     onClick={() => setIsModalOpen(true)}
-                    className="border-2 border-white text-white bg-transparent hover:bg-white/10 rounded-full py-3 px-6 font-medium"
+                    className="outline-button px-6"
                   >
                     Join Waitlist
                   </Button>
