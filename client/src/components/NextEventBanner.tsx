@@ -2,7 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { eventsService } from "@/lib/eventsService";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Circle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
 
@@ -20,14 +20,9 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
     return null;
   }
 
-  // Always return the compact version now as the full version has been removed
+  // Return the compact version styled like Tony Robbins site
   return (
     <div className="p-4">
-      <div className="flex items-center gap-2 mb-3">
-        <Circle className="h-2 w-2 fill-magenta text-magenta animate-pulse" />
-        <span className="text-sm font-semibold tracking-widest uppercase text-white">Next Event</span>
-      </div>
-      
       <div className="relative rounded-lg overflow-hidden">
         <img 
           src={getImageSrc(nextEvent.bannerImage || nextEvent.image, true)} 
@@ -35,9 +30,13 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
           className="w-full aspect-video object-cover"
           onError={createImageErrorHandler()}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20" />
-        <div className="absolute inset-0 p-4 flex flex-col justify-end">
-          <div className="mb-1 text-xs font-medium text-white/80">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
+        
+        {/* Content with improved styling */}
+        <div className="absolute inset-0 p-5 flex flex-col justify-end">
+          {/* Date badge */}
+          <div className="mb-3 text-xs font-medium text-white/90 flex items-center">
+            <div className="h-1.5 w-1.5 rounded-full bg-rose-500 mr-2"></div>
             {new Date(nextEvent.date).toLocaleDateString('en-US', {
               weekday: 'short',
               month: 'short', 
@@ -45,17 +44,23 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
             })}
             {nextEvent.startTime && ` • ${nextEvent.startTime}`}
           </div>
-          <h3 className="text-lg font-bold text-white mb-2">{nextEvent.name}</h3>
-          <Button 
-            asChild
-            size="sm"
-            className="outline-button w-fit px-4 py-1"
-          >
-            <Link href={`/events/${nextEvent.slug}`}>
-              Details
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+          
+          {/* Title with improved typography */}
+          <h3 className="text-xl font-bold text-white mb-4 leading-tight">{nextEvent.name}</h3>
+          
+          {/* Button styled like Tony's site */}
+          <div className="flex">
+            <Button 
+              asChild
+              size="sm"
+              className="bg-white hover:bg-white/90 text-black rounded-full px-5 py-1 text-sm shadow-lg flex items-center gap-1.5"
+            >
+              <Link href={`/events/${nextEvent.slug}`}>
+                <span>Learn More</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </div>
