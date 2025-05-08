@@ -233,7 +233,7 @@ const Blog = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-black text-white">
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-black text-white hero-navbar-spacing">
         {/* Empty space for nav bar */}
         <div className="h-16 w-full absolute top-0 left-0 z-20"></div>
         
@@ -276,7 +276,7 @@ const Blog = () => {
       </section>
       
       {/* Featured Article Section */}
-      <section className="py-16 bg-white">
+      <section className="section-spacing bg-white">
         <div className="container mx-auto px-4 md:px-6">
           {isLoading ? (
             <div className="max-w-4xl mx-auto">
@@ -295,7 +295,7 @@ const Blog = () => {
       </section>
       
       {/* Category Filter Bar - MOVED ABOVE CONTENT SECTIONS */}
-      <section className="py-16 bg-gray-50/80 border-y border-gray-100">
+      <section className="section-spacing bg-gray-50/80 border-y border-gray-100">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
@@ -340,7 +340,7 @@ const Blog = () => {
       </section>
       
       {/* YouTube Video Section - NEW SECTION */}
-      <section className="py-20 bg-white">
+      <section className="section-spacing bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
@@ -472,7 +472,7 @@ const Blog = () => {
       </section>
       
       {/* Trending Now Section */}
-      <section className="py-16 bg-white">
+      <section className="section-spacing bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <SectionHeader 
             icon={<Flame className="h-6 w-6" />}
@@ -496,7 +496,7 @@ const Blog = () => {
       </section>
       
       {/* Business & Wealth Section */}
-      <section className="py-12 bg-white">
+      <section className="section-spacing bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <SectionHeader 
             icon={<Briefcase className="h-6 w-6" />}
@@ -520,7 +520,7 @@ const Blog = () => {
       </section>
       
       {/* Mindset & Growth Section */}
-      <section className="py-12 bg-white">
+      <section className="section-spacing bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <SectionHeader 
             icon={<Brain className="h-6 w-6" />}
@@ -544,7 +544,7 @@ const Blog = () => {
       </section>
       
       {/* Cultura & Community Section */}
-      <section className="py-12 bg-white">
+      <section className="section-spacing bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <SectionHeader 
             icon={<Heart className="h-6 w-6" />}

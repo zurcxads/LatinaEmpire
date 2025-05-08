@@ -12,7 +12,7 @@ const AboutFounder = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-start overflow-hidden bg-black text-white">
+      <section className="relative min-h-[90vh] flex items-center justify-start overflow-hidden bg-black text-white hero-navbar-spacing">
         {/* Empty space for nav bar */}
         <div className="h-16 w-full absolute top-0 left-0 z-20"></div>
         
