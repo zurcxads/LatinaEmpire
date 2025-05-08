@@ -184,6 +184,22 @@
   @apply py-8 md:py-12;
 }
 
+.section-spacing-bottom {
+  @apply pb-16 md:pb-24 lg:pb-32;
+}
+
+.section-spacing-top {
+  @apply pt-16 md:pt-24 lg:pt-32;
+}
+
+.spacing-y {
+  @apply py-8 md:py-12 lg:py-16;
+}
+
+.spacing-x {
+  @apply px-4 md:px-8 lg:px-12;
+}
+
 .hero-navbar-spacing {
   @apply pt-16 md:pt-20;
 }

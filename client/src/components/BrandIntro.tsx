@@ -12,7 +12,7 @@ interface ValueProps {
 
 const ValueItem = ({ icon, title, description }: ValueProps) => {
   return (
-    <div className="group bg-white p-7 rounded-lg border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+    <div className="group card-base card-hover flex flex-col h-full p-7">
       <div className="mb-5">
         <div className="h-14 w-14 bg-magenta/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-magenta/20 transition-all">
           {icon}
@@ -90,7 +90,7 @@ const BrandIntro = () => {
           <div className="text-center">
             <Button 
               onClick={() => setIsModalOpen(true)}
-              className="bg-black text-white px-8 py-7 rounded-full font-sans font-semibold text-lg hover:bg-gray-800 shadow-md h-auto transition-all inline-flex items-center"
+              className="accent-button text-lg px-8 py-3 font-semibold shadow-md"
               size="lg"
             >
               Begin Your Transformation
@@ -139,7 +139,7 @@ const BrandIntro = () => {
               </ul>
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-black text-white px-6 py-3 rounded-full font-sans font-semibold hover:bg-gray-800 transition-all"
+                className="cta-button"
               >
                 Learn More About Our Approach
               </Button>

@@ -52,7 +52,7 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
             <Button 
               asChild
               size="sm"
-              className="outline-button w-fit px-4 py-1"
+              className="outline-button w-fit"
             >
               <Link href={`/events/${nextEvent.slug}`}>
                 Details
@@ -124,8 +124,7 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
                   
                   <Button 
                     onClick={() => setIsModalOpen(true)}
-                    variant="outline"
-                    className="text-white border-white/30 hover:bg-white/10 hover:text-white"
+                    className="outline-button"
                   >
                     Join Waitlist
                   </Button>
