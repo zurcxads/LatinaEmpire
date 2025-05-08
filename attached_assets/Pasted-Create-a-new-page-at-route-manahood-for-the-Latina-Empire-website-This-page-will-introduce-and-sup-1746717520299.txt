@@ -1,0 +1,86 @@
+Create a new page at route /manahood for the Latina Empire website. This page will introduce and support local “Manahood” chapters — vibrant sisterhood communities. Use modern, minimalist styling consistent with the rest of the site: black/white backgrounds, soft gradients, bold headings, and magenta accents (#D81B60).
+
+Page Sections and Structure:
+1. Hero Section — What is Manahood?
+Full-width block with gradient or branded background
+
+Heading (Large):
+“Welcome to the Manahood”
+
+Subheading:
+“A powerful sisterhood of Latinas leading with heart, purpose, and legacy.”
+
+Short paragraph introducing the concept of Manahood
+
+Optional: Add background blur image or gradient with transparent text card
+
+2. Searchable Map + Chapter Directory
+Section title: “Find a Manahood Near You”
+
+Add a map placeholder (later to be powered by Mapbox or Google Maps)
+
+Include a simple search bar or dropdown filter (e.g. by city/state/zip)
+
+Below the map, include a directory grid or list of existing chapters:
+
+Chapter name
+
+City/state
+
+“View Details” button or leader info
+
+3. Meet the Leaders
+Section title: “Meet the Women Leading the Movement”
+
+Grid of Leader Cards:
+
+Image (placeholder)
+
+Name + Chapter
+
+1-line quote or story summary
+
+Optional: “Full Story” button (modal or new route like /manahood/[leader])
+
+4. Start a Manahood
+Full-width CTA block with magenta background
+
+Heading: “Ready to Lead?”
+
+Short inspiring blurb: “If you’ve felt the call to lead other Latinas in your city, we’ve made it simple.”
+
+Button: “Start a Manahood” → opens modal or links to /manahood/start (form page)
+
+Form Fields (modal or on next page):
+
+Name
+
+Email
+
+Location
+
+“Why do you want to lead?” (text area)
+
+5. Upcoming Manahood Events
+Section title: “Manahood Gatherings Near You”
+
+Embedded calendar block or list of 3–6 upcoming events
+
+Each event card includes:
+
+Title
+
+Date + Location
+
+“Details” button
+
+Design + Tech Notes:
+Use your branded placeholder image globally where no leader/event photo exists
+
+CTA buttons: Rounded, bold, black or white text with magenta hover
+
+Typography: Use same modern sans-serif stack as homepage
+
+Layout: Centered or 2-column responsive layout depending on screen size
+
+Spacing: Keep generous padding and scrollable flow like Tony Robbins site
