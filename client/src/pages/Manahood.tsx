@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { MapPin, Search, ArrowRight, Calendar, UserPlus, Users, Heart } from "lucide-react";
+import { MapPin, Search, ArrowRight, Calendar, UserPlus, Users, Heart, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -256,219 +256,328 @@ const Manahood = () => {
 
   return (
     <div className="flex flex-col">
-      {/* SECTION 1: Hero - What is Manahood? */}
-      <section className="relative bg-black text-white py-20 md:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black opacity-95 z-0"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(216,27,96,0.3),transparent_70%)] z-0"></div>
+      {/* Hero Section */}
+      <section className="relative py-28 md:py-36 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black z-0"></div>
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3')] bg-cover bg-center opacity-40 mix-blend-overlay"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(216,27,96,0.4),transparent_70%)] z-0"></div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center text-white">
+            <div className="inline-flex items-center bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm mb-8">
+              <span className="text-sm uppercase tracking-wider font-medium text-white">Latina Empire</span>
+            </div>
             <h1 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight tracking-tight">
-              Welcome to the <span className="text-magenta">Manahood</span>
+              The Manahood Sisterhood
             </h1>
             <p className="text-xl md:text-2xl opacity-90 mb-8 leading-relaxed">
-              A powerful sisterhood of Latinas leading with heart, purpose, and legacy.
+              Your local circle of Latina empowerment, connection, and growth.
             </p>
-            <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-              Manahood chapters bring together Latina women in local communities, creating spaces for connection, 
-              growth, and celebration of our shared heritage. Through mentorship, events, and support, 
-              each chapter empowers Latinas to achieve their highest potential.
-            </p>
-            <Button 
-              className="bg-magenta hover:bg-magenta/90 text-white rounded-full px-8 py-6 text-lg font-medium"
-              onClick={() => {
-                document.getElementById('find-chapter')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Find Your Chapter <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <div className="flex flex-wrap justify-center gap-4 mt-10">
+              <Button 
+                className="bg-magenta hover:bg-magenta/90 text-white px-8 py-6 h-auto rounded-lg text-lg shadow-lg transition-all"
+                onClick={() => {
+                  document.getElementById('find-chapter')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Find Your Chapter <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button 
+                variant="outline"
+                className="border-2 border-white/30 text-white px-8 py-6 h-auto rounded-lg text-lg hover:bg-white/10 transition-all"
+                onClick={() => setShowStartModal(true)}
+              >
+                Start a Chapter
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* What Is Manahood? */}
+      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+        <div className="absolute right-0 top-1/4 w-96 h-96 bg-[radial-gradient(circle,rgba(245,228,240,1),transparent_70%)] rounded-full -z-0 opacity-70"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-8">What Is Manahood?</h2>
+            <div className="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-lg border border-gray-100">
+              <p className="text-xl md:text-2xl text-gray-800 font-serif italic leading-relaxed mb-8">
+                "Manahood is where powerful Latina women gather locally to support, grow, and activate each other. Together, we are más que amigas — somos hermanas."
+              </p>
+              <div className="w-20 h-1 bg-magenta mx-auto mb-8"></div>
+              <p className="text-gray-600 leading-relaxed">
+                Our chapters meet monthly to create connection, engage in personal and professional development, 
+                and build a supportive network that uplifts every member. Each Manahood is unique, reflecting the diverse
+                needs and strengths of Latinas in different communities, but all are united in our mission to 
+                empower Latinas to lead with confidence and purpose.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 2: Searchable Map + Chapter Directory */}
-      <section id="find-chapter" className="py-16 md:py-24 bg-white">
+      {/* Find a Chapter */}
+      <section id="find-chapter" className="py-16 md:py-24 bg-gray-50 border-y border-gray-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4">Find a Manahood Near You</h2>
+            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4">Find a Chapter</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Connect with local chapters in your area and join a community of ambitious, supportive Latinas.
             </p>
           </div>
 
-          {/* Search Bar */}
-          <div className="max-w-md mx-auto mb-12">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+          {/* Search Filter Bar */}
+          <div className="max-w-xl mx-auto mb-12">
+            <div className="bg-white rounded-lg shadow-md p-3 flex items-center">
+              <Search className="text-gray-400 h-5 w-5 ml-2 mr-3 flex-shrink-0" />
               <Input
                 type="text"
                 placeholder="Search by city, state, or zip code..."
-                className="pl-10 py-6 rounded-full border-gray-300 focus:border-magenta focus:ring-magenta"
+                className="border-0 focus:ring-0 py-2 px-0 text-gray-800"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
+              <Select>
+                <SelectTrigger className="w-[140px] border-0 focus:ring-0">
+                  <SelectValue placeholder="All Regions" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Regions</SelectItem>
+                  <SelectItem value="west">West</SelectItem>
+                  <SelectItem value="midwest">Midwest</SelectItem>
+                  <SelectItem value="south">South</SelectItem>
+                  <SelectItem value="northeast">Northeast</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
 
           {/* Map Placeholder */}
-          <div className="mb-16 rounded-xl overflow-hidden shadow-lg border border-gray-200 bg-gray-100">
-            <div className="relative aspect-[21/9] flex items-center justify-center bg-gray-200">
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-300"></div>
-              <div className="relative z-10 text-center p-4">
-                <MapPin className="h-16 w-16 text-magenta mb-3 mx-auto" />
-                <p className="text-gray-600 text-lg">Interactive map coming soon</p>
-                <p className="text-gray-500">Browse the directory below to find chapters near you</p>
+          <div className="max-w-5xl mx-auto mb-16 rounded-xl overflow-hidden shadow-lg border border-gray-200">
+            <div className="relative aspect-video flex items-center justify-center bg-gray-100">
+              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1604357209793-fca5dca89f97?ixlib=rb-4.0.3')] bg-cover bg-center opacity-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200"></div>
+              <div className="relative z-10 text-center p-8">
+                <div className="bg-white/80 backdrop-blur p-8 rounded-xl shadow-sm max-w-md mx-auto">
+                  <MapPin className="h-12 w-12 text-magenta mb-3 mx-auto" />
+                  <h3 className="font-serif font-bold text-xl mb-3">Interactive Map Coming Soon</h3>
+                  <p className="text-gray-600 mb-4">Our chapter map is under development. Browse the directory below to find chapters near you.</p>
+                  <Button 
+                    variant="outline" 
+                    className="border-magenta text-magenta hover:bg-magenta hover:text-white"
+                    onClick={() => setShowStartModal(true)}
+                  >
+                    Start a Chapter in Your City
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Chapter Directory */}
-          <h3 className="font-serif font-semibold text-2xl mb-6 text-center">Chapter Directory</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredChapters.length > 0 ? (
-              filteredChapters.map(chapter => (
-                <Card key={chapter.id} className="overflow-hidden hover:shadow-lg transition-shadow duration-300 border-gray-200">
-                  <CardHeader className="pb-0">
-                    <CardTitle className="text-xl font-serif font-bold">{chapter.name}</CardTitle>
-                    <CardDescription className="flex items-center gap-1 text-gray-600 my-1">
-                      <MapPin className="h-4 w-4 text-magenta" /> {chapter.location}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-sm text-gray-600 mt-2 flex items-center gap-1">
-                      <Users className="h-4 w-4" /> {chapter.memberCount} members
-                    </div>
-                    <div className="mt-1 text-sm text-gray-600 flex items-center gap-1">
-                      <Heart className="h-4 w-4" /> Led by {chapter.leader}
-                    </div>
-                  </CardContent>
-                  <CardFooter>
-                    <Button variant="outline" className="w-full bg-white hover:bg-magenta hover:text-white hover:border-magenta rounded-full">
-                      View Details
-                    </Button>
-                  </CardFooter>
-                </Card>
-              ))
-            ) : (
-              <div className="col-span-full text-center py-10">
-                <p className="text-gray-500">No chapters found for "{searchQuery}"</p>
-                <p className="text-gray-400 mt-2">Try a different search or start your own chapter</p>
-                <Button 
-                  className="mt-4 bg-magenta hover:bg-magenta/90 text-white rounded-full"
-                  onClick={() => setShowStartModal(true)}
-                >
-                  Start a Chapter
-                </Button>
-              </div>
-            )}
+          <div className="max-w-6xl mx-auto">
+            <h3 className="font-serif font-semibold text-2xl mb-8 text-center">Active Chapters</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredChapters.length > 0 ? (
+                filteredChapters.map(chapter => (
+                  <Card key={chapter.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 border-gray-200 bg-white">
+                    <CardHeader className="bg-gradient-to-r from-gray-50 to-white pb-0">
+                      <CardTitle className="text-xl font-serif font-bold">{chapter.name}</CardTitle>
+                      <CardDescription className="flex items-center gap-1 text-gray-600 my-1">
+                        <MapPin className="h-4 w-4 text-magenta" /> {chapter.location}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="pt-4">
+                      <div className="text-sm text-gray-600 mb-3 flex items-center gap-1">
+                        <Users className="h-4 w-4" /> {chapter.memberCount} members
+                      </div>
+                      <div className="flex items-center gap-2 mb-4">
+                        <div className="w-8 h-8 bg-gray-100 rounded-full flex-shrink-0"></div>
+                        <div>
+                          <p className="font-medium text-sm">{chapter.leader}</p>
+                          <p className="text-xs text-gray-500">Chapter Leader</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                    <CardFooter className="border-t bg-gray-50">
+                      <Button 
+                        className="w-full bg-white border border-magenta text-magenta hover:bg-magenta hover:text-white transition-all flex items-center justify-center"
+                      >
+                        View Chapter
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                ))
+              ) : (
+                <div className="col-span-full text-center py-12 border border-gray-200 rounded-xl p-8 bg-white">
+                  <p className="text-gray-700 font-medium mb-2">No chapters found for "{searchQuery}"</p>
+                  <p className="text-gray-500 mb-6">Try a different search term or consider starting a chapter in your area.</p>
+                  <Button 
+                    className="bg-magenta hover:bg-magenta/90 text-white"
+                    onClick={() => setShowStartModal(true)}
+                  >
+                    Start a Chapter
+                  </Button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3: Meet the Leaders */}
+      {/* Meet the Leaders */}
+      <section className="py-16 md:py-24 bg-white border-t border-gray-100">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4">Meet the Chapter Leaders</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              These inspiring women are building communities of support and empowerment across the country.
+            </p>
+          </div>
+          
+          <div className="max-w-6xl mx-auto overflow-hidden">
+            <div className="flex gap-6 pb-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+              {leaders.map(leader => (
+                <div 
+                  key={leader.id} 
+                  className="min-w-[280px] w-64 flex-shrink-0 snap-center bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100"
+                >
+                  <div className="aspect-square bg-gray-100 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-magenta/10 to-transparent z-0"></div>
+                    <img 
+                      src={leader.image || getImageSrc("", true)}
+                      alt={leader.name}
+                      className="w-full h-full object-cover"
+                      onError={createImageErrorHandler()}
+                    />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-serif font-bold text-lg">{leader.name}</h3>
+                    <p className="text-magenta text-sm mb-3">{leader.chapter}</p>
+                    <p className="text-gray-600 italic text-sm line-clamp-2">"{leader.quote}"</p>
+                    <div className="flex justify-between items-center mt-4">
+                      <Button 
+                        variant="link" 
+                        className="text-magenta hover:text-magenta/80 p-0 h-auto flex items-center"
+                      >
+                        View Profile <ArrowRight className="ml-1 h-4 w-4" />
+                      </Button>
+                      <Button 
+                        variant="ghost"
+                        size="sm"
+                        className="text-gray-500 hover:text-magenta p-1 h-auto"
+                      >
+                        <ArrowRight className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            <div className="flex justify-center mt-6">
+              <Button variant="outline" className="rounded-full border-gray-200">
+                View All Leaders <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Start a Manahood */}
+      <section className="py-20 md:py-28 bg-black text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1573164713988-8665321e3075?ixlib=rb-4.0.3')] bg-cover bg-center opacity-30 mix-blend-overlay"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(216,27,96,0.4),_transparent_70%)]"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="inline-flex items-center bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm mb-8">
+              <span className="text-sm uppercase tracking-wider font-medium text-white">Join the Movement</span>
+            </div>
+            <h2 className="font-serif font-bold text-3xl md:text-5xl mb-6">Ready to Lead in Your City?</h2>
+            <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+              Start a Manahood chapter and guide your local Latina community toward empowerment, connection, and growth.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link href="/manahood/start">
+                <Button 
+                  className="bg-magenta hover:bg-magenta/90 text-white px-8 py-6 h-auto rounded-lg text-lg shadow-[0_0_20px_rgba(242,56,137,0.4)] transition-all"
+                >
+                  Start a Chapter <UserPlus className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Button 
+                variant="outline"
+                className="border-2 border-white/30 text-white px-8 py-6 h-auto rounded-lg text-lg hover:bg-white/10 transition-all"
+                onClick={() => setShowStartModal(true)}
+              >
+                Get More Info
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Upcoming Manahood Events */}
       <section className="py-16 md:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4">Meet the Women Leading the Movement</h2>
+            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4">Upcoming Manahood Events</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              These inspiring leaders are building communities of support and empowerment across the country.
+              Connect with fellow Latinas at these community gatherings and expand your network.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {leaders.map(leader => (
-              <div key={leader.id} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-                <div className="aspect-square bg-gray-200 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-magenta/20 to-transparent z-0"></div>
-                  <img 
-                    src={leader.image || getImageSrc("", true)}
-                    alt={leader.name}
-                    className="w-full h-full object-cover"
-                    onError={createImageErrorHandler()}
-                  />
-                </div>
-                <div className="p-5">
-                  <h3 className="font-serif font-bold text-lg">{leader.name}</h3>
-                  <p className="text-magenta text-sm mb-3">{leader.chapter}</p>
-                  <p className="text-gray-600 italic text-sm">"{leader.quote}"</p>
-                  <Button 
-                    variant="link" 
-                    className="text-magenta hover:text-magenta/80 p-0 h-auto mt-2 flex items-center"
-                  >
-                    Full Story <ArrowRight className="ml-1 h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 4: Start a Manahood */}
-      <section className="py-16 md:py-24 bg-magenta text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6">Ready to Lead?</h2>
-            <p className="text-xl mb-8">
-              If you've felt the call to lead other Latinas in your city, we've made it simple.
-            </p>
-            <Button 
-              className="bg-white text-magenta hover:bg-white/90 rounded-full px-8 py-6 text-lg font-medium"
-              onClick={() => setShowStartModal(true)}
-            >
-              Start a Manahood <UserPlus className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 5: Upcoming Manahood Events */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4">Manahood Gatherings Near You</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Connect with fellow Latinas at these upcoming events and expand your network.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {events.map(event => (
-              <Card key={event.id} className="overflow-hidden hover:shadow-lg transition-shadow duration-300 border-gray-200">
-                <div className="aspect-video bg-gray-200 relative">
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 z-10"></div>
-                  <img 
-                    src={event.image || getImageSrc("", true)}
-                    alt={event.title}
-                    className="w-full h-full object-cover"
-                    onError={createImageErrorHandler()}
-                  />
-                  <div className="absolute bottom-3 left-3 bg-white text-black px-3 py-1 rounded-full text-sm font-medium z-20">
-                    {event.chapter}
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {events.slice(0, 6).map(event => (
+                <div key={event.id} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 group">
+                  <div className="aspect-video bg-gray-100 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 to-black/70 z-10"></div>
+                    <img 
+                      src={event.image || getImageSrc("", true)}
+                      alt={event.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onError={createImageErrorHandler()}
+                    />
+                    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium z-20 flex items-center">
+                      <Calendar className="h-3 w-3 mr-1 text-magenta" />
+                      {event.date}
+                    </div>
+                    <div className="absolute top-3 right-3 bg-magenta/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium z-20 text-white">
+                      {event.chapter}
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-serif font-bold text-xl mb-2 group-hover:text-magenta transition-colors">{event.title}</h3>
+                    <div className="flex items-center text-gray-600 text-sm mb-4">
+                      <MapPin className="h-4 w-4 text-gray-400 mr-1" />
+                      {event.location}
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <Button 
+                        className="px-4 py-2 h-auto text-sm bg-white border border-magenta text-magenta hover:bg-magenta hover:text-white transition-all"
+                      >
+                        View Details
+                      </Button>
+                      <div className="text-sm text-gray-500">
+                        Manahood Event
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <CardHeader>
-                  <CardTitle className="text-xl font-serif">{event.title}</CardTitle>
-                  <CardDescription className="flex items-center gap-1 text-gray-500">
-                    <Calendar className="h-4 w-4" /> {event.date}
-                  </CardDescription>
-                  <CardDescription className="flex items-center gap-1 text-gray-500">
-                    <MapPin className="h-4 w-4" /> {event.location}
-                  </CardDescription>
-                </CardHeader>
-                <CardFooter>
-                  <Button variant="outline" className="w-full hover:bg-magenta hover:text-white hover:border-magenta rounded-full">
-                    Event Details
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-          
-          <div className="mt-12 text-center">
-            <Button className="bg-black hover:bg-gray-800 text-white rounded-full px-6">
-              View All Events <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+              ))}
+            </div>
+            
+            <div className="mt-12 text-center">
+              <Link href="/events">
+                <Button className="bg-black hover:bg-gray-800 text-white px-8 py-3 h-auto rounded-lg shadow-md">
+                  View All Events <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
