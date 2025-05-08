@@ -10,8 +10,7 @@ import { Event } from "@/lib/types";
 import { useQuery } from "@tanstack/react-query";
 
 const EventCard = ({ event }: { event: Event }) => {
-  // Generate a random event type for the demo
-  // More structured event categorization based on event name and location
+  // Generate event type for the demo based on event name and location
   let eventType = { tag: "IN-PERSON", name: "LEADERSHIP ACADEMY" };
   
   if (event.name.includes("Wealth") || event.name.includes("Financial")) {
@@ -29,10 +28,12 @@ const EventCard = ({ event }: { event: Event }) => {
   }
   
   return (
-    <Link href={`/events/${event.slug}`} className="block">
-      <div className="relative aspect-[16/11] rounded-xl overflow-hidden group cursor-pointer shadow-lg">
+    <Link href={`/events/${event.slug}`}>
+      <div className="relative aspect-video sm:aspect-[16/9] rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 bg-black">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10" />
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] opacity-0 group-hover:opacity-20 transition-opacity duration-300 z-10" />
+        
         <img 
           src={event.image} 
           alt={event.name}
@@ -44,47 +45,47 @@ const EventCard = ({ event }: { event: Event }) => {
         />
         
         {/* Content Overlay */}
-        <div className="absolute inset-0 z-20 p-8 md:p-10 flex flex-col justify-end text-white">
-          {/* Top Tags */}
-          <div className="absolute top-8 left-8 flex gap-2 flex-wrap">
-            <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
+        <div className="absolute inset-0 z-20 p-4 sm:p-6 md:p-8 flex flex-col justify-end text-white space-y-3">
+          {/* Top Tags - Responsive positioning and styling */}
+          <div className="absolute top-4 sm:top-6 md:top-8 left-4 sm:left-6 md:left-8 flex flex-wrap gap-2 max-w-[80%]">
+            <div className="inline-flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm">
               <span className="text-xs uppercase tracking-wider font-medium">{eventType.tag}</span>
             </div>
-            <div className="inline-flex items-center bg-magenta/60 px-3 py-1 rounded-full backdrop-blur-sm">
+            <div className="inline-flex items-center bg-magenta px-3 py-1 rounded-full backdrop-blur-sm shadow-sm">
               <span className="text-xs uppercase tracking-wider font-medium">{eventType.name}</span>
             </div>
           </div>
           
-          {/* Main content at bottom */}
-          <div className="w-full pr-32">
-            {/* Title - Large and Bold */}
-            <h3 className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl mb-4 leading-tight tracking-tight">
-              {event.name.split(' ').slice(0, 4).join(' ')}
+          {/* Main content at bottom - Improved responsive layout */}
+          <div className="w-full pr-4 sm:pr-24 md:pr-32">
+            {/* Title - Responsive typography */}
+            <h3 className="font-sans font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-2 sm:mb-4 leading-tight tracking-tight line-clamp-2">
+              {event.name}
             </h3>
             
-            {/* Simple Description - Limited to 2 lines */}
-            <p className="text-white/90 text-base md:text-lg max-w-md mb-4 leading-relaxed line-clamp-2">
+            {/* Description - Hidden on smallest screens */}
+            <p className="hidden sm:block text-white/90 text-sm sm:text-base max-w-md mb-2 sm:mb-4 leading-relaxed line-clamp-2">
               {event.shortDescription.split('.')[0]}.
             </p>
             
-            {/* Event metadata */}
-            <div className="flex flex-wrap gap-4 items-center text-sm text-white/80">
-              <div className="flex items-center gap-1">
-                <Calendar className="h-4 w-4 text-magenta" />
-                {event.date}
+            {/* Event metadata - Stacked on mobile, side by side on larger screens */}
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 items-start sm:items-center text-xs sm:text-sm text-white/80">
+              <div className="flex items-center gap-1.5">
+                <Calendar className="h-3.5 w-3.5 text-magenta" />
+                <span>{event.date}</span>
               </div>
-              <div className="flex items-center gap-1">
-                <MapPin className="h-4 w-4 text-magenta" />
-                {event.location}
+              <div className="flex items-center gap-1.5">
+                <MapPin className="h-3.5 w-3.5 text-magenta" />
+                <span className="line-clamp-1">{event.location}</span>
               </div>
             </div>
           </div>
           
-          {/* Brand Logo - Bottom right */}
-          <div className="absolute bottom-8 right-8 bg-black text-white p-3 rounded">
+          {/* Brand Logo - Responsive positioning */}
+          <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 right-4 sm:right-6 md:right-8 bg-black text-white p-2 sm:p-3 rounded shadow-md">
             <div className="uppercase font-bold text-center leading-none">
               <div className="text-xs tracking-widest mb-1">{eventType.name.split(' ')[0]}</div>
-              <div className="text-sm tracking-wider">{eventType.name.split(' ')[1] || "ACADEMY"}</div>
+              <div className="text-xs sm:text-sm tracking-wider">{eventType.name.split(' ')[1] || "ACADEMY"}</div>
             </div>
           </div>
         </div>
@@ -95,43 +96,43 @@ const EventCard = ({ event }: { event: Event }) => {
 
 // Loading skeleton for event cards
 const EventCardSkeleton = () => (
-  <div className="relative aspect-[16/11] rounded-xl overflow-hidden animate-pulse bg-gray-800 shadow-lg">
+  <div className="relative aspect-video sm:aspect-[16/9] rounded-2xl overflow-hidden animate-pulse bg-gray-800 shadow-md">
     {/* Simulating the gradient overlay */}
     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10"></div>
     
     <div className="absolute inset-0 z-20 flex flex-col">
-      {/* Tags skeleton - top left */}
-      <div className="absolute top-8 left-8 flex gap-2">
-        <div className="h-5 w-28 bg-white/20 rounded-full"></div>
-        <div className="h-5 w-20 bg-magenta/60 rounded-full"></div>
+      {/* Tags skeleton - top left with responsive positioning */}
+      <div className="absolute top-4 sm:top-6 md:top-8 left-4 sm:left-6 md:left-8 flex flex-wrap gap-2">
+        <div className="h-5 w-20 sm:w-24 md:w-28 bg-white/20 rounded-full"></div>
+        <div className="h-5 w-16 sm:w-18 md:w-20 bg-magenta/60 rounded-full"></div>
       </div>
       
-      {/* Content skeleton - bottom left */}
-      <div className="absolute bottom-0 left-0 right-0 p-8">
-        <div className="pr-32">
-          {/* Title skeleton */}
-          <div className="h-10 bg-white/30 rounded mb-2 w-1/2"></div>
-          <div className="h-10 bg-white/30 rounded mb-6 w-1/3"></div>
+      {/* Content skeleton - bottom with responsive layout */}
+      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-6 md:left-8 right-4 sm:right-6 md:right-8">
+        <div className="pr-4 sm:pr-20 md:pr-32">
+          {/* Title skeleton - responsive sizing */}
+          <div className="h-6 sm:h-8 md:h-10 bg-white/30 rounded mb-2 w-1/2"></div>
+          <div className="hidden sm:block h-6 sm:h-8 md:h-10 bg-white/30 rounded mb-2 sm:mb-4 w-1/3"></div>
           
-          {/* Description skeleton */}
-          <div className="h-5 bg-white/20 rounded mb-4 w-full max-w-md"></div>
+          {/* Description skeleton - hidden on mobile */}
+          <div className="hidden sm:block h-4 sm:h-5 bg-white/20 rounded mb-2 sm:mb-4 w-full max-w-md"></div>
           
-          {/* Event metadata skeleton */}
-          <div className="flex gap-4 flex-wrap">
-            <div className="flex items-center gap-1">
-              <div className="h-4 w-4 rounded-full bg-magenta"></div>
-              <div className="h-4 w-16 bg-white/30 rounded"></div>
+          {/* Event metadata skeleton - stacked on mobile */}
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+            <div className="flex items-center gap-1.5">
+              <div className="h-3.5 w-3.5 rounded-full bg-magenta"></div>
+              <div className="h-3.5 sm:h-4 w-14 sm:w-16 bg-white/30 rounded"></div>
             </div>
-            <div className="flex items-center gap-1">
-              <div className="h-4 w-4 rounded-full bg-magenta"></div>
-              <div className="h-4 w-20 bg-white/30 rounded"></div>
+            <div className="flex items-center gap-1.5">
+              <div className="h-3.5 w-3.5 rounded-full bg-magenta"></div>
+              <div className="h-3.5 sm:h-4 w-16 sm:w-20 bg-white/30 rounded"></div>
             </div>
           </div>
         </div>
       </div>
       
-      {/* Logo skeleton - bottom right */}
-      <div className="absolute bottom-8 right-8 h-16 w-24 bg-black rounded"></div>
+      {/* Logo skeleton - responsive positioning */}
+      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 right-4 sm:right-6 md:right-8 h-12 sm:h-14 md:h-16 w-18 sm:w-20 md:w-24 bg-black rounded"></div>
     </div>
   </div>
 );
