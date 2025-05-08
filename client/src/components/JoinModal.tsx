@@ -144,19 +144,19 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
     <>
       <SuccessConfetti active={showConfetti} />
       <Dialog open={open} onOpenChange={handleClose}>
-        <DialogContent className="sm:max-w-[500px] bg-white p-0 overflow-hidden rounded-3xl">
+        <DialogContent className="w-[95%] max-w-[460px] sm:max-w-[500px] bg-white p-0 overflow-hidden rounded-xl sm:rounded-3xl">
           {isSubmitted ? (
             // Success state
-            <div className="py-8 px-6 text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Check className="h-8 w-8 text-green-600" />
+            <div className="py-6 sm:py-8 px-4 sm:px-6 text-center">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <Check className="h-7 w-7 sm:h-8 sm:w-8 text-green-600" />
               </div>
-              <DialogTitle className="text-2xl font-bold mb-4 text-black">Thank You for Joining!</DialogTitle>
-              <p className="mb-6 text-gray-700">
+              <DialogTitle className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-black">Thank You for Joining!</DialogTitle>
+              <p className="mb-5 sm:mb-6 text-sm sm:text-base text-gray-700">
                 We're excited to have you join the Latina Empire Elite Program. Check your email for next steps and welcome information.
               </p>
               <Button 
-                className="accent-button py-2 px-6 justify-center"
+                className="accent-button py-2 px-5 sm:px-6 justify-center text-sm sm:text-base"
                 onClick={() => onOpenChange(false)}
               >
                 Close
@@ -165,15 +165,15 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
           ) : (
             // Form state
             <>
-              <div className="bg-black p-6 text-white">
-                <DialogTitle className="text-2xl font-bold">Join the Elite Program</DialogTitle>
-                <p className="text-white/80 mt-2">
+              <div className="bg-black p-4 sm:p-6 text-white">
+                <DialogTitle className="text-xl sm:text-2xl font-bold">Join the Elite Program</DialogTitle>
+                <p className="text-white/80 mt-1 sm:mt-2 text-sm sm:text-base">
                   Fill out this form to begin your journey with our premium coaching program
                 </p>
               </div>
               
-              <form onSubmit={handleSubmit} className="space-y-5 p-6">
-                <div className="space-y-2">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 p-4 sm:p-6">
+                <div className="space-y-1 sm:space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-gray-700">
                     Full Name <span className="text-red-500">*</span>
                   </label>
@@ -183,18 +183,18 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Enter your full name"
-                    className={`rounded-xl border-gray-300 py-3 ${formErrors.name ? 'border-red-500 ring-red-500' : 'focus:border-black focus:ring-black'}`}
+                    className={`rounded-lg sm:rounded-xl border-gray-300 py-2 sm:py-3 text-sm sm:text-base ${formErrors.name ? 'border-red-500 ring-red-500' : 'focus:border-black focus:ring-black'}`}
                     disabled={isSubmitting}
                   />
                   {formErrors.name && (
-                    <div className="text-red-500 text-sm flex items-center gap-1">
-                      <AlertCircle className="h-4 w-4" />
+                    <div className="text-red-500 text-xs sm:text-sm flex items-center gap-1">
+                      <AlertCircle className="h-3 w-3 sm:h-4 sm:w-4" />
                       {formErrors.name}
                     </div>
                   )}
                 </div>
                 
-                <div className="space-y-2">
+                <div className="space-y-1 sm:space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-gray-700">
                     Email <span className="text-red-500">*</span>
                   </label>
@@ -205,18 +205,18 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="you@example.com"
-                    className={`rounded-xl border-gray-300 py-3 ${formErrors.email ? 'border-red-500 ring-red-500' : 'focus:border-black focus:ring-black'}`}
+                    className={`rounded-lg sm:rounded-xl border-gray-300 py-2 sm:py-3 text-sm sm:text-base ${formErrors.email ? 'border-red-500 ring-red-500' : 'focus:border-black focus:ring-black'}`}
                     disabled={isSubmitting}
                   />
                   {formErrors.email && (
-                    <div className="text-red-500 text-sm flex items-center gap-1">
-                      <AlertCircle className="h-4 w-4" />
+                    <div className="text-red-500 text-xs sm:text-sm flex items-center gap-1">
+                      <AlertCircle className="h-3 w-3 sm:h-4 sm:w-4" />
                       {formErrors.email}
                     </div>
                   )}
                 </div>
                 
-                <div className="space-y-2">
+                <div className="space-y-1 sm:space-y-2">
                   <label htmlFor="country" className="text-sm font-medium text-gray-700">
                     Country <span className="text-red-500">*</span>
                   </label>
@@ -225,26 +225,26 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                     onValueChange={handleSelectChange}
                     disabled={isSubmitting}
                   >
-                    <SelectTrigger id="country" className={`rounded-xl border-gray-300 py-6 ${formErrors.country ? 'border-red-500' : 'focus:border-black focus:ring-black'}`}>
+                    <SelectTrigger id="country" className={`rounded-lg sm:rounded-xl border-gray-300 py-2 sm:py-6 text-sm sm:text-base ${formErrors.country ? 'border-red-500' : 'focus:border-black focus:ring-black'}`}>
                       <SelectValue placeholder="Select your country" />
                     </SelectTrigger>
                     <SelectContent>
                       {countries.map((country) => (
-                        <SelectItem key={country} value={country}>
+                        <SelectItem key={country} value={country} className="text-sm sm:text-base">
                           {country}
                         </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                   {formErrors.country && (
-                    <div className="text-red-500 text-sm flex items-center gap-1">
-                      <AlertCircle className="h-4 w-4" />
+                    <div className="text-red-500 text-xs sm:text-sm flex items-center gap-1">
+                      <AlertCircle className="h-3 w-3 sm:h-4 sm:w-4" />
                       {formErrors.country}
                     </div>
                   )}
                 </div>
                 
-                <div className="space-y-2">
+                <div className="space-y-1 sm:space-y-2">
                   <label htmlFor="reason" className="text-sm font-medium text-gray-700">
                     Why do you want to join? <span className="text-gray-400">(Optional)</span>
                   </label>
@@ -255,20 +255,20 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                     onChange={handleInputChange}
                     placeholder="Tell us a bit about your goals and what you hope to achieve"
                     rows={3}
-                    className="rounded-xl border-gray-300 focus:border-black focus:ring-black"
+                    className="rounded-lg sm:rounded-xl border-gray-300 focus:border-black focus:ring-black text-sm sm:text-base"
                     disabled={isSubmitting}
                   />
                 </div>
                 
-                <DialogFooter className="pt-4">
+                <DialogFooter className="pt-3 sm:pt-4">
                   <Button 
                     type="submit" 
-                    className="w-full accent-button py-3 px-6 justify-center" 
+                    className="w-full accent-button py-2 sm:py-3 px-4 sm:px-6 justify-center text-sm sm:text-base" 
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
                       <>
-                        <Loader className="mr-2 h-4 w-4 animate-spin" />
+                        <Loader className="mr-2 h-3 w-3 sm:h-4 sm:w-4 animate-spin" />
                         Processing...
                       </>
                     ) : (
@@ -277,7 +277,7 @@ const JoinModal = ({ open, onOpenChange }: JoinModalProps) => {
                   </Button>
                 </DialogFooter>
                 
-                <p className="text-xs text-gray-500 text-center mt-4">
+                <p className="text-xs text-center mt-3 sm:mt-4 text-gray-500">
                   By submitting this form, you agree to our Privacy Policy and Terms of Service.
                 </p>
               </form>
