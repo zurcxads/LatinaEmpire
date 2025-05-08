@@ -54,7 +54,7 @@ const MediaItemCard = ({ item }: { item: MediaItem }) => {
         />
         <div className="card-text-overlay opacity-60 group-hover:opacity-70 transition-opacity"></div>
         <div className="absolute bottom-4 left-4">
-          <div className="inline-block bg-black/70 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
+          <div className="inline-block bg-[#d81b60]/80 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
             {item.source}
           </div>
         </div>
