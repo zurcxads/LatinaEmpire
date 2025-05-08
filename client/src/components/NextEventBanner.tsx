@@ -22,7 +22,7 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
 
   // Return the styled version for both desktop and mobile
   return (
-    <div className="w-full overflow-hidden rounded-md bg-gradient-to-br from-magenta/20 to-black/80 shadow-lg border border-white/10">
+    <div className="w-full overflow-hidden rounded-xl bg-gradient-to-br from-magenta/20 to-black/80 shadow-lg border border-white/10">
       <div className="relative">
         {/* Event image with dark overlay */}
         <img 
