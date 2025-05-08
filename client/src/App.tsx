@@ -17,6 +17,7 @@ import Join from "@/pages/Join";
 import AboutFounder from "@/pages/AboutFounder";
 import Blog from "@/pages/Blog";
 import BlogDetail from "@/pages/BlogDetail";
+import Manahood from "@/pages/Manahood";
 import NotFound from "@/pages/not-found";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import Navbar from "@/components/Navbar";
@@ -42,6 +43,7 @@ function Router() {
           <Route path="/contact" component={Contact} />
           <Route path="/join" component={Join} />
           <Route path="/about-founder" component={AboutFounder} />
+          <Route path="/manahood" component={Manahood} />
           <Route component={NotFound} />
         </Switch>
       </main>
