@@ -22,20 +22,30 @@ const Hero = () => {
       <section className="relative w-full overflow-hidden">
         {/* Hero container - full width, rounded corners like Tony's site */}
         <div className="mx-4 my-4 rounded-3xl overflow-hidden">
-          {/* Content container */}
-          <div className="relative flex items-end w-full h-[85vh] px-10 md:px-16 py-16">
-            {/* Main content area - aligned to bottom with justify-end & items-end */}
-            <div className="w-full max-w-4xl flex flex-col items-start justify-end h-auto mb-16">
-              <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
-                <span className="md:hidden">
-                  Elevate Your Leadership, Expand Your Legacy
+          {/* Content container with fixed height and absolute positioning for content */}
+          <div className="relative w-full min-h-[700px] h-[90vh] overflow-hidden">
+            {/* Main content area - absolutely positioned directly at bottom left with minimal margin */}
+            <div className="absolute bottom-12 left-8 md:left-16 z-10 max-w-4xl">
+              <h1 className="text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 leading-[0.9] tracking-tighter">
+                <span className="sm:hidden block">
+                  Elevate<br/>
+                  Your<br/>
+                  Leadership,<br/>
+                  Expand<br/>
+                  Your<br/>
+                  Legacy
                 </span>
-                <span className="hidden md:inline">
-                  Elevate<br />Your<br />Leadership,<br />Expand<br />Your<br />Legacy
+                <span className="hidden sm:block">
+                  Elevate<br />
+                  Your<br />
+                  Leadership,<br />
+                  Expand<br />
+                  Your<br />
+                  Legacy
                 </span>
               </h1>
               
-              <p className="text-white text-lg md:text-xl lg:text-2xl mb-8 max-w-3xl">
+              <p className="text-white text-lg md:text-xl mb-8 max-w-2xl">
                 Join the global movement empowering ambitious Latina professionals.
               </p>
               
