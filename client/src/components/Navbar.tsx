@@ -66,7 +66,16 @@ const Navbar = () => {
 
   // Toggle mobile menu
   const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
+    const newState = !mobileMenuOpen;
+    setMobileMenuOpen(newState);
+    
+    // Add/remove overflow-hidden to body when opening/closing mobile menu
+    if (newState) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+    
     if (activeMenu) {
       setActiveMenu(null);
     }
@@ -476,8 +485,8 @@ const Navbar = () => {
             </div>
           </nav>
           
-          {/* Dropdown menus */}
-          {activeMenu && (
+          {/* Dropdown menus - for desktop only */}
+          {activeMenu && !isMobile && (
             <div className="bg-black/50 backdrop-blur-md text-white relative z-10 rounded-b-2xl border-t border-white/10 shadow-2xl">
               {getMenuContent(activeMenu)}
             </div>
