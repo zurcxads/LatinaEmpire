@@ -54,13 +54,13 @@ const EventCard = ({ event }: { event: any }) => (
   <Link href={`/events/${event.slug}`}>
     <div className="relative aspect-[0.8] overflow-hidden rounded-md group cursor-pointer">
       {/* Dark overlay with gradient */}
-      <div className="card-text-overlay z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent z-10" />
       
       {/* Background image */}
       <img 
         src={getImageSrc(event.image, true)} 
         alt={event.name}
-        className="card-image group-hover:scale-105"
+        className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
         onError={createImageErrorHandler()}
       />
       

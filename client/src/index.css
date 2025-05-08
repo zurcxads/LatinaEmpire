@@ -85,22 +85,6 @@
     .mobile-full-width {
       @apply w-full;
     }
-    
-    .mobile-center {
-      @apply text-center flex flex-col items-center justify-center;
-    }
-    
-    .mobile-text-left {
-      @apply text-left;
-    }
-    
-    .mobile-no-padding {
-      @apply px-0 py-0;
-    }
-    
-    .mobile-card-spacing {
-      @apply gap-y-6 gap-x-4;
-    }
   }
 
   html, body {
@@ -184,49 +168,25 @@
   @apply py-8 md:py-12;
 }
 
-.section-spacing-bottom {
-  @apply pb-16 md:pb-24 lg:pb-32;
-}
-
-.section-spacing-top {
-  @apply pt-16 md:pt-24 lg:pt-32;
-}
-
-.spacing-y {
-  @apply py-8 md:py-12 lg:py-16;
-}
-
-.spacing-x {
-  @apply px-4 md:px-8 lg:px-12;
-}
-
 .hero-navbar-spacing {
   @apply pt-16 md:pt-20;
 }
 
 /* Consistent button styles */
 .primary-button {
-  @apply bg-gray-100 hover:bg-gray-200 text-black font-medium px-6 py-3 rounded-full transition-all duration-300 flex items-center gap-1.5 disabled:opacity-50 disabled:hover:bg-gray-100;
+  @apply bg-gray-100 hover:bg-gray-200 text-black font-medium px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-1.5 disabled:opacity-50 disabled:hover:bg-gray-100;
 }
 
 .secondary-button {
-  @apply bg-white text-black hover:bg-gray-100 font-medium px-6 py-3 rounded-full border-2 border-black transition-all duration-300 flex items-center gap-1.5 hover:bg-black hover:text-white disabled:opacity-50 disabled:hover:bg-white disabled:hover:text-black;
+  @apply bg-white text-black hover:bg-gray-100 font-medium px-6 py-2 rounded-full border-2 border-black transition-all duration-300 flex items-center gap-1.5 hover:bg-black hover:text-white disabled:opacity-50 disabled:hover:bg-white disabled:hover:text-black;
 }
 
 .accent-button {
-  @apply bg-black text-white hover:bg-gray-800 font-medium px-6 py-3 rounded-full transition-all duration-300 flex items-center gap-1.5 disabled:opacity-50 disabled:hover:bg-black;
+  @apply bg-black text-white hover:bg-gray-800 font-medium px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-1.5 disabled:opacity-50 disabled:hover:bg-black;
 }
 
 .outline-button {
-  @apply border-2 border-gray-200 bg-transparent text-white hover:bg-white/10 font-medium px-6 py-3 rounded-full transition-all duration-300 flex items-center gap-1.5 disabled:opacity-50 disabled:hover:bg-transparent;
-}
-
-.cta-button {
-  @apply bg-black text-white hover:bg-gray-800 transition-colors px-8 py-3 rounded-full font-medium inline-flex items-center;
-}
-
-.cta-button-large {
-  @apply transition-colors px-10 py-4 rounded-full font-medium text-lg inline-flex items-center shadow-lg;
+  @apply border-2 border-gray-200 bg-transparent text-white hover:bg-white/10 font-medium px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-1.5 disabled:opacity-50 disabled:hover:bg-transparent;
 }
 
 /* Card styles */
@@ -234,33 +194,9 @@
   @apply bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl;
 }
 
-.card-base {
-  @apply bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300;
-}
-
-.card-hover {
-  @apply hover:shadow-lg hover:-translate-y-1 cursor-pointer;
-}
-
-.card-image {
-  @apply w-full h-full object-cover transition-transform duration-500 group-hover:scale-105;
-}
-
-.card-text-overlay {
-  @apply absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent;
-}
-
-.card-content {
-  @apply p-6;
-}
-
 /* Gradient overlays */
 .overlay-gradient {
   @apply absolute inset-0 bg-gradient-to-br from-black/80 to-transparent;
-}
-
-.hero-gradient-overlay {
-  @apply absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black;
 }
 
 /* Hero specific styles that extend the global styles */

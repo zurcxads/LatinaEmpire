@@ -25,7 +25,7 @@ const CoachingSection = () => {
             
             <Button 
               onClick={() => setIsModalOpen(true)}
-              className="cta-button-large bg-white text-black hover:bg-gray-100"
+              className="bg-white text-black hover:bg-gray-100 rounded-full font-semibold text-lg py-6 px-10 inline-flex items-center"
             >
               Learn More
               <ArrowRight className="ml-2 h-5 w-5" />

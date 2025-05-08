@@ -198,7 +198,7 @@ const Navbar = () => {
               onClick={() => setActiveMenu(null)}
             >
               <Button 
-                className="bg-magenta hover:bg-magenta/90 text-white px-5 py-2 rounded-full text-sm shadow-lg"
+                className="bg-magenta hover:bg-magenta/90 text-white px-5 py-2 rounded-md text-sm shadow-md"
               >
                 {menuKey === 'empower' ? 'Meet Our Leaders' : 
                  menuKey === 'learn' ? 'Browse Programs' : 'Shop Now'}
@@ -323,7 +323,7 @@ const Navbar = () => {
                   
                   {/* Join Button - Sticky CTA */}
                   <Button 
-                    className="bg-magenta text-white hover:bg-magenta/90 text-xs ml-4 h-8 px-5 py-0 rounded-full shadow-lg font-medium transition-all duration-300"
+                    className="bg-magenta text-white hover:bg-magenta/90 text-xs ml-4 h-8 px-5 py-0 rounded-full shadow-md font-medium transition-all duration-300"
                     onClick={() => setIsModalOpen(true)}
                   >
                     Join Now
@@ -456,7 +456,7 @@ const Navbar = () => {
                     
                     {/* Join Button */}
                     <Button 
-                      className="bg-magenta hover:bg-magenta/90 text-white text-sm mt-3 px-4 py-4 justify-center w-full rounded-full shadow-lg transition-all duration-300"
+                      className="bg-magenta hover:bg-magenta/90 text-white text-sm mt-3 px-4 py-4 justify-center w-full rounded-md shadow-md transition-all duration-300"
                       onClick={() => setIsModalOpen(true)}
                     >
                       Join the Empire

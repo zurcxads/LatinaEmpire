@@ -1,43 +1,44 @@
 import Hero from "@/components/Hero";
+import NextEventBanner from "@/components/NextEventBanner";
 import ProgramCarousel from "@/components/ProgramCarousel";
 import BrandIntro from "@/components/BrandIntro";
 import Testimonial from "@/components/Testimonial";
 import PillarsSection from "@/components/PillarsSection";
 import FounderSection from "@/components/FounderSection";
 import ShopSection from "@/components/ShopSection";
-import MediaSection from "@/components/MediaSection";
+import PodcastSection from "@/components/PodcastSection";
 import QuizSection from "@/components/QuizSection";
 import FinalCTA from "@/components/FinalCTA";
 
 const Home = () => {
   return (
     <div className="flex flex-col">
-      {/* SECTION 1: Hero Banner */}
+      {/* SECTION 1: Hero Banner - Full-screen flagship program promo */}
       <Hero />
 
-      {/* SECTION 2: Event/Program Carousel */}
+      {/* SECTION 2: Next Event Promo Banner */}
+      <NextEventBanner />
+
+      {/* SECTION 3: Event/Program Carousel - Horizontal slider */}
       <ProgramCarousel />
 
-      {/* SECTION 3: Life Mastery Quiz */}
+      {/* SECTION 4: Life Mastery Quiz */}
       <QuizSection />
 
-      {/* SECTION 4: Three Pillars Section */}
+      {/* SECTION 5: Pillars Section */}
       <PillarsSection />
 
-      {/* SECTION 5: Testimonials */}
+      {/* SECTION 6: Testimonials */}
       <Testimonial />
 
-      {/* SECTION 6: Meet Our Founder */}
+      {/* SECTION 7: Meet Our Founder */}
       <FounderSection />
 
-      {/* SECTION 7: Shop Preview */}
+      {/* SECTION 8: Shop Preview */}
       <ShopSection />
 
-      {/* SECTION 8: Media Section */}
-      <MediaSection />
-
-      {/* SECTION 9: Elite Program Overview */}
-      <BrandIntro />
+      {/* SECTION 9: Podcast Section */}
+      <PodcastSection />
 
       {/* SECTION 10: Final CTA Section */}
       <FinalCTA />

@@ -34,7 +34,7 @@ const QuizSection = () => {
             <div className="flex justify-center">
               <Button 
                 onClick={() => setIsStarted(true)}
-                className="bg-white text-black hover:bg-gray-100 text-lg px-8 py-3 rounded-full font-medium shadow-lg"
+                className="primary-button py-3 px-8 text-lg"
               >
                 Start now
               </Button>
@@ -88,7 +88,7 @@ const QuizSection = () => {
 const QuizOption = ({ title, description, link }: { title: string, description: string, link: string }) => {
   return (
     <Link href={link}>
-      <div className="card-base bg-white/10 hover:bg-white/20 backdrop-blur-sm p-6 cursor-pointer">
+      <div className="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-6 rounded-xl cursor-pointer transition-all duration-300">
         <h4 className="font-serif font-bold text-xl mb-2">{title}</h4>
         <p className="text-white/80 text-sm">{description}</p>
       </div>

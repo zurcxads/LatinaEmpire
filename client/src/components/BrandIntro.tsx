@@ -12,7 +12,7 @@ interface ValueProps {
 
 const ValueItem = ({ icon, title, description }: ValueProps) => {
   return (
-    <div className="group card-base card-hover flex flex-col h-full p-7">
+    <div className="group bg-white p-7 rounded-lg border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
       <div className="mb-5">
         <div className="h-14 w-14 bg-magenta/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-magenta/20 transition-all">
           {icon}
@@ -66,7 +66,7 @@ const BrandIntro = () => {
     <>
       <JoinModal open={isModalOpen} onOpenChange={setIsModalOpen} />
 
-      <section className="section-spacing-large bg-gray-50">
+      <section className="py-20 lg:py-28 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <span className="font-sans uppercase tracking-wider text-magenta font-semibold text-sm mb-3 block">THE ELITE PROGRAM</span>
@@ -90,7 +90,8 @@ const BrandIntro = () => {
           <div className="text-center">
             <Button 
               onClick={() => setIsModalOpen(true)}
-              className="cta-button-large bg-magenta text-white hover:bg-magenta/90"
+              className="bg-black text-white px-8 py-7 rounded-full font-sans font-semibold text-lg hover:bg-gray-800 shadow-md h-auto transition-all inline-flex items-center"
+              size="lg"
             >
               Begin Your Transformation
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -138,7 +139,7 @@ const BrandIntro = () => {
               </ul>
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className="cta-button"
+                className="bg-black text-white px-6 py-3 rounded-full font-sans font-semibold hover:bg-gray-800 transition-all"
               >
                 Learn More About Our Approach
               </Button>

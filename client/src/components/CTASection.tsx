@@ -41,7 +41,7 @@ const CTASection = () => {
               
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-white text-black px-8 py-3 h-auto rounded-full font-medium text-lg hover:bg-gray-100 shadow-lg inline-flex items-center"
+                className="bg-white text-black px-8 py-6 h-auto rounded-full font-sans font-semibold text-lg hover:bg-gray-100 shadow-md inline-flex items-center"
               >
                 Register for Free Webinar
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -53,7 +53,7 @@ const CTASection = () => {
                 <img 
                   src={getImageSrc("https://images.unsplash.com/photo-1551836022-deb4988cc6c0", true)} 
                   alt="Free Masterclass" 
-                  className="card-image"
+                  className="w-full h-full object-cover"
                   onError={createImageErrorHandler()}
                 />
               </div>
@@ -91,13 +91,13 @@ const CTASection = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-white text-black px-8 py-3 h-auto rounded-full font-medium text-lg hover:bg-gray-100 shadow-lg w-full sm:w-auto"
+                className="bg-white text-black px-8 py-6 h-auto rounded-full font-sans font-semibold text-lg hover:bg-gray-100 shadow-md w-full sm:w-auto"
               >
                 Join the Elite Program
               </Button>
               <Button 
                 variant="outline" 
-                className="bg-transparent border-2 border-white text-white px-8 py-3 h-auto rounded-full font-medium text-lg hover:bg-white hover:text-black transition-all w-full sm:w-auto"
+                className="bg-transparent border-2 border-white text-white px-8 py-6 h-auto rounded-full font-sans font-semibold text-lg hover:bg-white hover:text-black transition-all w-full sm:w-auto"
               >
                 Learn More
               </Button>

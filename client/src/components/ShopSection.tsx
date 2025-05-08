@@ -101,16 +101,16 @@ const ShopSection = () => {
                         <img 
                           src={getImageSrc(product.image, true)} 
                           alt={product.name} 
-                          className="card-image"
+                          className="w-full h-full object-cover"
                           onError={createImageErrorHandler()}
                         />
-                        <div className="card-text-overlay opacity-50"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       </div>
                       <div className="flex-grow">
                         <h3 className="text-xl font-semibold mb-2 text-white h-14 line-clamp-2">{product.name}</h3>
                         <p className="text-gray-400 mb-4">${product.price}</p>
                       </div>
-                      <Button className="w-full accent-button justify-center mt-auto">Add to cart</Button>
+                      <Button className="w-full primary-button justify-center mt-auto">Add to cart</Button>
                     </CardContent>
                   </Card>
                 </CarouselItem>
