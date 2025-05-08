@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
-import { X, Instagram, Phone, Mail, ArrowRight, Menu } from "lucide-react";
+import { X, Instagram, Phone, Mail, ArrowRight, Menu, ChevronDown, ChevronUp } from "lucide-react";
 import JoinModal from "./JoinModal";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
@@ -56,7 +56,7 @@ const Navbar = () => {
   }, [activeMenu]);
 
   // Toggle menu function
-  const toggleMenu = (menu: string) => {
+  const toggleMenu = (menu: string | null) => {
     if (activeMenu === menu) {
       setActiveMenu(null);
     } else {
@@ -79,33 +79,52 @@ const Navbar = () => {
     "TRANSFORM YOUR LIFE AND LEGACY WITH OUR COMMUNITY OF AMBITIOUS LATINAS • "
   ].join(' ');
 
-  // Menu structure reorganized with three main tabs
+  // Menu structure organized as mega menu with three main tabs
   const menuStructure = {
     empower: {
       title: "Empower",
-      items: [
-        { label: "Our Founder", href: "/about-founder" },
-        { label: "Leadership Program", href: "/programs" },
-        { label: "Leaders Network", href: "/leaders" },
-        { label: "Membership", href: "/membership" }
+      description: "Leadership, community, and our founder",
+      sections: [
+        {
+          items: [
+            { label: "Our Story", href: "/about-founder" },
+            { label: "Global Leaders Network", href: "/leaders" },
+            { label: "Become a Leader", href: "/programs/certification" },
+            { label: "Manahood Chapters", href: "/manahood" },
+            { label: "Start a Chapter", href: "/manahood/start" }
+          ]
+        }
       ]
     },
     learn: {
       title: "Learn & Grow",
-      items: [
-        { label: "Events", href: "/events" },
-        { label: "Events Calendar", href: "/events-calendar" },
-        { label: "Blog & Resources", href: "/blog" },
-        { label: "Manahood Program", href: "/manahood" }
+      description: "Education, events, blog, and membership",
+      sections: [
+        {
+          items: [
+            { label: "Programs Hub", href: "/programs" },
+            { label: "Workshops & Courses", href: "/programs#courses" },
+            { label: "Events & Retreats", href: "/events" },
+            { label: "Event Calendar", href: "/events-calendar" },
+            { label: "Blog & Media", href: "/blog" },
+            { label: "Membership Tiers", href: "/membership" }
+          ]
+        }
       ]
     },
     give: {
       title: "Give & Get",
-      items: [
-        { label: "Shop Merch", href: "/shop" },
-        { label: "Donate", href: "/donate" },
-        { label: "Join the Movement", href: "/join" },
-        { label: "Contact Us", href: "/contact" }
+      description: "Shop, donate, and get involved",
+      sections: [
+        {
+          items: [
+            { label: "Mana Boutique (Shop)", href: "/shop" },
+            { label: "Scholarship Fund", href: "/donate" },
+            { label: "Partner & Sponsor", href: "/contact#partners" },
+            { label: "Press & Media Requests", href: "/contact#press" },
+            { label: "Join Our Team", href: "/contact#careers" }
+          ]
+        }
       ]
     },
     contact: {
@@ -147,7 +166,7 @@ const Navbar = () => {
     }
   };
 
-  // Generate menu content
+  // Generate mega menu content
   const getMenuContent = (menuKey: string) => {
     if (menuKey === 'contact') {
       return menuStructure.contact.content;
@@ -165,16 +184,30 @@ const Navbar = () => {
     }
     
     return (
-      <div className="grid grid-cols-2 gap-0">
-        {menu.items.map((item, idx) => (
-          <Link 
-            key={idx} 
-            href={item.href} 
-            className="p-6 hover:bg-white/10 transition-colors border-b border-r border-white/10"
-          >
-            <h3 className="text-sm font-medium text-center text-shadow-sm">{item.label}</h3>
-          </Link>
-        ))}
+      <div className="p-6 animate-fadeIn">
+        {/* Menu Header with Title and Description */}
+        <div className="mb-6 border-b border-white/10 pb-4">
+          <h2 className="text-xl font-serif font-medium mb-1">{menu.title}</h2>
+          <p className="text-sm text-white/70">{menu.description}</p>
+        </div>
+        
+        {/* Menu Items in Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2">
+          {menu.sections[0].items.map((item, idx) => (
+            <Link 
+              key={idx} 
+              href={item.href}
+              className="group flex items-center py-2 px-3 hover:bg-white/10 rounded-md transition-all duration-200"
+            >
+              <div className="flex-1">
+                <h3 className="text-sm font-medium text-white group-hover:text-magenta transition-colors duration-200">
+                  {item.label}
+                </h3>
+              </div>
+              <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-200" />
+            </Link>
+          ))}
+        </div>
       </div>
     );
   };
@@ -205,13 +238,13 @@ const Navbar = () => {
                 
                 <div className="flex items-center ml-auto">
                   {/* Navigation links - desktop */}
-                  <div className="hidden md:flex items-center space-x-2">
+                  <div className="hidden md:flex items-center space-x-3">
                     <button 
                       onClick={() => toggleMenu('empower')}
-                      className={`px-4 h-7 text-sm transition-all relative flex items-center ${
+                      className={`px-4 h-8 text-sm transition-all duration-200 relative flex items-center ${
                         activeMenu === 'empower' 
                           ? 'text-black bg-white rounded-md shadow-lg' 
-                          : 'text-white hover:text-white/80 text-shadow-sm'
+                          : 'text-white hover:text-white/90 hover:bg-white/10 rounded-md text-shadow-sm'
                       }`}
                     >
                       Empower
@@ -219,10 +252,10 @@ const Navbar = () => {
                     
                     <button 
                       onClick={() => toggleMenu('learn')}
-                      className={`px-4 h-7 text-sm transition-all flex items-center ${
+                      className={`px-4 h-8 text-sm transition-all duration-200 flex items-center ${
                         activeMenu === 'learn'
                           ? 'text-black bg-white rounded-md shadow-lg'
-                          : 'text-white hover:text-white/80 text-shadow-sm'
+                          : 'text-white hover:text-white/90 hover:bg-white/10 rounded-md text-shadow-sm'
                       }`}
                     >
                       Learn & Grow
@@ -230,10 +263,10 @@ const Navbar = () => {
                     
                     <button 
                       onClick={() => toggleMenu('give')}
-                      className={`px-4 h-7 text-sm transition-all flex items-center ${
+                      className={`px-4 h-8 text-sm transition-all duration-200 flex items-center ${
                         activeMenu === 'give' 
                           ? 'text-black bg-white rounded-md shadow-lg' 
-                          : 'text-white hover:text-white/80 text-shadow-sm'
+                          : 'text-white hover:text-white/90 hover:bg-white/10 rounded-md text-shadow-sm'
                       }`}
                     >
                       Give & Get
@@ -258,45 +291,127 @@ const Navbar = () => {
                 </div>
               </div>
               
-              {/* Mobile navigation menu */}
+              {/* Mobile navigation menu with accordions */}
               {mobileMenuOpen && (
-                <div className="md:hidden bg-black/15 backdrop-blur-sm text-white p-4 border-t border-white/10">
-                  <div className="flex flex-col space-y-2">
-                    <button 
-                      onClick={() => toggleMenu('empower')}
-                      className={`px-4 py-2 text-sm text-shadow-sm transition-all rounded-md ${
-                        activeMenu === 'empower' 
-                          ? 'text-black bg-white font-medium shadow-lg' 
-                          : 'text-white hover:bg-white/10'
-                      }`}
-                    >
-                      Empower
-                    </button>
-                    <button 
-                      onClick={() => toggleMenu('learn')}
-                      className={`px-4 py-2 text-sm text-shadow-sm transition-all rounded-md ${
-                        activeMenu === 'learn' 
-                          ? 'text-black bg-white font-medium shadow-lg' 
-                          : 'text-white hover:bg-white/10'
-                      }`}
-                    >
-                      Learn & Grow
-                    </button>
-                    <button 
-                      onClick={() => toggleMenu('give')}
-                      className={`px-4 py-2 text-sm text-shadow-sm transition-all rounded-md ${
-                        activeMenu === 'give' 
-                          ? 'text-black bg-white font-medium shadow-lg' 
-                          : 'text-white hover:bg-white/10'
-                      }`}
-                    >
-                      Give & Get
-                    </button>
+                <div className="md:hidden bg-black/50 backdrop-blur-md text-white p-4 border-t border-white/10 animate-fadeIn">
+                  <div className="flex flex-col space-y-3">
+                    {/* Empower Accordion */}
+                    <div className="rounded-lg overflow-hidden">
+                      <button 
+                        onClick={() => toggleMenu(activeMenu === 'empower' ? null : 'empower')}
+                        className={`flex items-center justify-between w-full px-4 py-3 text-sm transition-colors duration-200 ${
+                          activeMenu === 'empower' ? 'bg-magenta text-white' : 'hover:bg-white/10 rounded-lg'
+                        }`}
+                      >
+                        <span className="font-medium">{menuStructure.empower.title}</span>
+                        <div className="flex items-center">
+                          <span className="text-xs mr-2 opacity-70">{menuStructure.empower.description}</span>
+                          {activeMenu === 'empower' ? 
+                            <ChevronUp className="h-4 w-4" /> : 
+                            <ChevronDown className="h-4 w-4" />
+                          }
+                        </div>
+                      </button>
+                      
+                      {activeMenu === 'empower' && (
+                        <div className="bg-black/30 rounded-b-lg animate-slideDown">
+                          <div className="p-3 grid gap-1">
+                            {menuStructure.empower.sections[0].items.map((item, idx) => (
+                              <Link 
+                                key={idx} 
+                                href={item.href}
+                                className="flex items-center py-2 px-3 text-sm text-white/90 hover:text-white hover:bg-white/10 rounded-md transition-colors duration-150"
+                                onClick={() => setMobileMenuOpen(false)}
+                              >
+                                <ArrowRight className="h-3 w-3 mr-2 text-magenta" />
+                                {item.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Learn & Grow Accordion */}
+                    <div className="rounded-lg overflow-hidden">
+                      <button 
+                        onClick={() => toggleMenu(activeMenu === 'learn' ? null : 'learn')}
+                        className={`flex items-center justify-between w-full px-4 py-3 text-sm transition-colors duration-200 ${
+                          activeMenu === 'learn' ? 'bg-magenta text-white' : 'hover:bg-white/10 rounded-lg'
+                        }`}
+                      >
+                        <span className="font-medium">{menuStructure.learn.title}</span>
+                        <div className="flex items-center">
+                          <span className="text-xs mr-2 opacity-70">{menuStructure.learn.description}</span>
+                          {activeMenu === 'learn' ? 
+                            <ChevronUp className="h-4 w-4" /> : 
+                            <ChevronDown className="h-4 w-4" />
+                          }
+                        </div>
+                      </button>
+                      
+                      {activeMenu === 'learn' && (
+                        <div className="bg-black/30 rounded-b-lg animate-slideDown">
+                          <div className="p-3 grid gap-1">
+                            {menuStructure.learn.sections[0].items.map((item, idx) => (
+                              <Link 
+                                key={idx} 
+                                href={item.href}
+                                className="flex items-center py-2 px-3 text-sm text-white/90 hover:text-white hover:bg-white/10 rounded-md transition-colors duration-150"
+                                onClick={() => setMobileMenuOpen(false)}
+                              >
+                                <ArrowRight className="h-3 w-3 mr-2 text-magenta" />
+                                {item.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Give & Get Accordion */}
+                    <div className="rounded-lg overflow-hidden">
+                      <button 
+                        onClick={() => toggleMenu(activeMenu === 'give' ? null : 'give')}
+                        className={`flex items-center justify-between w-full px-4 py-3 text-sm transition-colors duration-200 ${
+                          activeMenu === 'give' ? 'bg-magenta text-white' : 'hover:bg-white/10 rounded-lg'
+                        }`}
+                      >
+                        <span className="font-medium">{menuStructure.give.title}</span>
+                        <div className="flex items-center">
+                          <span className="text-xs mr-2 opacity-70">{menuStructure.give.description}</span>
+                          {activeMenu === 'give' ? 
+                            <ChevronUp className="h-4 w-4" /> : 
+                            <ChevronDown className="h-4 w-4" />
+                          }
+                        </div>
+                      </button>
+                      
+                      {activeMenu === 'give' && (
+                        <div className="bg-black/30 rounded-b-lg animate-slideDown">
+                          <div className="p-3 grid gap-1">
+                            {menuStructure.give.sections[0].items.map((item, idx) => (
+                              <Link 
+                                key={idx} 
+                                href={item.href}
+                                className="flex items-center py-2 px-3 text-sm text-white/90 hover:text-white hover:bg-white/10 rounded-md transition-colors duration-150"
+                                onClick={() => setMobileMenuOpen(false)}
+                              >
+                                <ArrowRight className="h-3 w-3 mr-2 text-magenta" />
+                                {item.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Join Button */}
                     <Button 
-                      className="primary-button text-xs mt-2 px-4 h-7 py-0 justify-center w-full"
+                      className="bg-magenta hover:bg-magenta/90 text-white text-sm mt-3 px-4 py-4 justify-center w-full rounded-md shadow-md transition-all duration-300"
                       onClick={() => setIsModalOpen(true)}
                     >
-                      Join
+                      Join the Empire
                     </Button>
                   </div>
                 </div>
@@ -315,7 +430,7 @@ const Navbar = () => {
           
           {/* Dropdown menus */}
           {activeMenu && (
-            <div className="bg-black/15 backdrop-blur-sm text-white relative z-10">
+            <div className="bg-black/50 backdrop-blur-md text-white relative z-10 rounded-b-2xl border-t border-white/10 shadow-2xl">
               {getMenuContent(activeMenu)}
             </div>
           )}
