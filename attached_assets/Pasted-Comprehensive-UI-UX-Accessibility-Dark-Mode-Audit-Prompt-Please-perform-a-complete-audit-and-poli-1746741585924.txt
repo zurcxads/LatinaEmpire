@@ -1,0 +1,109 @@
+Comprehensive UI/UX, Accessibility & Dark Mode Audit Prompt
+Please perform a complete audit and polish pass across the entire Latina Empire website focusing on the following areas:
+
+📱🔁 RESPONSIVENESS: All Breakpoints
+✅ Mobile (≤ 767px), Tablet (768px–1023px), Desktop (≥ 1024px)
+Audit each section for:
+
+Proper spacing and padding across breakpoints (px, py, gap)
+
+Responsive text sizes:
+
+tailwind
+Copy code
+text-xl sm:text-2xl md:text-4xl
+Grid systems adjusting from 1 → 2 → 3 columns cleanly:
+
+tailwind
+Copy code
+grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
+Fix any:
+
+Text wrapping/overflow issues
+
+Image ratio distortion
+
+CTA button stacking or misalignment
+
+Scrollable horizontal sections cutting off on tablet
+
+🎯 ACCESSIBILITY (A11y) Compliance
+Audit and apply fixes for:
+
+1. Color Contrast
+Ensure all text meets WCAG AA contrast ratios (4.5:1 for body, 3:1 for large headlines)
+
+Especially check:
+
+Gradient overlays over text
+
+Button text on magenta/dark backgrounds
+
+2. Alt Tags for All Images
+Every image (<img> or next/image) must include alt="" text, even if decorative
+
+3. ARIA Labels and Roles
+Apply aria-label, aria-labelledby, or role attributes to:
+
+Navigation elements
+
+Modals
+
+Form fields
+
+Tabs/accordions
+
+4. Keyboard Navigation
+Ensure all interactive elements (e.g. links, buttons, tabs) are:
+
+Focusable with tab
+
+Usable via keyboard alone
+
+5. Skip to Content
+Add a "skip to content" link for screen reader users (placed at the top of page, visually hidden but accessible)
+
+🌙 DARK MODE SUPPORT
+Ensure the entire site works cleanly in dark mode, including:
+
+✅ Backgrounds
+All section backgrounds must toggle appropriately:
+
+bg-white dark:bg-black
+
+Avoid harsh shifts — use Tailwind's dark: variants for smooth toggles
+
+✅ Text
+Apply conditional text styles:
+
+tailwind
+Copy code
+text-gray-900 dark:text-white
+✅ Buttons, Cards & Borders
+Ensure pills, outlines, and border colors adjust:
+
+border-gray-300 dark:border-gray-700
+
+hover:bg-neutral-800 dark:hover:bg-neutral-600
+
+✅ Image Blending
+For sections using background images:
+
+Apply an overlay or dark filter for better legibility in dark mode (bg-black/30)
+
+OR offer dark: image variants if possible
+
+🧪 TEST ALL PAGES
+Test every major route:
+
+/, /about-founder, /programs, /events, /blog, /membership, /contact, and any modals or dynamic routes
+
+Validate:
+
+No layout shifts on resize
+
+All UI is visually polished
+
+All buttons/CTAs work
+
+Pages are navigable and readable with screen readers
