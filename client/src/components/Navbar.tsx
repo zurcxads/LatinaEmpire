@@ -261,7 +261,7 @@ const Navbar = () => {
       )}
       
       <div className="w-full flex items-center justify-center fixed z-50 pt-3 px-5">
-        <header className="bg-black/15 backdrop-blur-sm max-w-4xl w-full rounded-2xl overflow-hidden shadow-xl" ref={overlayRef}>
+        <header className="bg-black/15 backdrop-blur-sm max-w-4xl w-full rounded-2xl overflow-hidden shadow-xl z-50" ref={overlayRef}>
           {/* Main navigation bar */}
           <nav className="relative z-20">
             <div className="flex flex-col">

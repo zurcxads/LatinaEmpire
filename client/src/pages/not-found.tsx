@@ -1,8 +1,8 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Home } from "lucide-react";
+import { Home, BookOpen, Calendar, Mail } from "lucide-react";
 import Navbar from "@/components/Navbar";
-
+import Footer from "@/components/Footer";
 
 export default function NotFound() {
   return (
@@ -22,10 +22,35 @@ export default function NotFound() {
               Back to Homepage
             </Button>
           </Link>
+          
+          {/* Added better guidance section */}
+          <div className="mt-12 space-y-6">
+            <p className="text-gray-600 font-medium">You might want to check out:</p>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <Link href="/blog">
+                <Button variant="outline" className="flex items-center border-gray-300 hover:border-magenta hover:text-magenta">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Blog
+                </Button>
+              </Link>
+              <Link href="/events">
+                <Button variant="outline" className="flex items-center border-gray-300 hover:border-magenta hover:text-magenta">
+                  <Calendar className="mr-2 h-4 w-4" />
+                  Events
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button variant="outline" className="flex items-center border-gray-300 hover:border-magenta hover:text-magenta">
+                  <Mail className="mr-2 h-4 w-4" />
+                  Contact Us
+                </Button>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
       
-
+      <Footer />
     </div>
   );
 }
