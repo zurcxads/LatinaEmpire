@@ -705,7 +705,7 @@ const EventDetail = () => {
       </section>
       
       {/* Leadership Academy Speakers Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="section-spacing bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
             <div>
@@ -854,7 +854,7 @@ const EventDetail = () => {
       </section>
       
       {/* FAQ Section */}
-      <section className="py-16 bg-white">
+      <section className="section-spacing bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-12">
             <div className="flex mb-2">
@@ -970,7 +970,7 @@ const EventDetail = () => {
         </div>
       </section>
       
-      {/* Full-width CTA Section */}
+      {/* Full-width CTA Section - Using fixed height, no need for spacing utility class */}
       <section className="relative h-[500px] md:h-[600px] overflow-hidden">
         {/* Background image with overlay */}
         <div 
@@ -997,7 +997,7 @@ const EventDetail = () => {
       </section>
       
       {/* Blog Section */}
-      <section className="py-16 bg-black text-white">
+      <section className="section-spacing bg-black text-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-wrap items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
