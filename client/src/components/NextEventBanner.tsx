@@ -20,27 +20,76 @@ const NextEventBanner = ({ compact = false }: { compact?: boolean }) => {
     return null;
   }
 
-  // Return the compact version styled exactly like Tony Robbins site
+  // Return the styled version for both desktop and mobile
   return (
     <div className="w-full overflow-hidden rounded-md bg-black/90">
       <div className="relative">
+        {/* Event image with dark overlay */}
         <img 
           src={getImageSrc(nextEvent.bannerImage || nextEvent.image, true)} 
           alt={nextEvent.name}
           className="w-full aspect-video object-cover"
           onError={createImageErrorHandler()}
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40"></div>
         
-        {/* Play button overlay (similar to Tony's video thumbnail) */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="flex items-center justify-center w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30">
-            <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[12px] border-l-white border-b-[8px] border-b-transparent ml-1"></div>
+        {/* Desktop event info - shown only inside hero */}
+        <div className="absolute inset-0 p-4 flex flex-col justify-between">
+          {/* Event Title - different for desktop vs mobile */}
+          <div>
+            {/* Desktop event info */}
+            <div className="hidden lg:block">
+              <h3 className="text-white text-lg font-bold leading-tight mb-2">{nextEvent.name}</h3>
+              
+              {/* Event Date and Location - desktop only */}
+              <div className="text-white/80 text-xs flex items-center mb-1">
+                <span className="truncate">{new Date(nextEvent.date).toLocaleDateString('en-US', {
+                  weekday: 'short',
+                  month: 'short', 
+                  day: 'numeric'
+                })}</span>
+                {nextEvent.startTime && 
+                  <span className="ml-2 truncate">{nextEvent.startTime}</span>
+                }
+              </div>
+              
+              <div className="text-white/80 text-xs">
+                <span className="truncate">{nextEvent.location}</span>
+              </div>
+            </div>
+            
+            {/* Mobile event info (simpler) */}
+            <div className="block lg:hidden">
+              <h3 className="text-white text-base font-bold leading-tight mb-1">{nextEvent.name}</h3>
+              
+              <div className="text-white/80 text-xs mb-1">
+                {new Date(nextEvent.date).toLocaleDateString('en-US', {
+                  month: 'short', 
+                  day: 'numeric'
+                })}
+                {nextEvent.startTime && ` • ${nextEvent.startTime}`}
+              </div>
+            </div>
           </div>
-        </div>
-        
-        {/* "Watch" label (like Tony's site) */}
-        <div className="absolute bottom-4 right-4 text-white text-sm font-medium">
-          Watch
+          
+          {/* Bottom action area */}
+          <div className="flex justify-between items-end w-full">
+            {/* Learn More button */}
+            <Button 
+              asChild
+              size="sm"
+              className="bg-white hover:bg-white/90 text-black rounded-full px-4 py-1 text-xs shadow"
+            >
+              <Link href={`/events/${nextEvent.slug}`}>
+                Learn More
+              </Link>
+            </Button>
+            
+            {/* RPM-like label in bottom right (mimicking Tony design) */}
+            <div className="text-white text-sm font-bold hidden lg:block">
+              {nextEvent.name.split(' ')[0]}
+            </div>
+          </div>
         </div>
       </div>
     </div>
