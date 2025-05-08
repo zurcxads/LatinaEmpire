@@ -138,9 +138,9 @@ const LeaderDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const [, setLocation] = useLocation();
   
-  // Fetch ambassador data with React Query
+  // Fetch leader data with React Query
   const { data: ambassador, isLoading, isError } = useQuery({
-    queryKey: [`/api/ambassadors/${slug}`],
+    queryKey: [`/api/leaders/${slug}`],
     queryFn: async () => {
       if (!slug) {
         return null;
@@ -201,7 +201,7 @@ const LeaderDetail = () => {
     <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
 
-      {/* Ambassador Banner - Keep dark for contrast with banner image */}
+      {/* Leader Banner - Keep dark for contrast with banner image */}
       <section 
         className="pt-32 pb-20 bg-center bg-cover bg-no-repeat relative"
         style={{ 
@@ -246,7 +246,7 @@ const LeaderDetail = () => {
         </div>
       </section>
 
-      {/* Ambassador Content - White Theme */}
+      {/* Leader Content - White Theme */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -278,7 +278,7 @@ const LeaderDetail = () => {
             {/* Sidebar */}
             <div className="lg:col-span-1">
               <div className="bg-white rounded-lg p-6 sticky top-24 border border-gray-200 shadow-md">
-                {/* Ambassador Image */}
+                {/* Leader Image */}
                 <div className="mb-6 flex justify-center">
                   <div className="relative rounded-full overflow-hidden w-40 h-40 border-4 border-white shadow-lg">
                     <img 

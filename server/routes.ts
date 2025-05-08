@@ -71,6 +71,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Ambassadors API routes
+  // Original ambassador routes - kept for backward compatibility
   app.get("/api/ambassadors", (req: Request, res: Response) => {
     try {
       const data = getAmbassadorsData();
@@ -95,6 +96,34 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error serving ambassador:", error);
       res.status(500).json({ error: "Failed to fetch ambassador details" });
+    }
+  });
+  
+  // New leader routes (using same data source but with updated naming)
+  app.get("/api/leaders", (req: Request, res: Response) => {
+    try {
+      const data = getAmbassadorsData();
+      res.json(data);
+    } catch (error) {
+      console.error("Error serving leaders:", error);
+      res.status(500).json({ error: "Failed to fetch leaders" });
+    }
+  });
+
+  app.get("/api/leaders/:slug", (req: Request, res: Response) => {
+    try {
+      const { slug } = req.params;
+      const data = getAmbassadorsData();
+      const leader = data.ambassadors.find((a: any) => a.slug === slug);
+      
+      if (!leader) {
+        return res.status(404).json({ error: "Leader not found" });
+      }
+      
+      res.json(leader);
+    } catch (error) {
+      console.error("Error serving leader:", error);
+      res.status(500).json({ error: "Failed to fetch leader details" });
     }
   });
 

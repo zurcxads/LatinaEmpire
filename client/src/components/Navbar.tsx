@@ -263,34 +263,34 @@ const Navbar = () => {
                 <div className="md:hidden bg-black/15 backdrop-blur-sm text-white p-4 border-t border-white/10">
                   <div className="flex flex-col space-y-2">
                     <button 
-                      onClick={() => toggleMenu('about')}
+                      onClick={() => toggleMenu('empower')}
                       className={`px-4 py-2 text-sm text-shadow-sm transition-all rounded-md ${
-                        activeMenu === 'about' 
+                        activeMenu === 'empower' 
                           ? 'text-black bg-white font-medium shadow-lg' 
                           : 'text-white hover:bg-white/10'
                       }`}
                     >
-                      About
+                      Empower
                     </button>
                     <button 
-                      onClick={() => toggleMenu('explore')}
+                      onClick={() => toggleMenu('learn')}
                       className={`px-4 py-2 text-sm text-shadow-sm transition-all rounded-md ${
-                        activeMenu === 'explore' 
+                        activeMenu === 'learn' 
                           ? 'text-black bg-white font-medium shadow-lg' 
                           : 'text-white hover:bg-white/10'
                       }`}
                     >
-                      Explore
+                      Learn & Grow
                     </button>
                     <button 
-                      onClick={() => toggleMenu('contact')}
+                      onClick={() => toggleMenu('give')}
                       className={`px-4 py-2 text-sm text-shadow-sm transition-all rounded-md ${
-                        activeMenu === 'contact' 
+                        activeMenu === 'give' 
                           ? 'text-black bg-white font-medium shadow-lg' 
                           : 'text-white hover:bg-white/10'
                       }`}
                     >
-                      Contact
+                      Give & Get
                     </button>
                     <Button 
                       className="primary-button text-xs mt-2 px-4 h-7 py-0 justify-center w-full"
