@@ -1,0 +1,57 @@
+Here’s a polished Replit prompt you can copy and paste to fix the mobile hero section alignment on /about-founder:
+
+⸻
+
+Prompt for Replit:
+
+⸻
+
+Please fix the mobile layout of the Hero section on the /about-founder page. The background gradient and foreground content are currently misaligned. I want the section to match the visual quality of the homepage hero, with clean padding, centered text, and a consistent gradient card effect.
+
+🔧 Fixes Required:
+
+1. Container Styling
+	•	Wrap the hero section in a full-width container with proper padding:
+
+<div className="relative w-full px-4 pt-24 pb-16 md:pt-28 md:px-8">
+
+2. Background Image and Overlay
+	•	Use an absolute background image with object-cover:
+
+<img
+  src="/path/to/hero-image.jpg"
+  alt="Latina Empire Hero"
+  className="absolute inset-0 w-full h-full object-cover rounded-2xl z-0"
+/>
+
+	•	Add a dark gradient overlay:
+
+<div className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-2xl z-10" />
+
+3. Content Block
+	•	Wrap the content in a relative z-20 block to ensure it’s on top of the background:
+
+<div className="relative z-20 text-white space-y-4 text-center md:text-left max-w-xl mx-auto md:mx-0">
+  <p className="text-sm font-semibold tracking-wide text-pink-400">• ABOUT PERLA</p>
+  <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
+    Extraordinary lives answer to a higher calling
+  </h1>
+  <a href="#read-story" className="text-white underline decoration-dotted hover:opacity-80 text-base font-medium">
+    Read Her Story ↓
+  </a>
+</div>
+
+4. General Layout
+	•	Ensure the entire hero section is inside a rounded div with shadow:
+
+<div className="relative rounded-2xl overflow-hidden shadow-xl min-h-[400px] md:min-h-[500px]">
+  {/* Background + Content here */}
+</div>
+
+✅ Make sure this layout:
+	•	Stays responsive on all screen sizes
+	•	Keeps hero text centered on mobile and left-aligned on desktop
+	•	Ensures the image does not cut off awkwardly
+	•	Uses consistent typography and spacing across breakpoints
+
+Let me know once this is implemented so we can audit the spacing and refine if needed.

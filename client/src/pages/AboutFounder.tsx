@@ -12,55 +12,54 @@ const AboutFounder = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-start overflow-hidden bg-black text-white hero-navbar-spacing">
-        {/* Empty space for nav bar */}
-        <div className="h-16 w-full absolute top-0 left-0 z-20"></div>
-        
-        {/* Container with padding for rounded corners */}
-        <div className="absolute inset-x-8 top-24 bottom-8 rounded-3xl overflow-hidden z-0">
-          {/* Background Image with Overlay - Bottom Fade Only */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10"></div>
-          <img 
-            src={getImageSrc("https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg", true)} 
-            alt="Perla Tamez Casasnovas" 
-            className="w-full h-full object-cover"
-            onError={createImageErrorHandler()}
-          />
-        </div>
-        
-        {/* Content */}
-        <div className="container mx-auto px-4 md:px-6 relative z-10 mt-16">
-          <div className="max-w-2xl py-16">
-            <div className="mb-8">
-              <span className="inline-flex items-center text-white/90 uppercase text-sm tracking-wider font-medium">
-                <span className="mr-2 h-1.5 w-1.5 rounded-full bg-magenta"></span>
-                About Perla
-              </span>
+      <section className="relative bg-black text-white hero-navbar-spacing py-12 md:py-16 lg:py-20">
+        <div className="relative w-full px-4 md:px-8 pt-16 pb-16 md:pt-20 mx-auto">
+          {/* Main hero container with shadow and rounded corners */}
+          <div className="relative rounded-2xl overflow-hidden shadow-xl min-h-[400px] md:min-h-[500px] lg:min-h-[550px] flex items-center">
+            {/* Background Image */}
+            <img 
+              src={getImageSrc("https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg", true)} 
+              alt="Perla Tamez Casasnovas" 
+              className="absolute inset-0 w-full h-full object-cover z-0"
+              onError={createImageErrorHandler()}
+            />
+            
+            {/* Overlay with gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/40 backdrop-blur-sm z-10"></div>
+            
+            {/* Content */}
+            <div className="container mx-auto px-6 md:px-8 relative z-20">
+              <div className="text-white space-y-6 text-center md:text-left max-w-xl mx-auto md:mx-0">
+                <p className="text-sm font-semibold tracking-wide text-magenta inline-flex items-center justify-center md:justify-start">
+                  <span className="mr-2 h-1.5 w-1.5 rounded-full bg-magenta"></span>
+                  ABOUT PERLA
+                </p>
+                
+                <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight md:leading-none mb-6">
+                  Extraordinary lives answer to a higher calling
+                </h1>
+                
+                <button 
+                  onClick={() => {
+                    const earlyLifeSection = document.getElementById('early-life');
+                    if (earlyLifeSection) {
+                      // Get the navbar height to account for fixed positioning
+                      const navbarHeight = 80; // Approximate height of navbar
+                      const elementPosition = earlyLifeSection.getBoundingClientRect().top + window.pageYOffset;
+                      // Scroll with offset to account for navbar
+                      window.scrollTo({
+                        top: elementPosition - navbarHeight,
+                        behavior: 'smooth'
+                      });
+                    }
+                  }}
+                  className="font-sans inline-flex items-center text-white hover:text-magenta transition-colors no-underline text-base font-medium cursor-pointer bg-transparent border-0 p-0"
+                >
+                  READ HER STORY
+                  <ArrowDown className="ml-2 h-4 w-4 animate-bounce" />
+                </button>
+              </div>
             </div>
-            
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-none mb-8">
-              Extraordinary lives answer to a higher calling
-            </h1>
-            
-            <button 
-              onClick={() => {
-                const earlyLifeSection = document.getElementById('early-life');
-                if (earlyLifeSection) {
-                  // Get the navbar height to account for fixed positioning
-                  const navbarHeight = 80; // Approximate height of navbar
-                  const elementPosition = earlyLifeSection.getBoundingClientRect().top + window.pageYOffset;
-                  // Scroll with offset to account for navbar
-                  window.scrollTo({
-                    top: elementPosition - navbarHeight,
-                    behavior: 'smooth'
-                  });
-                }
-              }}
-              className="font-sans inline-flex items-center text-white hover:text-magenta transition-colors no-underline text-base font-medium cursor-pointer bg-transparent border-0 p-0"
-            >
-              READ HER STORY
-              <ArrowDown className="ml-2 h-4 w-4 animate-bounce" />
-            </button>
           </div>
         </div>
       </section>
