@@ -11,7 +11,7 @@ const AboutFounder = () => {
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
+      {/* Hero Section - Mobile Optimized */}
       <section className="relative bg-black text-white hero-navbar-spacing py-12 md:py-16 lg:py-20">
         <div className="relative w-full px-4 md:px-8 pt-16 pb-16 md:pt-20 mx-auto">
           {/* Main hero container with shadow and rounded corners */}
