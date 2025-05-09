@@ -1,9 +1,11 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MapPin, Star, Globe, ArrowLeft } from "lucide-react";
+import { ArrowRight, MapPin, Star, Globe, ArrowLeft, ArrowDown } from "lucide-react";
 import Navbar from "@/components/Navbar";
 // Footer is already included in App.tsx
 import { getImageSrc, createImageErrorHandler } from "@/lib/image-utils";
+import { useState } from "react";
+import JoinLeaderModal from "@/components/JoinLeaderModal";
 
 import { useQuery } from "@tanstack/react-query";
 import { ambassadorsService } from "@/lib/ambassadorsService";
@@ -209,6 +211,24 @@ const FeaturedLeaderSkeleton = () => (
 
 // Leaders Page Component
 const Leaders = () => {
+  // Modal state
+  const [joinModalOpen, setJoinModalOpen] = useState(false);
+  
+  // Scroll to "who are leaders" section
+  const scrollToLeadersInfo = () => {
+    const section = document.getElementById('who-are-leaders');
+    if (section) {
+      const headerOffset = 80; // Account for fixed header
+      const elementPosition = section.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+  
   // Fetch leaders data with React Query
   const { data: leaders, isLoading, isError } = useQuery({
     queryKey: ['/api/leaders'],
@@ -261,14 +281,44 @@ const Leaders = () => {
             <p className="font-sans text-lg md:text-xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed">
               Meet the women leading the Latina Empire movement in cities around the world.
             </p>
-            <div className="flex flex-wrap justify-center gap-5">
-              <Button className="bg-magenta hover:bg-magenta/90 text-white px-8 py-6 h-auto rounded-full text-lg shadow-xl transition-all duration-300 hover:shadow-magenta hover:scale-102">
+            <div className="flex flex-col md:flex-row justify-center gap-5 items-center">
+              <Button 
+                className="bg-magenta hover:bg-magenta/90 text-white rounded-full px-6 py-3 text-base font-semibold min-w-[200px] h-auto transition-all duration-300 hover:shadow-md"
+                onClick={() => setJoinModalOpen(true)}
+              >
                 Join The Network
               </Button>
-              <Button className="bg-transparent text-white border border-white/30 hover:bg-white/10 px-8 py-6 h-auto rounded-full text-lg transition-all duration-300 backdrop-blur-sm hover:border-white/80">
-                Learn More
+              <Button 
+                className="bg-transparent text-white border border-white/30 hover:bg-white/10 rounded-full px-6 py-3 text-base font-semibold min-w-[200px] h-auto transition-all duration-300 backdrop-blur-sm hover:border-white/80"
+                onClick={scrollToLeadersInfo}
+              >
+                Learn More <ArrowDown className="ml-2 h-4 w-4 animate-bounce" />
               </Button>
             </div>
+            
+            {/* Join Leader Modal */}
+            <JoinLeaderModal 
+              open={joinModalOpen}
+              onOpenChange={setJoinModalOpen}
+            />
+          </div>
+        </div>
+      </section>
+      
+      {/* Who Are the Global Leaders Section */}
+      <section id="who-are-leaders" className="py-16 md:py-20 bg-black/95 text-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-bold mb-8">Who Are the Global Leaders?</h2>
+            <p className="mt-4 max-w-2xl text-lg text-gray-300">
+              Latina Empire Global Leaders are ambitious women who lead local communities, represent our brand worldwide, and serve as the pillars of inspiration, education, and cultural empowerment.
+            </p>
+            <ul className="mt-6 list-disc pl-6 space-y-2 text-sm text-gray-400">
+              <li>Host local meetups and workshops</li>
+              <li>Serve as chapter leads in their cities</li>
+              <li>Represent Latina Empire values on a global stage</li>
+              <li>Receive exclusive leadership training and perks</li>
+            </ul>
           </div>
         </div>
       </section>
