@@ -12,15 +12,15 @@ const AboutFounder = () => {
   return (
     <div className="bg-white">
       {/* Hero Section - Mobile Optimized */}
-      <section className="relative bg-black text-white hero-navbar-spacing py-12 md:py-16 lg:py-20">
-        <div className="relative w-full px-4 md:px-8 pt-16 pb-16 md:pt-20 mx-auto">
+      <section className="relative bg-black text-white hero-navbar-spacing py-6 md:py-16 lg:py-20 mb-16 md:mb-24">
+        <div className="relative w-full px-4 md:px-8 pt-12 pb-12 md:pt-20 mx-auto">
           {/* Main hero container with shadow and rounded corners */}
-          <div className="relative rounded-2xl overflow-hidden shadow-xl min-h-[400px] md:min-h-[500px] lg:min-h-[550px] flex items-center">
+          <div className="relative rounded-2xl overflow-hidden shadow-xl min-h-[80vh] md:min-h-[500px] lg:min-h-[550px] flex items-center bg-gradient-to-br from-[#3c003e] via-[#99004d] to-[#4e0059]">
             {/* Background Image */}
             <img 
               src={getImageSrc("https://images.pexels.com/photos/5905885/pexels-photo-5905885.jpeg", true)} 
               alt="Perla Tamez Casasnovas" 
-              className="absolute inset-0 w-full h-full object-cover z-0"
+              className="absolute inset-0 w-full h-full object-cover z-0 opacity-60"
               onError={createImageErrorHandler()}
             />
             
@@ -28,14 +28,14 @@ const AboutFounder = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/40 backdrop-blur-sm z-10"></div>
             
             {/* Content */}
-            <div className="container mx-auto px-6 md:px-8 relative z-20">
-              <div className="text-white space-y-6 text-center md:text-left max-w-xl mx-auto md:mx-0">
-                <p className="text-sm font-semibold tracking-wide text-magenta inline-flex items-center justify-center md:justify-start">
-                  <span className="mr-2 h-1.5 w-1.5 rounded-full bg-magenta"></span>
+            <div className="container mx-auto px-6 md:px-8 py-10 relative z-20 w-full">
+              <div className="text-white space-y-8 text-center md:text-left max-w-xl mx-auto md:mx-0 flex flex-col justify-center">
+                <p className="text-sm font-semibold tracking-wide text-pink-300 inline-flex items-center justify-center md:justify-start">
+                  <span className="mr-2 h-1.5 w-1.5 rounded-full bg-pink-400"></span>
                   ABOUT PERLA
                 </p>
                 
-                <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight md:leading-none mb-6">
+                <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
                   Extraordinary lives answer to a higher calling
                 </h1>
                 
@@ -53,7 +53,7 @@ const AboutFounder = () => {
                       });
                     }
                   }}
-                  className="font-sans inline-flex items-center text-white hover:text-magenta transition-colors no-underline text-base font-medium cursor-pointer bg-transparent border-0 p-0"
+                  className="inline-flex items-center justify-center md:justify-start text-white underline decoration-dotted hover:text-pink-300 transition-colors no-underline text-base font-medium cursor-pointer bg-transparent border-0 p-0 tracking-wide mx-auto md:mx-0"
                 >
                   READ HER STORY
                   <ArrowDown className="ml-2 h-4 w-4 animate-bounce" />
