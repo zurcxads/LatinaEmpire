@@ -42,13 +42,25 @@ const AboutFounder = () => {
               Extraordinary lives answer to a higher calling
             </h1>
             
-            <Link 
-              href="#early-life" 
-              className="font-sans inline-flex items-center text-white hover:text-magenta transition-colors no-underline text-base font-medium"
+            <button 
+              onClick={() => {
+                const earlyLifeSection = document.getElementById('early-life');
+                if (earlyLifeSection) {
+                  // Get the navbar height to account for fixed positioning
+                  const navbarHeight = 80; // Approximate height of navbar
+                  const elementPosition = earlyLifeSection.getBoundingClientRect().top + window.pageYOffset;
+                  // Scroll with offset to account for navbar
+                  window.scrollTo({
+                    top: elementPosition - navbarHeight,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
+              className="font-sans inline-flex items-center text-white hover:text-magenta transition-colors no-underline text-base font-medium cursor-pointer bg-transparent border-0 p-0"
             >
               READ HER STORY
-              <ArrowDown className="ml-2 h-4 w-4" />
-            </Link>
+              <ArrowDown className="ml-2 h-4 w-4 animate-bounce" />
+            </button>
           </div>
         </div>
       </section>
