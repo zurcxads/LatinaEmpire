@@ -51,19 +51,6 @@ const ImpactCarousel = () => {
               />
             </div>
           ))}
-          
-          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-            {images.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  index === activeIndex ? "bg-white" : "bg-white/50"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
         </div>
       </div>
     </section>
