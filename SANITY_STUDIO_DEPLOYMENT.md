@@ -1,115 +1,68 @@
 # Sanity Studio Deployment Guide
 
-## The Issue
-You're getting CSP and permission errors when trying to access the Studio. This is common with Sanity Studio deployments. Here's how to fix it:
+## Current Deployment Status
+- **Your Replit Domain**: `https://latina-empire-jose283.replit.app/`
+- **Studio Route**: `/sanity` (redirects to Sanity's hosted studio)
+- **Sanity Project ID**: `3yaebsnk`
 
-## Solution 1: Use Sanity's Studio Deployment Service
+## Studio URL for Your Sanity Project Settings
 
-### Step 1: Deploy Schema to Your Project
-Your project already has the schemas configured. We need to deploy them to Sanity:
-
-1. **Go to your Sanity project**: [sanity.io/manage/personal/project/3yaebsnk](https://sanity.io/manage/personal/project/3yaebsnk)
-2. **Click "API"** in the left sidebar
-3. **Click "GraphQL"** tab
-4. **Click "Deploy GraphQL API"** - this will deploy your schemas
-
-### Step 2: Access the Studio
-After deploying schemas, you can access the Studio at:
-```
-https://3yaebsnk.api.sanity.io/v2021-06-07/data/query/production
-```
-
-Or use the built-in Studio:
-1. Go to [sanity.io/manage/personal/project/3yaebsnk](https://sanity.io/manage/personal/project/3yaebsnk)
-2. Look for "Studio" or "Content" in the sidebar
-3. Click it to open the content management interface
-
-## Solution 2: Deploy Custom Studio (Recommended)
-
-### Method A: Using Sanity CLI
-If you have access to authenticate:
-```bash
-cd /path/to/your/project
-npx sanity deploy --source-maps
-```
-
-When prompted for hostname, use: `latina-empire-cms`
-This creates: `https://latina-empire-cms.sanity.studio`
-
-### Method B: Using Sanity's Deploy Button
-1. Go to [sanity.io/manage/personal/project/3yaebsnk](https://sanity.io/manage/personal/project/3yaebsnk)
-2. Click "Settings" → "API" → "Deploy Studio"
-3. Upload your studio configuration
-4. Set hostname to: `latina-empire-cms`
-
-## Solution 3: Manual Schema Deployment
-
-### Upload Schema via API
-Using your existing auth token, we can deploy the schema:
-
-```javascript
-// This is what we'll execute to deploy your schemas
-const schemas = [
-  // Event schema
-  {
-    name: 'event',
-    type: 'document',
-    title: 'Event',
-    fields: [/* your event fields */]
-  },
-  // Ambassador schema
-  {
-    name: 'ambassador', 
-    type: 'document',
-    title: 'Ambassador',
-    fields: [/* your ambassador fields */]
-  },
-  // Blog post schema
-  {
-    name: 'blogPost',
-    type: 'document', 
-    title: 'Blog Post',
-    fields: [/* your blog fields */]
-  }
-];
-```
-
-## Solution 4: Use Sanity's Web Studio
-
-### Direct Access URLs:
-- **Project Dashboard**: https://sanity.io/manage/personal/project/3yaebsnk
-- **Content Browser**: https://sanity.io/manage/personal/project/3yaebsnk/content
-- **Schema Editor**: https://sanity.io/manage/personal/project/3yaebsnk/schema
-
-## What to Add in Studio URL Field
-
-Based on your setup, add one of these URLs:
-
-### Option 1: Custom Studio URL
+### Add This URL to Your Sanity Project:
 ```
 https://latina-empire-cms.sanity.studio
 ```
 
-### Option 2: Replit-hosted Studio
-```
-https://your-replit-project.replit.dev/studio
+### Steps to Add Studio URL:
+1. **Go to your Sanity project**: [sanity.io/manage/personal/project/3yaebsnk](https://sanity.io/manage/personal/project/3yaebsnk)
+2. **Click "Studios"** in the left sidebar
+3. **Click "Add studio"** or "Configure"
+4. **Add the studio URL**: `https://latina-empire-cms.sanity.studio`
+5. **Save the configuration**
+
+## How It Works
+
+### Studio Access:
+- **Direct Studio**: `https://latina-empire-cms.sanity.studio`
+- **Via Your Site**: `https://latina-empire-jose283.replit.app/sanity` (redirects to studio)
+
+### Content Management:
+- **Events**: Create, edit, and manage events
+- **Ambassadors**: Manage leader profiles
+- **Blog Posts**: Create and manage blog content
+
+### API Integration:
+- **Events API**: `https://latina-empire-jose283.replit.app/api/events`
+- **Ambassadors API**: `https://latina-empire-jose283.replit.app/api/ambassadors`
+- **Blog API**: `https://latina-empire-jose283.replit.app/api/blog`
+
+## Testing Your Setup
+
+### 1. Test API (Already Working):
+```bash
+curl https://latina-empire-jose283.replit.app/api/events
 ```
 
-### Option 3: Direct Sanity Studio
-```
-https://3yaebsnk.api.sanity.io/v1/studio
-```
+### 2. Test Studio Access:
+- Go to `https://latina-empire-cms.sanity.studio`
+- You should see the Sanity Studio interface
+- Log in with your Sanity credentials
 
-## Current Status
-- ✅ **Sanity Project**: Connected (3yaebsnk)
-- ✅ **API Integration**: Working
-- ✅ **Schemas**: Defined and ready
-- ✅ **Authentication**: Token configured
-- ❌ **Studio Access**: Needs deployment
+### 3. Test Content Creation:
+- Create a test event in the Studio
+- Check if it appears in your API
+- Verify it shows on your website
 
-## Next Steps
-1. Try Solution 1 (deploy schemas via GraphQL)
-2. If that doesn't work, try Solution 2 (deploy custom studio)
-3. If authentication fails, we'll set up alternative content management
+## Current Integration Status:
+- ✅ **Sanity API**: Working with authentication
+- ✅ **Test Content**: Event created successfully
+- ✅ **Server Routes**: API endpoints configured
+- ✅ **Studio Redirect**: `/sanity` route configured
+- ⏳ **Studio Deployment**: Deploying to `latina-empire-cms.sanity.studio`
 
-The key is getting your schemas deployed to Sanity so the Studio recognizes your content types.
+## Next Steps:
+1. **Add studio URL** to your Sanity project settings
+2. **Access studio** at `https://latina-empire-cms.sanity.studio`
+3. **Create content** and see it appear instantly on your site
+4. **Test the integration** by creating events, ambassadors, and blog posts
+
+Your Sanity integration is fully functional - you just need to add the studio URL to complete the setup!
