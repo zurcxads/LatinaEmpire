@@ -50,6 +50,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.redirect('https://latina-empire-cms.sanity.studio');
   });
 
+  // Studio info route
+  app.get('/sanity-info', (req: Request, res: Response) => {
+    res.json({
+      studioUrl: 'https://latina-empire-cms.sanity.studio',
+      projectId: '3yaebsnk',
+      dataset: 'production',
+      configured: !!process.env.SANITY_AUTH_TOKEN
+    });
+  });
+
   // Events API routes
   app.get("/api/events", async (req: Request, res: Response) => {
     try {
