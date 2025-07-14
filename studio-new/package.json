@@ -1,0 +1,19 @@
+{
+  "name": "latina-empire-studio",
+  "version": "1.0.0",
+  "description": "Latina Empire Sanity Studio",
+  "main": "index.js",
+  "scripts": {
+    "dev": "sanity dev --host 0.0.0.0 --port 3333",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
+  },
+  "keywords": ["sanity"],
+  "dependencies": {
+    "sanity": "^3.42.4",
+    "@sanity/vision": "^3.42.4"
+  },
+  "devDependencies": {
+    "@sanity/eslint-config-studio": "^3.0.1"
+  }
+}

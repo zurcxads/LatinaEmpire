@@ -45,6 +45,11 @@ function getBlogData() {
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Studio redirect route for custom domain
+  app.get('/sanity', (req: Request, res: Response) => {
+    res.redirect('https://latina-empire-cms.sanity.studio');
+  });
+
   // Events API routes
   app.get("/api/events", async (req: Request, res: Response) => {
     try {
