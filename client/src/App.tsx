@@ -23,6 +23,7 @@ import ManahoodStart from "@/pages/ManahoodStart";
 import Shop from "@/pages/Shop";
 import Membership from "@/pages/Membership";
 import Donate from "@/pages/Donate";
+import AdminPage from "@/pages/AdminPage";
 import NotFound from "@/pages/not-found";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import Navbar from "@/components/Navbar";
@@ -53,6 +54,7 @@ function Router() {
           <Route path="/shop" component={Shop} />
           <Route path="/membership" component={Membership} />
           <Route path="/donate" component={Donate} />
+          <Route path="/admin" component={AdminPage} />
           <Route component={NotFound} />
         </Switch>
       </main>

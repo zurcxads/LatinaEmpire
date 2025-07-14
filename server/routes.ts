@@ -271,6 +271,76 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // POST endpoints for creating content
+  app.post("/api/events", async (req: Request, res: Response) => {
+    try {
+      if (isSanityConfigured()) {
+        // Create event in Sanity
+        const { sanityClient } = require('../lib/sanity');
+        const eventData = {
+          _type: 'event',
+          ...req.body,
+          date: req.body.date || new Date().toISOString().split('T')[0],
+          isPast: req.body.isPast || false
+        };
+        
+        const result = await sanityClient.create(eventData);
+        res.json({ success: true, id: result._id });
+      } else {
+        res.status(501).json({ error: "Content creation requires Sanity configuration" });
+      }
+    } catch (error) {
+      console.error("Error creating event:", error);
+      res.status(500).json({ error: "Failed to create event" });
+    }
+  });
+
+  app.post("/api/ambassadors", async (req: Request, res: Response) => {
+    try {
+      if (isSanityConfigured()) {
+        const { sanityClient } = require('../lib/sanity');
+        const ambassadorData = {
+          _type: 'ambassador',
+          ...req.body,
+          socialMedia: req.body.socialMedia || {},
+          languages: req.body.languages || [],
+          expertise: req.body.expertise || []
+        };
+        
+        const result = await sanityClient.create(ambassadorData);
+        res.json({ success: true, id: result._id });
+      } else {
+        res.status(501).json({ error: "Content creation requires Sanity configuration" });
+      }
+    } catch (error) {
+      console.error("Error creating ambassador:", error);
+      res.status(500).json({ error: "Failed to create ambassador" });
+    }
+  });
+
+  app.post("/api/blog", async (req: Request, res: Response) => {
+    try {
+      if (isSanityConfigured()) {
+        const { sanityClient } = require('../lib/sanity');
+        const blogData = {
+          _type: 'blogPost',
+          ...req.body,
+          date: req.body.date || new Date().toISOString().split('T')[0],
+          featured: req.body.featured || false,
+          tags: req.body.tags || []
+        };
+        
+        const result = await sanityClient.create(blogData);
+        res.json({ success: true, id: result._id });
+      } else {
+        res.status(501).json({ error: "Content creation requires Sanity configuration" });
+      }
+    } catch (error) {
+      console.error("Error creating blog post:", error);
+      res.status(500).json({ error: "Failed to create blog post" });
+    }
+  });
+
   const httpServer = createServer(app);
 
   return httpServer;
