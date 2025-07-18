@@ -8,7 +8,23 @@ The Latina Empire website is a modern, responsive React application built with T
 
 Preferred communication style: Simple, everyday language.
 
-## System Architecture
+## Recent Changes (July 2025)
+
+✓ Cleaned up project for production deployment to Vercel
+✓ Removed duplicate/unnecessary folders: studio-local/, studio-new/, scripts/
+✓ Removed duplicate TypeScript data files in data/ and client/src/data/
+✓ Created vercel.json configuration for deployment
+✓ Created simplified Express server (server/index.js) for production
+✓ Updated deployment documentation in replit.md
+
+## Project Architecture
+
+### Production Deployment Setup
+- **Target Platform**: Vercel
+- **Build Command**: `npm run build` (builds client to /dist)
+- **Server**: Simplified Express.js server in `server/index.js` using ES modules
+- **Data Source**: JSON files in `/data` directory (ambassadors.json, events.json, blog.json)
+- **API Routes**: RESTful endpoints for events, leaders, ambassadors, and blog content
 
 ### Frontend Architecture
 - **Framework**: React with TypeScript
@@ -17,24 +33,22 @@ Preferred communication style: Simple, everyday language.
 - **UI Components**: Shadcn/ui component library based on Radix UI
 - **Routing**: Wouter for client-side routing
 - **State Management**: TanStack Query for server state management
-- **Font System**: Custom Google Fonts integration (Playfair Display, Montserrat, Inter, Poppins)
 
 ### Backend Architecture
 - **Runtime**: Node.js with Express.js
-- **Language**: TypeScript with ES modules
-- **Database**: PostgreSQL with Drizzle ORM
-- **Database Provider**: Neon Database (serverless PostgreSQL)
-- **Session Management**: PostgreSQL session store with connect-pg-simple
+- **Production Server**: Simplified ES modules server for Vercel deployment
+- **Development Server**: Full TypeScript server with Drizzle ORM and Sanity integration
 - **API Design**: RESTful API with JSON responses
+- **Data Storage**: JSON files for production simplicity
 
-### Project Structure
+### File Structure
 - `client/` - React frontend application
-- `server/` - Express.js backend server
-- `shared/` - Common types and database schema
-- `data/` - Static JSON data files for content management
-- `migrations/` - Database migration files
+- `server/` - Contains both development (index.ts) and production (index.js) servers
+- `data/` - JSON data files for content management (ambassadors.json, events.json, blog.json)
+- `studio/` - Sanity CMS studio (maintained for development)
+- `vercel.json` - Vercel deployment configuration
 
-## Key Components
+## Key Features
 
 ### Design System
 - **Color Scheme**: Magenta (#D81B60) as primary brand color with neutral grays
@@ -51,73 +65,37 @@ Preferred communication style: Simple, everyday language.
 - **Shop Integration**: Product catalog with carousel displays
 - **Manahood Program**: Local chapter management and leader recruitment
 
-### Navigation System
-- **Sticky Navigation**: Responsive navbar with dropdown menus
-- **Mobile Menu**: Hamburger menu with smooth transitions
-- **Scroll Behavior**: Smooth scrolling with scroll-to-top functionality
-- **Route Management**: Client-side routing with proper meta tag updates
+### API Endpoints
+- `/api/events` - List all events
+- `/api/events/:slug` - Get specific event by slug
+- `/api/leaders` - List all leaders/ambassadors
+- `/api/leaders/:slug` - Get specific leader by slug
+- `/api/ambassadors` - Backward compatibility endpoint for leaders
+- `/api/ambassadors/:slug` - Get specific ambassador by slug
+- `/api/blog` - Get blog posts with filtering support (category, tag, featured)
+- `/api/blog/:slug` - Get specific blog post by slug
 
-## Data Flow
+## Data Sources
 
 ### Content Management
-- **Hybrid System**: Sanity CMS integration with JSON fallback for backward compatibility
-- **Dynamic Content**: Sanity.io headless CMS for events, ambassadors, and blog posts
-- **Static Fallback**: JSON files in `/data` directory serve as fallback when Sanity is not configured
-- **API Layer**: Express routes automatically choose between Sanity and JSON data sources
-- **Image Handling**: Sanity CDN optimization with utility functions for URL generation
-- **Form Processing**: Client-side validation with server-side form handling
+- **Production**: JSON files in `/data` directory provide all content
+- **Development**: Hybrid system with Sanity CMS integration and JSON fallback
+- **Image Handling**: External URLs (Unsplash) for images in JSON data
+- **Content Types**: Events, Leaders/Ambassadors, Blog Posts with rich metadata
 
-### Content Types
-- **Events**: Title, description, location, date/time, host information, ticketing
-- **Ambassadors/Leaders**: Personal profiles, expertise, social media, biography
-- **Blog Posts**: Articles with categories, tags, featured status, author information
-- **Media Assets**: Images served through Sanity's global CDN with automatic optimization
+### Data Format
+All JSON files follow consistent structure with fields like:
+- **Events**: id, slug, name, location, date, description, host, images, pricing
+- **Leaders**: id, slug, name, title, bio, social media, expertise, languages
+- **Blog**: id, slug, title, content, author, category, tags, featured status
 
-### State Management
-- **Query Client**: TanStack Query for server state caching and synchronization
-- **Local State**: React hooks for component-level state management
-- **Modal State**: Centralized modal management for join forms and interactions
-- **Theme System**: Dark/light mode with system preference detection
+## Deployment Configuration
 
-## External Dependencies
+### Vercel Setup
+- **Build Output**: `/dist` directory containing static React build
+- **API Routes**: Serverless functions for `/api/*` endpoints
+- **Static Routing**: Catch-all route for client-side routing compatibility
+- **Environment**: Production-ready without database dependencies
 
-### UI and Styling
-- **Radix UI**: Accessible component primitives
-- **Tailwind CSS**: Utility-first CSS framework
-- **Lucide Icons**: Icon library for consistent iconography
-- **Embla Carousel**: Smooth carousel functionality
-- **React Hook Form**: Form state management and validation
-
-### Development Tools
-- **Vite**: Fast build tool with hot module replacement
-- **TypeScript**: Static type checking
-- **ESLint**: Code linting and formatting
-- **Zod**: Runtime type validation for forms and API responses
-
-### Database and Backend
-- **Drizzle ORM**: Type-safe database operations
-- **Neon Database**: Serverless PostgreSQL hosting
-- **Express.js**: Web server framework
-- **Connect-pg-simple**: PostgreSQL session store
-
-### Content Management System
-- **Sanity.io**: Headless CMS for content management
-- **Sanity Client**: JavaScript client for Sanity API
-- **Sanity Studio**: Web-based content editing interface
-- **GROQ**: Query language for Sanity content
-
-## Deployment Strategy
-
-### Build Process
-- **Development**: Vite dev server with hot reloading
-- **Production**: Static build with Express.js server
-- **Database**: Drizzle Kit for schema management and migrations
-- **Environment**: Environment-based configuration for database connections
-
-### Hosting Considerations
-- **Static Assets**: Optimized images and fonts
-- **Server Deployment**: Node.js environment with PostgreSQL database
-- **CDN Ready**: Proper asset paths for content delivery networks
-- **Responsive Images**: Automatic image optimization with fallback handling
-
-The application follows modern web development practices with a focus on performance, accessibility, and maintainability. The modular architecture allows for easy expansion of features while maintaining a consistent user experience across all device types.
+### Production Architecture
+The application uses a simplified architecture for production deployment that maintains full functionality while removing complex dependencies like PostgreSQL and Sanity CMS for easier deployment and maintenance.
