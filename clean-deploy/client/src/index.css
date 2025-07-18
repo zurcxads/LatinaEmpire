@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 340 83% 47%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 60 4.8% 95.9%;
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 340 83% 47%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Improve touch targets on mobile */
+  @media (max-width: 767px) {
+    button, a, input, select {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Adjust spacing for mobile */
+    .section-padding {
+      @apply py-12 md:py-24;
+    }
+    
+    /* Adjust font sizes for mobile */
+    .section-heading {
+      @apply text-3xl md:text-4xl;
+    }
+    
+    .section-subheading {
+      @apply text-lg md:text-xl;
+    }
+    
+    .mobile-stack {
+      @apply flex-col;
+    }
+    
+    .mobile-full-width {
+      @apply w-full;
+    }
+  }
+
+  html, body {
+    @apply overflow-x-hidden;
+    max-width: 100vw;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground min-h-screen;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input, textarea, select {
+    @apply text-base;
+    font-size: 16px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+  
+  p, span, a, button {
+    @apply font-sans;
+  }
+}
+
+.font-serif {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+.font-sans {
+  font-family: 'Inter', sans-serif;
+}
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: brightness(1.1) contrast(1.1) saturate(1.2);
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* Hero section specific styles */
+/* Global component styles */
+.section-heading {
+  @apply font-serif font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-tight;
+}
+
+.section-subheading {
+  @apply font-sans text-lg md:text-xl lg:text-2xl opacity-90 leading-relaxed;
+}
+
+.section-padding {
+  @apply py-16 md:py-24 lg:py-32;
+}
+
+.section-spacing {
+  @apply py-16 md:py-24 lg:py-32;
+}
+
+.section-spacing-large {
+  @apply py-24 md:py-32 lg:py-40;
+}
+
+.spacing-compact {
+  @apply py-8 md:py-12;
+}
+
+.hero-navbar-spacing {
+  @apply pt-16 md:pt-20;
+}
+
+/* Fade-in animation for hero elements */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Consistent button styles */
+.primary-button {
+  @apply bg-gray-100 hover:bg-gray-200 text-black font-medium px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-1.5 disabled:opacity-50 disabled:hover:bg-gray-100;
+}
+
+.secondary-button {
+  @apply bg-white text-black hover:bg-gray-100 font-medium px-6 py-2 rounded-full border-2 border-black transition-all duration-300 flex items-center gap-1.5 hover:bg-black hover:text-white disabled:opacity-50 disabled:hover:bg-white disabled:hover:text-black;
+}
+
+.accent-button {
+  @apply bg-black text-white hover:bg-gray-800 font-medium px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-1.5 disabled:opacity-50 disabled:hover:bg-black;
+}
+
+.outline-button {
+  @apply border-2 border-gray-200 bg-transparent text-white hover:bg-white/10 font-medium px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-1.5 disabled:opacity-50 disabled:hover:bg-transparent;
+}
+
+/* Card styles */
+.content-card {
+  @apply bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl;
+}
+
+/* Gradient overlays */
+.overlay-gradient {
+  @apply absolute inset-0 bg-gradient-to-br from-black/80 to-transparent;
+}
+
+/* Hero specific styles that extend the global styles */
+.hero-heading {
+  @apply section-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl;
+}
+
+.hero-subheading {
+  @apply section-subheading;
+}
+
+.hero-button {
+  @apply primary-button text-lg;
+}
+
+.elite-hero-bg {
+  background-image: url('https://images.unsplash.com/photo-1573164574001-518958d9bab2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.text-magenta {
+  color: #D81B60;
+}
+
+.bg-magenta {
+  background-color: #D81B60;
+}
+
+.border-magenta {
+  border-color: #D81B60;
+}
+
+.hover\:text-magenta:hover {
+  color: #D81B60;
+}
+
+.hover\:bg-magenta:hover {
+  background-color: #D81B60;
+}
+
+.hover\:border-magenta:hover {
+  border-color: #D81B60;
+}
+
+.bg-magenta-light {
+  background-color: rgba(216, 27, 96, 0.1);
+}
+
+/* Focus styles for accessibility */
+.focus-visible\:ring-magenta:focus-visible {
+  --tw-ring-color: #D81B60;
+  --tw-ring-offset-width: 2px;
+}
+
+/* Hover effects for cards and interactive elements */
+.hover\:shadow-magenta:hover {
+  box-shadow: 0 0 15px rgba(216, 27, 96, 0.3);
+}
+
+.hover\:scale-102:hover {
+  transform: scale(1.02);
+}
+
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+/* Transition utilities */
+.transition-magenta {
+  transition: all 0.3s ease;
+}
+
+/* Global placeholder image styling - Tony Robbins style */
+.placeholder-image {
+  background-color: #f8f0f4; /* Light pink background as fallback */
+  background-image: linear-gradient(135deg, rgba(216, 27, 96, 0.3), rgba(155, 81, 224, 0.2));
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* Hero placeholder with dark overlay for text */
+.hero-placeholder {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), linear-gradient(135deg, rgba(216, 27, 96, 0.5), rgba(155, 81, 224, 0.3));
+  background-position: center;
+  background-size: cover;
+  border-radius: 0;
+}
+
+/* Carousel Animation */
+@keyframes carousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-carousel {
+  animation: carousel 30s linear infinite;
+}
+
+/* Slower animation for speakers carousel */
+.speakers-carousel {
+  animation: carousel 45s linear infinite;
+}
+
+/* Text shadow utilities for glow effects */
+.text-shadow-sm {
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.text-shadow-md {
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.4), 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.5), 0 0 12px rgba(255, 255, 255, 0.3), 0 0 18px rgba(255, 255, 255, 0.1);
+}
+
+/* Mega menu animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease-in-out forwards;
+  overflow: hidden;
+}

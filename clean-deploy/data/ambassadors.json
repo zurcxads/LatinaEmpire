@@ -1,0 +1,124 @@
+{
+  "ambassadors": [
+    {
+      "id": "1",
+      "slug": "elena-rodriguez",
+      "name": "Elena Rodriguez",
+      "title": "Founder, Latina Empire",
+      "location": "Miami, FL",
+      "country": "United States",
+      "quote": "When Latinas rise, we all rise. Our mission is to create the network, tools, and opportunities that I wish I had early in my career.",
+      "shortBio": "Elena built Latina Empire after 15 years in corporate America, where she often found herself the only Latina in the room. She's passionate about creating pathways for other ambitious Latinas.",
+      "fullBio": "Elena Rodriguez founded Latina Empire in 2018 after a 15-year corporate career where she rose to become a VP of Marketing at a Fortune 500 company. Throughout her career, Elena often found herself as the only Latina in the boardroom and recognized the need for a community that specifically addressed the unique challenges faced by Latina professionals.\n\nBorn to Dominican immigrants in New York City, Elena worked her way through college as the first in her family to pursue higher education. After graduating with honors from New York University with a degree in Business Administration, she joined a major consumer goods company and quickly climbed the corporate ladder.\n\nDespite her success, Elena experienced firsthand the cultural and systemic barriers that many Latinas face in professional settings: from microaggressions to lack of mentorship and limited networking opportunities. In 2018, she left her corporate position to create Latina Empire with a mission to build a community where Latina professionals could find support, mentorship, and practical tools to advance their careers.\n\nUnder Elena's leadership, Latina Empire has grown to serve over 50,000 Latina professionals across the United States and Latin America through events, coaching programs, and online resources. She is particularly passionate about helping Latinas negotiate their worth, develop executive presence, and build strategic networks.\n\nElena holds an MBA from Harvard Business School and serves on the boards of several nonprofit organizations focused on education and economic opportunities for underrepresented communities. She has been recognized as one of Fortune's 40 Under 40 and Hispanic Executive's Top 10 Líderes. When not working on growing Latina Empire, Elena enjoys salsa dancing, exploring Miami's food scene, and mentoring young Latinas in her community.",
+      "image": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      "bannerImage": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1950&q=80",
+      "socialMedia": {
+        "instagram": "elenarod",
+        "linkedin": "elenarodriguez",
+        "twitter": "elenarod",
+        "website": "elenarod.com"
+      },
+      "yearsInProgram": 5,
+      "eventsHosted": 37,
+      "membersSince": "2018",
+      "languages": ["English", "Spanish"],
+      "expertise": ["Leadership Development", "Executive Presence", "Public Speaking"]
+    },
+    {
+      "id": "2",
+      "slug": "carmen-vega",
+      "name": "Carmen Vega",
+      "title": "Business Development Director",
+      "location": "Los Angeles, CA",
+      "country": "United States",
+      "quote": "Business is about relationships. As Latinas, we have cultural strengths in building authentic connections that can become our greatest professional advantage.",
+      "shortBio": "Carmen transitioned from a successful corporate career to entrepreneurship, founding two small businesses before joining Latina Empire. She specializes in helping Latinas navigate the startup ecosystem.",
+      "fullBio": "Carmen Vega brings over a decade of entrepreneurial experience to her role as Business Development Director at Latina Empire. After beginning her career in management consulting with Boston Consulting Group, Carmen took the leap into entrepreneurship and founded two successful businesses: a direct-to-consumer skincare line influenced by her Mexican heritage and a business strategy consultancy focused on helping Latina-owned businesses scale.\n\nBorn and raised in Los Angeles to Mexican parents, Carmen grew up helping in her family's small restaurant, where she developed a deep understanding of the challenges and rewards of entrepreneurship from an early age. This foundation, combined with her formal education in Economics and Business from UCLA, gives her a unique perspective on the intersection of cultural heritage and business success.\n\nCarmen joined Latina Empire in 2020 to lead the organization's entrepreneurship initiatives. She developed the Empire Accelerator, a 12-week intensive program that has helped over 200 Latina founders secure funding and scale their businesses. Her work focuses particularly on addressing the significant funding gap for Latina entrepreneurs, who receive less than 0.5% of venture capital despite being the fastest-growing group of small business owners in the United States.\n\nAs a sought-after speaker on entrepreneurship and funding strategies, Carmen has presented at South by Southwest, the United State of Women Summit, and numerous business schools. She is passionate about demystifying the startup ecosystem and creating accessible pathways for Latinas to build wealth through business ownership.\n\nCarmen serves as a mentor with Techstars and is on the advisory board of Digital Undivided. In her free time, she enjoys hiking the trails around Los Angeles, experimenting with new recipes that blend her Mexican heritage with California cuisine, and mentoring young entrepreneurs from underserved communities.",
+      "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      "bannerImage": "https://images.unsplash.com/photo-1583775607016-1e4be9fbce69?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1950&q=80",
+      "socialMedia": {
+        "instagram": "carmenvega",
+        "linkedin": "carmenvega",
+        "twitter": "carmenvega",
+        "website": "carmenvega.com"
+      },
+      "yearsInProgram": 3,
+      "eventsHosted": 21,
+      "membersSince": "2020",
+      "languages": ["English", "Spanish"],
+      "expertise": ["Entrepreneurship", "Business Strategy", "Fundraising"]
+    },
+    {
+      "id": "3",
+      "slug": "isabel-morales",
+      "name": "Isabel Morales",
+      "title": "Brand Strategist",
+      "location": "New York, NY",
+      "country": "United States",
+      "quote": "Your personal brand is the story the world tells about you when you're not in the room. Make sure you're the one writing that story.",
+      "shortBio": "Isabel has built branding strategies for Fortune 500 companies and celebrities alike. At Latina Empire, she teaches women how to leverage their authentic personal brand for career advancement.",
+      "fullBio": "Isabel Morales is an award-winning brand strategist with over 15 years of experience working with global brands, celebrities, and executives to develop authentic and powerful brand identities. As the Brand Strategy Director for Latina Empire, Isabel leads all programming related to personal branding, executive presence, and strategic visibility.\n\nBorn in Puerto Rico and raised in New York City, Isabel's bicultural experience has shaped her unique approach to brand strategy that honors cultural authenticity while navigating mainstream corporate environments. After graduating from Columbia University with degrees in Psychology and Marketing, Isabel spent the first decade of her career at top advertising agencies in New York, working with clients like American Express, Unilever, and Netflix.\n\nIn 2015, Isabel founded Autónoma, a brand consultancy focused specifically on helping women of color and multicultural brands develop strategic positioning that amplifies rather than dilutes their unique cultural perspectives. Her client list has included C-suite executives, media personalities, and entrepreneurs, as well as major brands looking to authentically connect with multicultural audiences.\n\nIsabel joined Latina Empire in 2019 to develop and lead the organization's personal branding curriculum. She created the signature \"Branded Latina\" program that has helped over 5,000 Latina professionals clarify their unique value proposition, develop strategic visibility plans, and build personal brands that open doors to new opportunities without sacrificing authenticity.\n\nA frequent speaker and writer on personal branding, Isabel has been featured in Forbes, Fast Company, and Hispanic Executive. She has delivered keynotes at the 3% Conference, SXSW, and the Association of National Advertisers Multicultural Marketing Conference.\n\nIsabel serves on the board of the Hispanic Marketing Council and mentors young women through the Hispanic Scholarship Fund. Outside of work, she is an avid street photographer, documenting the vibrant cultural fabric of New York City, and enjoys exploring the city's diverse culinary scene.",
+      "image": "https://images.unsplash.com/photo-1573497161161-c3e73707e25c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      "bannerImage": "https://images.unsplash.com/photo-1573164574001-518958d9baa2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1950&q=80",
+      "socialMedia": {
+        "instagram": "isabelmorales",
+        "linkedin": "isabelmorales",
+        "twitter": "isabelmorales",
+        "website": "isabelmorales.com"
+      },
+      "yearsInProgram": 4,
+      "eventsHosted": 28,
+      "membersSince": "2019",
+      "languages": ["English", "Spanish"],
+      "expertise": ["Personal Branding", "Executive Presence", "Digital Strategy"]
+    },
+    {
+      "id": "4",
+      "slug": "sofia-ramirez",
+      "name": "Sofia Ramirez",
+      "title": "Tech & Innovation Lead",
+      "location": "San Francisco, CA",
+      "country": "United States",
+      "quote": "Technology is the greatest equalizer when we ensure everyone has access. My mission is helping Latinas claim their space in tech.",
+      "shortBio": "Sofia transitioned from software engineering to leadership at major tech companies. She now leads Latina Empire's tech initiatives, helping more women break into and advance in tech careers.",
+      "fullBio": "Sofia Ramirez is a tech industry veteran with over 12 years of experience spanning software engineering, product management, and leadership at companies including Google, Airbnb, and several venture-backed startups. As Tech & Innovation Lead at Latina Empire, Sofia directs all programming related to technology careers, digital skills development, and tech entrepreneurship.\n\nBorn in Mexico City and immigrating to the United States at age 10, Sofia discovered her passion for technology through a high school robotics program. She went on to earn her degree in Computer Science from Stanford University, where she was often one of only a handful of Latinas in her engineering classes.\n\nAfter beginning her career as a software engineer at Google, Sofia rose through the ranks to become a Senior Engineering Manager leading teams of over 50 engineers. Throughout her career in tech, she experienced firsthand the isolation and challenges that come with being significantly underrepresented in the industry. This experience fueled her passion for creating pathways for other Latinas in technology.\n\nSofia joined Latina Empire in 2020 to build the organization's tech vertical from the ground up. She created the Latina Code Academy, a 12-week intensive program that has helped over 300 Latinas transition into tech careers, as well as the Tech Executive Accelerator, which supports mid-career Latinas in advancing to leadership positions in the industry.\n\nRecognized as one of the most influential Latinas in tech by Techqueria and featured in CNET's Latino Technology Leaders series, Sofia frequently speaks at technology conferences and corporate events about diversity in tech and creating inclusive engineering cultures. She is particularly passionate about ensuring that Latinas have the skills, network, and confidence to thrive in the digital economy.\n\nSofia serves on the advisory boards of several educational technology nonprofits including Code2040 and Latinas in Tech. In her free time, she mentors young women in STEM programs, participates in hackathons, and explores the hiking trails of Northern California.",
+      "image": "https://images.unsplash.com/photo-1601288496920-b6154fe3626a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      "bannerImage": "https://images.unsplash.com/photo-1573496359142-b8475f639467?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1950&q=80",
+      "socialMedia": {
+        "instagram": "sofiaramireztech",
+        "linkedin": "sofiaramirez",
+        "twitter": "sofiaramireztech",
+        "website": "sofiaramirez.com"
+      },
+      "yearsInProgram": 3,
+      "eventsHosted": 18,
+      "membersSince": "2020",
+      "languages": ["English", "Spanish"],
+      "expertise": ["Software Engineering", "Technology Leadership", "Digital Transformation"]
+    },
+    {
+      "id": "5",
+      "slug": "gabriela-martinez",
+      "name": "Gabriela Martinez",
+      "title": "Community Director",
+      "location": "Chicago, IL",
+      "country": "United States",
+      "quote": "Community is the backbone of resilience. When we connect Latinas across industries and backgrounds, we multiply our collective strength.",
+      "shortBio": "Gabriela's background in community organizing and nonprofit leadership informs her work connecting Latinas across the country through both digital platforms and in-person events.",
+      "fullBio": "Gabriela Martinez brings extensive experience in community building, nonprofit leadership, and event management to her role as Community Director at Latina Empire. With a background spanning grassroots organizing, corporate social responsibility, and digital community development, Gabriela leads Latina Empire's efforts to create meaningful connections among members both online and in person.\n\nRaised in a close-knit Puerto Rican community in Chicago, Gabriela witnessed firsthand how strong community ties create resilience and opportunity. After earning her degree in Sociology and Nonprofit Management from Northwestern University, she began her career in community organizing, working on education equity initiatives in underserved Chicago neighborhoods.\n\nBefore joining Latina Empire, Gabriela served as the National Director of Community Engagement for a major nonprofit supporting first-generation college students, where she built a network of over 50,000 alumni and supporters across the country. Her innovative approaches to digital community building during the pandemic were recognized with the Association of Fundraising Professionals' Innovation in Community Engagement Award.\n\nGabriela joined Latina Empire in 2019 to reimagine how the organization builds and nurtures community among Latina professionals across different geographies, industries, and career stages. She developed the Latina Empire Community Platform, which now connects over 30,000 members digitally, and expanded the organization's chapter program from 5 to 25 cities nationwide.\n\nParticularly passionate about creating spaces where Latinas can show up authentically, Gabriela has pioneered programming that honors the cultural backgrounds, lived experiences, and diverse perspectives of community members. Her \"Cafecito Connections\" virtual networking series created during the pandemic has facilitated over 10,000 meaningful professional connections between members.\n\nGabriela serves on the boards of the Association of Latinos in Philanthropy and her local public radio station. When not building community for Latina Empire, she hosts a podcast about Latina changemakers, volunteers as a college application coach for first-generation students, and explores Chicago's vibrant arts scene.",
+      "image": "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      "bannerImage": "https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1950&q=80",
+      "socialMedia": {
+        "instagram": "gabymartinez",
+        "linkedin": "gabrielamartinez",
+        "twitter": "gabymartinez",
+        "website": "gabrielamartinez.com"
+      },
+      "yearsInProgram": 4,
+      "eventsHosted": 42,
+      "membersSince": "2019",
+      "languages": ["English", "Spanish"],
+      "expertise": ["Community Building", "Event Management", "Nonprofit Leadership"]
+    }
+  ]
+}
